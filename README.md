@@ -10,4 +10,4 @@ A design system for Os Equi in Typescript and React.
 
 - Next.js, to have a static site for testing.
 - Typescript, for scalability and more error-prone code
--
+- Jest, for testing theme and hooks
