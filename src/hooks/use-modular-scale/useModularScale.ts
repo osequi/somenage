@@ -1,5 +1,5 @@
-import type { TModularScale } from "../../theme";
-import { modularScale } from "../../theme/modular-scale";
+import type { TTypographicScale } from "../../theme";
+import { modularScaleSettings } from "../../theme/modular-scale";
 import { theme } from "../../theme";
 import ms from "modularscale-js";
 
@@ -8,9 +8,9 @@ import ms from "modularscale-js";
  *
  * Used to set a different font size than the body text.
  *
- * @param  value       	The point on the scale.
- * @param  modularScale The settings for the scale.
- * @return 				The value from the scale.
+ * @param  point       		The point on the scale.
+ * @param  scaleFromProps 	The settings for the scale.
+ * @return 					The value from the scale.
  * @category Hooks
  * @example
  * useModularScale(0) => 1
@@ -19,21 +19,20 @@ import ms from "modularscale-js";
  * @see https://github.com/modularscale/modularscale-js
  */
 const useModularScale = (
-  value: number,
-  modularScaleFromProps?: TModularScale
+  point: number,
+  scaleFromProps?: TTypographicScale
 ): number => {
   const {
-    typography: { scale },
+    typography: { scale: scaleFromTheme },
   } = theme;
 
-  const scale2 = modularScaleFromProps || scale;
-  const scale3 =
+  const scale2 = scaleFromProps || scaleFromTheme;
+  const settings =
     scale2 && scale2.settings && scale2.settings.hasOwnProperty("base")
-      ? modularScale
-      : scale2;
-  const { settings } = scale3;
+      ? scale2.settings
+      : modularScaleSettings;
 
-  return ms(value, settings);
+  return ms(point, settings);
 };
 
 export default useModularScale;

@@ -1,32 +1,23 @@
 /**
- * Defines the modular scale type.
+ * Defines the modular scale settings type.
  *
- * It's a typographic scale preset. See `TTypographicScale`.
+ * Modular scale is a typographic scale preset. See `TTypographicScale`.
  * @category Theme
  * @example
  * name: 'modular',
  * settings: {base:[1], ratio: 1.33}
  */
-export type TModularScale = {
+export type TModularScaleSettings = {
   /**
-   * The name of the scale. It's always `modular`.
+   * The base(s) of the scale(s).
+   * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
+   * `modularscale-js` supports multiple bases.
    */
-  name: string;
+  base: number[];
   /**
-   * The settings for the scale. It comes from [modularscale-js](https://github.com/modularscale/modularscale-js).
+   * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
    */
-  settings: {
-    /**
-     * The base(s) of the scale(s).
-     * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
-     * `modularscale-js` supports multiple bases.
-     */
-    base: number[];
-    /**
-     * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
-     */
-    ratio: number;
-  };
+  ratio: number;
 };
 
 /**
@@ -40,12 +31,9 @@ export type TModularScale = {
  * settings: {base:[1], ratio: 1.33}
  * @see https://github.com/modularscale/modularscale-js
  */
-const modularScale: TModularScale = {
-  name: "modular",
-  settings: {
-    base: [1],
-    ratio: 1.25,
-  },
+const modularScaleSettings: TModularScaleSettings = {
+  base: [1],
+  ratio: 1.25,
 };
 
-export default modularScale;
+export default modularScaleSettings;

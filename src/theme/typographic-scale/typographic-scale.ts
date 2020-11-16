@@ -1,11 +1,21 @@
-import type { TLinearScale } from "../linear-scale";
-import type { TModularScale } from "../modular-scale";
+import type { TLinearScaleSettings } from "../linear-scale";
+import type { TModularScaleSettings } from "../modular-scale";
+import { linearScaleSettings } from "../linear-scale";
 
 /**
  * Defines the scale names.
  * @category Theme
  */
 export type TTypographicScaleNames = "linear" | "modular";
+
+/**
+ * Defines the scale settings.
+ * @category Theme
+ */
+export type TTypographicScaleSettings =
+  | TLinearScaleSettings
+  | TModularScaleSettings
+  | {};
 
 /**
  * Defines the typographic scale type.
@@ -29,7 +39,7 @@ export type TTypographicScale = {
   /**
    * The settings for the scale. Each preset has its own shape for settings.
    */
-  settings?: object;
+  settings?: TTypographicScaleSettings;
 };
 
 /**
@@ -48,8 +58,7 @@ export type TTypographicScale = {
  */
 const typographicScale: TTypographicScale = {
   name: "linear",
-  settings: {},
+  settings: linearScaleSettings,
 };
 
 export default typographicScale;
-export type { TLinearScale, TModularScale };

@@ -1,36 +1,26 @@
 /**
- * Defines the linear scale type.
+ * Defines the linear scale settings type.
  *
- * It's a typographic scale preset. See `TTypographicScale`.
+ * Linears scale is a typographic scale preset. See `TTypographicScale`.
  * @category Theme
- * @example
- * name: "linear",
- * settings: {},
  */
-export type TLinearScale = {
+export type TLinearScaleSettings = {
   /**
-   * The name of the scale. It's always `linear`.
-   */
-  name: string;
-  /**
-   * The settings for the scale. For linear scale there are no settings for now.
+   * The settings for the scale.
    */
   settings: object;
 };
 
 /**
- * Defines the linear scale.
+ * Defines the linear scale settings.
  *
- * On linear scale values scale with 1 unit. See `useLinearScale`.
+ * For linear scale there are no settings for now.
  *
  * @category Theme
  * @example
  * name: "linear",
  * settings: {},
  */
-const linearScale = {
-  name: "linear",
-  settings: {},
-};
+const linearScaleSettings = {};
 
-export default linearScale;
+export default linearScaleSettings;

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-scale/useScale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-scale/useScale.ts</h1>
                 </header>
                 
 
@@ -109,58 +109,61 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type {
-  TTypographicScale,
-  TLinearScale,
-  TModularScale,
-} from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
+            <pre class="prettyprint source linenums"><code>import { TTypographicScale } from "../../theme";
+import { useLinearScale, useModularScale } from "../";
 
 /**
- * Defines the typography type.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- *
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},}
+ * Defines a temporary type.
+ * @ignore
  */
-export type TTypography = {
+type TTypographicScaleWithValue = TTypographicScale &amp; {
   /**
-   * The settings for the typographic grid.
+   * The point on the scale.
    */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
+  value: number;
 };
 
 /**
- * Defines the typography.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},}
+ * Returns a value from a scale.
+ * @ignore
  */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
+const scaleValue = (scaleWithValue: TTypographicScaleWithValue): number => {
+  const { value, ...rest } = scaleWithValue;
+  const { name } = rest;
+
+  switch (name) {
+    case "linear":
+      return useLinearScale(value, rest);
+    case "modular":
+      return useModularScale(value, rest);
+  }
 };
 
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TLinearScale,
-  TModularScale,
+/**
+ * Returns a value from a scale.
+ *
+ * Used to set a different font size than the body text.
+ *
+ * @param  scales An array of typographic scales and points on the scale, or a single typographic scale and a single point.
+ * @return        An array of values from the scale, or a single value from the scale.
+ * @category Hooks
+ * @example &lt;caption>An array of scales and points:&lt;/caption>
+ * useScale([{value: 1, name: 'linear'}, {value: 1, name: 'modular'} ]) => [2, 1.33]
+ * @example &lt;caption>A single scale with point:&lt;/caption>
+ * useScale({value: 1, name: 'linear'}) => 2
+ */
+const useScale = (
+  scales?: TTypographicScaleWithValue[] | TTypographicScaleWithValue
+): object[] | object => {
+  return Array.isArray(scales)
+    ? scales &amp;&amp;
+        scales.reduce((result, scale) => {
+          return [...result, { fontSize: `${scaleValue(scale)}em` }];
+        }, [])
+    : { fontSize: `${scaleValue(scales)}em` };
 };
+
+export default useScale;
 </code></pre>
         </article>
     </section>

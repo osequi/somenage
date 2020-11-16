@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useScale">useScale</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -276,15 +276,15 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
             
                 <div class="member">
 
-<h4 class="name" id="linearScale">
-    <a class="href-link" href="#linearScale">#</a>
+<h4 class="name" id="linearScaleSettings">
+    <a class="href-link" href="#linearScaleSettings">#</a>
     
         
             <span class='tag'>constant</span>
         
     
     <span class="code-name">
-        linearScale
+        linearScaleSettings
     </span>
     
 </h4>
@@ -293,8 +293,8 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
 
 
 <div class="description">
-    <p>Defines the linear scale.</p>
-<p>On linear scale values scale with 1 unit. See <code>useLinearScale</code>.</p>
+    <p>Defines the linear scale settings.</p>
+<p>For linear scale there are no settings for now.</p>
 </div>
 
 
@@ -358,15 +358,15 @@ settings: {},</code></pre>
             
                 <div class="member">
 
-<h4 class="name" id="modularScale">
-    <a class="href-link" href="#modularScale">#</a>
+<h4 class="name" id="modularScaleSettings">
+    <a class="href-link" href="#modularScaleSettings">#</a>
     
         
             <span class='tag'>constant</span>
         
     
     <span class="code-name">
-        modularScale
+        modularScaleSettings
     </span>
     
 </h4>
@@ -703,7 +703,7 @@ The scale comes from one of the presets: linear scale, modular scale.</p>
         <p class="tag-source">
             <a href="theme_typographic-scale_typographic-scale.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_typographic-scale_typographic-scale.ts.html">theme/typographic-scale/typographic-scale.ts</a>, <a href="theme_typographic-scale_typographic-scale.ts.html#line16">line 16</a>
+                <a href="theme_typographic-scale_typographic-scale.ts.html">theme/typographic-scale/typographic-scale.ts</a>, <a href="theme_typographic-scale_typographic-scale.ts.html#line17">line 17</a>
             </span>
         </p>
     
@@ -1184,7 +1184,7 @@ Then setting a margin or padding should be always done using <code>--lem</code>.
         
         <span class="code-name">
             
-                useLinearScale<span class="signature">(value, linearScale)</span><span class="type-signature"></span>
+                useLinearScale<span class="signature">(value, scale)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1252,7 +1252,7 @@ Then setting a margin or padding should be always done using <code>--lem</code>.
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>linearScale</code></td>
+      <td class="name"><code>scale</code></td>
   
 
   <td class="type">
@@ -1373,7 +1373,7 @@ useLinearScale(1) => 2</code></pre>
         
         <span class="code-name">
             
-                useModularScale<span class="signature">(value, modularScale)</span><span class="type-signature"></span>
+                useModularScale<span class="signature">(value, scaleFromProps)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1441,7 +1441,7 @@ useLinearScale(1) => 2</code></pre>
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>modularScale</code></td>
+      <td class="name"><code>scaleFromProps</code></td>
   
 
   <td class="type">
@@ -1556,6 +1556,182 @@ useLinearScale(1) => 2</code></pre>
         <pre class="prettyprint"><code>useModularScale(0) => 1
 useModularScale(1) => 1.33
 useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useScale">
+        <a class="href-link" href="#useScale">#</a>
+        
+        <span class="code-name">
+            
+                useScale<span class="signature">(scales)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Returns a value from a scale.</p>
+<p>Used to set a different font size than the body text.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>scales</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of typographic scales and points on the scale, or a single typographic scale and a single point.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-scale_useScale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-scale_useScale.ts.html">hooks/use-scale/useScale.ts</a>, <a href="hooks_use-scale_useScale.ts.html#line30">line 30</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An array of values from the scale, or a single value from the scale.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">An array of scales and points:</p>
+    
+    
+        <pre class="prettyprint"><code>useScale([{value: 1, name: 'linear'}, {value: 1, name: 'modular'} ]) => [2, 1.33]</code></pre>
+    
+
+        <p class="code-caption">A single scale with point:</p>
+    
+    
+        <pre class="prettyprint"><code>useScale({value: 1, name: 'linear'}) => 2</code></pre>
     
 
 
@@ -1740,11 +1916,11 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
     </span>
 
-<h4 class="name" id="TLinearScale">
-    <a class="href-link" href="#TLinearScale">#</a>
+<h4 class="name" id="TLinearScaleSettings">
+    <a class="href-link" href="#TLinearScaleSettings">#</a>
     
     <span class="code-name">
-        TLinearScale
+        TLinearScaleSettings
     </span>
     
 </h4>
@@ -1753,8 +1929,8 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
 
 <div class="description">
-    <p>Defines the linear scale type.</p>
-<p>It's a typographic scale preset. See <code>TTypographicScale</code>.</p>
+    <p>Defines the linear scale settings type.</p>
+<p>Linears scale is a typographic scale preset. See <code>TTypographicScale</code>.</p>
 </div>
 
 
@@ -1787,29 +1963,6 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>name</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">string</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>The name of the scale. It's always <code>linear</code>.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
         <td class="name"><code>settings</code></td>
     
 
@@ -1826,7 +1979,7 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
     
 
-    <td class="description last"><p>The settings for the scale. For linear scale there are no settings for now.</p></td>
+    <td class="description last"><p>The settings for the scale.</p></td>
 </tr>
 
         
@@ -1871,7 +2024,7 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
         <p class="tag-source">
             <a href="theme_linear-scale_linear-scale.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_linear-scale_linear-scale.ts.html">theme/linear-scale/linear-scale.ts</a>, <a href="theme_linear-scale_linear-scale.ts.html#line18">line 18</a>
+                <a href="theme_linear-scale_linear-scale.ts.html">theme/linear-scale/linear-scale.ts</a>, <a href="theme_linear-scale_linear-scale.ts.html#line15">line 15</a>
             </span>
         </p>
     
@@ -1879,14 +2032,6 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
 
 
-
-
-    <h5>Example</h5>
-    
-    
-        <pre class="prettyprint"><code>name: "linear",
-settings: {}</code></pre>
-    
 
 
 </div>
@@ -1901,11 +2046,11 @@ settings: {}</code></pre>
 
     </span>
 
-<h4 class="name" id="TModularScale">
-    <a class="href-link" href="#TModularScale">#</a>
+<h4 class="name" id="TModularScaleSettings">
+    <a class="href-link" href="#TModularScaleSettings">#</a>
     
     <span class="code-name">
-        TModularScale
+        TModularScaleSettings
     </span>
     
 </h4>
@@ -1914,8 +2059,8 @@ settings: {}</code></pre>
 
 
 <div class="description">
-    <p>Defines the modular scale type.</p>
-<p>It's a typographic scale preset. See <code>TTypographicScale</code>.</p>
+    <p>Defines the modular scale settings type.</p>
+<p>Modular scale is a typographic scale preset. See <code>TTypographicScale</code>.</p>
 </div>
 
 
@@ -1948,52 +2093,6 @@ settings: {}</code></pre>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>name</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">string</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>The name of the scale. It's always <code>modular</code>.</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>settings</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">object</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>The settings for the scale. It comes from <a href="https://github.com/modularscale/modularscale-js">modularscale-js</a>.</p></td>
-</tr>
-
-  
-      
-<tr class="deep-level-1">
-    
         <td class="name"><code>base</code></td>
     
 
@@ -2015,9 +2114,9 @@ A base defines the value of the 0th element on the scale. For example <code>base
 <code>modularscale-js</code> supports multiple bases.</p></td>
 </tr>
 
-  
-      
-<tr class="deep-level-1">
+        
+            
+<tr class="deep-level-0">
     
         <td class="name"><code>ratio</code></td>
     
@@ -2037,8 +2136,6 @@ A base defines the value of the 0th element on the scale. For example <code>base
 
     <td class="description last"><p>The logic of scaling. See <a href="https://github.com/modularscale/modularscale-js#ratios">Ratios</a>.</p></td>
 </tr>
-
-  
 
         
         </tbody>
@@ -2082,7 +2179,7 @@ A base defines the value of the 0th element on the scale. For example <code>base
         <p class="tag-source">
             <a href="theme_modular-scale_modular-scale.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_modular-scale_modular-scale.ts.html">theme/modular-scale/modular-scale.ts</a>, <a href="theme_modular-scale_modular-scale.ts.html#line22">line 22</a>
+                <a href="theme_modular-scale_modular-scale.ts.html">theme/modular-scale/modular-scale.ts</a>, <a href="theme_modular-scale_modular-scale.ts.html#line19">line 19</a>
             </span>
         </p>
     
@@ -2538,7 +2635,7 @@ This way they are pluggable into the theme.</p>
     <td class="type">
     
         
-<span class="param-type">object</span>
+<span class="param-type">TTypographicScaleSettings</span>
 
 
     
@@ -2601,7 +2698,7 @@ This way they are pluggable into the theme.</p>
         <p class="tag-source">
             <a href="theme_typographic-scale_typographic-scale.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_typographic-scale_typographic-scale.ts.html">theme/typographic-scale/typographic-scale.ts</a>, <a href="theme_typographic-scale_typographic-scale.ts.html#line25">line 25</a>
+                <a href="theme_typographic-scale_typographic-scale.ts.html">theme/typographic-scale/typographic-scale.ts</a>, <a href="theme_typographic-scale_typographic-scale.ts.html#line28">line 28</a>
             </span>
         </p>
     

@@ -1,2 +1,2 @@
-export type { TLinearScale } from "./linear-scale";
-export { default as linearScale } from "./linear-scale";
+export type { TLinearScaleSettings } from "./linear-scale";
+export { default as linearScaleSettings } from "./linear-scale";

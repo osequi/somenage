@@ -1,9 +1,13 @@
-import { modularScale } from ".";
+import { modularScaleSettings } from ".";
 
-it("Settings are defined.", () => {
-  expect(modularScale.settings).not.toBeNull();
+it("Base is defined.", () => {
+  expect(modularScaleSettings.base).not.toBeNull();
+});
+
+it("Ratio is defined.", () => {
+  expect(modularScaleSettings.ratio).not.toBeNull();
 });
 
 it("It's defined.", () => {
-  expect(modularScale).not.toBeNull();
+  expect(modularScaleSettings).not.toBeNull();
 });

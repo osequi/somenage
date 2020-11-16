@@ -1,5 +1,5 @@
-import { linearScale } from ".";
+import { linearScaleSettings } from ".";
 
 it("It's defined.", () => {
-  expect(linearScale).not.toBeNull();
+  expect(linearScaleSettings).not.toBeNull();
 });

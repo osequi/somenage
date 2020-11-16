@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useScale">useScale</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -109,8 +109,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TModularScale } from "../../theme";
-import { modularScale } from "../../theme/modular-scale";
+            <pre class="prettyprint source linenums"><code>import type { TTypographicScale } from "../../theme";
+import { modularScaleSettings } from "../../theme/modular-scale";
 import { theme } from "../../theme";
 import ms from "modularscale-js";
 
@@ -119,9 +119,9 @@ import ms from "modularscale-js";
  *
  * Used to set a different font size than the body text.
  *
- * @param  value       	The point on the scale.
- * @param  modularScale The settings for the scale.
- * @return 				The value from the scale.
+ * @param  value       		The point on the scale.
+ * @param  scaleFromProps 	The settings for the scale.
+ * @return 					The value from the scale.
  * @category Hooks
  * @example
  * useModularScale(0) => 1
@@ -131,18 +131,17 @@ import ms from "modularscale-js";
  */
 const useModularScale = (
   value: number,
-  modularScaleFromProps?: TModularScale
+  scaleFromProps?: TTypographicScale
 ): number => {
   const {
-    typography: { scale },
+    typography: { scale: scaleFromTheme },
   } = theme;
 
-  const scale2 = modularScaleFromProps || scale;
-  const scale3 =
+  const scale2 = scaleFromProps || scaleFromTheme;
+  const settings =
     scale2 &amp;&amp; scale2.settings &amp;&amp; scale2.settings.hasOwnProperty("base")
-      ? modularScale
-      : scale2;
-  const { settings } = scale3;
+      ? scale2.settings
+      : modularScaleSettings;
 
   return ms(value, settings);
 };
