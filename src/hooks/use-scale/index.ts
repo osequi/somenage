@@ -1,1 +1,1 @@
-export { default as useScale } from "./useScale";
+export { default as useScale, useScaleWithSettings } from "./useScale";
