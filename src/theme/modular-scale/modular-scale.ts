@@ -3,6 +3,9 @@
  *
  * It's a typographic scale preset. See `TTypographicScale`.
  * @category Theme
+ * @example
+ * name: 'modular',
+ * settings: {base:[1], ratio: 1.33}
  */
 export type TModularScale = {
   /**

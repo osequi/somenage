@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -618,6 +618,88 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 
 </div>
             
+                <div class="member">
+
+<h4 class="name" id="typography">
+    <a class="href-link" href="#typography">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        typography
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the typography.</p>
+<p>This is an umbrella component. All settings related to typography are collected here.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="typography_typography.ts.html" class="button">View Source</a>
+            <span>
+                <a href="typography_typography.ts.html">typography/typography.ts</a>, <a href="typography_typography.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
+scale: {name: "linear", settings: {},}</code></pre>
+    
+
+
+</div>
+            
             </div>
         </div>
     
@@ -940,6 +1022,14 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 
 
 
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "linear",
+settings: {}</code></pre>
+    
+
+
 </div>
             
                 <div class="member">
@@ -1141,6 +1231,14 @@ A base defines the value of the 0th element on the scale. For example <code>base
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: 'modular',
+settings: {base:[1], ratio: 1.33}</code></pre>
+    
 
 
 </div>
@@ -1483,6 +1581,180 @@ This way they are pluggable into the theme.</p>
 
 
 
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "linear",
+settings: {},</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>name: 'modular',
+settings: {base:[1], ratio: 1.33}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TTypography">
+    <a class="href-link" href="#TTypography">#</a>
+    
+    <span class="code-name">
+        TTypography
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the typography type.</p>
+<p>This is an umbrella component. All settings related to typography are collected here.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>grid</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#TTypographicGrid">TTypographicGrid</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The settings for the typographic grid.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scale</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#TTypographicScale">TTypographicScale</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The settings for the typographic scale.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="typography_typography.ts.html" class="button">View Source</a>
+            <span>
+                <a href="typography_typography.ts.html">typography/typography.ts</a>, <a href="typography_typography.ts.html#line23">line 23</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
+scale: {name: "linear", settings: {},}</code></pre>
+    
 
 
 </div>

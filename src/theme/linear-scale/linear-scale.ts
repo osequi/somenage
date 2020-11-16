@@ -3,6 +3,9 @@
  *
  * It's a typographic scale preset. See `TTypographicScale`.
  * @category Theme
+ * @example
+ * name: "linear",
+ * settings: {},
  */
 export type TLinearScale = {
   /**

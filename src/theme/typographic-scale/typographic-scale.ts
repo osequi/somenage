@@ -14,6 +14,12 @@ export type TTypographicScaleNames = "linear" | "modular";
  * This way they are pluggable into the theme.
  *
  * @category Theme
+ * @example
+ * name: "linear",
+ * settings: {},
+ * @example
+ * name: 'modular',
+ * settings: {base:[1], ratio: 1.33}
  */
 export type TTypographicScale = {
   /**
