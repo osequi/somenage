@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/theme.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,105 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/theme.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
+
+import type {
+  TTypography,
+  TTypographicGrid,
+  TTypographicScale,
+  TLinearScale,
+  TModularScale,
+} from "./typography";
+
+/**
+ * Defines the CSS notations type.
+ *
+ * The object notation is preferred. However sometimes the string notation is required.
+ */
+export type TCssNotations = "object" | "string";
+
+/**
+ * Defines the theme type.
+ *
+ * This is an umbrella component. All settings related to the theme are collected here.
+ *
+ * @category Theme
+ * @example
+ * breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ },
+ */
+export type TTheme = {
+  /**
+   * The breakpoints for the theme.
+   */
+  breakpoints: TBreakpoint[];
+  /**
+   * The typography for the theme.
+   */
+  typography: TTypography;
+};
+
+/**
+ * Defines the theme.
+ *
+ * This is an umbrella component. All settings related to the theme are collected here.
+ *
+ * @category Theme
+ * @example
+ * breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ },
+ */
+const theme: TTheme = {
+  breakpoints: [
+    { name: "mobile", value: 320 },
+    { name: "tablet", value: 768 },
+    { name: "laptop", value: 1024 },
+    { name: "desktop", value: 1600 },
+  ],
+  typography: {
+    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+    scale: { name: "linear", settings: {} },
+  },
+};
+
+export default theme;
+export type {
+  TBreakpoint,
+  TBreakpointNames,
+  TTypographicGrid,
+  TTypographicScale,
+  TLinearScale,
+  TModularScale,
+};
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

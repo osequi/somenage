@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/breakpoints/breakpoints.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,83 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/breakpoints/breakpoints.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the breakpoint names.
+ * @category Theme
+ */
+export type TBreakpointNames = "mobile" | "tablet" | "laptop" | "desktop";
+
+/**
+ * Collects the breakpoint names into an array.
+ *
+ * - `TBreakpointNames` is an union type. It offers no methods like `length`.
+ * - `breakpointNames` is an array. It can be used to make calculations with breakpoint names.
+ *
+ * @ignore
+ */
+const breakpointNames = ["mobile", "tablet", "laptop", "desktop"];
+
+/**
+ * Defines the breakpoint type.
+ *
+ * Please check the source for the available TBreakpointNames.
+ *
+ * @example
+ * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
+ *
+ * @category Theme
+ */
+export type TBreakpoint = {
+  /**
+   * The breakpoint name.
+   */
+  name: TBreakpointNames;
+  /**
+   * The breakpoint value in pixels.
+   */
+  value: number;
+};
+
+/**
+ * Defines the breakpoints for the theme.
+ *
+ * Breakpoints are an array of `{name, value}` pairs.
+ * - `name` comes from `TBreakpointNames`.
+ * - `value` is unitless but represents pixels.
+ *
+ * Breakpoints follow the [mobile first design / progressive enhancement](https://abookapart.com/products/mobile-first) pattern.
+ * This implies media queries on breakpoints will use the `min-width` approach. See `useBreakpoints`.
+ *
+ * @example
+ * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
+ *
+ * @see https://abookapart.com/products/mobile-first
+ * @see https://www.uxpin.com/studio/blog/a-hands-on-guide-to-mobile-first-design/
+ *
+ * @category Theme
+ */
+const breakpoints: TBreakpoint[] = [
+  { name: "mobile", value: 320 },
+  { name: "tablet", value: 768 },
+  { name: "laptop", value: 1024 },
+  { name: "desktop", value: 1600 },
+];
+
+export default breakpoints;
+export { breakpointNames };
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

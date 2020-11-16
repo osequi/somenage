@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/modular-scale/modular-scale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,70 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/modular-scale/modular-scale.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the modular scale type.
+ *
+ * It's a typographic scale preset. See `TTypographicScale`.
+ * @category Theme
+ * @example
+ * name: 'modular',
+ * settings: {base:[1], ratio: 1.33}
+ */
+export type TModularScale = {
+  /**
+   * The name of the scale. It's always `modular`.
+   */
+  name: string;
+  /**
+   * The settings for the scale. It comes from [modularscale-js](https://github.com/modularscale/modularscale-js).
+   */
+  settings: {
+    /**
+     * The base(s) of the scale(s).
+     * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
+     * `modularscale-js` supports multiple bases.
+     */
+    base: number[];
+    /**
+     * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
+     */
+    ratio: number;
+  };
+};
+
+/**
+ * Defines the modular scale.
+ *
+ * On modular scale values scale according to a specific logic defined in the settings. See [Modular Scale](https://www.modularscale.com/).
+ *
+ * @category Theme
+ * @example
+ * name: 'modular',
+ * settings: {base:[1], ratio: 1.33}
+ * @see https://github.com/modularscale/modularscale-js
+ */
+const modularScale: TModularScale = {
+  name: "modular",
+  settings: {
+    base: [1],
+    ratio: 1.25,
+  },
+};
+
+export default modularScale;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

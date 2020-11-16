@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  hooks/use-breakpoint/useBreakpoint.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,69 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>hooks/use-breakpoint/useBreakpoint.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import type { TBreakpointNames, TBreakpoint } from "../../theme/";
+import { theme } from "../../theme/";
+
+/**
+ * Returns an *Emotion object styles* friendly media query for a breakpoint name.
+ * @param  name The breakpoint name.
+ * @return      The media query string, or null
+ *
+ * @ignore
+ */
+const getBreakpoint = (name: TBreakpointNames): string | null => {
+  const { breakpoints } = theme;
+
+  const breakpoint = breakpoints.find(
+    (item: TBreakpoint) => item.name === name
+  );
+
+  const query = breakpoint?.value ? `min-width: ${breakpoint.value}px` : null;
+
+  return query ? `@media(${query})` : null;
+};
+
+/**
+ * Returns [Emotion object styles](https://emotion.sh/docs/object-styles#media-queries) friendly media queries for breakpoint names.
+ *
+ * @param  breakpoints An array of breakpoint names, or a single breakpoint name.
+ * @return             An array of media queries, or a single media query, or null.
+ *
+ * @category Hooks
+ *
+ * @example &lt;caption>An array of breakpoint names:&lt;/caption>
+ * const [mobile, tablet] = useBreakpoint(['mobile', 'tablet']) => ['@media(min-width: 320px)','@media(min-width: 768px)']
+ *
+ * @example &lt;caption>Single breakpoint name:&lt;/caption>
+ * const tablet = useBreakpoint('tablet') => '@media(min-width: 768px)'
+ *
+ * @see https://emotion.sh/docs/object-styles#media-queries
+ */
+const useBreakpoint = (
+  breakpoints: TBreakpointNames[] | TBreakpointNames
+): string[] | string | null => {
+  return Array.isArray(breakpoints)
+    ? breakpoints &amp;&amp;
+        breakpoints.reduce((result, breakpoint) => {
+          return [...result, getBreakpoint(breakpoint)];
+        }, [])
+    : getBreakpoint(breakpoints);
+};
+
+export default useBreakpoint;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

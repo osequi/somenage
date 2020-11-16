@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/typographic-grid/typographic-grid.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,83 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/typographic-grid/typographic-grid.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the typographic grid type.
+ *
+ * @example &lt;caption>Responsive font sizes defined for all breakpoints:&lt;/caption>
+ * fontSizes: [100, 100, 110, 120, 140], // watch, mobile, tablet, laptop, desktop
+ * lineHeight: 1.25,
+ *
+ * @example &lt;caption>Responsive font sizes are the same for tablet and up:&lt;/caption>
+ * fontSizes: [100, 100, 110], // watch, mobile, tablet. laptop and desktop will have the font size defined for tablet.
+ * lineHeight: 1.25,
+ *
+ * @category Theme
+ */
+export type TTypographicGrid = {
+  /**
+   * Responsive font sizes for the breakpoints. See `TBreakpoint`.
+   * The first number is for the default / smallest viewport, like watches.
+   * The rest of the numbers are for the defined breakpoints, like mobile, tablet and co.
+   * It's not necesary to define font sizes for all the breakpoints. Larger screens inherit settings from lower screens &amp;mdash; following the progressive enhancment pattern.
+   */
+  fontSizes: number[];
+  /**
+   * Unitless line height.
+   */
+  lineHeight: number;
+};
+
+/**
+ * Defines the typographic grid.
+ *
+ * The typographic grid is defined by the font size(s) and line height.
+ *
+ * Set on the `&lt;body>` tag the grid applies for all elements on the page.
+ *
+ * Multiple font sizes, each font size set for a breakpoint, makes the grid reponsive.
+ *
+ * ### Theory
+ *
+ * Font size in percentage combined with unitless line height set on the `&lt;body>` tag defines a typographic grid.
+ *
+ * For example, `font-size: 100%; line-height: 1.25` defines a grid where the cell size is '`16px * 1.25 = 20px`'.
+ *
+ * When child elements define their dimension and position in `em` the underlying typographic grid will stay the same across the page. This way every element aligns perfectly to the grid, both vertically and horizontally.
+ *
+ * The typographic grid is responsive. Setting different font sizes on the `&lt;body>` tag with media queries makes the grid cell scale with the screen size.
+ *
+ *
+ * @example &lt;caption>Responsive font sizes defined for all breakpoints:&lt;/caption>
+ * fontSizes: [100, 100, 110, 120, 140], // watch, mobile, tablet, laptop, desktop
+ * lineHeight: 1.25,
+ *
+ * @example &lt;caption>Responsive font sizes are the same for tablet and up:&lt;/caption>
+ * fontSizes: [100, 100, 110], // watch, mobile, tablet. laptop and desktop will have the font size defined for tablet.
+ * lineHeight: 1.25,
+ *
+ * @category Theme
+ * @see [Long description](https://bit.ly/3pew04j)
+ */
+const typographicGrid: TTypographicGrid = {
+  fontSizes: [100, 100, 110, 120, 140],
+  lineHeight: 1.25,
+};
+
+export default typographicGrid;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
