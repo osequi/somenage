@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> modular-scale/modular-scale.ts</title>
+  <title> typographic-scale/typographic-scale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>modular-scale/modular-scale.ts</h1>
+                    <h1>typographic-scale/typographic-scale.ts</h1>
                 </header>
                 
 
@@ -89,54 +89,55 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the modular scale type.
- *
- * It's a typographic scale preset. See `TTypographicScale`.
+            <pre class="prettyprint source linenums"><code>import type { TLinearScale } from "../linear-scale";
+import type { TModularScale } from "../modular-scale";
+
+/**
+ * Defines the scale names.
  * @category Theme
  */
-export type TModularScale = {
+export type TTypographicScaleNames = "linear" | "modular";
+
+/**
+ * Defines the typographic scale type.
+ *
+ * The various scale types / presets share the same structure.
+ * This way they are pluggable into the theme.
+ *
+ * @category Theme
+ */
+export type TTypographicScale = {
   /**
-   * The name of the scale. It's always `modular`.
+   * The name of the scale. Identifies a scale preset.
    */
-  name: string;
+  name: TTypographicScaleNames;
   /**
-   * The settings for the scale. It comes from [modularscale-js](https://github.com/modularscale/modularscale-js).
+   * The settings for the scale. Each preset has its own shape for settings.
    */
-  settings: {
-    /**
-     * The base(s) of the scale(s).
-     * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
-     * `modularscale-js` supports multiple bases.
-     */
-    base: number[];
-    /**
-     * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
-     */
-    ratio: number;
-  };
+  settings?: object;
 };
 
 /**
- * Defines the modular scale.
+ * Defines the typographic scale.
  *
- * On modular scale values scale according to a specific logic defined in the settings. See [Modular Scale](https://www.modularscale.com/).
+ * The scale defines how typographic elements vary in size compared to the body text.
+ * The scale comes from one of the presets: linear scale, modular scale.
  *
  * @category Theme
  * @example
+ * name: "linear",
+ * settings: {},
+ * @example
  * name: 'modular',
  * settings: {base:[1], ratio: 1.33}
- * @see https://github.com/modularscale/modularscale-js
  */
-const modularScale: TModularScale = {
-  name: "modular",
-  settings: {
-    base: [1],
-    ratio: 1.25,
-  },
+const typographicScale: TTypographicScale = {
+  name: "linear",
+  settings: {},
 };
 
-export default modularScale;
+export default typographicScale;
+export type { TLinearScale, TModularScale };
 </code></pre>
         </article>
     </section>

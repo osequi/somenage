@@ -1,8 +1,7 @@
 /**
  * Defines the linear scale type.
  *
- * The various scale types share the same structure, like `name` and `settings`.
- * This way they are pluggable into the theme.
+ * It's a typographic scale preset. See `TTypographicScale`.
  * @category Theme
  */
 export type TLinearScale = {

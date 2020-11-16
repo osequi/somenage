@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li></ul></div>
                 
             </nav>
         </div>
@@ -530,6 +530,94 @@ lineHeight: 1.25,</code></pre>
 
 </div>
             
+                <div class="member">
+
+<h4 class="name" id="typographicScale">
+    <a class="href-link" href="#typographicScale">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        typographicScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the typographic scale.</p>
+<p>The scale defines how typographic elements vary in size compared to the body text.
+The scale comes from one of the presets: linear scale, modular scale.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="typographic-scale_typographic-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="typographic-scale_typographic-scale.ts.html">typographic-scale/typographic-scale.ts</a>, <a href="typographic-scale_typographic-scale.ts.html#line16">line 16</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "linear",
+settings: {},</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>name: 'modular',
+settings: {base:[1], ratio: 1.33}</code></pre>
+    
+
+
+</div>
+            
             </div>
         </div>
     
@@ -725,8 +813,7 @@ lineHeight: 1.25,</code></pre>
 
 <div class="description">
     <p>Defines the linear scale type.</p>
-<p>The various scale types share the same structure, like <code>name</code> and <code>settings</code>.
-This way they are pluggable into the theme.</p>
+<p>It's a typographic scale preset. See <code>TTypographicScale</code>.</p>
 </div>
 
 
@@ -879,8 +966,7 @@ This way they are pluggable into the theme.</p>
 
 <div class="description">
     <p>Defines the modular scale type.</p>
-<p>The various scale types share the same structure, like <code>name</code> and <code>settings</code>.
-This way they are pluggable into the theme.</p>
+<p>It's a typographic scale preset. See <code>TTypographicScale</code>.</p>
 </div>
 
 
@@ -1131,7 +1217,7 @@ A base defines the value of the 0th element on the scale. For example <code>base
 
     
 
-    <td class="description last"><p>Responsive font sizes for the Breakpoints. See <code>TBreakpoint</code>.,
+    <td class="description last"><p>Responsive font sizes for the breakpoints. See <code>TBreakpoint</code>.,
 The first number is for the default / smallest viewport, like watches.,
 The rest of the numbers are for the defined breakpoints, like mobile, tablet and co.,
 It's not necesary to define font sizes for all the breakpoints. Larger screens inherit settings from lower screens — following the progressive enhancment pattern.</p></td>
@@ -1227,6 +1313,176 @@ lineHeight: 1.25,</code></pre>
         <pre class="prettyprint"><code>fontSizes: [100, 100, 110], // watch, mobile, tablet. laptop and desktop will have the font size defined for tablet.
 lineHeight: 1.25,</code></pre>
     
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TTypographicScale">
+    <a class="href-link" href="#TTypographicScale">#</a>
+    
+    <span class="code-name">
+        TTypographicScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the typographic scale type.</p>
+<p>The various scale types / presets share the same structure.
+This way they are pluggable into the theme.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TTypographicScaleNames</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The name of the scale. Identifies a scale preset.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>settings</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">object</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The settings for the scale. Each preset has its own shape for settings.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="typographic-scale_typographic-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="typographic-scale_typographic-scale.ts.html">typographic-scale/typographic-scale.ts</a>, <a href="typographic-scale_typographic-scale.ts.html#line25">line 25</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
 
 
 </div>
