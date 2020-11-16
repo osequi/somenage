@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-modular-scale/useModularScale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-modular-scale/useModularScale.ts</h1>
                 </header>
                 
 
@@ -109,58 +109,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type {
-  TTypographicScale,
-  TLinearScale,
-  TModularScale,
-} from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
+            <pre class="prettyprint source linenums"><code>import type { TModularScale } from "../../theme";
+import { modularScale } from "../../theme/modular-scale";
+import { theme } from "../../theme";
+import ms from "modularscale-js";
 
 /**
- * Defines the typography type.
+ * Returns a value from the modular scale.
  *
- * This is an umbrella component. All settings related to typography are collected here.
+ * Used to set a different font size than the body text.
  *
- * @category Theme
+ * @param  value       	The point on the scale.
+ * @param  modularScale The settings for the scale.
+ * @return 				The value from the scale.
+ * @category Hooks
  * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},}
+ * useModularScale(0) => 1
+ * useModularScale(1) => 1.33
+ * useModularScale(1, {base:[1], ratio: 1.25}) => 1.25
+ * @see https://github.com/modularscale/modularscale-js
  */
-export type TTypography = {
-  /**
-   * The settings for the typographic grid.
-   */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
+const useModularScale = (
+  value: number,
+  modularScaleFromProps?: TModularScale
+): number => {
+  const {
+    typography: { scale },
+  } = theme;
+
+  const scale2 = modularScaleFromProps || scale;
+  const scale3 =
+    scale2 &amp;&amp; scale2.settings &amp;&amp; scale2.settings.hasOwnProperty("base")
+      ? modularScale
+      : scale2;
+  const { settings } = scale3;
+
+  return ms(value, settings);
 };
 
-/**
- * Defines the typography.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},}
- */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-};
-
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TLinearScale,
-  TModularScale,
-};
+export default useModularScale;
 </code></pre>
         </article>
     </section>
