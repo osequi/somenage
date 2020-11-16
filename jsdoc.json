@@ -13,7 +13,22 @@
     "verbose": true
   },
   "templates": {
-    "search": true
+    "search": true,
+    "better-docs": {
+      "name": "Os Equi Somenage",
+      "title": "Os Equi Somenage | ",
+      "hideGenerator": false,
+      "navLinks": [
+        {
+          "label": "Github",
+          "href": "https://github.com/osequi/somenage"
+        },
+        {
+          "label": "Example Application",
+          "href": "https://osequi.com/somenage"
+        }
+      ]
+    }
   },
   "tags": {
     "allowUnknownTags": "all"
