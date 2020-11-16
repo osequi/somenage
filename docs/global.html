@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -1170,6 +1170,195 @@ Then setting a margin or padding should be always done using <code>--lem</code>.
 
     
         <pre class="prettyprint"><code>useLem({fontSizes: [110], lineHeight: 1.25}) => (110 * 1.25) / 100 = 1.375</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useLinearScale">
+        <a class="href-link" href="#useLinearScale">#</a>
+        
+        <span class="code-name">
+            
+                useLinearScale<span class="signature">(value, linearScale)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Returns a value from the linear scale.</p>
+<p>Used to increase font size.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>value</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The point on the scale.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>linearScale</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The settings for the scale.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-linear-scale_useLinearScale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-linear-scale_useLinearScale.ts.html">hooks/use-linear-scale/useLinearScale.ts</a>, <a href="hooks_use-linear-scale_useLinearScale.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The value from the scale.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useLinearScale(0) => 1
+useLinearScale(1) => 2</code></pre>
     
 
 

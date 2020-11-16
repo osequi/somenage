@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/modular-scale/modular-scale.ts</title>
+  <title>Os Equi Somenage |  hooks/use-linear-scale/useLinearScale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/modular-scale/modular-scale.ts</h1>
+                    <h1>hooks/use-linear-scale/useLinearScale.ts</h1>
                 </header>
                 
 
@@ -109,57 +109,26 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the modular scale type.
- *
- * It's a typographic scale preset. See `TTypographicScale`.
- * @category Theme
- * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
- */
-export type TModularScale = {
-  /**
-   * The name of the scale. It's always `modular`.
-   */
-  name: string;
-  /**
-   * The settings for the scale. It comes from [modularscale-js](https://github.com/modularscale/modularscale-js).
-   */
-  settings: {
-    /**
-     * The base(s) of the scale(s).
-     * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
-     * `modularscale-js` supports multiple bases.
-     */
-    base: number[];
-    /**
-     * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
-     */
-    ratio: number;
-  };
-};
+            <pre class="prettyprint source linenums"><code>import type { TLinearScale } from "../../theme";
 
 /**
- * Defines the modular scale.
+ * Returns a value from the linear scale.
  *
- * On modular scale values scale according to a specific logic defined in the settings. See [Modular Scale](https://www.modularscale.com/).
+ * Used to increase font size.
  *
- * @category Theme
+ * @param  value       	The point on the scale.
+ * @param  linearScale 	The settings for the scale.
+ * @return 				The value from the scale.
+ * @category Hooks
  * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
- * @see https://github.com/modularscale/modularscale-js
+ * useLinearScale(0) => 1
+ * useLinearScale(1) => 2
  */
-const modularScale: TModularScale = {
-  name: "modular",
-  settings: {
-    base: [1],
-    ratio: 1.25,
-  },
+const useLinearScale = (value: number, linearScale?: TLinearScale): number => {
+  return value + 1;
 };
 
-export default modularScale;
+export default useLinearScale;
 </code></pre>
         </article>
     </section>
