@@ -41,9 +41,11 @@ const scaleValue = (scaleWithPoint: TTypographicScaleWithPoint): number => {
  * @return        An array of values from the scale, or a single value from the scale.
  * @category Hooks
  * @example <caption>An array of scales and points:</caption>
- * useScale([{point: 1, name: 'linear'}, {value: 1, name: 'modular'} ]) => [2, 1.33]
+ * useScale([useScale({ point: 1, scale: { name: "linear" } }), useScale({ point: 1, scale: { name: "modular" } }) ]) => [2, 1.33]
  * @example <caption>A single scale with point:</caption>
- * useScale({point: 1, name: 'linear'}) => 2
+ * useScale({useScale({ point: 1, scale: { name: "linear" } })) => 2
+ * @example <caption>When no scale is set the theme's default scale is used:</caption>
+ * useScale({point: 1}) => 2
  */
 const useScale = (
   scales?: TTypographicScaleWithPoint[] | TTypographicScaleWithPoint
