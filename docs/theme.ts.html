@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> breakpoints/breakpoints.ts</title>
+  <title> theme.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>breakpoints/breakpoints.ts</h1>
+                    <h1>theme.ts</h1>
                 </header>
                 
 
@@ -89,70 +89,92 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the breakpoint names.
+            <pre class="prettyprint source linenums"><code>import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
+
+import type {
+  TTypography,
+  TTypographicGrid,
+  TTypographicScale,
+  TLinearScale,
+  TModularScale,
+} from "./typography";
+
+/**
+ * Defines the CSS notations type.
+ *
+ * The object notation is preferred. However sometimes the string notation is required.
+ */
+export type TCssNotations = "object" | "string";
+
+/**
+ * Defines the theme type.
+ *
+ * This is an umbrella component. All settings related to the theme are collected here.
+ *
  * @category Theme
- */
-export type TBreakpointNames = "mobile" | "tablet" | "laptop" | "desktop";
-
-/**
- * Collects the breakpoint names into an array.
- *
- * - `TBreakpointNames` is an union type. It offers no methods like `length`.
- * - `breakpointNames` is an array. It can be used to make calculations with breakpoint names.
- *
- * @ignore
- */
-const breakpointNames = ["mobile", "tablet", "laptop", "desktop"];
-
-/**
- * Defines the breakpoint type.
- *
- * Please check the source for the available TBreakpointNames.
- *
  * @example
- * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
- *
- * @category Theme
+ * breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ },
  */
-export type TBreakpoint = {
+export type TTheme = {
   /**
-   * The breakpoint name.
+   * The breakpoints for the theme.
    */
-  name: TBreakpointNames;
+  breakpoints: TBreakpoint[];
   /**
-   * The breakpoint value in pixels.
+   * The typography for the theme.
    */
-  value: number;
+  typography: TTypography;
 };
 
 /**
- * Defines the breakpoints for the theme.
+ * Defines the theme.
  *
- * Breakpoints are an array of `{name, value}` pairs.
- * - `name` comes from `TBreakpointNames`.
- * - `value` is unitless but represents pixels.
- *
- * Breakpoints follow the [mobile first design / progressive enhancement](https://abookapart.com/products/mobile-first) pattern.
- * This implies media queries on breakpoints will use the `min-width` approach. See `useBreakpoints`.
- *
- * @example
- * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
- *
- * @see https://abookapart.com/products/mobile-first
- * @see https://www.uxpin.com/studio/blog/a-hands-on-guide-to-mobile-first-design/
+ * This is an umbrella component. All settings related to the theme are collected here.
  *
  * @category Theme
+ * @example
+ * breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ },
  */
-const breakpoints: TBreakpoint[] = [
-  { name: "mobile", value: 320 },
-  { name: "tablet", value: 768 },
-  { name: "laptop", value: 1024 },
-  { name: "desktop", value: 1600 },
-];
+const theme: TTheme = {
+  breakpoints: [
+    { name: "mobile", value: 320 },
+    { name: "tablet", value: 768 },
+    { name: "laptop", value: 1024 },
+    { name: "desktop", value: 1600 },
+  ],
+  typography: {
+    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+    scale: { name: "linear", settings: {} },
+  },
+};
 
-export default breakpoints;
-export { breakpointNames };
+export default theme;
+export type {
+  TBreakpoint,
+  TBreakpointNames,
+  TTypographicGrid,
+  TTypographicScale,
+  TLinearScale,
+  TModularScale,
+};
 </code></pre>
         </article>
     </section>

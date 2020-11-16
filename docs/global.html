@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -420,6 +420,96 @@ settings: {},</code></pre>
     
         <pre class="prettyprint"><code>name: 'modular',
 settings: {base:[1], ratio: 1.33}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="theme">
+    <a class="href-link" href="#theme">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        theme
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the theme.</p>
+<p>This is an umbrella component. All settings related to the theme are collected here.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme.ts.html">theme.ts</a>, <a href="theme.ts.html#line20">line 20</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ },</code></pre>
     
 
 
@@ -1238,6 +1328,175 @@ A base defines the value of the 0th element on the scale. For example <code>base
     
         <pre class="prettyprint"><code>name: 'modular',
 settings: {base:[1], ratio: 1.33}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TTheme">
+    <a class="href-link" href="#TTheme">#</a>
+    
+    <span class="code-name">
+        TTheme
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the theme type.</p>
+<p>This is an umbrella component. All settings related to the theme are collected here.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>breakpoints</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The breakpoints for the theme.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>typography</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#TTypography">TTypography</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The typography for the theme.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme.ts.html">theme.ts</a>, <a href="theme.ts.html#line37">line 37</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>breakpoints: [
+   { name: "mobile", value: 320 },
+   { name: "tablet", value: 768 },
+   { name: "laptop", value: 1024 },
+   { name: "desktop", value: 1600 },
+ ],
+ typography: {
+   grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+   scale: { name: "linear", settings: {} },
+ }</code></pre>
     
 
 
