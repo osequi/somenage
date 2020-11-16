@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -996,6 +996,180 @@ scale: {name: "linear", settings: {},}</code></pre>
     
     
         <pre class="prettyprint"><code>const tablet = useBreakpoint('tablet') => '@media(min-width: 768px)'</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useLem">
+        <a class="href-link" href="#useLem">#</a>
+        
+        <span class="code-name">
+            
+                useLem<span class="signature">(typographicGrid)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Calculates the typographic grid cell size (<code>lem</code>, aka. line height in <code>em</code>).</p>
+<p>This unit used across the theme for spacing assures all elements are fit to the grid.</p>
+<p>As a global var <code>--lem</code> it is added to the <code>&lt;body&gt;</code>.
+Then setting a margin or padding should be always done using <code>--lem</code>.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>typographicGrid</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-lem_useLem.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-lem_useLem.ts.html">hooks/use-lem/useLem.ts</a>, <a href="hooks_use-lem_useLem.ts.html#line22">line 22</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The cell size (in em)</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>useLem({fontSizes: [100], lineHeight: 1.25}) => (100 * 1.25) / 100 = 1.25</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>useLem({fontSizes: [110], lineHeight: 1.25}) => (110 * 1.25) / 100 = 1.375</code></pre>
     
 
 
