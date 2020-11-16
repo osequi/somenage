@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> linear-scale/linear-scale.ts</title>
+  <title> modular-scale/modular-scale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>linear-scale/linear-scale.ts</h1>
+                    <h1>modular-scale/modular-scale.ts</h1>
                 </header>
                 
 
@@ -90,39 +90,54 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Defines the linear scale type.
+ * Defines the modular scale type.
  *
  * The various scale types share the same structure, like `name` and `settings`.
  * This way they are pluggable into the theme.
  * @category Theme
  */
-export type TLinearScale = {
+export type TModularScale = {
   /**
-   * The name of the scale. It's always `linear`.
+   * The name of the scale. It's always `modular`.
    */
   name: string;
   /**
-   * The settings for the scale. For linear scale there are no settings for now.
+   * The settings for the scale. It comes from [modularscale-js](https://github.com/modularscale/modularscale-js).
    */
-  settings: object;
+  settings: {
+    /**
+     * The base(s) of the scale(s).
+     * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
+     * `modularscale-js` supports multiple bases.
+     */
+    base: number[];
+    /**
+     * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
+     */
+    ratio: number;
+  };
 };
 
 /**
- * Defines the linear scale.
+ * Defines the modular scale.
  *
- * On linear scale values scale with 1 unit. See `useLinearScale`.
+ * On modular scale values scale according to a specific logic defined in the settings. See [Modular Scale](https://www.modularscale.com/).
  *
  * @category Theme
  * @example
- * name: "linear",
- * settings: {},
+ * name: 'modular',
+ * settings: {base:[1], ratio: 1.33}
+ * @see https://github.com/modularscale/modularscale-js
  */
-const linearScale = {
-  name: "linear",
-  settings: {},
+const modularScale: TModularScale = {
+  name: "modular",
+  settings: {
+    base: [1],
+    ratio: 1.25,
+  },
 };
 
-export default linearScale;
+export default modularScale;
 </code></pre>
         </article>
     </section>

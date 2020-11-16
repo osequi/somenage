@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li><li><a href="global.html#modularScale">modularScale</a></li></ul></div>
                 
             </nav>
         </div>
@@ -331,6 +331,95 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
     
         <pre class="prettyprint"><code>name: "linear",
 settings: {},</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="modularScale">
+    <a class="href-link" href="#modularScale">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        modularScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the modular scale.</p>
+<p>On modular scale values scale according to a specific logic defined in the settings. See <a href="https://www.modularscale.com/">Modular Scale</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/modularscale/modularscale-js">https://github.com/modularscale/modularscale-js</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="modular-scale_modular-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="modular-scale_modular-scale.ts.html">modular-scale/modular-scale.ts</a>, <a href="modular-scale_modular-scale.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: 'modular',
+settings: {base:[1], ratio: 1.33}</code></pre>
     
 
 
@@ -650,6 +739,210 @@ This way they are pluggable into the theme.</p>
             <a href="linear-scale_linear-scale.ts.html" class="button">View Source</a>
             <span>
                 <a href="linear-scale_linear-scale.ts.html">linear-scale/linear-scale.ts</a>, <a href="linear-scale_linear-scale.ts.html#line18">line 18</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TModularScale">
+    <a class="href-link" href="#TModularScale">#</a>
+    
+    <span class="code-name">
+        TModularScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the modular scale type.</p>
+<p>The various scale types share the same structure, like <code>name</code> and <code>settings</code>.
+This way they are pluggable into the theme.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The name of the scale. It's always <code>modular</code>.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>settings</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The settings for the scale. It comes from <a href="https://github.com/modularscale/modularscale-js">modularscale-js</a>.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>base</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The base(s) of the scale(s).,
+A base defines the value of the 0th element on the scale. For example <code>base=1</code> makes the 0th element size <code>1em</code>.,
+<code>modularscale-js</code> supports multiple bases.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>ratio</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The logic of scaling. See <a href="https://github.com/modularscale/modularscale-js#ratios">Ratios</a>.</p></td>
+</tr>
+
+  
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="modular-scale_modular-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="modular-scale_modular-scale.ts.html">modular-scale/modular-scale.ts</a>, <a href="modular-scale_modular-scale.ts.html#line22">line 22</a>
             </span>
         </p>
     
