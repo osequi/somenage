@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> linear-scale/linear-scale.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,49 +79,53 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>linear-scale/linear-scale.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the linear scale type.
+ *
+ * The various scale types share the same structure, like `name` and `settings`.
+ * This way they are pluggable into the theme.
+ * @category Theme
+ */
+export type TLinearScale = {
+  /**
+   * The name of the scale. It's always `linear`.
+   */
+  name: string;
+  /**
+   * The settings for the scale. For linear scale there are no settings for now.
+   */
+  settings: object;
+};
+
+/**
+ * Defines the linear scale.
+ *
+ * On linear scale values scale with 1 unit. See `useLinearScale`.
+ *
+ * @category Theme
+ * @example
+ * name: "linear",
+ * settings: {},
+ */
+const linearScale = {
+  name: "linear",
+  settings: {},
+};
+
+export default linearScale;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

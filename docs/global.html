@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScale">linearScale</a></li></ul></div>
                 
             </nav>
         </div>
@@ -184,7 +184,7 @@
 <li><code>value</code> is unitless but represents pixels.</li>
 </ul>
 <p>Breakpoints follow the <a href="https://abookapart.com/products/mobile-first">mobile first design / progressive enhancement</a> pattern.
-This implies media queries on breakpoints will use the <code>min-width</code> approach. See 'useBreakpoints'.</p>
+This implies media queries on breakpoints will use the <code>min-width</code> approach. See <code>useBreakpoints</code>.</p>
 </div>
 
 
@@ -233,9 +233,9 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
 
     
         <p class="tag-source">
-            <a href="breakpoints.ts.html" class="button">View Source</a>
+            <a href="breakpoints_breakpoints.ts.html" class="button">View Source</a>
             <span>
-                <a href="breakpoints.ts.html">breakpoints.ts</a>, <a href="breakpoints.ts.html#line29">line 29</a>
+                <a href="breakpoints_breakpoints.ts.html">breakpoints/breakpoints.ts</a>, <a href="breakpoints_breakpoints.ts.html#line29">line 29</a>
             </span>
         </p>
     
@@ -249,6 +249,88 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
     
     
         <pre class="prettyprint"><code>[{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="linearScale">
+    <a class="href-link" href="#linearScale">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        linearScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the linear scale.</p>
+<p>On linear scale values scale with 1 unit. See <code>useLinearScale</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="linear-scale_linear-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="linear-scale_linear-scale.ts.html">linear-scale/linear-scale.ts</a>, <a href="linear-scale_linear-scale.ts.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "linear",
+settings: {},</code></pre>
     
 
 
@@ -404,9 +486,9 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
 
     
         <p class="tag-source">
-            <a href="breakpoints.ts.html" class="button">View Source</a>
+            <a href="breakpoints_breakpoints.ts.html" class="button">View Source</a>
             <span>
-                <a href="breakpoints.ts.html">breakpoints.ts</a>, <a href="breakpoints.ts.html#line40">line 40</a>
+                <a href="breakpoints_breakpoints.ts.html">breakpoints/breakpoints.ts</a>, <a href="breakpoints_breakpoints.ts.html#line40">line 40</a>
             </span>
         </p>
     
@@ -421,6 +503,160 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
     
         <pre class="prettyprint"><code>[{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]</code></pre>
     
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TLinearScale">
+    <a class="href-link" href="#TLinearScale">#</a>
+    
+    <span class="code-name">
+        TLinearScale
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the linear scale type.</p>
+<p>The various scale types share the same structure, like <code>name</code> and <code>settings</code>.
+This way they are pluggable into the theme.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The name of the scale. It's always <code>linear</code>.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>settings</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The settings for the scale. For linear scale there are no settings for now.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="linear-scale_linear-scale.ts.html" class="button">View Source</a>
+            <span>
+                <a href="linear-scale_linear-scale.ts.html">linear-scale/linear-scale.ts</a>, <a href="linear-scale_linear-scale.ts.html#line18">line 18</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
 
 
 </div>

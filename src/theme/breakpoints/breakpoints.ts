@@ -43,7 +43,7 @@ export type TBreakpoint = {
  * - `value` is unitless but represents pixels.
  *
  * Breakpoints follow the [mobile first design / progressive enhancement](https://abookapart.com/products/mobile-first) pattern.
- * This implies media queries on breakpoints will use the `min-width` approach. See 'useBreakpoints'.
+ * This implies media queries on breakpoints will use the `min-width` approach. See `useBreakpoints`.
  *
  * @example
  * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
