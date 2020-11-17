@@ -38,7 +38,7 @@ export type TFont = {
 /**
  * Defines the default font.
  *
- * The default font is the browsers default font.
+ * The default font is the browser's default font.
  *
  * @category Theme
  * @example
@@ -57,10 +57,50 @@ const defaultFont: TFont = {
 };
 
 /**
+ * Defines the Nimbus Sans Regular font.
+ *
+ * @category Theme
+ * @example
+ * name: "Nimbus Sans Regular",
+ * fontFamily: "nimbus-sans",
+ * fontWeight: 400,
+ * fontStyle: "normal",
+ * letterSpacing: "1.25px",
+ */
+const nimbusSansRegular: TFont = {
+  name: "Nimbus Sans Regular",
+  fontFamily: "nimbus-sans",
+  fontWeight: 400,
+  fontStyle: "normal",
+  letterSpacing: "1.25px",
+};
+
+/**
+ * Defines the Nimbus Sans Medium font.
+ *
+ * @category Theme
+ * @example
+ * name: "Nimbus Sans medium",
+ * fontFamily: "nimbus-sans",
+ * fontWeight: 500,
+ * fontStyle: "normal",
+ * letterSpacing: "1.25px",
+ */
+const nimbusSansMedium: TFont = {
+  name: "Nimbus Sans Medium",
+  fontFamily: "nimbus-sans",
+  fontWeight: 500,
+  fontStyle: "normal",
+  letterSpacing: "1.25px",
+};
+
+/**
  * Defines the available fonts.
  * @category Theme
+ * @example
+ * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */
-const fonts: TFont[] = [defaultFont];
+const fonts: TFont[] = [defaultFont, nimbusSansRegular, nimbusSansMedium];
 
 export default fonts;
 export { fontNames };

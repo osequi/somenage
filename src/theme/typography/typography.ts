@@ -19,7 +19,8 @@ import { fonts } from "../fonts";
  * @example
  * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
  * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}}}
+ * text: {maxWidth: 35}
+ * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */
 export type TTypography = {
   /**
@@ -48,7 +49,8 @@ export type TTypography = {
  * @example
  * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
  * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}}
+ * text: {maxWidth: 35}
+ * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */
 const typography: TTypography = {
   grid: typographicGrid,
