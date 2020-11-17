@@ -5,3 +5,6 @@ export { useModularScale } from "./use-modular-scale";
 export { useScale } from "./use-scale";
 export { useResponsiveFontSizes } from "./use-responsive-font-sizes";
 export { useTypographicGrid } from "./use-typographic-grid";
+export { useFont } from "./use-font";
+export { useMaxWidth } from "./use-max-width";
+export { useChromaValue } from "./use-chroma-value";
