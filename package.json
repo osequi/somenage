@@ -10,6 +10,7 @@
     "docs": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
+    "lodash": "^4.17.20",
     "modularscale-js": "^3.0.1",
     "next": "^10.0.0",
     "react": "16.13.1",
