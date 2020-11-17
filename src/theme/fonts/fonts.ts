@@ -19,6 +19,25 @@ const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
 
 /**
  * Defines the font type.
+ *
+ * The props are all valid CSS props.
+ *
+ * @category Theme
+ * @example
+ * fontFamily: "inherit",
+ * fontWeight: "normal",
+ * fontStyle: "normal",
+ * letterSpacing: "normal",
+ */
+export type TFont = {
+  fontFamily: string;
+  fontWeight: string | number;
+  fontStyle: string;
+  letterSpacing: string;
+};
+
+/**
+ * Defines the font type with a name.
  * @category Theme
  * @example
  * name: "Default",
@@ -27,17 +46,8 @@ const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
  * fontStyle: "normal",
  * letterSpacing: "normal",
  */
-export type TFont = {
-  /**
-   * The font name. Like 'Default'.
-   *
-   * // NOTE: It's optional because there is no CSS property `name`. When the font is set up with CSS the `name` has to be removed. See `useFont` for details.
-   */
+export type TFontWithName = TFont & {
   name?: TFontNames;
-  fontFamily: string;
-  fontWeight: string | number;
-  fontStyle: string;
-  letterSpacing: string;
 };
 
 /**
@@ -53,7 +63,7 @@ export type TFont = {
  * fontStyle: "normal",
  * letterSpacing: "normal",
  */
-const defaultFont: TFont = {
+const defaultFont: TFontWithName = {
   name: "Default",
   fontFamily: "inherit",
   fontWeight: "normal",
@@ -72,7 +82,7 @@ const defaultFont: TFont = {
  * fontStyle: "normal",
  * letterSpacing: "1.25px",
  */
-const nimbusSansRegular: TFont = {
+const nimbusSansRegular: TFontWithName = {
   name: "Nimbus Sans Regular",
   fontFamily: "nimbus-sans",
   fontWeight: 400,
@@ -91,7 +101,7 @@ const nimbusSansRegular: TFont = {
  * fontStyle: "normal",
  * letterSpacing: "1.25px",
  */
-const nimbusSansMedium: TFont = {
+const nimbusSansMedium: TFontWithName = {
   name: "Nimbus Sans Medium",
   fontFamily: "nimbus-sans",
   fontWeight: 500,
@@ -105,7 +115,11 @@ const nimbusSansMedium: TFont = {
  * @example
  * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */
-const fonts: TFont[] = [defaultFont, nimbusSansRegular, nimbusSansMedium];
+const fonts: TFontWithName[] = [
+  defaultFont,
+  nimbusSansRegular,
+  nimbusSansMedium,
+];
 
 export default fonts;
 export { fontNames };

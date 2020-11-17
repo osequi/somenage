@@ -7,6 +7,7 @@ import type {
   TText,
   TFont,
   TFontNames,
+  TFontWithName,
 } from "./typography";
 
 /**
@@ -75,7 +76,11 @@ const theme: TTheme = {
   typography: {
     grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
-    text: { maxWidth: 35 },
+    text: {
+      maxWidth: 35,
+      maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+      elementsWhichNeedFontReset: "input, pre, code, kbd, samp",
+    },
     fonts: [
       {
         name: "Default",
@@ -111,4 +116,5 @@ export type {
   TText,
   TFont,
   TFontNames,
+  TFontWithName,
 };

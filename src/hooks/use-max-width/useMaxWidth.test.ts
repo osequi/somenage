@@ -11,5 +11,9 @@ it("Works with params", () => {
 });
 
 it("Works without params", () => {
-  expect(useMaxWidth()).toStrictEqual({ maxWidth: "calc(35 * var(--lem))" });
+  expect(useMaxWidth()).toStrictEqual({
+    [`& > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)`]: {
+      maxWidth: "calc(35 * var(--lem))",
+    },
+  });
 });

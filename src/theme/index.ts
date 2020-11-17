@@ -10,4 +10,5 @@ export type {
   TText,
   TFont,
   TFontNames,
+  TFontWithName,
 } from "./theme";

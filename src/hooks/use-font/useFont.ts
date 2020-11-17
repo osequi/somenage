@@ -1,22 +1,30 @@
-import type { TFont, TFontNames } from "../../theme";
+import type { TFont, TFontNames, TFontWithName } from "../../theme";
 import { theme } from "../../theme";
 
 /**
  * Returns a font style object identified by name.
  * @ignore
  */
-const getFont = (name: TFontNames, fonts: TFont[]): TFont => {
+const getFont = (name: TFontNames, fonts: TFontWithName[]): TFont => {
   const { name: fontName, ...rest } = fonts.find((item) => item.name === name);
+
+  const {
+    typography: {
+      text: { elementsWhichNeedFontReset },
+    },
+  } = theme;
 
   /**
    * The font for these elements has to be set explicitely.
    * Otherwise they'll use the browser default font which is monospace.
    */
-  const updateBrowserDefaults = {
-    ["& input, pre, code, kbd, samp"]: {
-      ...rest,
-    },
-  };
+  const updateBrowserDefaults = elementsWhichNeedFontReset
+    ? {
+        [`& ${elementsWhichNeedFontReset}`]: {
+          ...rest,
+        },
+      }
+    : {};
 
   return { ...rest, ...updateBrowserDefaults };
 };
