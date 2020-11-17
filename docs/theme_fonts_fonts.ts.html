@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/fonts/fonts.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,56 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/fonts/fonts.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the available font names.
+ * @category Theme
+ */
+export type TFontNames =
+  | "Default"
+  | "Nimbus Sans Regular"
+  | "Nimbus Sans Medium";
+
+/**
+ * Defines the font type.
+ * @category Theme
+ */
+export type TFont = {
+  name: TFontNames;
+  fontFamily: string;
+  fontWeight: string | number;
+  fontStyle: string;
+  letterSpacing: string;
+};
+
+/**
+ * Defines the default font.
+ *
+ * The default font is the browsers default font.
+ *
+ * @category Theme
+ */
+const defaultFont: TFont = {
+  name: "Default",
+  fontFamily: "inherit",
+  fontWeight: "normal",
+  fontStyle: "normal",
+  letterSpacing: "normal",
+};
+
+export default defaultFont;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

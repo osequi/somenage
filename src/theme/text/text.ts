@@ -1,6 +1,9 @@
 /**
  * Defines the text type.
  * @category Theme
+ * @example
+ * maxWidth: 35,
+ * maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
  */
 export type TText = {
   /**
@@ -16,6 +19,9 @@ export type TText = {
 /**
  * Defines the text settings.
  * @category Theme
+ * @example
+ * maxWidth: 35,
+ * maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
  */
 const text: TText = {
   maxWidth: 35,

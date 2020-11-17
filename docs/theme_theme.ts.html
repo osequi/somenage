@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -115,8 +115,7 @@ import type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
-  TLinearScale,
-  TModularScale,
+  TText,
 } from "./typography";
 
 /**
@@ -142,6 +141,7 @@ export type TCssNotations = "object" | "string";
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  },
  */
 export type TTheme = {
@@ -171,6 +171,7 @@ export type TTheme = {
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  },
  */
 const theme: TTheme = {
@@ -183,6 +184,7 @@ const theme: TTheme = {
   typography: {
     grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
+    text: { maxWidth: 35 },
   },
 };
 
@@ -192,8 +194,7 @@ export type {
   TBreakpointNames,
   TTypographicGrid,
   TTypographicScale,
-  TLinearScale,
-  TModularScale,
+  TText,
 };
 </code></pre>
         </article>

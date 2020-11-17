@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  theme/text/text.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,50 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>theme/text/text.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Defines the text type.
+ * @category Theme
+ * @example
+ * maxWidth: 35,
+ * maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+ */
+export type TText = {
+  /**
+   * The max-width of a text block to display 50-60 charactes per row.
+   */
+  maxWidth?: number;
+  /**
+   * A CSS rule to exclude elements from having their maxWidth set.
+   */
+  maxWidthExceptions?: string;
+};
+
+/**
+ * Defines the text settings.
+ * @category Theme
+ * @example
+ * maxWidth: 35,
+ * maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+ */
+const text: TText = {
+  maxWidth: 35,
+  maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+};
+
+export default text;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

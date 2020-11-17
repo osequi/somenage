@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -276,6 +276,80 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
             
                 <div class="member">
 
+<h4 class="name" id="defaultFont">
+    <a class="href-link" href="#defaultFont">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        defaultFont
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the default font.</p>
+<p>The default font is the browsers default font.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_fonts_fonts.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_fonts_fonts.ts.html">theme/fonts/fonts.ts</a>, <a href="theme_fonts_fonts.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
 <h4 class="name" id="linearScaleSettings">
     <a class="href-link" href="#linearScaleSettings">#</a>
     
@@ -447,6 +521,87 @@ settings: {base:[1], ratio: 1.33}</code></pre>
             
                 <div class="member">
 
+<h4 class="name" id="text">
+    <a class="href-link" href="#text">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        text
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the text settings.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_text_text.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>maxWidth: 35,
+maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
 <h4 class="name" id="theme">
     <a class="href-link" href="#theme">#</a>
     
@@ -507,7 +662,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
         <p class="tag-source">
             <a href="theme_theme.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line20">line 20</a>
+                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line21">line 21</a>
             </span>
         </p>
     
@@ -529,6 +684,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  },</code></pre>
     
 
@@ -790,7 +946,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
         <p class="tag-source">
             <a href="theme_typography_typography.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_typography_typography.ts.html">theme/typography/typography.ts</a>, <a href="theme_typography_typography.ts.html#line13">line 13</a>
+                <a href="theme_typography_typography.ts.html">theme/typography/typography.ts</a>, <a href="theme_typography_typography.ts.html#line16">line 16</a>
             </span>
         </p>
     
@@ -804,7 +960,8 @@ settings: {base:[1], ratio: 1.33}</code></pre>
     
     
         <pre class="prettyprint"><code>grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
-scale: {name: "linear", settings: {},}</code></pre>
+scale: {name: "linear", settings: {},
+text: {maxWidth: 35}}</code></pre>
     
 
 
@@ -1359,6 +1516,173 @@ Then setting a margin or padding should be always done using <code>--lem</code>.
     
         <pre class="prettyprint"><code>useLinearScale(0) => 1
 useLinearScale(1) => 2</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useMaxWidth">
+        <a class="href-link" href="#useMaxWidth">#</a>
+        
+        <span class="code-name">
+            
+                useMaxWidth<span class="signature">(text)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets the max-width of a text to display 50-60 characters in a row.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>text</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>A <code>TText</code> object. Optional. It's better coming from the theme.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-max-width_useMaxWidth.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-max-width_useMaxWidth.ts.html">hooks/use-max-width/useMaxWidth.ts</a>, <a href="hooks_use-max-width_useMaxWidth.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A style object.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useMaxWidth() =></code></pre>
     
 
 
@@ -2503,6 +2827,230 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
     </span>
 
+<h4 class="name" id="TFont">
+    <a class="href-link" href="#TFont">#</a>
+    
+    <span class="code-name">
+        TFont
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the font type.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TFontNames</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fontFamily</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fontWeight</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fontStyle</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>letterSpacing</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_fonts_fonts.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_fonts_fonts.ts.html">theme/fonts/fonts.ts</a>, <a href="theme_fonts_fonts.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
 <h4 class="name" id="TLinearScaleSettings">
     <a class="href-link" href="#TLinearScaleSettings">#</a>
     
@@ -2796,6 +3344,184 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 
     </span>
 
+<h4 class="name" id="TText">
+    <a class="href-link" href="#TText">#</a>
+    
+    <span class="code-name">
+        TText
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the text type.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>maxWidth</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The max-width of a text block to display 50-60 charactes per row.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>maxWidthExceptions</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>A CSS rule to exclude elements from having their maxWidth set.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_text_text.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>maxWidth: 35,
+maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)"</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
 <h4 class="name" id="TTheme">
     <a class="href-link" href="#TTheme">#</a>
     
@@ -2927,7 +3653,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
         <p class="tag-source">
             <a href="theme_theme.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line37">line 37</a>
+                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line39">line 39</a>
             </span>
         </p>
     
@@ -2949,6 +3675,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  }</code></pre>
     
 
@@ -3410,6 +4137,52 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 </tr>
 
         
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>text</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#TText">TText</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The settings fo the text.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fonts</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The available fonts.</p></td>
+</tr>
+
+        
         </tbody>
     </table>
 </div>
@@ -3451,7 +4224,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
         <p class="tag-source">
             <a href="theme_typography_typography.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_typography_typography.ts.html">theme/typography/typography.ts</a>, <a href="theme_typography_typography.ts.html#line23">line 23</a>
+                <a href="theme_typography_typography.ts.html">theme/typography/typography.ts</a>, <a href="theme_typography_typography.ts.html#line32">line 32</a>
             </span>
         </p>
     
@@ -3465,7 +4238,8 @@ settings: {base:[1], ratio: 1.33}</code></pre>
     
     
         <pre class="prettyprint"><code>grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
-scale: {name: "linear", settings: {},}</code></pre>
+scale: {name: "linear", settings: {},
+text: {maxWidth: 35}}}</code></pre>
     
 
 

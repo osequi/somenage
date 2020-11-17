@@ -7,6 +7,9 @@ import { typographicScale } from "../typographic-scale";
 import type { TText } from "../text";
 import { text } from "../text";
 
+import type { TFont } from "../fonts";
+import { fonts } from "../fonts";
+
 /**
  * Defines the typography type.
  *
@@ -31,6 +34,10 @@ export type TTypography = {
    * The settings fo the text.
    */
   text: TText;
+  /**
+   * The available fonts.
+   */
+  fonts: TFont[];
 };
 
 /**
@@ -47,6 +54,7 @@ const typography: TTypography = {
   grid: typographicGrid,
   scale: typographicScale,
   text: text,
+  fonts: fonts,
 };
 
 export default typography;
