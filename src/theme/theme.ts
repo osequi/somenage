@@ -4,8 +4,7 @@ import type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
-  TLinearScale,
-  TModularScale,
+  TText,
 } from "./typography";
 
 /**
@@ -31,6 +30,7 @@ export type TCssNotations = "object" | "string";
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  },
  */
 export type TTheme = {
@@ -60,6 +60,7 @@ export type TTheme = {
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
    scale: { name: "linear", settings: {} },
+   text: { maxWidth: 35 }
  },
  */
 const theme: TTheme = {
@@ -72,6 +73,7 @@ const theme: TTheme = {
   typography: {
     grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
+    text: { maxWidth: 35 },
   },
 };
 
@@ -81,6 +83,5 @@ export type {
   TBreakpointNames,
   TTypographicGrid,
   TTypographicScale,
-  TLinearScale,
-  TModularScale,
+  TText,
 };

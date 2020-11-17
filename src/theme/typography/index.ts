@@ -2,7 +2,6 @@ export type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
-  TLinearScale,
-  TModularScale,
+  TText,
 } from "./typography";
 export { default as typography } from "./typography";
