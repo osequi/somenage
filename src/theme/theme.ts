@@ -1,3 +1,5 @@
+import chroma from "chroma-js";
+
 import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
 
 import type {
@@ -9,6 +11,14 @@ import type {
   TFontNames,
   TFontWithName,
 } from "./typography";
+
+import type {
+  TColor,
+  TColorSpace,
+  TColorSpaceNames,
+  TColorNamesForThePalette,
+  TStandardColorSpaceNames,
+} from "./colors";
 
 /**
  * Defines the CSS notations type.
@@ -45,6 +55,10 @@ export type TTheme = {
    * The typography for the theme.
    */
   typography: TTypography;
+  /**
+   * The color palette for the theme.
+   */
+  colors: TColor[];
 };
 
 /**
@@ -105,6 +119,41 @@ const theme: TTheme = {
       },
     ],
   },
+  colors: [
+    {
+      name: "White",
+      for: "Background",
+      description: "The background color.",
+      value: "white",
+      spaceName: "Name",
+      chroma: chroma("white"),
+    },
+    {
+      name: "Black",
+      for: "Text",
+      description: "The text color.",
+      value: "black",
+      spaceName: "Name",
+      chroma: chroma("black"),
+    },
+    {
+      name: "Undefined",
+      for: "Highlight",
+      description:
+        "The highlight color. Used for links, buttons, call to action elements.",
+      value: null,
+      spaceName: "Name",
+      chroma: null,
+    },
+    {
+      name: "Undefined",
+      for: "Shade",
+      description: "The shade color. Used for secondary backgrounds.",
+      value: null,
+      spaceName: "Name",
+      chroma: null,
+    },
+  ],
 };
 
 export default theme;
@@ -117,4 +166,9 @@ export type {
   TFont,
   TFontNames,
   TFontWithName,
+  TColor,
+  TColorSpace,
+  TColorSpaceNames,
+  TColorNamesForThePalette,
+  TStandardColorSpaceNames,
 };

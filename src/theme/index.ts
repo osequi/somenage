@@ -11,4 +11,9 @@ export type {
   TFont,
   TFontNames,
   TFontWithName,
+  TColor,
+  TColorSpace,
+  TColorSpaceNames,
+  TColorNamesForThePalette,
+  TStandardColorSpaceNames,
 } from "./theme";
