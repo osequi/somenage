@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typographic-scale/typographic-scale.ts</title>
+  <title>Os Equi Somenage |  hooks/use-responsive-font-sizes/useResponsiveFontSizes.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typographic-scale/typographic-scale.ts</h1>
+                    <h1>hooks/use-responsive-font-sizes/useResponsiveFontSizes.ts</h1>
                 </header>
                 
 
@@ -109,70 +109,92 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TLinearScaleSettings } from "../linear-scale";
-import type { TModularScaleSettings } from "../modular-scale";
-import { linearScaleSettings } from "../linear-scale";
+            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid, TCssNotations, TBreakpoint } from "../../theme";
+import { theme } from "../../theme";
+import { useBreakpoint } from "../";
 
 /**
- * Defines the scale names.
- * @category Theme
+ * Returns media queries following the string notation.
+ * @ignore
  */
-export type TTypographicScaleNames = "linear" | "modular";
+const stringNotation = (
+  fontSizes: number[],
+  breakpoints: TBreakpoint[]
+): string => {
+  return (
+    fontSizes &amp;&amp;
+    fontSizes.reduce((result, item, index) => {
+      const breakpoint = breakpoints[index] ? breakpoints[index] : null;
+      if (!breakpoint || !breakpoint.name) return null;
 
-/**
- * Defines the scale settings.
- * @category Theme
- */
-export type TTypographicScaleSettings =
-  | TLinearScaleSettings
-  | TModularScaleSettings
-  | {};
-
-/**
- * Defines the typographic scale type.
- *
- * The various scale types / presets share the same structure.
- * This way they are pluggable into the theme.
- *
- * @category Theme
- * @example
- * name: "linear",
- * settings: {},
- * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
- */
-export type TTypographicScale = {
-  /**
-   * The name of the scale. Identifies a scale preset.
-   */
-  name: TTypographicScaleNames;
-  /**
-   * The settings for the scale. Each preset has its own shape for settings.
-   */
-  settings?: TTypographicScaleSettings;
+      const query = useBreakpoint(breakpoint.name);
+      return query ? `${result} ${query} {body {font-size: ${item}%;}}` : null;
+    }, "")
+  );
 };
 
 /**
- * Defines the typographic scale.
- *
- * The scale defines how typographic elements vary in size compared to the body text.
- * The scale comes from one of the presets: linear scale, modular scale.
- *
- * @category Theme
- * @example
- * name: "linear",
- * settings: {},
- * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
+ * Returns media queries following the object notation.
+ * @ignore
  */
-const typographicScale: TTypographicScale = {
-  name: "linear",
-  settings: linearScaleSettings,
+const objectNotation = (
+  fontSizes: number[],
+  breakpoints: TBreakpoint[]
+): {} => {
+  let responsiveSizes = {};
+
+  fontSizes &amp;&amp;
+    fontSizes.map((item, index) => {
+      const breakpoint = breakpoints[index] ? breakpoints[index] : null;
+      if (!breakpoint || !breakpoint.name) return null;
+
+      const query = useBreakpoint(breakpoint.name);
+      if (!query) return null;
+
+      responsiveSizes[`${query}`] = { fontSize: `${item}%` };
+    });
+
+  return responsiveSizes;
 };
 
-export default typographicScale;
+/**
+ * Creates the media queries for the responsive font sizes.
+ * @param  notation        The format of the results. See `TCssNotations`.
+ * @param  typographicGrid The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.
+ * @return                 The media queries for the responsive font sizes in the preferred format.
+ * @category Hooks
+ * @example &lt;caption>Object notation&lt;/caption>
+ * useResponsiveFontSizes('object') =>
+ * "@media(min-width: 320px)": {"fontSize": "100%"},
+ * "@media(min-width: 768px)": {"fontSize": "110%"},
+ * "@media(min-width: 1024px)": {"fontSize": "120%"},
+ * "@media(min-width: 1600px)": {"fontSize": "140%"},
+ * @example &lt;caption>String notation&lt;/caption>
+ * useResponsiveFontSizes('string') =>
+ * "@media(min-width: 320px) {body {font-size: 100%;}} @media(min-width: 768px) {body {font-size: 110%;}} @media(min-width: 1024px) {body {font-size: 120%;}} @media(min-width: 1600px) {body {font-size: 140%;}}"
+ */
+const useResponsiveFontSizes = (
+  notation: TCssNotations,
+  typographicGrid?: TTypographicGrid
+): {} | string => {
+  const {
+    breakpoints,
+    typography: { grid },
+  } = theme;
+
+  const grid2 = typographicGrid || grid;
+  const { fontSizes } = grid2;
+  const fontSizesWithoutTheDefaultFontSize = fontSizes.slice(1);
+
+  switch (notation) {
+    case "string":
+      return stringNotation(fontSizesWithoutTheDefaultFontSize, breakpoints);
+    case "object":
+      return objectNotation(fontSizesWithoutTheDefaultFontSize, breakpoints);
+  }
+};
+
+export default useResponsiveFontSizes;
 </code></pre>
         </article>
     </section>

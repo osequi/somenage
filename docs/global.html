@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -1565,6 +1565,206 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
 
     
+    <h4 class="name" id="useResponsiveFontSizes">
+        <a class="href-link" href="#useResponsiveFontSizes">#</a>
+        
+        <span class="code-name">
+            
+                useResponsiveFontSizes<span class="signature">(notation, typographicGrid)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates the media queries for the responsive font sizes.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>notation</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The format of the results. See <code>TCssNotations</code>.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>typographicGrid</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-responsive-font-sizes_useResponsiveFontSizes.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-responsive-font-sizes_useResponsiveFontSizes.ts.html">hooks/use-responsive-font-sizes/useResponsiveFontSizes.ts</a>, <a href="hooks_use-responsive-font-sizes_useResponsiveFontSizes.ts.html#line52">line 52</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The media queries for the responsive font sizes in the preferred format.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Object notation</p>
+    
+    
+        <pre class="prettyprint"><code>useResponsiveFontSizes('object') =>
+"@media(min-width: 320px)": {"fontSize": "100%"},
+"@media(min-width: 768px)": {"fontSize": "110%"},
+"@media(min-width: 1024px)": {"fontSize": "120%"},
+"@media(min-width: 1600px)": {"fontSize": "140%"},</code></pre>
+    
+
+        <p class="code-caption">String notation</p>
+    
+    
+        <pre class="prettyprint"><code>useResponsiveFontSizes('string') =>
+"@media(min-width: 320px) {body {font-size: 100%;}} @media(min-width: 768px) {body {font-size: 110%;}} @media(min-width: 1024px) {body {font-size: 120%;}} @media(min-width: 1600px) {body {font-size: 140%;}}"</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
     <h4 class="name" id="useScale">
         <a class="href-link" href="#useScale">#</a>
         
@@ -1910,6 +2110,215 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
     
     
         <pre class="prettyprint"><code>useScaleWithSettings({ point: 1, scale: { name: "linear" } }) => {fontSize: 2em}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useTypographicGrid">
+        <a class="href-link" href="#useTypographicGrid">#</a>
+        
+        <span class="code-name">
+            
+                useTypographicGrid<span class="signature">(notation, typographicGrid)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets up the typographic grid.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>notation</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The format of the results. See <code>TCssNotations</code>.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>typographicGrid</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-typographic-grid_useTypographicGrid.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-typographic-grid_useTypographicGrid.ts.html">hooks/use-typographic-grid/useTypographicGrid.ts</a>, <a href="hooks_use-typographic-grid_useTypographicGrid.ts.html#line56">line 56</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The CSS to be added to the <code>&lt;body&gt;</code>.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Object notation</p>
+    
+    
+        <pre class="prettyprint"><code>useTypographicGrid('object') =>
+{"fontSize": "100%", "lineHeight": 1.25", --lem": "1.25em",
+"@media(min-width: 1024px)": {"fontSize": "120%"},
+"@media(min-width: 1600px)": {"fontSize": "140%"},
+"@media(min-width: 320px)": {"fontSize": "100%"},
+"@media(min-width: 768px)": {"fontSize": "110%"}}</code></pre>
+    
+
+        <p class="code-caption">String notation</p>
+    
+    
+        <pre class="prettyprint"><code>useTypographicGrid('string') =>
+"body {
+	font-size: 100%;
+	line-height: 1.25;
+	--lem: 1.25em;
+}"
+"@media(min-width: 320px) {body {font-size: 100%;}}"
+"@media(min-width: 768px) {body {font-size: 110%;}}"
+"@media(min-width: 1024px) {body {font-size: 120%;}}"
+"@media(min-width: 1600px) {body {font-size: 140%;}}"</code></pre>
     
 
 

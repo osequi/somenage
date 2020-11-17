@@ -48,15 +48,19 @@ const objectNotation = (
 
 /**
  * Creates the media queries for the responsive font sizes.
- * @param  notation        The format of the results.
+ * @param  notation        The format of the results. See `TCssNotations`.
  * @param  typographicGrid The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.
  * @return                 The media queries for the responsive font sizes in the preferred format.
  * @category Hooks
- * @example
+ * @example <caption>Object notation</caption>
+ * useResponsiveFontSizes('object') =>
  * "@media(min-width: 320px)": {"fontSize": "100%"},
  * "@media(min-width: 768px)": {"fontSize": "110%"},
  * "@media(min-width: 1024px)": {"fontSize": "120%"},
  * "@media(min-width: 1600px)": {"fontSize": "140%"},
+ * @example <caption>String notation</caption>
+ * useResponsiveFontSizes('string') =>
+ * "@media(min-width: 320px) {body {font-size: 100%;}} @media(min-width: 768px) {body {font-size: 110%;}} @media(min-width: 1024px) {body {font-size: 120%;}} @media(min-width: 1600px) {body {font-size: 140%;}}"
  */
 const useResponsiveFontSizes = (
   notation: TCssNotations,

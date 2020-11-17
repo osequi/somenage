@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typographic-scale/typographic-scale.ts</title>
+  <title>Os Equi Somenage |  hooks/use-typographic-grid/useTypographicGrid.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typographic-scale/typographic-scale.ts</h1>
+                    <h1>hooks/use-typographic-grid/useTypographicGrid.ts</h1>
                 </header>
                 
 
@@ -109,70 +109,99 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TLinearScaleSettings } from "../linear-scale";
-import type { TModularScaleSettings } from "../modular-scale";
-import { linearScaleSettings } from "../linear-scale";
+            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid, TCssNotations } from "../../theme";
+import { theme } from "../../theme";
+import { useLem, useResponsiveFontSizes } from "../";
 
 /**
- * Defines the scale names.
- * @category Theme
+ * Returns the settings following the string notation.
+ * @ignore
  */
-export type TTypographicScaleNames = "linear" | "modular";
+const stringNotation = (
+  fontSize: number,
+  lineHeight: number,
+  lem: number,
+  grid: TTypographicGrid
+): string => {
+  const responsiveFontSizes = useResponsiveFontSizes("string", grid);
 
-/**
- * Defines the scale settings.
- * @category Theme
- */
-export type TTypographicScaleSettings =
-  | TLinearScaleSettings
-  | TModularScaleSettings
-  | {};
-
-/**
- * Defines the typographic scale type.
- *
- * The various scale types / presets share the same structure.
- * This way they are pluggable into the theme.
- *
- * @category Theme
- * @example
- * name: "linear",
- * settings: {},
- * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
- */
-export type TTypographicScale = {
-  /**
-   * The name of the scale. Identifies a scale preset.
-   */
-  name: TTypographicScaleNames;
-  /**
-   * The settings for the scale. Each preset has its own shape for settings.
-   */
-  settings?: TTypographicScaleSettings;
+  return `body {
+	  font-size: ${fontSize}%;
+	  line-height: ${lineHeight};
+	  --lem: ${lem}em;
+	}
+	${responsiveFontSizes}`;
 };
 
 /**
- * Defines the typographic scale.
- *
- * The scale defines how typographic elements vary in size compared to the body text.
- * The scale comes from one of the presets: linear scale, modular scale.
- *
- * @category Theme
- * @example
- * name: "linear",
- * settings: {},
- * @example
- * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
+ * Returns the settings following the object notation.
+ * @ignore
  */
-const typographicScale: TTypographicScale = {
-  name: "linear",
-  settings: linearScaleSettings,
+const objectNotation = (
+  fontSize: number,
+  lineHeight: number,
+  lem: number,
+  grid: TTypographicGrid
+): object => {
+  const responsiveFontSizes: {} = useResponsiveFontSizes("object", grid);
+
+  return {
+    fontSize: `${fontSize}%`,
+    lineHeight: lineHeight,
+    "--lem": `${lem}em`,
+    ...responsiveFontSizes,
+  };
 };
 
-export default typographicScale;
+/**
+ * Sets up the typographic grid.
+ *
+ * @param  notation        The format of the results. See `TCssNotations`.
+ * @param  typographicGrid The typographic grid settings. It's optional. It's better to be loaded from the theme than passed as args.
+ * @return                 The CSS to be added to the `&lt;body>`.
+ * @category Hooks
+ * @example &lt;caption>Object notation&lt;/caption>
+ * useTypographicGrid('object') =>
+ * {"fontSize": "100%", "lineHeight": 1.25", --lem": "1.25em",
+ * "@media(min-width: 1024px)": {"fontSize": "120%"},
+ * "@media(min-width: 1600px)": {"fontSize": "140%"},
+ * "@media(min-width: 320px)": {"fontSize": "100%"},
+ * "@media(min-width: 768px)": {"fontSize": "110%"}}
+ * @example &lt;caption>String notation&lt;/caption>
+ * useTypographicGrid('string') =>
+ * "body {
+ * 	font-size: 100%;
+ * 	line-height: 1.25;
+ * 	--lem: 1.25em;
+ * }"
+ * "@media(min-width: 320px) {body {font-size: 100%;}}"
+ * "@media(min-width: 768px) {body {font-size: 110%;}}"
+ * "@media(min-width: 1024px) {body {font-size: 120%;}}"
+ * "@media(min-width: 1600px) {body {font-size: 140%;}}"
+ */
+const useTypographicGrid = (
+  notation: TCssNotations,
+  typographicGrid?: TTypographicGrid
+): {} | string => {
+  const {
+    typography: { grid },
+  } = theme;
+
+  const grid2 = typographicGrid || grid;
+  const { fontSizes, lineHeight } = grid2;
+  const fontSize = fontSizes[0] ? fontSizes[0] : 100;
+
+  const lem = useLem();
+
+  switch (notation) {
+    case "string":
+      return stringNotation(fontSize, lineHeight, lem, grid2);
+    case "object":
+      return objectNotation(fontSize, lineHeight, lem, grid2);
+  }
+};
+
+export default useTypographicGrid;
 </code></pre>
         </article>
     </section>
