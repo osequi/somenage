@@ -5,6 +5,8 @@ import type {
   TTypographicGrid,
   TTypographicScale,
   TText,
+  TFont,
+  TFontNames,
 } from "./typography";
 
 /**
@@ -107,4 +109,6 @@ export type {
   TTypographicGrid,
   TTypographicScale,
   TText,
+  TFont,
+  TFontNames,
 };

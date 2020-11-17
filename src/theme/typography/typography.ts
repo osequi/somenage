@@ -7,7 +7,7 @@ import { typographicScale } from "../typographic-scale";
 import type { TText } from "../text";
 import { text } from "../text";
 
-import type { TFont } from "../fonts";
+import type { TFont, TFontNames } from "../fonts";
 import { fonts } from "../fonts";
 
 /**
@@ -60,4 +60,4 @@ const typography: TTypography = {
 };
 
 export default typography;
-export type { TTypographicGrid, TTypographicScale, TText };
+export type { TTypographicGrid, TTypographicScale, TText, TFont, TFontNames };

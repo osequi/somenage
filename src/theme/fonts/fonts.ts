@@ -28,7 +28,12 @@ const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
  * letterSpacing: "normal",
  */
 export type TFont = {
-  name: TFontNames;
+  /**
+   * The font name. Like 'Default'.
+   *
+   * // NOTE: It's optional because there is no CSS property `name`. When the font is set up with CSS the `name` has to be removed. See `useFont` for details.
+   */
+  name?: TFontNames;
   fontFamily: string;
   fontWeight: string | number;
   fontStyle: string;

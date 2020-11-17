@@ -8,4 +8,6 @@ export type {
   TCssNotations,
   TTypographicScale,
   TText,
+  TFont,
+  TFontNames,
 } from "./theme";
