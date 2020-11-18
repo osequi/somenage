@@ -7,13 +7,12 @@ import { useFont, useScales } from "../";
  * @return      	An array of scales having 6 elements.
  * @ignore
  */
-const interpolateScales = (scales: object[]): object[] => {
-  const lastElement = scales.pop();
+const interpolateScales = (scales: object[] | object): object[] => {
+  const lastElement = Array.isArray(scales) ? scales.pop() : scales;
 
   return Array(6)
     .fill(null)
     .map((item, index) => {
-      console.log("item:", item);
       return scales[index] ? scales[index] : lastElement;
     });
 };
@@ -28,8 +27,7 @@ const differentSizes = (headings: THeadings): object => {
   } = headings;
 
   const font2 = useFont(font);
-  let scale2 = null;
-  scale2 = useScales(scale);
+  const scale2 = useScales(scale);
   const scales = interpolateScales(scale2);
 
   return {
