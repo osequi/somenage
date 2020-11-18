@@ -10,3 +10,4 @@ export { useMaxWidth } from "./use-max-width";
 export { useChromaValue } from "./use-chroma-value";
 export { useColorContrast } from "./use-color-contrast";
 export { useColorMaxContrast } from "./use-color-max-contrast";
+export { useColorTune } from "./use-color-tune";
