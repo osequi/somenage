@@ -8,3 +8,5 @@ export { useTypographicGrid } from "./use-typographic-grid";
 export { useFont } from "./use-font";
 export { useMaxWidth } from "./use-max-width";
 export { useChromaValue } from "./use-chroma-value";
+export { useColorContrast } from "./use-color-contrast";
+export { useColorMaxContrast } from "./use-color-max-contrast";
