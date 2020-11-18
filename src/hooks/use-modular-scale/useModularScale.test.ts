@@ -1,5 +1,9 @@
 import { useModularScale } from ".";
 
+it("Works with an array of points", () => {
+  expect(useModularScale([1, 2])).toStrictEqual([1.25, 1.5625]);
+});
+
 it("Works with settings", () => {
   expect(
     useModularScale(1, {

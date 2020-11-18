@@ -1,20 +1,30 @@
-import type { TTypographicScale } from "../../theme";
-
 /**
  * Returns a value from the linear scale.
+ * @ignore
+ */
+const getLinearScale = (value: number): number => {
+  return value + 1;
+};
+
+/**
+ * Returns value(s) from the linear scale.
  *
- * Used to set a different font size than the body text.
+ * Used to set different font sizes than the body text.
  *
- * @param  point       	The point on the scale.
- * @param  scale	 	The settings for the scale.
- * @return 				The value from the scale.
+ * @param  points	 	The point(s) from the scale.
+ * @return 				The value(s) from the scale.
  * @category Hooks
  * @example
  * useLinearScale(0) => 1
- * useLinearScale(1) => 2
+ * useLinearScale([1, 2]) => [2, 3]
  */
-const useLinearScale = (point: number, scale?: TTypographicScale): number => {
-  return point + 1;
+const useLinearScale = (points: number[] | number): number[] | number => {
+  return Array.isArray(points)
+    ? points &&
+        points.reduce((result, point) => {
+          return [...result, getLinearScale(point)];
+        }, [])
+    : getLinearScale(points);
 };
 
 export default useLinearScale;

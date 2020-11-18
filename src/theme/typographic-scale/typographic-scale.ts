@@ -48,17 +48,20 @@ export type TTypographicScale = {
  * This type is used to scale up an element on a given scale.
  *
  * @category Theme
- * @example
- * point: 1
+ * @example <caption>With a single point</caption>
+ * points: 1
+ * scale: {name: 'modular', settings: {base:[1], ratio: 1.33}}
+ * @example <caption>With multiple points</caption>
+ * points: [1, 2, 3]
  * scale: {name: 'modular', settings: {base:[1], ratio: 1.33}}
  */
 export type TScale = {
   /**
-   * The point on the scale where to scale.
+   * The point on the scale where to scale, or an array of points.
    */
-  point: number;
+  points: number[] | number;
   /**
-   * The scale.
+   * The scale to use for scaling.
    */
   scale?: TTypographicScale;
 };

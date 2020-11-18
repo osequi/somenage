@@ -1,10 +1,10 @@
-import { useScale, useScaleWithSettings } from ".";
+import { useScale, useScales } from ".";
 
-it("Works with an array scales and points", () => {
+it("useScales - Works with an array scales and points", () => {
   expect(
-    useScaleWithSettings([
-      { point: 1, scale: { name: "linear" } },
-      { point: 1, scale: { name: "modular" } },
+    useScales([
+      { points: 1, scale: { name: "linear" } },
+      { points: 1, scale: { name: "modular" } },
     ])
   ).toStrictEqual([
     {
@@ -16,36 +16,32 @@ it("Works with an array scales and points", () => {
   ]);
 });
 
-it("Works with an array of a single scale and point", () => {
-  expect(
-    useScaleWithSettings([{ point: 1, scale: { name: "linear" } }])
-  ).toStrictEqual([
+it("useScales - Works with an array of a single scale and point", () => {
+  expect(useScales([{ points: 1, scale: { name: "linear" } }])).toStrictEqual([
     {
       fontSize: "2em",
     },
   ]);
 });
 
-it("Works with a single scale and point", () => {
-  expect(
-    useScaleWithSettings({ point: 1, scale: { name: "linear" } })
-  ).toStrictEqual({
+it("useScales - Works with a single scale and point", () => {
+  expect(useScales({ points: 1, scale: { name: "linear" } })).toStrictEqual({
     fontSize: "2em",
   });
 });
 
-it("Works with an array of numbers", () => {
+it("useScale - Works with an array of numbers", () => {
   expect(useScale([1, 2])).toStrictEqual([
     { fontSize: "2em" },
     { fontSize: "3em" },
   ]);
 });
 
-it("Works with an array of a single number", () => {
+it("useScale - Works with an array of a single number", () => {
   expect(useScale([1])).toStrictEqual([{ fontSize: "2em" }]);
 });
 
-it("Works with a single number", () => {
+it("useScale - Works with a single number", () => {
   expect(useScale(1)).toStrictEqual({
     fontSize: "2em",
   });

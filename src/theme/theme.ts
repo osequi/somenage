@@ -120,6 +120,14 @@ const theme: TTheme = {
         letterSpacing: "1.25px",
       },
     ],
+    headings: {
+      preset: "sameSize",
+      settings: {
+        font: "Nimbus Sans Medium",
+        lineHeight: 1.1,
+        scale: { points: 2 },
+      },
+    },
   },
   colors: [
     {
