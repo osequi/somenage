@@ -33,7 +33,7 @@ export type THeadingsSettings = {
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { point: 2 },
+ *  scale: { points: 2 },
  * },
  */
 export type THeadings = {
@@ -49,7 +49,7 @@ export type THeadings = {
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { point: 2 },
+ *  scale: { points: 2 },
  * },
  */
 const headings: THeadings = {
@@ -57,7 +57,7 @@ const headings: THeadings = {
   settings: {
     font: "Nimbus Sans Medium",
     lineHeight: 1.1,
-    scale: { point: 2 },
+    scale: { points: 2 },
   },
 };
 

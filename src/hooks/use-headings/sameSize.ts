@@ -1,5 +1,5 @@
 import type { THeadings } from "../../theme";
-import { useFont, useScaleWithSettings } from "../";
+import { useFont, useScales } from "../";
 
 /**
  * Returns headings with the same size.
@@ -11,7 +11,7 @@ const sameSize = (headings: THeadings): object => {
   } = headings;
 
   const font2 = useFont(font);
-  const scale2 = useScaleWithSettings(scale);
+  const scale2 = useScales(scale);
 
   return {
     ["& h1, h2, h3, h4, h5, h6"]: {

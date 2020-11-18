@@ -1,5 +1,5 @@
 import { THeadings } from "../../theme";
-import { sameSize } from "./";
+import { sameSize, differentSizes } from "./";
 
 /**
  * Returns a heading style.
