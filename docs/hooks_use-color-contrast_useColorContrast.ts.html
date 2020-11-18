@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-color-contrast/useColorContrast.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-color-contrast/useColorContrast.ts</h1>
                 </header>
                 
 
@@ -109,76 +109,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type { TTypographicScale } from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
-
-import type { TText } from "../text";
-import { text } from "../text";
-
-import type { TFont, TFontNames, TFontWithName } from "../fonts";
-import { fonts } from "../fonts";
+            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
+import { useChromaValue } from "../";
+import { TColor } from "../../theme";
 
 /**
- * Defines the typography type.
+ * Calculates the contrast of two colors using chroma.js.
  *
- * This is an umbrella component. All settings related to typography are collected here.
+ * The contrast between the colors determine if they can be paired together, and if yes then in what conditions.
  *
- * @category Theme
+ * WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.
+ * WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and user interface components (such as form input borders).
+ * WCAG Level AAA requires a contrast ratio of at least 7:1 for normal text and 4.5:1 for large text.\\
+ *
+ * Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically 24px) or larger.
+ *
+ * @param  color1 	The first color.
+ * @param  color2 	The second color.
+ * @return          An array containing the color contrast ratio as number, and a list fo standards the contrast mets.
+ * @category Hooks
  * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * useColorContrast({ chroma: chroma("white") }, { chroma: chroma("black") }) => [21, true, true, true]
+ * @see https://webaim.org/resources/contrastchecker/
  */
-export type TTypography = {
-  /**
-   * The settings for the typographic grid.
-   */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
-  /**
-   * The settings fo the text.
-   */
-  text: TText;
-  /**
-   * The available fonts.
-   */
-  fonts: TFontWithName[];
+const useColorContrast = (
+  color1: TColor,
+  color2: TColor
+): [contrast: number, a: boolean, aa: boolean, aaa: boolean] => {
+  const { chroma: chroma1 } = color1;
+  const { chroma: chroma2 } = color2;
+
+  const contrast = useChromaValue(chroma.contrast(chroma1, chroma2), 2);
+  const a = contrast > 3;
+  const aa = contrast > 4.5;
+  const aaa = contrast > 7;
+
+  return [contrast, a, aa, aaa];
 };
 
-/**
- * Defines the typography.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
- */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-  text: text,
-  fonts: fonts,
-};
-
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TText,
-  TFont,
-  TFontNames,
-  TFontWithName,
-};
+export default useColorContrast;
 </code></pre>
         </article>
     </section>

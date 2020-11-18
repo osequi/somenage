@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -109,14 +109,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
+            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
+
+import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
 
 import type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
   TText,
+  TFont,
+  TFontNames,
+  TFontWithName,
 } from "./typography";
+
+import type {
+  TColor,
+  TColorSpace,
+  TColorSpaceNames,
+  TColorNamesForThePalette,
+  TStandardColorSpaceNames,
+} from "./colors";
 
 /**
  * Defines the CSS notations type.
@@ -153,6 +166,10 @@ export type TTheme = {
    * The typography for the theme.
    */
   typography: TTypography;
+  /**
+   * The color palette for the theme.
+   */
+  colors: TColor[];
 };
 
 /**
@@ -184,7 +201,11 @@ const theme: TTheme = {
   typography: {
     grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
-    text: { maxWidth: 35 },
+    text: {
+      maxWidth: 35,
+      maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+      elementsWhichNeedFontReset: "input, pre, code, kbd, samp",
+    },
     fonts: [
       {
         name: "Default",
@@ -209,6 +230,41 @@ const theme: TTheme = {
       },
     ],
   },
+  colors: [
+    {
+      name: "White",
+      for: "Background",
+      description: "The background color.",
+      value: "white",
+      spaceName: "Name",
+      chroma: chroma("white"),
+    },
+    {
+      name: "Black",
+      for: "Text",
+      description: "The text color.",
+      value: "black",
+      spaceName: "Name",
+      chroma: chroma("black"),
+    },
+    {
+      name: "Undefined",
+      for: "Highlight",
+      description:
+        "The highlight color. Used for links, buttons, call to action elements.",
+      value: null,
+      spaceName: "Name",
+      chroma: null,
+    },
+    {
+      name: "Undefined",
+      for: "Shade",
+      description: "The shade color. Used for secondary backgrounds.",
+      value: null,
+      spaceName: "Name",
+      chroma: null,
+    },
+  ],
 };
 
 export default theme;
@@ -218,6 +274,14 @@ export type {
   TTypographicGrid,
   TTypographicScale,
   TText,
+  TFont,
+  TFontNames,
+  TFontWithName,
+  TColor,
+  TColorSpace,
+  TColorSpaceNames,
+  TColorNamesForThePalette,
+  TStandardColorSpaceNames,
 };
 </code></pre>
         </article>

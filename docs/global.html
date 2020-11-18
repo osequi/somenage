@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -276,6 +276,182 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
             
                 <div class="member">
 
+<h4 class="name" id="colors">
+    <a class="href-link" href="#colors">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        colors
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the colors of the palette.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_colors_colors.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_colors_colors.ts.html">theme/colors/colors.ts</a>, <a href="theme_colors_colors.ts.html#line14">line 14</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "White",
+for: "Background",
+description: "The background color.",
+value: "white",
+spaceName: "Name",
+chroma: chroma("white"),</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="colorSpaces">
+    <a class="href-link" href="#colorSpaces">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        colorSpaces
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the color spaces.</p>
+<p>Color spaces are used to define and manipulate colors.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_colors_colorSpaces.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_colors_colorSpaces.ts.html">theme/colors/colorSpaces.ts</a>, <a href="theme_colors_colorSpaces.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "Name",
+description: "Named colors from the W3CX11 specification.",
+example: "red",
+spaceName: null,</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>name: "RGB",
+description: "An RGB triplet.",
+example: "255, 0, 0",
+spaceName: "RGB",</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
 <h4 class="name" id="defaultFont">
     <a class="href-link" href="#defaultFont">#</a>
     
@@ -294,7 +470,7 @@ This implies media queries on breakpoints will use the <code>min-width</code> ap
 
 <div class="description">
     <p>Defines the default font.</p>
-<p>The default font is the browsers default font.</p>
+<p>The default font is the browser's default font.</p>
 </div>
 
 
@@ -839,7 +1015,7 @@ letterSpacing: "1.25px",</code></pre>
         <p class="tag-source">
             <a href="theme_text_text.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line9">line 9</a>
+                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line10">line 10</a>
             </span>
         </p>
     
@@ -853,7 +1029,8 @@ letterSpacing: "1.25px",</code></pre>
     
     
         <pre class="prettyprint"><code>maxWidth: 35,
-maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",</code></pre>
+maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+elementsWhichNeedFontReset: "input, pre, code, kbd, samp",</code></pre>
     
 
 
@@ -921,7 +1098,7 @@ maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",</code></
         <p class="tag-source">
             <a href="theme_theme.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line21">line 21</a>
+                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line22">line 22</a>
             </span>
         </p>
     
@@ -1413,6 +1590,736 @@ fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]</code></pre>
     
     
         <pre class="prettyprint"><code>const tablet = useBreakpoint('tablet') => '@media(min-width: 768px)'</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useChroma">
+        <a class="href-link" href="#useChroma">#</a>
+        
+        <span class="code-name">
+            
+                useChroma<span class="signature">(color)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a Chroma color.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The color to be created.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-chroma_useChroma.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-chroma_useChroma.ts.html">hooks/use-chroma/useChroma.ts</a>, <a href="hooks_use-chroma_useChroma.ts.html#line24">line 24</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The created Chroma color.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useChroma({ value: "0.2, 0.8, 0, 0", spaceName: "CMYK", chroma: null }) => A chroma color</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useChromaValue">
+        <a class="href-link" href="#useChromaValue">#</a>
+        
+        <span class="code-name">
+            
+                useChromaValue<span class="signature">(number, decimals)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Formats a color value.</p>
+<p>Chroma returns numbers with many decimals which isn't human friendly.
+This tool reduces the decimals.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>number</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The number with long decimals.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>decimals</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>How many decimals to return.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-chroma-value_useChromarValue.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-chroma-value_useChromarValue.ts.html">hooks/use-chroma-value/useChromarValue.ts</a>, <a href="hooks_use-chroma-value_useChromarValue.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The number with fewer decimals.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useChromaValue(1.123456789, 2) => 1.12</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useColorContrast">
+        <a class="href-link" href="#useColorContrast">#</a>
+        
+        <span class="code-name">
+            
+                useColorContrast<span class="signature">(color1, color2)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Calculates the contrast of two colors using chroma.js.</p>
+<p>The contrast between the colors determine if they can be paired together, and if yes then in what conditions.</p>
+<p>WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.
+WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and user interface components (such as form input borders).
+WCAG Level AAA requires a contrast ratio of at least 7:1 for normal text and 4.5:1 for large text.\</p>
+<p>Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically 24px) or larger.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color1</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The first color.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color2</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The second color.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://webaim.org/resources/contrastchecker/">https://webaim.org/resources/contrastchecker/</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-color-contrast_useColorContrast.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-color-contrast_useColorContrast.ts.html">hooks/use-color-contrast/useColorContrast.ts</a>, <a href="hooks_use-color-contrast_useColorContrast.ts.html#line23">line 23</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An array containing the color contrast ratio as number, and a list fo standards the contrast mets.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useColorContrast({ chroma: chroma("white") }, { chroma: chroma("black") }) => [21, true, true, true]</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useFont">
+        <a class="href-link" href="#useFont">#</a>
+        
+        <span class="code-name">
+            
+                useFont<span class="signature">(names)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Returns font style objects identified by names.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>names</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of font names, or a single font name.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-font_useFont.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-font_useFont.ts.html">hooks/use-font/useFont.ts</a>, <a href="hooks_use-font_useFont.ts.html#line32">line 32</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An array of font style objects, or a single font object, or null.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>useFont('Default') => { fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>useFont(['Default']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}]</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>useFont(["Default", 'Nimbus Sans Medium']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}, { fontFamily: "nimbus-sans", fontWeight: 500, fontStyle: "normal"}]</code></pre>
     
 
 
@@ -3087,6 +3994,563 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
     </span>
 
+<h4 class="name" id="TColor">
+    <a class="href-link" href="#TColor">#</a>
+    
+    <span class="code-name">
+        TColor
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the color type.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The name of the color.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>for</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TColorNamesForThePalette</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>Which entry from the palette this color id for.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>description</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>A short description of the usage of the color.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>value</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The value of the color in a color space.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>spaceName</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TColorSpaceNames</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The name of the color space where this color comes from.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>chroma</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">chroma.Color</span>
+|
+
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The <code>chroma-js</code> object for the color.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_colors_colors.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_colors_colors.ts.html">theme/colors/colors.ts</a>, <a href="theme_colors_colors.ts.html#line53">line 53</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "White",
+for: "Background",
+description: "The background color.",
+value: "white",
+spaceName: "Name",
+chroma: chroma("white")</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TColorSpace">
+    <a class="href-link" href="#TColorSpace">#</a>
+    
+    <span class="code-name">
+        TColorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the color space type.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TColorSpaceNames</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The name of the color space. See <code>TColorSpaceNames</code>.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>description</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>The description of the color space.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>spaceName</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TStandardColorSpaceNames</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>If the color space is one of the <code>TStandardColorSpaceNames</code>.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>example</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>An example showcasing the syntax of the color definition in this space.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_colors_colorSpaces.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_colors_colorSpaces.ts.html">theme/colors/colorSpaces.ts</a>, <a href="theme_colors_colorSpaces.ts.html#line97">line 97</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    
+        <pre class="prettyprint"><code>name: "Name",
+description: "Named colors from the W3CX11 specification.",
+example: "red",
+spaceName: null,</code></pre>
+    
+
+    
+        <pre class="prettyprint"><code>name: "RGB",
+description: "An RGB triplet.",
+example: "255, 0, 0",
+spaceName: "RGB"</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
 <h4 class="name" id="TFont">
     <a class="href-link" href="#TFont">#</a>
     
@@ -3101,6 +4565,7 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
 
 <div class="description">
     <p>Defines the font type.</p>
+<p>The props are all valid CSS props.</p>
 </div>
 
 
@@ -3129,29 +4594,6 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
         </thead>
 
         <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>name</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">TFontNames</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"></td>
-</tr>
-
         
             
 <tr class="deep-level-0">
@@ -3289,7 +4731,156 @@ useModularScale(1, {base:[1], ratio: 1.25}) => 1.25</code></pre>
         <p class="tag-source">
             <a href="theme_fonts_fonts.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_fonts_fonts.ts.html">theme/fonts/fonts.ts</a>, <a href="theme_fonts_fonts.ts.html#line79">line 79</a>
+                <a href="theme_fonts_fonts.ts.html">theme/fonts/fonts.ts</a>, <a href="theme_fonts_fonts.ts.html#line83">line 83</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>fontFamily: "inherit",
+fontWeight: "normal",
+fontStyle: "normal",
+letterSpacing: "normal"</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">object</span>
+
+
+    </span>
+
+<h4 class="name" id="TFontWithName">
+    <a class="href-link" href="#TFontWithName">#</a>
+    
+    <span class="code-name">
+        TFontWithName
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Defines the font type with a name.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">TFontNames</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="theme_fonts_fonts.ts.html" class="button">View Source</a>
+            <span>
+                <a href="theme_fonts_fonts.ts.html">theme/fonts/fonts.ts</a>, <a href="theme_fonts_fonts.ts.html#line100">line 100</a>
             </span>
         </p>
     
@@ -3629,6 +5220,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 
 <div class="description">
     <p>Defines the text type.</p>
+<p>Entries are optional to set.</p>
 </div>
 
 
@@ -3722,6 +5314,37 @@ settings: {base:[1], ratio: 1.33}</code></pre>
 </tr>
 
         
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>elementsWhichNeedFontReset</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last"><p>A CSS rule to list elements where font settings has to be explicitely set. See <code>useFont</code>.</p></td>
+</tr>
+
+        
         </tbody>
     </table>
 </div>
@@ -3763,7 +5386,7 @@ settings: {base:[1], ratio: 1.33}</code></pre>
         <p class="tag-source">
             <a href="theme_text_text.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line15">line 15</a>
+                <a href="theme_text_text.ts.html">theme/text/text.ts</a>, <a href="theme_text_text.ts.html#line17">line 17</a>
             </span>
         </p>
     
@@ -3777,7 +5400,8 @@ settings: {base:[1], ratio: 1.33}</code></pre>
     
     
         <pre class="prettyprint"><code>maxWidth: 35,
-maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)"</code></pre>
+maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
+elementsWhichNeedFontReset: "input, pre, code, kbd, samp"</code></pre>
     
 
 
@@ -3883,6 +5507,29 @@ maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)"</code></p
 </tr>
 
         
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>colors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>The color palette for the theme.</p></td>
+</tr>
+
+        
         </tbody>
     </table>
 </div>
@@ -3924,7 +5571,7 @@ maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)"</code></p
         <p class="tag-source">
             <a href="theme_theme.ts.html" class="button">View Source</a>
             <span>
-                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line62">line 62</a>
+                <a href="theme_theme.ts.html">theme/theme.ts</a>, <a href="theme_theme.ts.html#line103">line 103</a>
             </span>
         </p>
     

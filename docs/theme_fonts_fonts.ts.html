@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -130,16 +130,17 @@ const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
 
 /**
  * Defines the font type.
+ *
+ * The props are all valid CSS props.
+ *
  * @category Theme
  * @example
- * name: "Default",
  * fontFamily: "inherit",
  * fontWeight: "normal",
  * fontStyle: "normal",
  * letterSpacing: "normal",
  */
 export type TFont = {
-  name: TFontNames;
   fontFamily: string;
   fontWeight: string | number;
   fontStyle: string;
@@ -147,9 +148,23 @@ export type TFont = {
 };
 
 /**
+ * Defines the font type with a name.
+ * @category Theme
+ * @example
+ * name: "Default",
+ * fontFamily: "inherit",
+ * fontWeight: "normal",
+ * fontStyle: "normal",
+ * letterSpacing: "normal",
+ */
+export type TFontWithName = TFont &amp; {
+  name?: TFontNames;
+};
+
+/**
  * Defines the default font.
  *
- * The default font is the browsers default font.
+ * The default font is the browser's default font.
  *
  * @category Theme
  * @example
@@ -159,7 +174,7 @@ export type TFont = {
  * fontStyle: "normal",
  * letterSpacing: "normal",
  */
-const defaultFont: TFont = {
+const defaultFont: TFontWithName = {
   name: "Default",
   fontFamily: "inherit",
   fontWeight: "normal",
@@ -178,7 +193,7 @@ const defaultFont: TFont = {
  * fontStyle: "normal",
  * letterSpacing: "1.25px",
  */
-const nimbusSansRegular: TFont = {
+const nimbusSansRegular: TFontWithName = {
   name: "Nimbus Sans Regular",
   fontFamily: "nimbus-sans",
   fontWeight: 400,
@@ -197,7 +212,7 @@ const nimbusSansRegular: TFont = {
  * fontStyle: "normal",
  * letterSpacing: "1.25px",
  */
-const nimbusSansMedium: TFont = {
+const nimbusSansMedium: TFontWithName = {
   name: "Nimbus Sans Medium",
   fontFamily: "nimbus-sans",
   fontWeight: 500,
@@ -211,7 +226,11 @@ const nimbusSansMedium: TFont = {
  * @example
  * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */
-const fonts: TFont[] = [defaultFont, nimbusSansRegular, nimbusSansMedium];
+const fonts: TFontWithName[] = [
+  defaultFont,
+  nimbusSansRegular,
+  nimbusSansMedium,
+];
 
 export default fonts;
 export { fontNames };

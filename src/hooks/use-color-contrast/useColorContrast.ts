@@ -16,6 +16,9 @@ import { TColor } from "../../theme";
  * @param  color1 	The first color.
  * @param  color2 	The second color.
  * @return          An array containing the color contrast ratio as number, and a list fo standards the contrast mets.
+ * @category Hooks
+ * @example
+ * useColorContrast({ chroma: chroma("white") }, { chroma: chroma("black") }) => [21, true, true, true]
  * @see https://webaim.org/resources/contrastchecker/
  */
 const useColorContrast = (

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-chroma-value/useChromarValue.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-chroma-value/useChromarValue.ts</h1>
                 </header>
                 
 
@@ -109,76 +109,24 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type { TTypographicScale } from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
-
-import type { TText } from "../text";
-import { text } from "../text";
-
-import type { TFont, TFontNames, TFontWithName } from "../fonts";
-import { fonts } from "../fonts";
-
-/**
- * Defines the typography type.
+            <pre class="prettyprint source linenums"><code>/**
+ * Formats a color value.
  *
- * This is an umbrella component. All settings related to typography are collected here.
+ * Chroma returns numbers with many decimals which isn't human friendly.
+ * This tool reduces the decimals.
  *
- * @category Theme
+ * @param	number		The number with long decimals.
+ * @param	decimals	How many decimals to return.
+ * @return 				The number with fewer decimals.
+ * @category Hooks
  * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * useChromaValue(1.123456789, 2) => 1.12
  */
-export type TTypography = {
-  /**
-   * The settings for the typographic grid.
-   */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
-  /**
-   * The settings fo the text.
-   */
-  text: TText;
-  /**
-   * The available fonts.
-   */
-  fonts: TFontWithName[];
+const useChromaValue = (number: number, decimals: number): number => {
+  return Number(number.toFixed(decimals));
 };
 
-/**
- * Defines the typography.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
- */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-  text: text,
-  fonts: fonts,
-};
-
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TText,
-  TFont,
-  TFontNames,
-  TFontWithName,
-};
+export default useChromaValue;
 </code></pre>
         </article>
     </section>

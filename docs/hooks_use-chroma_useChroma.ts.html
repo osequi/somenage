@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-chroma/useChroma.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-chroma/useChroma.ts</h1>
                 </header>
                 
 
@@ -109,76 +109,64 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type { TTypographicScale } from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
-
-import type { TText } from "../text";
-import { text } from "../text";
-
-import type { TFont, TFontNames, TFontWithName } from "../fonts";
-import { fonts } from "../fonts";
+            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
+import { TColor } from "../../theme";
 
 /**
- * Defines the typography type.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- *
- * @category Theme
+ * Converts a string of numbers to an array.
+ * @param	value	The string of numbers.
+ * @return			The number of arrays.
+ * @ignore
  * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * '10.05, 4, 5' => [10.05, 4, 5]
  */
-export type TTypography = {
-  /**
-   * The settings for the typographic grid.
-   */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
-  /**
-   * The settings fo the text.
-   */
-  text: TText;
-  /**
-   * The available fonts.
-   */
-  fonts: TFontWithName[];
+const stringToNumbers = (value: string): number[] => {
+  const parts = value.split(",");
+  return parts &amp;&amp; parts.map((item) => Number(item));
 };
 
 /**
- * Defines the typography.
+ * Creates a Chroma color.
  *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
+ * @param  color	The color to be created.
+ * @return			The created Chroma color.
+ * @category Hooks
  * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * useChroma({ value: "0.2, 0.8, 0, 0", spaceName: "CMYK", chroma: null }) => A chroma color
  */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-  text: text,
-  fonts: fonts,
+const useChroma = (color: TColor): chroma.Color | null => {
+  if (!color || !color.value || !color.spaceName) return null;
+
+  const { value, spaceName } = color;
+
+  switch (spaceName) {
+    case "Name":
+    case "Hexadecimal":
+      return chroma.valid(value) ? chroma(value) : null;
+    case "Number":
+      return chroma(parseInt(value));
+    case "Temperature":
+      return chroma.temperature(parseInt(value));
+    case "RGB":
+      return chroma(stringToNumbers(value));
+    case "HSL":
+      return chroma(stringToNumbers(value), "hsl");
+    case "HSV":
+      return chroma(stringToNumbers(value), "hsv");
+    case "Lab":
+      return chroma(stringToNumbers(value), "lab");
+    case "LCH":
+      return chroma(stringToNumbers(value), "lch");
+    case "HCL":
+      return chroma(stringToNumbers(value), "hcl");
+    case "CMYK":
+      return chroma(stringToNumbers(value), "cmyk");
+    case "GL":
+      return chroma(stringToNumbers(value), "gl");
+  }
 };
 
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TText,
-  TFont,
-  TFontNames,
-  TFontWithName,
-};
+export default useChroma;
 </code></pre>
         </article>
     </section>

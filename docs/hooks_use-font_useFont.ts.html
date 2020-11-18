@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/typography/typography.ts</title>
+  <title>Os Equi Somenage |  hooks/use-font/useFont.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/typography/typography.ts</h1>
+                    <h1>hooks/use-font/useFont.ts</h1>
                 </header>
                 
 
@@ -109,76 +109,60 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
-
-import type { TTypographicScale } from "../typographic-scale";
-import { typographicScale } from "../typographic-scale";
-
-import type { TText } from "../text";
-import { text } from "../text";
-
-import type { TFont, TFontNames, TFontWithName } from "../fonts";
-import { fonts } from "../fonts";
+            <pre class="prettyprint source linenums"><code>import type { TFont, TFontNames, TFontWithName } from "../../theme";
+import { theme } from "../../theme";
 
 /**
- * Defines the typography type.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- *
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * Returns a font style object identified by name.
+ * @ignore
  */
-export type TTypography = {
+const getFont = (name: TFontNames, fonts: TFontWithName[]): TFont => {
+  const { name: fontName, ...rest } = fonts.find((item) => item.name === name);
+
+  const {
+    typography: {
+      text: { elementsWhichNeedFontReset },
+    },
+  } = theme;
+
   /**
-   * The settings for the typographic grid.
+   * The font for these elements has to be set explicitely.
+   * Otherwise they'll use the browser default font which is monospace.
    */
-  grid: TTypographicGrid;
-  /**
-   * The settings for the typographic scale.
-   */
-  scale: TTypographicScale;
-  /**
-   * The settings fo the text.
-   */
-  text: TText;
-  /**
-   * The available fonts.
-   */
-  fonts: TFontWithName[];
+  const updateBrowserDefaults = elementsWhichNeedFontReset
+    ? {
+        [`&amp; ${elementsWhichNeedFontReset}`]: {
+          ...rest,
+        },
+      }
+    : {};
+
+  return { ...rest, ...updateBrowserDefaults };
 };
 
 /**
- * Defines the typography.
- *
- * This is an umbrella component. All settings related to typography are collected here.
- * @category Theme
- * @example
- * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
- * text: {maxWidth: 35}
- * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
+ * Returns font style objects identified by names.
+ * @param  names 	An array of font names, or a single font name.
+ * @return 			An array of font style objects, or a single font object, or null.
+ * @category Hooks
+ * @example useFont('Default') => { fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}
+ * @example useFont(['Default']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}]
+ * @example useFont(["Default", 'Nimbus Sans Medium']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}, { fontFamily: "nimbus-sans", fontWeight: 500, fontStyle: "normal"}]
  */
-const typography: TTypography = {
-  grid: typographicGrid,
-  scale: typographicScale,
-  text: text,
-  fonts: fonts,
+const useFont = (names: TFontNames[] | TFontNames): TFont[] | TFont => {
+  const {
+    typography: { fonts },
+  } = theme;
+
+  return Array.isArray(names)
+    ? names &amp;&amp;
+        names.reduce((result, name) => {
+          return [...result, getFont(name, fonts)];
+        }, [])
+    : getFont(names, fonts);
 };
 
-export default typography;
-export type {
-  TTypographicGrid,
-  TTypographicScale,
-  TText,
-  TFont,
-  TFontNames,
-  TFontWithName,
-};
+export default useFont;
 </code></pre>
         </article>
     </section>
