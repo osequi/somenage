@@ -10,12 +10,12 @@ import { useColorContrast } from "../";
  * If the contrast is not enough (AA, AAA) the color can't be used for typography. It has to be changed.
  * No way a better contrast can be achieved to another color than to white or black.
  * @param  color A color object
- * @return       An array containing the color white or black, the contrast ratio as number, and a list fo standards the contrast mets.
+ * @return       An array containing the color white or black, the contrast ratio as number, and a list of standards the contrast mets.
  * @category Hooks
  * @example
  * useColorMaxContrast({ chroma: chroma("red") } => [{ chroma: chroma("black"), name: "Black" }, 5.25, true, true, false]
  */
-const useMaximumContrast = (
+const useColorMaxContrast = (
   color: TColor
 ): [
   chroma: TColor,
@@ -41,4 +41,4 @@ const useMaximumContrast = (
     : [white, contrastToWhite, aWhite, aaWhite, aaaWhite];
 };
 
-export default useMaximumContrast;
+export default useColorMaxContrast;

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/fonts/fonts.ts</title>
+  <title>Os Equi Somenage |  hooks/use-color-max-contrast/useColorMaxContrast.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/fonts/fonts.ts</h1>
+                    <h1>hooks/use-color-max-contrast/useColorMaxContrast.ts</h1>
                 </header>
                 
 
@@ -109,131 +109,50 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the available font names.
- * @category Theme
- */
-export type TFontNames =
-  | "Default"
-  | "Nimbus Sans Regular"
-  | "Nimbus Sans Medium";
+            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
+import { TColor } from "../../theme";
+import { useColorContrast } from "../";
 
 /**
- * Collects the font names into an array.
+ * Calculates the maximum contrast a color can have.
  *
- * - `TFontNames` is an union type. It offers no methods like `length`.
- * - `fontNames` is an array. It can be used to make calculations with.
+ * The maximum contrast is the contrast to the farest end of the spectrum: either to white or to black.
  *
- * @ignore
- */
-const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
-
-/**
- * Defines the font type.
- *
- * The props are all valid CSS props.
- *
- * @category Theme
+ * If the contrast is not enough (AA, AAA) the color can't be used for typography. It has to be changed.
+ * No way a better contrast can be achieved to another color than to white or black.
+ * @param  color A color object
+ * @return       An array containing the color white or black, the contrast ratio as number, and a list fo standards the contrast mets.
+ * @category Hooks
  * @example
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
+ * useColorMaxContrast({ chroma: chroma("red") } => [{ chroma: chroma("black"), name: "Black" }, 5.25, true, true, false]
  */
-export type TFont = {
-  fontFamily: string;
-  fontWeight: string | number;
-  fontStyle: string;
-  letterSpacing: string;
+const useColorMaxContrast = (
+  color: TColor
+): [
+  chroma: TColor,
+  contrast: number,
+  a: boolean,
+  aa: boolean,
+  aaa: boolean
+] => {
+  const white: TColor = { chroma: chroma("white"), name: "White" };
+  const [contrastToWhite, aWhite, aaWhite, aaaWhite] = useColorContrast(
+    color,
+    white
+  );
+
+  const black: TColor = { chroma: chroma("black"), name: "Black" };
+  const [contrastToBlack, aBlack, aaBlack, aaaBlack] = useColorContrast(
+    color,
+    black
+  );
+
+  return contrastToWhite &lt; contrastToBlack
+    ? [black, contrastToBlack, aBlack, aaBlack, aaaBlack]
+    : [white, contrastToWhite, aWhite, aaWhite, aaaWhite];
 };
 
-/**
- * Defines the font type with a name.
- * @category Theme
- * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
- */
-export type TFontWithName = TFont &amp; {
-  name?: TFontNames;
-};
-
-/**
- * Defines the default font.
- *
- * The default font is the browser's default font.
- *
- * @category Theme
- * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
- */
-const defaultFont: TFontWithName = {
-  name: "Default",
-  fontFamily: "inherit",
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: "normal",
-};
-
-/**
- * Defines the Nimbus Sans Regular font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans Regular",
- * fontFamily: "nimbus-sans",
- * fontWeight: 400,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
- */
-const nimbusSansRegular: TFontWithName = {
-  name: "Nimbus Sans Regular",
-  fontFamily: "nimbus-sans",
-  fontWeight: 400,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
-};
-
-/**
- * Defines the Nimbus Sans Medium font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans medium",
- * fontFamily: "nimbus-sans",
- * fontWeight: 500,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
- */
-const nimbusSansMedium: TFontWithName = {
-  name: "Nimbus Sans Medium",
-  fontFamily: "nimbus-sans",
-  fontWeight: 500,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
-};
-
-/**
- * Defines the available fonts.
- * @category Theme
- * @example
- * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
- */
-const fonts: TFontWithName[] = [
-  defaultFont,
-  nimbusSansRegular,
-  nimbusSansMedium,
-];
-
-export default fonts;
-export { fontNames };
+export default useColorMaxContrast;
 </code></pre>
         </article>
     </section>

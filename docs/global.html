@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -2145,6 +2145,176 @@ WCAG Level AAA requires a contrast ratio of at least 7:1 for normal text and 4.5
     
     
         <pre class="prettyprint"><code>useColorContrast({ chroma: chroma("white") }, { chroma: chroma("black") }) => [21, true, true, true]</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="useColorMaxContrast">
+        <a class="href-link" href="#useColorMaxContrast">#</a>
+        
+        <span class="code-name">
+            
+                useColorMaxContrast<span class="signature">(color)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Calculates the maximum contrast a color can have.</p>
+<p>The maximum contrast is the contrast to the farest end of the spectrum: either to white or to black.</p>
+<p>If the contrast is not enough (AA, AAA) the color can't be used for typography. It has to be changed.
+No way a better contrast can be achieved to another color than to white or black.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>A color object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="hooks_use-color-max-contrast_useColorMaxContrast.ts.html" class="button">View Source</a>
+            <span>
+                <a href="hooks_use-color-max-contrast_useColorMaxContrast.ts.html">hooks/use-color-max-contrast/useColorMaxContrast.ts</a>, <a href="hooks_use-color-max-contrast_useColorMaxContrast.ts.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An array containing the color white or black, the contrast ratio as number, and a list fo standards the contrast mets.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>useColorMaxContrast({ chroma: chroma("red") } => [{ chroma: chroma("black"), name: "Black" }, 5.25, true, true, false]</code></pre>
     
 
 
