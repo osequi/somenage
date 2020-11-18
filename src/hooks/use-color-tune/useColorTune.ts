@@ -38,7 +38,7 @@ const tuneColor = (
  * Tunes a color to reach AAA contrast relative to another color.
  * @param	color1	The first color.
  * @param	color2 	The second color.
- * @return			The variant of the first color which has a >7 contrast ratio to the second color. Or nuul, if such color can't be found.
+ * @return			The variant of the first color which has a >7 contrast ratio to the second color. Or null, if such color can't be found.
  * @category Hooks
  * @example <caption>Color found</caption>
  * useColorTune({ chroma: chroma("red") }, { chroma: chroma("black") }) => chroma([255, 94, 94, 1])
