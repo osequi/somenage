@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  hooks/use-modular-scale/useModularScale.ts</title>
+  <title>Os Equi Somenage |  theme/headings/headings.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>hooks/use-modular-scale/useModularScale.ts</h1>
+                    <h1>theme/headings/headings.ts</h1>
                 </header>
                 
 
@@ -109,54 +109,94 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicScale } from "../../theme";
-import { modularScaleSettings } from "../../theme/modular-scale";
-import { theme } from "../../theme";
-import ms from "modularscale-js";
+            <pre class="prettyprint source linenums"><code>import type { TFontNames, TScale } from "../../theme";
 
 /**
- * Returns value(s) from the modular scale.
- *
- * Used to set different font sizes than the body text.
- *
- * @param  points       	The point(s) on the scale.
- * @param  scaleFromProps 	The settings for the scale.
- * @return 					The value(s) from the scale.
- * @category Hooks
- * @example
- * useModularScale(0) => 1
- * useModularScale(1) => 1.333
- * useModularScale(1, {base:[1], ratio: 1.25}) => 1.25
- * useModularScale([1,2,3]) = [1.333, 1.777, 2.369]
- * @see https://github.com/modularscale/modularscale-js
+ * Defines the available presets for headings.
+ * @category Theme
  */
-const useModularScale = (
-  points: number[] | number,
-  scaleFromProps?: TTypographicScale
-): number[] | number => {
-  const {
-    typography: { scale: scaleFromTheme },
-  } = theme;
+export type THeadingsPresetNames = "sameSize" | "differentSizes";
 
-  const scale2 = scaleFromProps || scaleFromTheme;
-
+/**
+ * Defines the headings settings type.
+ * @category Theme
+ */
+export type THeadingsSettings = {
   /**
-   * If theme has no modular scale settings the default settings is used from `theme/modular-scale`
+   * The font name to use for headings.
    */
-  const settings =
-    scale2 &amp;&amp; scale2.settings &amp;&amp; scale2.settings.hasOwnProperty("base")
-      ? scale2.settings
-      : modularScaleSettings;
-
-  return Array.isArray(points)
-    ? points &amp;&amp;
-        points.reduce((result, point) => {
-          return [...result, ms(point, settings)];
-        }, [])
-    : ms(points, settings);
+  font: TFontNames;
+  /**
+   * The line height. Headings have a reduced line height.
+   */
+  lineHeight: number;
+  /**
+   * How to scale the font size.
+   */
+  scale: TScale;
 };
 
-export default useModularScale;
+/**
+ * Defines the headings type.
+ *
+ * Headings can have a different font size, line height and scale vs. the body text.
+ *
+ * Scaling comes from presets like `sameSize` where all headings have the same size, or `differentSizes` where headings have different size.
+ *
+ * @category Theme
+ * @example
+ * preset: "sameSize",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: 2 },
+ * },
+ * @example
+ * preset: "differentSizes",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: [2, 3, 4, 5, 6, 7] },
+ * },
+ */
+export type THeadings = {
+  preset: THeadingsPresetNames;
+  settings: THeadingsSettings;
+};
+
+/**
+ * Defines the headings.
+ *
+ * Headings can have a different font size, line height and scale vs. the body text.
+ *
+ * Scaling comes from presets like `sameSize` where all headings have the same size, or `differentSizes` where headings have different size.
+ *
+ * @category Theme
+ * @example
+ * preset: "sameSize",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: 2 },
+ * },
+ * @example
+ * preset: "differentSizes",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: [2, 3, 4, 5, 6, 7] },
+ * },
+ */
+const headings: THeadings = {
+  preset: "sameSize",
+  settings: {
+    font: "Nimbus Sans Medium",
+    lineHeight: 1.1,
+    scale: { points: 2 },
+  },
+};
+
+export default headings;
 </code></pre>
         </article>
     </section>

@@ -1,8 +1,8 @@
-import { sameSize } from "./";
+import { useSameSizeHeadings } from "./";
 
-it("Works with a multiple scales", () => {
+it("Works with a wrongly set scale with multiple points", () => {
   expect(
-    sameSize({
+    useSameSizeHeadings({
       preset: "sameSize",
       settings: {
         font: "Default",
@@ -13,9 +13,9 @@ it("Works with a multiple scales", () => {
   ).toStrictEqual("2em");
 });
 
-it("Works with a well set scale", () => {
+it("Works with a well set, single point scale", () => {
   expect(
-    sameSize({
+    useSameSizeHeadings({
       preset: "sameSize",
       settings: {
         font: "Default",

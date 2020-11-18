@@ -1,3 +1,3 @@
 export { default as useHeadings } from "./useHeadings";
-export { default as sameSize } from "./sameSize";
-export { default as differentSizes } from "./differentSizes";
+export { default as useSameSizeHeadings } from "./useSameSizeHeadings";
+export { default as useDifferentSizesHeadings } from "./useDifferentSizesHeadings";

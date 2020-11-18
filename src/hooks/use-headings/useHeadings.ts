@@ -1,5 +1,5 @@
 import { THeadings } from "../../theme";
-import { sameSize, differentSizes } from "./";
+import { sameSizeHeadings, differentSizesHeadings } from "./";
 
 /**
  * Returns a heading style.
@@ -10,9 +10,9 @@ const getHeading = (headings: THeadings): object => {
 
   switch (preset) {
     case "sameSize":
-      return sameSize(headings);
+      return sameSizeHeadings(headings);
     case "differentSizes":
-      return differentSizes(headings);
+      return differentSizesHeadings(headings);
   }
 };
 
@@ -24,7 +24,7 @@ const getHeading = (headings: THeadings): object => {
  * @example <caption>Same sized headings</caption>
  * useHeadings({preset: "sameSize", settings: { font: "Default", lineHeight: 1, scale: { points: 3 }}}) => ["& h1, h2, h3, h4, h5, h6"]: {fontSize: 4em, ...}
  * @example <caption>Different sized headings</caption>
- * useHeadings({preset: "differentSizesSize", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] }}}) => {["& h6"]: {fontSize: 2em}, ["& h5"]: {fontSize: 3em}, ["& h4"]: {fontSize: 3em}, ...}
+ * useHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] }}}) => {["& h6"]: {fontSize: 2em}, ["& h5"]: {fontSize: 3em}, ["& h4"]: {fontSize: 3em}, ...}
  */
 const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
   return Array.isArray(headings)

@@ -3,9 +3,20 @@ import { useFont, useScales } from "../";
 
 /**
  * Returns headings with the same size.
- * @ignore
+ * @param	headings 	The settings for headings.
+ * @return				The style object.
+ * @category Hooks
+ * @example
+ * useSameSizeHeadings(preset: "sameSize", settings: {font: "Default", lineHeight: 1, scale: { points: 3 }}) =>
+ * "& h1, h2, h3, h4, h5, h6": {
+ * 	"fontFamily": "inherit",
+ * 	"fontSize": "4em",
+ * 	"fontStyle": "normal",
+ * 	"fontWeight": "normal",
+ * 	"letterSpacing": "normal",
+ * 	"lineHeight": 1}
  */
-const sameSize = (headings: THeadings): object => {
+const useSameSizeHeadings = (headings: THeadings): object => {
   const {
     settings: { font, lineHeight, scale },
   } = headings;
@@ -26,4 +37,4 @@ const sameSize = (headings: THeadings): object => {
   };
 };
 
-export default sameSize;
+export default useSameSizeHeadings;

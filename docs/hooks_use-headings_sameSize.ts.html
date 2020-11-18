@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  hooks/use-modular-scale/useModularScale.ts</title>
+  <title>Os Equi Somenage |  hooks/use-headings/sameSize.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useDifferentSizesHeadings">useDifferentSizesHeadings</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useHeadings">useHeadings</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useSameSizeHeadings">useSameSizeHeadings</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScales">useScales</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#headings">headings</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useHeadings">useHeadings</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScales">useScales</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#headings">headings</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>hooks/use-modular-scale/useModularScale.ts</h1>
+                    <h1>hooks/use-headings/sameSize.ts</h1>
                 </header>
                 
 
@@ -109,54 +109,35 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicScale } from "../../theme";
-import { modularScaleSettings } from "../../theme/modular-scale";
-import { theme } from "../../theme";
-import ms from "modularscale-js";
+            <pre class="prettyprint source linenums"><code>import type { THeadings } from "../../theme";
+import { useFont, useScales } from "../";
 
 /**
- * Returns value(s) from the modular scale.
- *
- * Used to set different font sizes than the body text.
- *
- * @param  points       	The point(s) on the scale.
- * @param  scaleFromProps 	The settings for the scale.
- * @return 					The value(s) from the scale.
- * @category Hooks
- * @example
- * useModularScale(0) => 1
- * useModularScale(1) => 1.333
- * useModularScale(1, {base:[1], ratio: 1.25}) => 1.25
- * useModularScale([1,2,3]) = [1.333, 1.777, 2.369]
- * @see https://github.com/modularscale/modularscale-js
+ * Returns headings with the same size.
+ * @ignore
  */
-const useModularScale = (
-  points: number[] | number,
-  scaleFromProps?: TTypographicScale
-): number[] | number => {
+const sameSize = (headings: THeadings): object => {
   const {
-    typography: { scale: scaleFromTheme },
-  } = theme;
+    settings: { font, lineHeight, scale },
+  } = headings;
 
-  const scale2 = scaleFromProps || scaleFromTheme;
-
+  const font2 = useFont(font);
+  const scale2 = useScales(scale);
   /**
-   * If theme has no modular scale settings the default settings is used from `theme/modular-scale`
+   * Always return a single scale, even if multiple scales were given by error.
    */
-  const settings =
-    scale2 &amp;&amp; scale2.settings &amp;&amp; scale2.settings.hasOwnProperty("base")
-      ? scale2.settings
-      : modularScaleSettings;
+  const scale3 = Array.isArray(scale2) ? scale2.shift() : scale2;
 
-  return Array.isArray(points)
-    ? points &amp;&amp;
-        points.reduce((result, point) => {
-          return [...result, ms(point, settings)];
-        }, [])
-    : ms(points, settings);
+  return {
+    ["&amp; h1, h2, h3, h4, h5, h6"]: {
+      ...font2,
+      ...scale3,
+      lineHeight: lineHeight,
+    },
+  };
 };
 
-export default useModularScale;
+export default sameSize;
 </code></pre>
         </article>
     </section>

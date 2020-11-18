@@ -1,8 +1,8 @@
-import { differentSizes } from "./";
+import { useDifferentSizesHeadings } from "./";
 
 it("Works with more than 6 heading sizes defined", () => {
   expect(
-    differentSizes({
+    useDifferentSizesHeadings({
       preset: "differentSizes",
       settings: {
         font: "Default",
@@ -15,7 +15,7 @@ it("Works with more than 6 heading sizes defined", () => {
 
 it("Works with all heading sizes defined", () => {
   expect(
-    differentSizes({
+    useDifferentSizesHeadings({
       preset: "differentSizes",
       settings: {
         font: "Default",
@@ -28,7 +28,7 @@ it("Works with all heading sizes defined", () => {
 
 it("Works with multiple heading sizes", () => {
   expect(
-    differentSizes({
+    useDifferentSizesHeadings({
       preset: "differentSizes",
       settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } },
     })["& h1"]
@@ -37,7 +37,7 @@ it("Works with multiple heading sizes", () => {
 
 it("Works with a single heading size", () => {
   expect(
-    differentSizes({
+    useDifferentSizesHeadings({
       preset: "differentSizes",
       settings: { font: "Default", lineHeight: 1, scale: { points: 1 } },
     })["& h1"]

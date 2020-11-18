@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Os Equi Somenage |  hooks/use-headings/differentSizesHeadings.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Os Equi Somenage</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/osequi/somenage"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://osequi.com/somenage"
+                        >
+                            Example Application
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#differentSizesHeadings">differentSizesHeadings</a></li><li><a href="global.html#sameSizeHeadings">sameSizeHeadings</a></li><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useHeadings">useHeadings</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScales">useScales</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#headings">headings</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>hooks/use-headings/differentSizesHeadings.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import type { THeadings } from "../../theme";
+import { useFont, useScales } from "../";
+
+/**
+ * Rounds up an array to 6 elements.
+ * @param  scales 	An array of scales.
+ * @return      	An array of scales having 6 elements.
+ * @ignore
+ */
+const interpolateScales = (scales: object[] | object): object[] => {
+  const lastElement = Array.isArray(scales) ? scales.pop() : scales;
+
+  return Array(6)
+    .fill(null)
+    .map((item, index) => {
+      return scales[index] ? scales[index] : lastElement;
+    });
+};
+
+/**
+ * Returns headings with different size.
+ * @param	headings 	The settings for headings.
+ * @return				The style object.
+ * @category Hooks
+ * @example
+ * differentSizesHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } }}) =>
+    +   "&amp; h1, h2, h3, h4, h5, h6": Object {
+    +     "fontFamily": "inherit",
+    +     "fontStyle": "normal",
+    +     "fontWeight": "normal",
+    +     "letterSpacing": "normal",
+    +     "lineHeight": 1,
+    +   },
+		"&amp; h1": Object {
+       +    "fontSize": "3em",
+       + },
+    +   "&amp; h2": Object {
+    +     "fontSize": "3em",
+    +   },
+    +   "&amp; h3": Object {
+    +     "fontSize": "3em",
+    +   },
+    +   "&amp; h4": Object {
+    +     "fontSize": "3em",
+    +   },
+    +   "&amp; h5": Object {
+    +     "fontSize": "3em",
+    +   },
+    +   "&amp; h6": Object {
+          "fontSize": "2em",
+    +   },
+ */
+const differentSizesHeadings = (headings: THeadings): object => {
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings;
+
+  const font2 = useFont(font);
+  const scale2 = useScales(scale);
+  const scales = interpolateScales(scale2);
+
+  return {
+    ["&amp; h1, h2, h3, h4, h5, h6"]: {
+      ...font2,
+      lineHeight: lineHeight,
+    },
+    ["&amp; h6"]: {
+      ...scales[0],
+    },
+    ["&amp; h5"]: {
+      ...scales[1],
+    },
+    ["&amp; h4"]: {
+      ...scales[2],
+    },
+    ["&amp; h3"]: {
+      ...scales[3],
+    },
+    ["&amp; h2"]: {
+      ...scales[4],
+    },
+    ["&amp; h1"]: {
+      ...scales[5],
+    },
+  };
+};
+
+export default differentSizesHeadings;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

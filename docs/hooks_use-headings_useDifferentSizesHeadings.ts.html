@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  hooks/use-modular-scale/useModularScale.ts</title>
+  <title>Os Equi Somenage |  hooks/use-headings/useDifferentSizesHeadings.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>hooks/use-modular-scale/useModularScale.ts</h1>
+                    <h1>hooks/use-headings/useDifferentSizesHeadings.ts</h1>
                 </header>
                 
 
@@ -109,54 +109,94 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicScale } from "../../theme";
-import { modularScaleSettings } from "../../theme/modular-scale";
-import { theme } from "../../theme";
-import ms from "modularscale-js";
+            <pre class="prettyprint source linenums"><code>import type { THeadings } from "../../theme";
+import { useFont, useScales } from "../";
 
 /**
- * Returns value(s) from the modular scale.
- *
- * Used to set different font sizes than the body text.
- *
- * @param  points       	The point(s) on the scale.
- * @param  scaleFromProps 	The settings for the scale.
- * @return 					The value(s) from the scale.
- * @category Hooks
- * @example
- * useModularScale(0) => 1
- * useModularScale(1) => 1.333
- * useModularScale(1, {base:[1], ratio: 1.25}) => 1.25
- * useModularScale([1,2,3]) = [1.333, 1.777, 2.369]
- * @see https://github.com/modularscale/modularscale-js
+ * Rounds up an array to 6 elements.
+ * @param  scales 	An array of scales.
+ * @return      	An array of scales having 6 elements.
+ * @ignore
  */
-const useModularScale = (
-  points: number[] | number,
-  scaleFromProps?: TTypographicScale
-): number[] | number => {
-  const {
-    typography: { scale: scaleFromTheme },
-  } = theme;
+const interpolateScales = (scales: object[] | object): object[] => {
+  const lastElement = Array.isArray(scales) ? scales.pop() : scales;
 
-  const scale2 = scaleFromProps || scaleFromTheme;
-
-  /**
-   * If theme has no modular scale settings the default settings is used from `theme/modular-scale`
-   */
-  const settings =
-    scale2 &amp;&amp; scale2.settings &amp;&amp; scale2.settings.hasOwnProperty("base")
-      ? scale2.settings
-      : modularScaleSettings;
-
-  return Array.isArray(points)
-    ? points &amp;&amp;
-        points.reduce((result, point) => {
-          return [...result, ms(point, settings)];
-        }, [])
-    : ms(points, settings);
+  return Array(6)
+    .fill(null)
+    .map((item, index) => {
+      return scales[index] ? scales[index] : lastElement;
+    });
 };
 
-export default useModularScale;
+/**
+ * Returns headings with different size.
+ * @param	headings 	The settings for headings.
+ * @return				The style object.
+ * @category Hooks
+ * @example
+ * differentSizesHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } }}) =>
+       "&amp; h1, h2, h3, h4, h5, h6": {
+         "fontFamily": "inherit",
+         "fontStyle": "normal",
+         "fontWeight": "normal",
+         "letterSpacing": "normal",
+         "lineHeight": 1,
+       },
+		"&amp; h1": {
+           "fontSize": "3em",
+        },
+       "&amp; h2": {
+         "fontSize": "3em",
+       },
+       "&amp; h3": {
+         "fontSize": "3em",
+       },
+       "&amp; h4": {
+         "fontSize": "3em",
+       },
+       "&amp; h5": {
+         "fontSize": "3em",
+       },
+       "&amp; h6": {
+          "fontSize": "2em",
+       },
+ */
+const useDifferentSizesHeadings = (headings: THeadings): => {
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings;
+
+  const font2 = useFont(font);
+  const scale2 = useScales(scale);
+  const scales = interpolateScales(scale2);
+
+  return {
+    ["&amp; h1, h2, h3, h4, h5, h6"]: {
+      ...font2,
+      lineHeight: lineHeight,
+    },
+    ["&amp; h6"]: {
+      ...scales[0],
+    },
+    ["&amp; h5"]: {
+      ...scales[1],
+    },
+    ["&amp; h4"]: {
+      ...scales[2],
+    },
+    ["&amp; h3"]: {
+      ...scales[3],
+    },
+    ["&amp; h2"]: {
+      ...scales[4],
+    },
+    ["&amp; h1"]: {
+      ...scales[5],
+    },
+  };
+};
+
+export default useDifferentSizesHeadings;
 </code></pre>
         </article>
     </section>

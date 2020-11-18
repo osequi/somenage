@@ -27,6 +27,11 @@ export type THeadingsSettings = {
 
 /**
  * Defines the headings type.
+ *
+ * Headings can have a different font size, line height and scale vs. the body text.
+ *
+ * Scaling comes from presets like `sameSize` where all headings have the same size, or `differentSizes` where headings have different size.
+ *
  * @category Theme
  * @example
  * preset: "sameSize",
@@ -34,6 +39,13 @@ export type THeadingsSettings = {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
  *  scale: { points: 2 },
+ * },
+ * @example
+ * preset: "differentSizes",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: [2, 3, 4, 5, 6, 7] },
  * },
  */
 export type THeadings = {
@@ -43,6 +55,11 @@ export type THeadings = {
 
 /**
  * Defines the headings.
+ *
+ * Headings can have a different font size, line height and scale vs. the body text.
+ *
+ * Scaling comes from presets like `sameSize` where all headings have the same size, or `differentSizes` where headings have different size.
+ *
  * @category Theme
  * @example
  * preset: "sameSize",
@@ -50,6 +67,13 @@ export type THeadings = {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
  *  scale: { points: 2 },
+ * },
+ * @example
+ * preset: "differentSizes",
+ * settings: {
+ *  font: "Nimbus Sans Medium",
+ *  lineHeight: 1.1,
+ *  scale: { points: [2, 3, 4, 5, 6, 7] },
  * },
  */
 const headings: THeadings = {

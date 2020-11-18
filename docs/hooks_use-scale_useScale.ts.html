@@ -92,7 +92,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScaleWithSettings">useScaleWithSettings</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useDifferentSizesHeadings">useDifferentSizesHeadings</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useHeadings">useHeadings</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useSameSizeHeadings">useSameSizeHeadings</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScales">useScales</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#headings">headings</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
                 
             </nav>
         </div>
@@ -109,103 +109,81 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import type { TTypographicScale } from "../../theme";
+            <pre class="prettyprint source linenums"><code>import type { TTypographicScale, TScale } from "../../theme";
 import { theme } from "../../theme";
 import { useLinearScale, useModularScale } from "../";
 
 /**
- * Defines a temporary type.
- * It is used only for this hook.
- * @ignore
+ * Returns value(s) from a scale.
+ *
+ * Used to set different font sizes than the body text.
+ *
+ * @param  points	The point(s) on the scale.
+ * @param  scale	The typographic scale to use. Optional, can obtain the default value from the theme.
+ * @return          The font size(s) set to the value(s) from the scale.
+ * @category Hooks
+ * @example &lt;caption>An single point:&lt;/caption>
+ * useScale(1) => {fontSize: 2em}
+ * @example &lt;caption>An array of points:&lt;/caption>
+ * useScale([1, 2, 3]) => [{fontSize: 2em}, {fontSize: 3em}, {fontSize: 4em}]
+ * @example &lt;caption>An single point with a scale:&lt;/caption>
+ * useScale(1, { name: "modular" } }) => {fontSize: 1.25em}
  */
-type TTypographicScaleWithPoint = {
-  /**
-   * The point on the scale.
-   */
-  point: number;
-  /**
-   * The scale.
-   */
-  scale?: TTypographicScale;
-};
-
-/**
- * Returns a value from a scale.
- * @ignore
- */
-const scaleValue = (scaleWithPoint: TTypographicScaleWithPoint): number => {
-  const { point } = scaleWithPoint;
-
+const useScale = (
+  points: number[] | number,
+  scale?: TTypographicScale
+): object[] | object => {
   const {
     typography: { scale: scaleFromTheme },
   } = theme;
 
-  const scale2 = scaleWithPoint.hasOwnProperty("scale")
-    ? scaleWithPoint.scale
-    : scaleFromTheme;
-
+  const scale2 = scale || scaleFromTheme;
   const { name } = scale2;
 
+  let values = null;
   switch (name) {
     case "linear":
-      return useLinearScale(point, scale2);
+      values = useLinearScale(points);
+      break;
     case "modular":
-      return useModularScale(point, scale2);
+      values = useModularScale(points, scale);
+      break;
   }
+
+  return Array.isArray(values)
+    ? values &amp;&amp;
+        values.reduce((result, value) => {
+          return [...result, { fontSize: `${value}em` }];
+        }, [])
+    : { fontSize: `${values}em` };
 };
 
 /**
- * Returns a value from scale.
+ * Returns value(s) from scale(s).
  *
- * The scale settings are coming from the theme.
+ * Used to set different font sizes than the body text.
  *
- * Used to set a different font size than the body text.
- *
- * @param  points	An array of points on the scale, or a single point on the scale.
- * @return          An array of font sizes set to the values on the scale, or a font size set to the value on the scale.
+ * @param  scales	The typographic scale and points on the scale, or an array of these.
+ * @return			A font size set to the value on the scale, or an array of font sizes.
  * @category Hooks
- * @example &lt;caption>An array of points:&lt;/caption>
- * useScale([1, 2, 3]) => [{fontSize: 2em}, {fontSize: 3em}, {fontSize: 4em}]
- * @example &lt;caption>An single point:&lt;/caption>
- * useScale(1) => {fontSize: 2em}
+ * @example &lt;caption>A single scale with a single point:&lt;/caption>
+ * useScales({ points: 1, scale: { name: "linear" } }) => {fontSize: 2em}
+ * @example &lt;caption>An array of scales with single points:&lt;/caption>
+ * useScales([{ points: 1, scale: { name: "linear" } }), { points: 1, scale: { name: "modular" } } ]) => [{fontSize: 2em}, {fontSize: 1.25em}]
+ * @example &lt;caption>An array of scales with arrays of points:&lt;/caption>
+ * useScales([{ points: [1, 2], scale: { name: "linear" } }), { points: [1, 2], scale: { name: "modular" } } ]) => [[{fontSize: 2em}, {fontSize: 3em}], [{fontSize: 1.25em}, {fontSize: 1.526em}]]
  */
-const useScale = (scales: number[] | number): object[] | object => {
+const useScales = (scales?: TScale[] | TScale): object[] | object => {
   return Array.isArray(scales)
     ? scales &amp;&amp;
         scales.reduce((result, scale) => {
-          return [...result, { fontSize: `${scaleValue({ point: scale })}em` }];
+          return [...result, useScale(scale.points, scale.scale)];
         }, [])
-    : { fontSize: `${scaleValue({ point: scales })}em` };
-};
-
-/**
- * Returns a value from a scale.
- *
- * The scale settings can be sepcified as props.
- *
- * Used to set a different font size than the body text.
- *
- * @param  scales An array of typographic scales and points on the scale, or a single typographic scale and a single point.
- * @return        An array of font sizes set to the values on the scales, or a font size set to the value on the scale.
- * @category Hooks
- * @example &lt;caption>An array of scales and points:&lt;/caption>
- * useScaleWithSettings([{ point: 1, scale: { name: "linear" } }), { point: 1, scale: { name: "modular" } } ]) => [{fontSize: 2em}, {fontSize: 1.25em}]
- * @example &lt;caption>A single scale with point:&lt;/caption>
- * useScaleWithSettings({ point: 1, scale: { name: "linear" } }) => {fontSize: 2em}
- */
-const useScaleWithSettings = (
-  scales?: TTypographicScaleWithPoint[] | TTypographicScaleWithPoint
-): object[] | object => {
-  return Array.isArray(scales)
-    ? scales &amp;&amp;
-        scales.reduce((result, scale) => {
-          return [...result, { fontSize: `${scaleValue(scale)}em` }];
-        }, [])
-    : { fontSize: `${scaleValue(scales)}em` };
+    : useScale(scales.points, scales.scale);
 };
 
 export default useScale;
-export { useScaleWithSettings };
+export { useScales };
 </code></pre>
         </article>
     </section>
