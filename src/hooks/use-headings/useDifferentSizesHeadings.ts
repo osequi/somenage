@@ -10,11 +10,9 @@ import { useFont, useScales } from "../";
 const interpolateScales = (scales: object[] | object): object[] => {
   const lastElement = Array.isArray(scales) ? scales.pop() : scales;
 
-  return Array(6)
-    .fill(null)
-    .map((item, index) => {
-      return scales[index] ? scales[index] : lastElement;
-    });
+  return Array.from(Array(6).keys()).map((item) => {
+    return scales[item] ? scales[item] : lastElement;
+  });
 };
 
 /**
@@ -50,7 +48,7 @@ const interpolateScales = (scales: object[] | object): object[] => {
           "fontSize": "2em",
        },
  */
-const useDifferentSizesHeadings = (headings: THeadings): => {
+const useDifferentSizesHeadings = (headings: THeadings): object => {
   const {
     settings: { font, lineHeight, scale },
   } = headings;
