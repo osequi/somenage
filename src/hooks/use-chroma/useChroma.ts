@@ -1,40 +1,17 @@
 import chroma from "chroma-js";
-import { lowerCase } from "lodash";
 import { TColor } from "../../theme";
 
 /**
- * Creates a Chroma color using the `chroma({ h:120, s:1, l:0.75});` notation.
- *
- * @param  color	The color to be created.
- * @return			The created Chroma color.
- * @see https://gka.github.io/chroma.js/#chroma
+ * Converts a string of numbers to an array.
+ * @param	value	The string of numbers.
+ * @return			The number of arrays.
+ * @ignore
+ * @example
+ * '10.05, 4, 5' => [10.05, 4, 5]
  */
-const createColorFromTriplets = (color: TColor): chroma.Color | null => {
-  if (!color || !color.value || !color.spaceName) return null;
-
-  const { value, spaceName } = color;
-
-  /**
-   * '255, 255, 1' => '255,255,1'
-   */
-  const removedWhiteSpace = value.split(" ").join("");
-  const parts = removedWhiteSpace.split(",");
-  if (parts.length !== spaceName.length) return null;
-
-  /**
-   * (255, 255, 1, 'RGB') => {r:255, g:255, b: 1}
-   */
-  let params = [];
-  parts.map((item, index) => {
-    params[lowerCase(spaceName[index])] = item;
-  });
-
-  return chroma({ ...params });
-};
-
 const stringToNumbers = (value: string): number[] => {
   const parts = value.split(",");
-  return parts.map((item) => parseInt(item));
+  return parts && parts.map((item) => Number(item));
 };
 
 /**
@@ -42,6 +19,9 @@ const stringToNumbers = (value: string): number[] => {
  *
  * @param  color	The color to be created.
  * @return			The created Chroma color.
+ * @category Hooks
+ * @example
+ * useChroma({ value: "0.2, 0.8, 0, 0", spaceName: "CMYK", chroma: null }) => A chroma color
  */
 const useChroma = (color: TColor): chroma.Color | null => {
   if (!color || !color.value || !color.spaceName) return null;
@@ -65,8 +45,13 @@ const useChroma = (color: TColor): chroma.Color | null => {
     case "Lab":
       return chroma(stringToNumbers(value), "lab");
     case "LCH":
-      console.log("lch:", stringToNumbers(value));
       return chroma(stringToNumbers(value), "lch");
+    case "HCL":
+      return chroma(stringToNumbers(value), "hcl");
+    case "CMYK":
+      return chroma(stringToNumbers(value), "cmyk");
+    case "GL":
+      return chroma(stringToNumbers(value), "gl");
   }
 };
 

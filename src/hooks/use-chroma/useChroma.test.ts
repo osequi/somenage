@@ -1,6 +1,24 @@
 import chroma from "chroma-js";
 import { useChroma } from ".";
 
+it("Works with the GL namespace", () => {
+  expect(
+    useChroma({ value: "0.6, 0, 0.8, 0.5", spaceName: "GL", chroma: null })
+  ).toStrictEqual(chroma(0.6, 0, 0.8, 0.5, "gl"));
+});
+
+it("Works with the CMYK namespace", () => {
+  expect(
+    useChroma({ value: "0.2, 0.8, 0, 0", spaceName: "CMYK", chroma: null })
+  ).toStrictEqual(chroma(0.2, 0.8, 0, 0, "cmyk"));
+});
+
+it("Works with the HCL namespace", () => {
+  expect(
+    useChroma({ value: "130, 40, 80", spaceName: "HCL", chroma: null })
+  ).toStrictEqual(chroma(130, 40, 80, "hcl"));
+});
+
 it("Works with the LCH namespace", () => {
   expect(
     useChroma({ value: "74.94, 23.93, 78.95", spaceName: "LCH", chroma: null })
