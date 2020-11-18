@@ -32,6 +32,11 @@ const createColorFromTriplets = (color: TColor): chroma.Color | null => {
   return chroma({ ...params });
 };
 
+const stringToNumbers = (value: string): number[] => {
+  const parts = value.split(",");
+  return parts.map((item) => parseInt(item));
+};
+
 /**
  * Creates a Chroma color.
  *
@@ -51,8 +56,17 @@ const useChroma = (color: TColor): chroma.Color | null => {
       return chroma(parseInt(value));
     case "Temperature":
       return chroma.temperature(parseInt(value));
-    default:
-      return createColorFromTriplets(color);
+    case "RGB":
+      return chroma(stringToNumbers(value));
+    case "HSL":
+      return chroma(stringToNumbers(value), "hsl");
+    case "HSV":
+      return chroma(stringToNumbers(value), "hsv");
+    case "Lab":
+      return chroma(stringToNumbers(value), "lab");
+    case "LCH":
+      console.log("lch:", stringToNumbers(value));
+      return chroma(stringToNumbers(value), "lch");
   }
 };
 

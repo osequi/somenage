@@ -4,13 +4,13 @@ import { useChroma } from ".";
 it("Works with the LCH namespace", () => {
   expect(
     useChroma({ value: "74.94, 23.93, 78.95", spaceName: "LCH", chroma: null })
-  ).toStrictEqual(chroma.lch(74.94, 23.93, 78.95));
+  ).toStrictEqual(chroma(74.94, 23.93, 78.95, "lch"));
 });
 
 it("Works with the Lab namespace", () => {
   expect(
     useChroma({ value: "74.94, 23.93, 78.95", spaceName: "Lab", chroma: null })
-  ).toStrictEqual(chroma.lab(74.94, 23.93, 78.95));
+  ).toStrictEqual(chroma(74.94, 23.93, 78.95, "lab"));
 });
 
 it("Works with the HSV namespace", () => {
