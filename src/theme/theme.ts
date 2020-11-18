@@ -6,10 +6,12 @@ import type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
+  TScale,
   TText,
   TFont,
   TFontNames,
   TFontWithName,
+  THeadings,
 } from "./typography";
 
 import type {
@@ -162,6 +164,7 @@ export type {
   TBreakpointNames,
   TTypographicGrid,
   TTypographicScale,
+  TScale,
   TText,
   TFont,
   TFontNames,
@@ -171,4 +174,5 @@ export type {
   TColorSpaceNames,
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
+  THeadings,
 };

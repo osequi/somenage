@@ -1,45 +1,29 @@
-import type { TTypographicScale } from "../../theme";
+import type { TScale } from "../../theme";
 import { theme } from "../../theme";
 import { useLinearScale, useModularScale } from "../";
-
-/**
- * Defines a temporary type.
- * It is used only for this hook.
- * @ignore
- */
-type TTypographicScaleWithPoint = {
-  /**
-   * The point on the scale.
-   */
-  point: number;
-  /**
-   * The scale.
-   */
-  scale?: TTypographicScale;
-};
 
 /**
  * Returns a value from a scale.
  * @ignore
  */
-const scaleValue = (scaleWithPoint: TTypographicScaleWithPoint): number => {
-  const { point } = scaleWithPoint;
+const scaleValue = (scale: TScale): number => {
+  const { point } = scale;
 
   const {
     typography: { scale: scaleFromTheme },
   } = theme;
 
-  const scale2 = scaleWithPoint.hasOwnProperty("scale")
-    ? scaleWithPoint.scale
+  const scaleSettings = scale.hasOwnProperty("scale")
+    ? scale.scale
     : scaleFromTheme;
 
-  const { name } = scale2;
+  const { name } = scaleSettings;
 
   switch (name) {
     case "linear":
-      return useLinearScale(point, scale2);
+      return useLinearScale(point, scaleSettings);
     case "modular":
-      return useModularScale(point, scale2);
+      return useModularScale(point, scaleSettings);
   }
 };
 
@@ -83,7 +67,7 @@ const useScale = (scales: number[] | number): object[] | object => {
  * useScaleWithSettings({ point: 1, scale: { name: "linear" } }) => {fontSize: 2em}
  */
 const useScaleWithSettings = (
-  scales?: TTypographicScaleWithPoint[] | TTypographicScaleWithPoint
+  scales?: TScale[] | TScale
 ): object[] | object => {
   return Array.isArray(scales)
     ? scales &&

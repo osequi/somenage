@@ -1,7 +1,7 @@
 import type { TTypographicGrid } from "../typographic-grid";
 import { typographicGrid } from "../typographic-grid";
 
-import type { TTypographicScale } from "../typographic-scale";
+import type { TTypographicScale, TScale } from "../typographic-scale";
 import { typographicScale } from "../typographic-scale";
 
 import type { TText } from "../text";
@@ -9,6 +9,9 @@ import { text } from "../text";
 
 import type { TFont, TFontNames, TFontWithName } from "../fonts";
 import { fonts } from "../fonts";
+
+import type { THeadings } from "../headings";
+import { headings } from "../headings";
 
 /**
  * Defines the typography type.
@@ -39,6 +42,10 @@ export type TTypography = {
    * The available fonts.
    */
   fonts: TFontWithName[];
+  /**
+   * The settings for the headings.
+   */
+  headings: THeadings;
 };
 
 /**
@@ -57,14 +64,17 @@ const typography: TTypography = {
   scale: typographicScale,
   text: text,
   fonts: fonts,
+  headings: headings,
 };
 
 export default typography;
 export type {
   TTypographicGrid,
   TTypographicScale,
+  TScale,
   TText,
   TFont,
   TFontNames,
   TFontWithName,
+  THeadings,
 };

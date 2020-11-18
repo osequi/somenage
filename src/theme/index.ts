@@ -7,6 +7,7 @@ export type {
   TTypographicGrid,
   TCssNotations,
   TTypographicScale,
+  TScale,
   TText,
   TFont,
   TFontNames,
@@ -16,4 +17,5 @@ export type {
   TColorSpaceNames,
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
+  THeadings,
 } from "./theme";
