@@ -1,5 +1,6 @@
 import { THeadings } from "../../theme";
-import { sameSizeHeadings, differentSizesHeadings } from "./";
+import { useSameSizeHeadings } from "../";
+import { useDifferentSizedHeadings } from "../";
 
 /**
  * Returns a heading style.
@@ -10,9 +11,9 @@ const getHeading = (headings: THeadings): object => {
 
   switch (preset) {
     case "sameSize":
-      return sameSizeHeadings(headings);
+      return useSameSizeHeadings(headings);
     case "differentSizes":
-      return differentSizesHeadings(headings);
+      return useDifferentSizedHeadings(headings);
   }
 };
 

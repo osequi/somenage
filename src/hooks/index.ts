@@ -11,3 +11,6 @@ export { useChromaValue } from "./use-chroma-value";
 export { useColorContrast } from "./use-color-contrast";
 export { useColorMaxContrast } from "./use-color-max-contrast";
 export { useColorTune } from "./use-color-tune";
+export { useHeadings } from "./use-headings";
+export { useSameSizeHeadings } from "./use-same-size-headings";
+export { useDifferentSizedHeadings } from "./use-different-sized-headings";

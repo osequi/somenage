@@ -21,7 +21,7 @@ const interpolateScales = (scales: object[] | object): object[] => {
  * @return				The style object.
  * @category Hooks
  * @example
- * differentSizesHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } }}) =>
+ * useDifferentSizedHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } }}) =>
        "& h1, h2, h3, h4, h5, h6": {
          "fontFamily": "inherit",
          "fontStyle": "normal",
@@ -48,7 +48,7 @@ const interpolateScales = (scales: object[] | object): object[] => {
           "fontSize": "2em",
        },
  */
-const useDifferentSizesHeadings = (headings: THeadings): object => {
+const useDifferentSizedHeadings = (headings: THeadings): object => {
   const {
     settings: { font, lineHeight, scale },
   } = headings;
@@ -83,4 +83,4 @@ const useDifferentSizesHeadings = (headings: THeadings): object => {
   };
 };
 
-export default useDifferentSizesHeadings;
+export default useDifferentSizedHeadings;
