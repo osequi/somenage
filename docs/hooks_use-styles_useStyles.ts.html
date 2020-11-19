@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/fonts/fonts.ts</title>
+  <title>Os Equi Somenage |  hooks/use-styles/useStyles.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/fonts/fonts.ts</h1>
+                    <h1>hooks/use-styles/useStyles.ts</h1>
                 </header>
                 
 
@@ -109,131 +109,56 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the available font names.
- * @category Theme
- */
-export type TFontNames =
-  | "Default"
-  | "Nimbus Sans Regular"
-  | "Nimbus Sans Medium";
+            <pre class="prettyprint source linenums"><code>import { css } from "@emotion/css";
 
 /**
- * Collects the font names into an array.
- *
- * - `TFontNames` is an union type. It offers no methods like `length`.
- * - `fontNames` is an array. It can be used to make calculations with.
- *
+ * Tranforms a style object / function with Emotion's `css()` function.
  * @ignore
+ * @see useStyles.md for TS warnings
  */
-const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
-
-/**
- * Defines the font type.
- *
- * The props are all valid CSS props.
- *
- * @category Theme
- * @example
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
- */
-export type TFont = {
-  fontFamily: string;
-  fontWeight: string | number;
-  fontStyle: string;
-  letterSpacing: string;
+const transformStyle = (style, props: {}) => {
+  /**
+   * Checks if this is a style object or function.
+   */
+  const isFunction = style &amp;&amp; style.name;
+  /**
+   * Checks if this is a style object with a label.
+   */
+  const isObjectWithLabel = style &amp;&amp; style.label;
+  /**
+   * Logs a warning message if a style object without a label is passed.
+   */
+  if (!isFunction &amp;&amp; !isObjectWithLabel) {
+    // NOTE: Remove in production.
+    // console.log("A style object without label was received:", style);
+  }
+  /**
+   * Returns value both for style functions and objects.
+   */
+  return isFunction ? css(style(props)) : css(style);
 };
 
 /**
- * Defines the font type with a name.
- * @category Theme
+ * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
+ * @category Hooks
  * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
+ * const klass = useStyles(styleFunction, props)
+ * @example
+ * const [klass1, klass2] = useStyles([styleFunction, styleObject], props)
  */
-export type TFontWithName = TFont &amp; {
-  name?: TFontNames;
+const useStyles = (styles?: [] | {}, props?: {}) => {
+  const styles2 = styles ? styles : {};
+  const props2 = props ? props : {};
+
+  return Array.isArray(styles2)
+    ? styles2 &amp;&amp;
+        styles2.reduce((result, item) => {
+          return [...result, transformStyle(item, props2)];
+        }, [])
+    : transformStyle(styles2, props2);
 };
 
-/**
- * Defines the default font.
- *
- * The default font is the browser's default font.
- *
- * @category Theme
- * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
- */
-const defaultFont: TFontWithName = {
-  name: "Default",
-  fontFamily: "inherit",
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: "normal",
-};
-
-/**
- * Defines the Nimbus Sans Regular font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans Regular",
- * fontFamily: "nimbus-sans",
- * fontWeight: 400,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
- */
-const nimbusSansRegular: TFontWithName = {
-  name: "Nimbus Sans Regular",
-  fontFamily: "nimbus-sans",
-  fontWeight: 400,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
-};
-
-/**
- * Defines the Nimbus Sans Medium font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans medium",
- * fontFamily: "nimbus-sans",
- * fontWeight: 500,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
- */
-const nimbusSansMedium: TFontWithName = {
-  name: "Nimbus Sans Medium",
-  fontFamily: "nimbus-sans",
-  fontWeight: 500,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
-};
-
-/**
- * Defines the available fonts.
- * @category Theme
- * @example
- * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
- */
-const fonts: TFontWithName[] = [
-  defaultFont,
-  nimbusSansRegular,
-  nimbusSansMedium,
-];
-
-export default fonts;
-export { fontNames };
+export default useStyles;
 </code></pre>
         </article>
     </section>

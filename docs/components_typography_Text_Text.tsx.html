@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/fonts/fonts.ts</title>
+  <title>Os Equi Somenage |  components/typography/Text/Text.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/fonts/fonts.ts</h1>
+                    <h1>components/typography/Text/Text.tsx</h1>
                 </header>
                 
 
@@ -109,131 +109,140 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Defines the available font names.
- * @category Theme
- */
-export type TFontNames =
-  | "Default"
-  | "Nimbus Sans Regular"
-  | "Nimbus Sans Medium";
+            <pre class="prettyprint source linenums"><code>import { FC, ComponentClass, HTMLProps, createElement } from "react";
+import { cx } from "emotion";
+import { startCase } from "lodash";
 
 /**
- * Collects the font names into an array.
- *
- * - `TFontNames` is an union type. It offers no methods like `length`.
- * - `fontNames` is an array. It can be used to make calculations with.
- *
- * @ignore
+ * Imports other components ans hooks.
  */
-const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
+import {
+  useStyles,
+  useFont,
+  useMaxWidth,
+  useScale,
+  useSpacing,
+  useHeadings,
+} from "../../../hooks";
 
 /**
- * Defines the font type.
- *
- * The props are all valid CSS props.
- *
- * @category Theme
- * @example
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
+ * Defines the text types.
  */
-export type TFont = {
-  fontFamily: string;
-  fontWeight: string | number;
-  fontStyle: string;
-  letterSpacing: string;
+export type TTextVariants = "default" | "body" | "longform" | "title";
+
+/**
+ * Defines the prop types.
+ */
+export type TText = {
+  variant: TTextVariants;
+  as?: FC | ComponentClass | string;
+  children?: any | any[];
 };
 
 /**
- * Defines the font type with a name.
- * @category Theme
- * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
+ * Defines the default props.
  */
-export type TFontWithName = TFont &amp; {
-  name?: TFontNames;
+const defaultProps: TText = {
+  variant: "default",
+  as: "div",
+  children: null,
 };
 
 /**
- * Defines the default font.
- *
- * The default font is the browser's default font.
- *
- * @category Theme
- * @example
- * name: "Default",
- * fontFamily: "inherit",
- * fontWeight: "normal",
- * fontStyle: "normal",
- * letterSpacing: "normal",
+ * Defines the styles.
  */
-const defaultFont: TFontWithName = {
-  name: "Default",
-  fontFamily: "inherit",
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: "normal",
-};
+const defaultText = (props: {
+  nimbusRegular: object;
+  defaultScale: object;
+  sameSizeHeadings: object;
+}): object => ({
+  ...props.nimbusRegular,
+  ...props.defaultScale,
+  ...props.sameSizeHeadings,
+});
+
+const bodyText = (props: {
+  nimbusRegular: object;
+  defaultScale: object;
+  maxWidth: object;
+  adjacentSpacing: object;
+  differentSizeHeadings: object;
+}): object => ({
+  ...props.nimbusRegular,
+  ...props.defaultScale,
+  ...props.maxWidth,
+  ...props.adjacentSpacing,
+  ...props.differentSizeHeadings,
+});
 
 /**
- * Defines the Nimbus Sans Regular font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans Regular",
- * fontFamily: "nimbus-sans",
- * fontWeight: 400,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
+ * Displays content inside a Text container.
  */
-const nimbusSansRegular: TFontWithName = {
-  name: "Nimbus Sans Regular",
-  fontFamily: "nimbus-sans",
-  fontWeight: 400,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
+const Text = (props: TText) => {
+  const { variant, as, children } = props;
+
+  /**
+   * Prepares data.
+   */
+  const nimbusRegular = useFont("Nimbus Sans Regular");
+  const defaultScale = useScale({ value: 1, preset: "linear" });
+  const maxWidth = useMaxWidth();
+  const adjacentSpacing = useSpacing("Adjacent siblings margin top");
+  const [sameSizeHeadings, differentSizeHeadings] = useHeadings([
+    {
+      preset: "sameSize",
+      settings: {
+        font: "Nimbus Sans Medium",
+        lineHeight: 1,
+        scale: 3,
+      },
+    },
+    {
+      preset: "differentSizes",
+      settings: {
+        font: "Nimbus Sans Medium",
+        lineHeight: 1,
+        scales: [3],
+      },
+    },
+  ]);
+
+  /**
+   * Loads styles.
+   */
+  const [defaultTextKlass, bodyTextKlass] = useStyles([defaultText, bodyText], {
+    nimbusRegular: nimbusRegular,
+    defaultScale: defaultScale,
+    maxWidth: maxWidth,
+    adjacentSpacing: adjacentSpacing,
+    sameSizeHeadings: sameSizeHeadings,
+    differentSizeHeadings: differentSizeHeadings,
+  });
+
+  /**
+   * Matches styles with the variants.
+   */
+  let klass = null;
+  switch (variant) {
+    case "default":
+      klass = defaultTextKlass;
+    case "body":
+      klass = bodyTextKlass;
+  }
+
+  /**
+   * Prepares the props for the new element.
+   */
+  const props2: HTMLProps&lt;any> = {
+    className: cx(klass, `Text${startCase(variant)}`),
+  };
+
+  return createElement(as, props2, children);
 };
 
-/**
- * Defines the Nimbus Sans Medium font.
- *
- * @category Theme
- * @example
- * name: "Nimbus Sans medium",
- * fontFamily: "nimbus-sans",
- * fontWeight: 500,
- * fontStyle: "normal",
- * letterSpacing: "1.25px",
- */
-const nimbusSansMedium: TFontWithName = {
-  name: "Nimbus Sans Medium",
-  fontFamily: "nimbus-sans",
-  fontWeight: 500,
-  fontStyle: "normal",
-  letterSpacing: "1.25px",
-};
+Text.defaultProps = defaultProps;
 
-/**
- * Defines the available fonts.
- * @category Theme
- * @example
- * fonts = [defaultFont, nimbusSansRegular, nimbusSansMedium]
- */
-const fonts: TFontWithName[] = [
-  defaultFont,
-  nimbusSansRegular,
-  nimbusSansMedium,
-];
-
-export default fonts;
-export { fontNames };
+export default Text;
 </code></pre>
         </article>
     </section>

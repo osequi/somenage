@@ -2,12 +2,23 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
   globals: {
-    // See https://github.com/vercel/next.js/issues/8663
-    // we must specify a custom tsconfig for tests because we need the typescript transform
-    // to transform jsx into js rather than leaving it jsx such as the next build requires.  you
-    // can see this setting in tsconfig.jest.json -> "jsx": "react"
+    /**
+     * A Next.js workaround
+     * See https://github.com/vercel/next.js/issues/8663
+     */
     "ts-jest": {
       tsconfig: "tsconfig.jest.json",
     },
   },
+  projects: [
+    /**
+     * Configuring different test environments.
+     * For React components: 'jsdom'
+     * For hooks, theme: node
+     * @see https://stackoverflow.com/questions/41318115/testing-two-environments-with-jest
+     */
+    "<rootDir>/src/components",
+    "<rootDir>/src/hooks",
+    "<rootDir>/src/theme",
+  ],
 };
