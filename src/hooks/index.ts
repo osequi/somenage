@@ -14,3 +14,5 @@ export { useColorTune } from "./use-color-tune";
 export { useHeadings } from "./use-headings";
 export { useSameSizeHeadings } from "./use-same-size-headings";
 export { useDifferentSizedHeadings } from "./use-different-sized-headings";
+export { useSpacing } from "./use-spacing";
+export { useTheme } from "./use-theme";
