@@ -1,2 +1,2 @@
 export { Setup } from "./Setup";
-export { Text } from "./Text";
+//export { Text } from "./Text";
