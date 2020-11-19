@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/colors/colors.ts</title>
+  <title>Os Equi Somenage |  hooks/use-spacing/useSpacing.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/colors/colors.ts</h1>
+                    <h1>hooks/use-spacing/useSpacing.ts</h1>
                 </header>
                 
 
@@ -109,105 +109,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
-import { TColorSpaceNames } from "./colorSpaces";
+            <pre class="prettyprint source linenums"><code>import type { TSpacingPresetNames } from "../../theme";
+import { adjacentSiblingsMarginTop } from ".";
 
 /**
- * The list of color names required to form a palette.
- * @category Theme
- */
-export type TColorNamesForThePalette =
-  | "Background"
-  | "Text"
-  | "Highlight"
-  | "Shade";
-
-/**
- * Defines the color type.
- * @category Theme
+ * Returns a specifing typographic spacing.
+ * @param	preset	The spacing preset name.
+ * @return			A style object.
+ * @category Hooks
  * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
+ * useSpacing("Adjacent siblings margin top") =>
+ * {
+ * 	"&amp; * + *": {
+ * 	"marginTop": "var(--lem)"},
+ * 	"&amp; * + li, tr + tr": {
+ * 		"marginTop": 0
+ * 	}
+ * }
  */
-export type TColor = {
-  /**
-   * The name of the color.
-   */
-  name?: string;
-  /**
-   * Which entry from the palette this color id for.
-   */
-  for?: TColorNamesForThePalette;
-  /**
-   * A short description of the usage of the color.
-   */
-  description?: string;
-  /**
-   * The value of the color in a color space.
-   */
-  value?: string | null;
-  /**
-   * The name of the color space where this color comes from.
-   */
-  spaceName?: TColorSpaceNames;
-  /**
-   * The `chroma-js` object for the color.
-   */
-  chroma: chroma.Color | null;
+const useSpacing = (preset: TSpacingPresetNames): object | null => {
+  switch (preset) {
+    case "Adjacent siblings margin top":
+      return adjacentSiblingsMarginTop;
+  }
 };
 
-/**
- * Defines the colors of the palette.
- * @category Theme
- * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
- */
-const colors: TColor[] = [
-  {
-    name: "White",
-    for: "Background",
-    description: "The background color.",
-    value: "white",
-    spaceName: "Name",
-    chroma: chroma("white"),
-  },
-  {
-    name: "Black",
-    for: "Text",
-    description: "The text color.",
-    value: "black",
-    spaceName: "Name",
-    chroma: chroma("black"),
-  },
-  {
-    name: "Undefined",
-    for: "Highlight",
-    description:
-      "The highlight color. Used for links, buttons, call to action elements.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-  {
-    name: "Undefined",
-    for: "Shade",
-    description: "The shade color. Used for secondary backgrounds.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-];
-
-export default colors;
+export default useSpacing;
 </code></pre>
         </article>
     </section>

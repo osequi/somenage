@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/colors/colors.ts</title>
+  <title>Os Equi Somenage |  hooks/use-same-size-headings/useSameSizeHeadings.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/colors/colors.ts</h1>
+                    <h1>hooks/use-same-size-headings/useSameSizeHeadings.ts</h1>
                 </header>
                 
 
@@ -109,105 +109,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
-import { TColorSpaceNames } from "./colorSpaces";
+            <pre class="prettyprint source linenums"><code>import type { THeadings } from "../../theme";
+import { useFont, useScales } from "../";
 
 /**
- * The list of color names required to form a palette.
- * @category Theme
- */
-export type TColorNamesForThePalette =
-  | "Background"
-  | "Text"
-  | "Highlight"
-  | "Shade";
-
-/**
- * Defines the color type.
- * @category Theme
+ * Returns headings with the same size.
+ * @param	headings 	The settings for headings.
+ * @return				The style object.
+ * @category Hooks
  * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
+ * useSameSizeHeadings(preset: "sameSize", settings: {font: "Default", lineHeight: 1, scale: { points: 3 }}) =>
+ * "&amp; h1, h2, h3, h4, h5, h6": {
+ * 	"fontFamily": "inherit",
+ * 	"fontSize": "4em",
+ * 	"fontStyle": "normal",
+ * 	"fontWeight": "normal",
+ * 	"letterSpacing": "normal",
+ * 	"lineHeight": 1}
  */
-export type TColor = {
+const useSameSizeHeadings = (headings: THeadings): object => {
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings;
+
+  const font2 = useFont(font);
+  const scale2 = useScales(scale);
   /**
-   * The name of the color.
+   * Always return a single scale, even if multiple scales were given by error.
    */
-  name?: string;
-  /**
-   * Which entry from the palette this color id for.
-   */
-  for?: TColorNamesForThePalette;
-  /**
-   * A short description of the usage of the color.
-   */
-  description?: string;
-  /**
-   * The value of the color in a color space.
-   */
-  value?: string | null;
-  /**
-   * The name of the color space where this color comes from.
-   */
-  spaceName?: TColorSpaceNames;
-  /**
-   * The `chroma-js` object for the color.
-   */
-  chroma: chroma.Color | null;
+  const scale3 = Array.isArray(scale2) ? scale2.shift() : scale2;
+
+  return {
+    ["&amp; h1, h2, h3, h4, h5, h6"]: {
+      ...font2,
+      ...scale3,
+      lineHeight: lineHeight,
+    },
+  };
 };
 
-/**
- * Defines the colors of the palette.
- * @category Theme
- * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
- */
-const colors: TColor[] = [
-  {
-    name: "White",
-    for: "Background",
-    description: "The background color.",
-    value: "white",
-    spaceName: "Name",
-    chroma: chroma("white"),
-  },
-  {
-    name: "Black",
-    for: "Text",
-    description: "The text color.",
-    value: "black",
-    spaceName: "Name",
-    chroma: chroma("black"),
-  },
-  {
-    name: "Undefined",
-    for: "Highlight",
-    description:
-      "The highlight color. Used for links, buttons, call to action elements.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-  {
-    name: "Undefined",
-    for: "Shade",
-    description: "The shade color. Used for secondary backgrounds.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-];
-
-export default colors;
+export default useSameSizeHeadings;
 </code></pre>
         </article>
     </section>

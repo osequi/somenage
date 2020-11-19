@@ -18,4 +18,5 @@ export type {
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
   THeadings,
+  TSpacingPresetNames,
 } from "./theme";

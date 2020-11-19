@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  theme/colors/colors.ts</title>
+  <title>Os Equi Somenage |  hooks/use-different-sized-headings/useDifferentSizedHeadings.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>theme/colors/colors.ts</h1>
+                    <h1>hooks/use-different-sized-headings/useDifferentSizedHeadings.ts</h1>
                 </header>
                 
 
@@ -109,105 +109,92 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chroma from "chroma-js";
-import { TColorSpaceNames } from "./colorSpaces";
+            <pre class="prettyprint source linenums"><code>import type { THeadings } from "../../theme";
+import { useFont, useScales } from "../";
 
 /**
- * The list of color names required to form a palette.
- * @category Theme
+ * Rounds up an array to 6 elements.
+ * @param  scales 	An array of scales.
+ * @return      	An array of scales having 6 elements.
+ * @ignore
  */
-export type TColorNamesForThePalette =
-  | "Background"
-  | "Text"
-  | "Highlight"
-  | "Shade";
+const interpolateScales = (scales: object[] | object): object[] => {
+  const lastElement = Array.isArray(scales) ? scales.pop() : scales;
 
-/**
- * Defines the color type.
- * @category Theme
- * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
- */
-export type TColor = {
-  /**
-   * The name of the color.
-   */
-  name?: string;
-  /**
-   * Which entry from the palette this color id for.
-   */
-  for?: TColorNamesForThePalette;
-  /**
-   * A short description of the usage of the color.
-   */
-  description?: string;
-  /**
-   * The value of the color in a color space.
-   */
-  value?: string | null;
-  /**
-   * The name of the color space where this color comes from.
-   */
-  spaceName?: TColorSpaceNames;
-  /**
-   * The `chroma-js` object for the color.
-   */
-  chroma: chroma.Color | null;
+  return Array.from(Array(6).keys()).map((item) => {
+    return scales[item] ? scales[item] : lastElement;
+  });
 };
 
 /**
- * Defines the colors of the palette.
- * @category Theme
+ * Returns headings with different size.
+ * @param	headings 	The settings for headings.
+ * @return				The style object.
+ * @category Hooks
  * @example
- * name: "White",
- * for: "Background",
- * description: "The background color.",
- * value: "white",
- * spaceName: "Name",
- * chroma: chroma("white"),
+ * useDifferentSizedHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } }}) =>
+       "&amp; h1, h2, h3, h4, h5, h6": {
+         "fontFamily": "inherit",
+         "fontStyle": "normal",
+         "fontWeight": "normal",
+         "letterSpacing": "normal",
+         "lineHeight": 1,
+       },
+		"&amp; h1": {
+           "fontSize": "3em",
+        },
+       "&amp; h2": {
+         "fontSize": "3em",
+       },
+       "&amp; h3": {
+         "fontSize": "3em",
+       },
+       "&amp; h4": {
+         "fontSize": "3em",
+       },
+       "&amp; h5": {
+         "fontSize": "3em",
+       },
+       "&amp; h6": {
+          "fontSize": "2em",
+       },
  */
-const colors: TColor[] = [
-  {
-    name: "White",
-    for: "Background",
-    description: "The background color.",
-    value: "white",
-    spaceName: "Name",
-    chroma: chroma("white"),
-  },
-  {
-    name: "Black",
-    for: "Text",
-    description: "The text color.",
-    value: "black",
-    spaceName: "Name",
-    chroma: chroma("black"),
-  },
-  {
-    name: "Undefined",
-    for: "Highlight",
-    description:
-      "The highlight color. Used for links, buttons, call to action elements.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-  {
-    name: "Undefined",
-    for: "Shade",
-    description: "The shade color. Used for secondary backgrounds.",
-    value: null,
-    spaceName: "Name",
-    chroma: null,
-  },
-];
+const useDifferentSizedHeadings = (headings: THeadings): object => {
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings;
 
-export default colors;
+  const font2 = useFont(font);
+  const scale2 = useScales(scale);
+  const scales = interpolateScales(scale2);
+
+  return {
+    ["&amp; h1, h2, h3, h4, h5, h6"]: {
+      ...font2,
+      lineHeight: lineHeight,
+    },
+    ["&amp; h6"]: {
+      ...scales[0],
+    },
+    ["&amp; h5"]: {
+      ...scales[1],
+    },
+    ["&amp; h4"]: {
+      ...scales[2],
+    },
+    ["&amp; h3"]: {
+      ...scales[3],
+    },
+    ["&amp; h2"]: {
+      ...scales[4],
+    },
+    ["&amp; h1"]: {
+      ...scales[5],
+    },
+  };
+};
+
+export default useDifferentSizedHeadings;
 </code></pre>
         </article>
     </section>

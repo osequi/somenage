@@ -30,6 +30,11 @@ import type {
 export type TCssNotations = "object" | "string";
 
 /**
+ * Defines the available spacing presets.
+ */
+export type TSpacingPresetNames = "Adjacent siblings margin top";
+
+/**
  * Defines the theme type.
  *
  * This is an umbrella component. All settings related to the theme are collected here.
