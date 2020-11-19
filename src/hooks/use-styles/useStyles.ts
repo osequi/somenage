@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 /**
  * Tranforms a style object / function with Emotion's `css()` function.
@@ -18,7 +18,7 @@ const transformStyle = (style, props: {}) => {
    */
   if (!isFunction && !isObjectWithLabel) {
     // NOTE: Remove in production.
-    console.log("A style object without label was received:", style);
+    // console.log("A style object without label was received:", style);
   }
   /**
    * Returns value both for style functions and objects.
