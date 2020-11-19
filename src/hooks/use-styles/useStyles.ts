@@ -3,6 +3,7 @@ import { css } from "@emotion/css";
 /**
  * Tranforms a style object / function with Emotion's `css()` function.
  * @ignore
+ * @see useStyles.md for TS warnings
  */
 const transformStyle = (style, props: {}) => {
   /**
@@ -29,9 +30,10 @@ const transformStyle = (style, props: {}) => {
 /**
  * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
  * @category Hooks
- * @example `const klass = useStyles(styleFunction, props)`
- * @example `const [klass1, klass2] = useStyles([styleFunction, styleObject], props)`
- * @see useStyles.md
+ * @example
+ * const klass = useStyles(styleFunction, props)
+ * @example
+ * const [klass1, klass2] = useStyles([styleFunction, styleObject], props)
  */
 const useStyles = (styles?: [] | {}, props?: {}) => {
   const styles2 = styles ? styles : {};

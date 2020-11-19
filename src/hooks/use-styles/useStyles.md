@@ -2,7 +2,7 @@
 
 ## Emotion
 
-- At this time of writing the code Emotion types are a mess.
+- At this time of writing the code, Emotion types are a mess.
 - When the hook satisfies all types it can't be feed with data.
 - So the hook works now without Emotion types.
 
