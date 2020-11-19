@@ -1,6 +1,10 @@
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "jsdom",
+  /**
+   * A fix ...
+   * @see https://github.com/nrwl/nx/issues/3776
+   */
+  testEnvironment: "jest-environment-jsdom-fifteen",
   globals: {
     // A Next.js workaround
     // See https://github.com/vercel/next.js/issues/8663

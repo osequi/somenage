@@ -16,3 +16,4 @@ export { useSameSizeHeadings } from "./use-same-size-headings";
 export { useDifferentSizedHeadings } from "./use-different-sized-headings";
 export { useSpacing } from "./use-spacing";
 export { useTheme } from "./use-theme";
+export { useStyles } from "./use-styles";
