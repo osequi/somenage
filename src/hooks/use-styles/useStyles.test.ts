@@ -1,7 +1,12 @@
 import { useStyles } from ".";
 
+/**
+ * // NOTE: This can't be really tested.
+ * hooks use the 'node' test environment. We should have a 'jsdom' environment to be able to render the styles.
+ */
+
 const style2 = {
-  backgroundColor: "red",
+  backgroundColor: "blue",
 };
 
 const style3 = {

@@ -29,10 +29,15 @@ const transformStyle = (style, props: {}) => {
 
 /**
  * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
+ *
+ * Note: Neither the style function nor the style object should have a return type. When type set (to object, TemplateStringsArray) no styling will be returned.
+ *
  * @category Hooks
  * @example
+ * const styleFunction = (props: ...) => { return {...}}
  * const klass = useStyles(styleFunction, props)
  * @example
+ * const klass2 = {label: 'klass2', ...}
  * const [klass1, klass2] = useStyles([styleFunction, styleObject], props)
  */
 const useStyles = (styles?: [] | {}, props?: {}) => {

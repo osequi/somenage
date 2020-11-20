@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { cx } from "@emotion/css";
+import React from "react";
 import { useStyles } from "../../../hooks";
 
 /**
@@ -20,21 +19,17 @@ export type TGridLines = {
    */
   displayVerticalRhytm?: boolean;
   /**
-   * Number of horizontal lines on the grid
+   * The number of horizontal lines on the grid.
    */
   numberOfHorizontalLines?: number;
   /**
-   * Number of vertical lines on the grid
+   * The number of vertical lines on the grid.
    */
   numberOfVerticalLines?: number;
   /**
-   * The color of the grid line
+   * The color of the grid line. It can be transparent because the web inspector is able to colorize the lines since they are flexbox items.
    */
   lineColor?: string;
-  /**
-   * The content to be displayed.
-   */
-  children?: ReactNode;
 } & typeof gridLines;
 
 /**
@@ -46,45 +41,38 @@ const gridLines = {
   numberOfVerticalLines: 100,
   numberOfHorizontalLines: 100,
   lineColor: "lightgray",
-  children: null,
 };
 
 /**
  * Defines the styles.
  */
-const container: object = {
-  label: "container",
-  background: "red",
-};
-
-const rhythmContainer: object = {
+const rhythmContainer = {
   label: "rhythmContainer",
-  width: "100%",
-  height: "100%",
   position: "absolute",
   top: 0,
   left: 0,
   zIndex: -1,
 };
 
-const verticalRhythmContainer = (props: {
-  displayVerticalRhytm: boolean;
-}): object => {
+const verticalRhythmContainer = (props: { displayVerticalRhytm: boolean }) => {
   return {
     display: props.displayVerticalRhytm ? "flex" : "none",
     flexWrap: "wrap",
+    height: "100%",
   };
 };
 
 const horizontalRhythmContainer = (props: {
   displayHorizontalRhytm: boolean;
-}): object => {
+}) => {
   return {
-    display: props.displayHorizontalRhytm ? "block" : "none",
+    display: props.displayHorizontalRhytm ? "flex" : "none",
+    flexDirection: "column",
+    width: "100%",
   };
 };
 
-const rhythmLine = (props: { lineColor: string }): object => {
+const rhythmLine = (props: { lineColor: string }) => {
   return {
     display: "block",
     boxSizing: "border-box",
@@ -93,14 +81,14 @@ const rhythmLine = (props: { lineColor: string }): object => {
   };
 };
 
-const verticalRhythmLine: object = {
+const verticalRhythmLine = {
   label: "verticalRhythmLine",
   width: "var(--lem)",
   height: "100%",
   borderRightStyle: "solid",
 };
 
-const horizontalRhythmLine: object = {
+const horizontalRhythmLine = {
   label: "horizontalRhythmLine",
   width: "100%",
   height: "var(--lem)",
@@ -118,18 +106,16 @@ const GridLines = (props: TGridLines) => {
     displayHorizontalRhytm,
     numberOfHorizontalLines,
     numberOfVerticalLines,
-    children,
   } = props;
 
-  const {
+  const [
     verticalRhythmContainerKlass,
     horizontalRhythmContainerKlass,
     verticalRhythmLineKlass,
     horizontalRhythmLineKlass,
     rhythmContainerKlass,
     rhythmLineKlass,
-    containerKlass,
-  } = useStyles(
+  ] = useStyles(
     [
       verticalRhythmContainer,
       horizontalRhythmContainer,
@@ -137,7 +123,6 @@ const GridLines = (props: TGridLines) => {
       horizontalRhythmLine,
       rhythmContainer,
       rhythmLine,
-      container,
     ],
     props
   );
@@ -161,11 +146,10 @@ const GridLines = (props: TGridLines) => {
   });
 
   return (
-    <div className={cx("GridLines", containerKlass)}>
+    <>
       {displayHorizontalRhytm && horizontalLines}
       {displayVerticalRhytm && verticalLines}
-      {children}
-    </div>
+    </>
   );
 };
 
