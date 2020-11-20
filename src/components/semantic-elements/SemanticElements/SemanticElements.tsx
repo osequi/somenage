@@ -40,19 +40,19 @@ export type TSemanticElement = {
    * Used to insert (a mostly hidden_ heading tag like `<nav><h3>Menu</h3>...</nav>`.
    * It can be overwritten by the `title` and `display` props.
    */
-  heading: THeadings;
+  heading?: THeadings;
   /**
    * The title of the element.
    * Overwrites the `{heading: children}` property.
    * Because it's easier to use `<Nav title="Menu" ..>` than `<Nav heading={{children: 'Menu'}} ..>`.
    */
-  title: string;
+  title?: string;
   /**
    * Display the heading?
    * Overwrites the `{heading: display}` property.
    * It's easier to use `<Nav title="Menu" display={false} ..>` than `<Nav heading={{children: 'Menu', display: false}} ..>`
    */
-  display: boolean;
+  display?: boolean;
   /**
    * The content to be displayed inside a semantic element.
    */
@@ -68,10 +68,10 @@ export type TSemanticElement = {
  * Defines the default props.
  */
 const semanticElementsDefaultProps = {
-  as: null,
+  as: "div",
   heading: headingsDefaultProps,
   title: null,
-  display: false,
+  display: true,
   children: null,
   className: null,
 };
