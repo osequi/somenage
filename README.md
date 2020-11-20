@@ -6,8 +6,8 @@ Best suited for static sites like blogs and marketing sites.
 
 ## Features
 
-- Renders Semantic HTML5 code.
-- Aligns elements perfectly to the typographic grid.
+- Renders Semantic HTML5 code validated by W3C.
+- Aligns elements to the typographic grid.
 
 ## Built on
 
