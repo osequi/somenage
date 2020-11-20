@@ -1,18 +1,20 @@
 # Somenage
 
 A design system for ozeki<sup>[1](#1)</sup> in Typescript and React.
+Best for static sites like blogs and marketing sites.
 
 ## Features
 
-- Semantic HTML5
+- Renders Semantic HTML5 code.
 -
 
 ## Built on
 
-- Next.js, to have a static site for testing.
-- Typescript, for scalability and more error-prone code
-- Jest, for testing theme and hooks
-- JsDoc, to generate API documentation
+- Typescript, for scalability and better code.
+- Emotion, for style objects and functions.
+- Next.js, for static site rendering.
+- Jest, for testing theme, hooks and components.
+- JsDoc, to generate API documentation.
 
 ## Footnotes
 
