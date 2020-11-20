@@ -1,12 +1,13 @@
 # Somenage
 
 A design system for ozeki<sup>[1](#1)</sup> in Typescript and React.
-Best for static sites like blogs and marketing sites.
+
+Best suited for static sites like blogs and marketing sites.
 
 ## Features
 
 - Renders Semantic HTML5 code.
--
+- Aligns elements perfectly to the typographic grid.
 
 ## Built on
 
