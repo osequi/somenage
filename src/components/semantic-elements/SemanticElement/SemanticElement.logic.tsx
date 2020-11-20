@@ -33,6 +33,7 @@ const nonEmptyClassname = (props: TSemanticElement): string => {
 
   /**
    * Generates a className.
+   * @example: NavMenu
    */
   const as2 = as ? startCase(as) : "";
   const title2 = title ? startCase(title) : "";

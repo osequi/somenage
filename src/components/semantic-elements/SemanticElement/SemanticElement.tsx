@@ -1,18 +1,12 @@
 import React, { createElement, ReactNode } from "react";
 
 /**
- * Imports other types, components and hooks
- */
-import type { THeadings } from "../Headings";
-import { Headings, headingsDefaultProps } from "../Headings";
-
-/**
  * Imports the business logic.
  */
 import {
   requiredPropsAreSet,
   nonEmptyClassname,
-} from "./SemanticElements.logic";
+} from "./SemanticElement.logic";
 
 /**
  * Defines the available semantic elements.
@@ -34,25 +28,17 @@ export type TSemanticElement = {
    * The type of the element.
    * @example: `nav`, 'article'
    */
-  as: TSemanticElement;
-  /**
-   * The heading of the element.
-   * Used to insert (a mostly hidden_ heading tag like `<nav><h3>Menu</h3>...</nav>`.
-   * It can be overwritten by the `title` and `display` props.
-   */
-  heading?: THeadings;
+  as: TSemanticElementList;
   /**
    * The title of the element.
-   * Overwrites the `{heading: children}` property.
-   * Because it's easier to use `<Nav title="Menu" ..>` than `<Nav heading={{children: 'Menu'}} ..>`.
+   * If set a heading will be inserted.
+   * @example <SemanticElement as='nav' title='Menu' /> => <nav><h3>Menu</h3>...</nav>
    */
-  title?: string;
+  title: string;
   /**
    * Display the heading?
-   * Overwrites the `{heading: display}` property.
-   * It's easier to use `<Nav title="Menu" display={false} ..>` than `<Nav heading={{children: 'Menu', display: false}} ..>`
    */
-  display?: boolean;
+  heading?: boolean;
   /**
    * The content to be displayed inside a semantic element.
    */
@@ -62,16 +48,15 @@ export type TSemanticElement = {
    * Serves the technical purpose of style chaining.
    */
   className: string;
-} & typeof semanticElementsDefaultProps;
+} & typeof semanticElementDefaultProps;
 
 /**
  * Defines the default props.
  */
-const semanticElementsDefaultProps = {
+const semanticElementDefaultProps = {
   as: "div",
-  heading: headingsDefaultProps,
   title: null,
-  display: true,
+  heading: false,
   children: null,
   className: null,
 };
@@ -81,18 +66,13 @@ const semanticElementsDefaultProps = {
  * This is a factory component.
  * It's better to use specific components like `<Article>` which has their props properly set up.
  */
-const SemanticElements = (props: TSemanticElement) => {
-  const { as, heading, title, children, display } = props;
+const SemanticElement = (props: TSemanticElement) => {
+  const { as, title, heading, children } = props;
 
   /**
    * Displays nothing if the mandatory props are not defined.
    */
   if (!requiredPropsAreSet(props)) return null;
-
-  /**
-   * Overwrites the `heading` props.
-   */
-  const heading2 = { ...heading, children: title, display: display };
 
   /**
    * Always displays a className.
@@ -102,12 +82,19 @@ const SemanticElements = (props: TSemanticElement) => {
   const className = nonEmptyClassname(props);
 
   /**
+   * Prepares the heading
+   */
+  const headingStyle = heading ? null : { display: "none" };
+  const headingTitle = title ? title : className;
+  const headingElement = <h3 style={headingStyle}>{headingTitle}</h3>;
+
+  /**
    * Prepares props for createElement
    */
-  const props2 = { className: className };
+  const props2 = { className: className, "data-testid": className };
   const children2 = (
     <>
-      {<Headings {...heading2} />}
+      {headingElement}
       {children}
     </>
   );
@@ -115,7 +102,7 @@ const SemanticElements = (props: TSemanticElement) => {
   return createElement(as, props2, children2);
 };
 
-SemanticElements.defaultProps = semanticElementsDefaultProps;
+SemanticElement.defaultProps = semanticElementDefaultProps;
 
-export default SemanticElements;
-export { semanticElementsDefaultProps };
+export default SemanticElement;
+export { semanticElementDefaultProps };
