@@ -10,6 +10,7 @@ import {
 
 /**
  * Defines the available semantic elements.
+ * @category Components
  */
 export type TSemanticElementList =
   | "article"
@@ -22,6 +23,7 @@ export type TSemanticElementList =
 
 /**
  * Defines the semantic element type.
+ * @category Components
  */
 export type TSemanticElement = {
   /**
@@ -52,6 +54,7 @@ export type TSemanticElement = {
 
 /**
  * Defines the default props.
+ * @category Components
  */
 const semanticElementDefaultProps = {
   as: "div",
@@ -63,8 +66,14 @@ const semanticElementDefaultProps = {
 
 /**
  * Displays a semantic element.
+ *
  * This is a factory component.
  * It's better to use specific components like `<Article>` which has their props properly set up.
+ *
+ * @category Components
+ * @component
+ * @example
+ * return (<SemanticElement as="nav" title="Menu">menu items</SemanticElement>)
  */
 const SemanticElement = (props: TSemanticElement) => {
   const { as, title, heading, children } = props;
@@ -76,30 +85,35 @@ const SemanticElement = (props: TSemanticElement) => {
 
   /**
    * Always displays a className.
+   *
    * When `className` is not specified it will become the tag name combined with the title.
    * Like `SectionDemo` for `<section title="Demo">`.
    */
   const className = nonEmptyClassname(props);
 
   /**
-   * Prepares the heading
+   * Prepares the heading.
    */
   const headingStyle = heading ? null : { display: "none" };
   const headingTitle = title ? title : className;
   const headingElement = <h3 style={headingStyle}>{headingTitle}</h3>;
 
   /**
-   * Prepares props for createElement
+   * Prepares props for createElement.
    */
-  const props2 = { className: className, "data-testid": className };
-  const children2 = (
+  const propsForCreateElement = {
+    className: className,
+    "data-testid": className,
+  };
+
+  const childrenForCreateElement = (
     <>
       {headingElement}
       {children}
     </>
   );
 
-  return createElement(as, props2, children2);
+  return createElement(as, propsForCreateElement, childrenForCreateElement);
 };
 
 SemanticElement.defaultProps = semanticElementDefaultProps;

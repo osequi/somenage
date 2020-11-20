@@ -25,5 +25,8 @@
   import Component0 from '../src/components/typography/GridLines/GridLines.tsx';
 reactComponents['GridLines'] = Component0;
 
-import Component1 from '../src/components/typography/Setup/Setup.tsx';
-reactComponents['Setup'] = Component1;
+import Component1 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
+reactComponents['SemanticElement'] = Component1;
+
+import Component2 from '../src/components/typography/Setup/Setup.tsx';
+reactComponents['Setup'] = Component2;

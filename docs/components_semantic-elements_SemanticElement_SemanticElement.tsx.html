@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  hooks/use-headings/useHeadings.ts</title>
+  <title>Os Equi Somenage |  components/semantic-elements/SemanticElement/SemanticElement.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>hooks/use-headings/useHeadings.ts</h1>
+                    <h1>components/semantic-elements/SemanticElement/SemanticElement.tsx</h1>
                 </header>
                 
 
@@ -109,45 +109,128 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { THeadings } from "../../theme";
-import { useSameSizeHeadings } from "../";
-import { useDifferentSizedHeadings } from "../";
+            <pre class="prettyprint source linenums"><code>import React, { createElement, ReactNode } from "react";
 
 /**
- * Returns a heading style.
- * @ignore
+ * Imports the business logic.
  */
-const getHeading = (headings: THeadings): object => {
-  const { preset } = headings;
+import {
+  requiredPropsAreSet,
+  nonEmptyClassname,
+} from "./SemanticElement.logic";
 
-  switch (preset) {
-    case "sameSize":
-      return useSameSizeHeadings(headings);
-    case "differentSizes":
-      return useDifferentSizedHeadings(headings);
-  }
+/**
+ * Defines the available semantic elements.
+ * @category Components
+ */
+export type TSemanticElementList =
+  | "article"
+  | "aside"
+  | "footer"
+  | "header"
+  | "heading"
+  | "nav"
+  | "section";
+
+/**
+ * Defines the semantic element type.
+ * @category Components
+ */
+export type TSemanticElement = {
+  /**
+   * The type of the element.
+   * @example: `nav`, 'article'
+   */
+  as: TSemanticElementList;
+  /**
+   * The title of the element.
+   * If set a heading will be inserted.
+   * @example &lt;SemanticElement as='nav' title='Menu' /> => &lt;nav>&lt;h3>Menu&lt;/h3>...&lt;/nav>
+   */
+  title: string;
+  /**
+   * Display the heading?
+   */
+  heading?: boolean;
+  /**
+   * The content to be displayed inside a semantic element.
+   */
+  children: ReactNode;
+  /**
+   * The className of the element.
+   * Serves the technical purpose of style chaining.
+   */
+  className: string;
+} &amp; typeof semanticElementDefaultProps;
+
+/**
+ * Defines the default props.
+ * @category Components
+ */
+const semanticElementDefaultProps = {
+  as: "div",
+  title: null,
+  heading: false,
+  children: null,
+  className: null,
 };
 
 /**
- * Resizes and styles headings according to a preset.
- * @param headings	An array of headings style settings, or a single headings style settings.
- * @return			An array of style objects, or a single style object.
- * @category Hooks
- * @example &lt;caption>Same sized headings&lt;/caption>
- * useHeadings({preset: "sameSize", settings: { font: "Default", lineHeight: 1, scale: { points: 3 }}}) => ["&amp; h1, h2, h3, h4, h5, h6"]: {fontSize: 4em, ...}
- * @example &lt;caption>Different sized headings&lt;/caption>
- * useHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] }}}) => {["&amp; h6"]: {fontSize: 2em}, ["&amp; h5"]: {fontSize: 3em}, ["&amp; h4"]: {fontSize: 3em}, ...}
+ * Displays a semantic element.
+ *
+ * This is a factory component.
+ * It's better to use specific components like `&lt;Article>` which has their props properly set up.
+ *
+ * @category Components
+ * @component
+ * @example
+ * return (&lt;SemanticElement as="nav" title="Menu">menu items&lt;/SemanticElement>)
  */
-const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
-  return Array.isArray(headings)
-    ? headings &amp;&amp;
-        headings.reduce((result, heading) => {
-          return [...result, getHeading(heading)];
-        }, [])
-    : getHeading(headings);
+const SemanticElement = (props: TSemanticElement) => {
+  const { as, title, heading, children } = props;
+
+  /**
+   * Displays nothing if the mandatory props are not defined.
+   */
+  if (!requiredPropsAreSet(props)) return null;
+
+  /**
+   * Always displays a className.
+   *
+   * When `className` is not specified it will become the tag name combined with the title.
+   * Like `SectionDemo` for `&lt;section title="Demo">`.
+   */
+  const className = nonEmptyClassname(props);
+
+  /**
+   * Prepares the heading.
+   */
+  const headingStyle = heading ? null : { display: "none" };
+  const headingTitle = title ? title : className;
+  const headingElement = &lt;h3 style={headingStyle}>{headingTitle}&lt;/h3>;
+
+  /**
+   * Prepares props for createElement.
+   */
+  const propsForCreateElement = {
+    className: className,
+    "data-testid": className,
+  };
+
+  const childrenForCreateElement = (
+    &lt;>
+      {headingElement}
+      {children}
+    &lt;/>
+  );
+
+  return createElement(as, propsForCreateElement, childrenForCreateElement);
 };
 
-export default useHeadings;
+SemanticElement.defaultProps = semanticElementDefaultProps;
+
+export default SemanticElement;
+export { semanticElementDefaultProps };
 </code></pre>
         </article>
     </section>

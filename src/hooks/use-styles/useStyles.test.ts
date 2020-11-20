@@ -1,8 +1,10 @@
 import { useStyles } from ".";
 
 /**
- * // NOTE: This can't be really tested.
- * hooks use the 'node' test environment. We should have a 'jsdom' environment to be able to render the styles.
+ * NOTE: This hook can't be really tested.
+ * Hooks use the 'node' test environment.
+ * We should have a 'jsdom' environment to be able to render the styles.
+ * @ignore
  */
 
 const style2 = {

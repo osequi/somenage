@@ -8,6 +8,7 @@ import drawLines from "./GridLines.logic";
 
 /**
  * Defines the grid lines type.
+ * @category Components
  */
 export type TGridLines = {
   /**
@@ -30,12 +31,13 @@ export type TGridLines = {
    * The color of the grid line. It can be transparent because the web inspector is able to colorize the lines since they are flexbox items.
    */
   lineColor?: string;
-} & typeof gridLines;
+} & typeof gridLinesDefaultProps;
 
 /**
  * Defines the default props.
+ * @category Components
  */
-const gridLines = {
+const gridLinesDefaultProps = {
   displayVerticalRhytm: true,
   displayHorizontalRhytm: true,
   numberOfVerticalLines: 200,
@@ -45,6 +47,7 @@ const gridLines = {
 
 /**
  * Defines the styles.
+ * @ignore
  */
 const rhythmContainer = {
   label: "rhythmContainer",
@@ -157,6 +160,7 @@ const GridLines = (props: TGridLines) => {
   );
 };
 
-GridLines.defaultProps = gridLines;
+GridLines.defaultProps = gridLinesDefaultProps;
 
 export default GridLines;
+export { gridLinesDefaultProps };

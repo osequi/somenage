@@ -1,1 +1,1 @@
-export { default as GridLines } from "./GridLines";
+export { default as GridLines, gridLinesDefaultProps } from "./GridLines";

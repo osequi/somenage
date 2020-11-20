@@ -9,6 +9,7 @@ import type { TSemanticElement } from ".";
  * Checks if all required props are provided.
  * @param  props The props object
  * @return       True, when all required props are set
+ * @ignore
  */
 const requiredPropsAreSet = (props: TSemanticElement): boolean => {
   const { children } = props;
@@ -20,6 +21,7 @@ const requiredPropsAreSet = (props: TSemanticElement): boolean => {
  * Sets the className when className is empty.
  * @param  props The props object
  * @return        The className
+ * @ignore
  */
 const nonEmptyClassname = (props: TSemanticElement): string => {
   const { className, as, title } = props;
