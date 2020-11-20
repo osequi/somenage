@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  components/typography/GridLines/GridLines.tsx</title>
+  <title>Os Equi Somenage |  components/semantic-elements/SemanticElements/SemanticElements.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/typography/GridLines/GridLines.tsx</h1>
+                    <h1>components/semantic-elements/SemanticElements/SemanticElements.tsx</h1>
                 </header>
                 
 
@@ -109,168 +109,127 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { useStyles } from "../../../hooks";
+            <pre class="prettyprint source linenums"><code>import React, { createElement, ReactNode } from "react";
 
 /**
- * Imports business logic.
+ * Imports other types, components and hooks
  */
-import drawLines from "./GridLines.logic";
+import type { THeadings } from "../Headings";
+import { Headings, headingsDefaultProps } from "../Headings";
 
 /**
- * Defines the grid lines type.
+ * Imports the business logic.
  */
-export type TGridLines = {
+import {
+  requiredPropsAreSet,
+  nonEmptyClassname,
+} from "./SemanticElements.logic";
+
+/**
+ * Defines the available semantic elements.
+ */
+export type TSemanticElementList =
+  | "article"
+  | "aside"
+  | "footer"
+  | "header"
+  | "heading"
+  | "nav"
+  | "section";
+
+/**
+ * Defines the semantic element type.
+ */
+export type TSemanticElement = {
   /**
-   * Display horizontal lines?
+   * The type of the element.
+   * @example: `nav`, 'article'
    */
-  displayHorizontalRhytm?: boolean;
+  as: TSemanticElement;
   /**
-   * Display vertica lines?
+   * The heading of the element.
+   * Used to insert (a mostly hidden_ heading tag like `&lt;nav>&lt;h3>Menu&lt;/h3>...&lt;/nav>`.
+   * It can be overwritten by the `title` and `display` props.
    */
-  displayVerticalRhytm?: boolean;
+  heading: THeadings;
   /**
-   * The number of horizontal lines on the grid.
+   * The title of the element.
+   * Overwrites the `{heading: children}` property.
+   * Because it's easier to use `&lt;Nav title="Menu" ..>` than `&lt;Nav heading={{children: 'Menu'}} ..>`.
    */
-  numberOfHorizontalLines?: number;
+  title: string;
   /**
-   * The number of vertical lines on the grid.
+   * Display the heading?
+   * Overwrites the `{heading: display}` property.
+   * It's easier to use `&lt;Nav title="Menu" display={false} ..>` than `&lt;Nav heading={{children: 'Menu', display: false}} ..>`
    */
-  numberOfVerticalLines?: number;
+  display: boolean;
   /**
-   * The color of the grid line. It can be transparent because the web inspector is able to colorize the lines since they are flexbox items.
+   * The content to be displayed inside a semantic element.
    */
-  lineColor?: string;
-} &amp; typeof gridLines;
+  children: ReactNode;
+  /**
+   * The className of the element.
+   * Serves the technical purpose of style chaining.
+   */
+  className: string;
+} &amp; typeof semanticElementsDefaultProps;
 
 /**
  * Defines the default props.
  */
-const gridLines = {
-  displayVerticalRhytm: true,
-  displayHorizontalRhytm: true,
-  numberOfVerticalLines: 200,
-  numberOfHorizontalLines: 100,
-  lineColor: "lightgray",
+const semanticElementsDefaultProps = {
+  as: null,
+  heading: headingsDefaultProps,
+  title: null,
+  display: false,
+  children: null,
+  className: null,
 };
 
 /**
- * Defines the styles.
+ * Displays a semantic element.
+ * This is a factory component.
+ * It's better to use specific components like `&lt;Article>` which has their props properly set up.
  */
-const rhythmContainer = {
-  label: "rhythmContainer",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  zIndex: -1,
-};
+const SemanticElements = (props: TSemanticElement) => {
+  const { as, heading, title, children, display } = props;
 
-const verticalRhythmContainer = (props: { displayVerticalRhytm: boolean }) => {
-  return {
-    display: props.displayVerticalRhytm ? "flex" : "none",
-    flexWrap: "wrap",
-    height: "100%",
-  };
-};
+  /**
+   * Displays nothing if the mandatory props are not defined.
+   */
+  if (!requiredPropsAreSet(props)) return null;
 
-const horizontalRhythmContainer = (props: {
-  displayHorizontalRhytm: boolean;
-}) => {
-  return {
-    display: props.displayHorizontalRhytm ? "flex" : "none",
-    flexDirection: "column",
-    width: "100%",
-  };
-};
+  /**
+   * Overwrites the `heading` props.
+   */
+  const heading2 = { ...heading, children: title, display: display };
 
-const rhythmLine = (props: { lineColor: string }) => {
-  return {
-    display: "block",
-    boxSizing: "border-box",
-    borderColor: props.lineColor ? props.lineColor : "transparent",
-    borderWidth: 1,
-  };
-};
+  /**
+   * Always displays a className.
+   * When `className` is not specified it will become the tag name combined with the title.
+   * Like `SectionDemo` for `&lt;section title="Demo">`.
+   */
+  const className = nonEmptyClassname(props);
 
-const verticalRhythmLine = {
-  label: "verticalRhythmLine",
-  width: "var(--lem)",
-  height: "100%",
-  borderRightStyle: "solid",
-};
-
-const horizontalRhythmLine = {
-  label: "horizontalRhythmLine",
-  width: "100%",
-  height: "var(--lem)",
-  borderBottomStyle: "solid",
-};
-
-/**
- * Displays the typographic grid lines.
- * @category Components
- * @component
- * @example
- * return (&lt;GridLines displayVerticalRhytm={true} displayHorizontalRhytm={true} numberOfHorizontalLines={10} numberOfVerticalLines={10}/>)
- */
-const GridLines = (props: TGridLines) => {
-  const {
-    displayVerticalRhytm,
-    displayHorizontalRhytm,
-    numberOfHorizontalLines,
-    numberOfVerticalLines,
-  } = props;
-
-  const [
-    verticalRhythmContainerKlass,
-    horizontalRhythmContainerKlass,
-    verticalRhythmLineKlass,
-    horizontalRhythmLineKlass,
-    rhythmContainerKlass,
-    rhythmLineKlass,
-  ] = useStyles(
-    [
-      verticalRhythmContainer,
-      horizontalRhythmContainer,
-      verticalRhythmLine,
-      horizontalRhythmLine,
-      rhythmContainer,
-      rhythmLine,
-    ],
-    props
-  );
-
-  const horizontalLines = drawLines({
-    type: "horizontal",
-    display: displayHorizontalRhytm,
-    numberOfLines: numberOfHorizontalLines,
-    container: horizontalRhythmContainerKlass,
-    line: horizontalRhythmLineKlass,
-    rhythmContainer: rhythmContainerKlass,
-    rhythmLine: rhythmLineKlass,
-  });
-
-  const verticalLines = drawLines({
-    type: "vertical",
-    display: displayVerticalRhytm,
-    numberOfLines: numberOfVerticalLines,
-    container: verticalRhythmContainerKlass,
-    line: verticalRhythmLineKlass,
-    rhythmContainer: rhythmContainerKlass,
-    rhythmLine: rhythmLineKlass,
-  });
-
-  return (
+  /**
+   * Prepares props for createElement
+   */
+  const props2 = { className: className };
+  const children2 = (
     &lt;>
-      {displayHorizontalRhytm &amp;&amp; horizontalLines}
-      {displayVerticalRhytm &amp;&amp; verticalLines}
+      {&lt;Headings {...heading2} />}
+      {children}
     &lt;/>
   );
+
+  return createElement(as, props2, children2);
 };
 
-GridLines.defaultProps = gridLines;
+SemanticElements.defaultProps = semanticElementsDefaultProps;
 
-export default GridLines;
+export default SemanticElements;
+export { semanticElementsDefaultProps };
 </code></pre>
         </article>
     </section>

@@ -1,7 +1,12 @@
-import React, { createElement, ReactNode } from "react";
+import { createElement, ReactNode } from "react";
 
 /**
  * Defines the headings type.
+ * @category Components
+ * @example
+ * level: 3,
+ * display: true,
+ * children: 'Hello',
  */
 export type THeadings = {
   /**
@@ -20,6 +25,11 @@ export type THeadings = {
 
 /**
  * Defines the headings default props.
+ * @category Components
+ * @example
+ * level: 3,
+ * display: true,
+ * children: 'Hello',
  */
 const headingsDefaultProps = {
   level: 3,
@@ -28,12 +38,15 @@ const headingsDefaultProps = {
 };
 
 /**
- * Displays the `<h1>` ... `<h6>` tags as semantic elements.
+ * Displays a `<h1>` ... `<h6>` tag.
+ *
  * This is a factory component.
  * It's better to use specific components instead like `<H1>` which has their props properly set up.
+ * @category Components
+ * @example
+ * <Headings level={1} display={true} children="This is a H1" />
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_SemanticElements
  */
-
 const Headings = (props: THeadings) => {
   const { level, display, children } = props;
 

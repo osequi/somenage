@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  components/typography/GridLines/GridLines.tsx</title>
+  <title>Os Equi Somenage |  components/semantic-elements/SemanticElements/SemanticElements.logic.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -100,7 +100,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/typography/GridLines/GridLines.tsx</h1>
+                    <h1>components/semantic-elements/SemanticElements/SemanticElements.logic.tsx</h1>
                 </header>
                 
 
@@ -109,168 +109,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { useStyles } from "../../../hooks";
+            <pre class="prettyprint source linenums"><code>import { isNil, startCase } from "lodash";
 
 /**
- * Imports business logic.
+ * Imports other types, components and hooks
  */
-import drawLines from "./GridLines.logic";
+import type { TSemanticElement } from ".";
 
 /**
- * Defines the grid lines type.
+ * Checks if all required props are provided.
+ * @param  props The props object
+ * @return       True, when all required props are set
  */
-export type TGridLines = {
-  /**
-   * Display horizontal lines?
-   */
-  displayHorizontalRhytm?: boolean;
-  /**
-   * Display vertica lines?
-   */
-  displayVerticalRhytm?: boolean;
-  /**
-   * The number of horizontal lines on the grid.
-   */
-  numberOfHorizontalLines?: number;
-  /**
-   * The number of vertical lines on the grid.
-   */
-  numberOfVerticalLines?: number;
-  /**
-   * The color of the grid line. It can be transparent because the web inspector is able to colorize the lines since they are flexbox items.
-   */
-  lineColor?: string;
-} &amp; typeof gridLines;
+const requiredPropsAreSet = (props: TSemanticElement): boolean => {
+  const { children } = props;
 
-/**
- * Defines the default props.
- */
-const gridLines = {
-  displayVerticalRhytm: true,
-  displayHorizontalRhytm: true,
-  numberOfVerticalLines: 200,
-  numberOfHorizontalLines: 100,
-  lineColor: "lightgray",
+  return !isNil(children);
 };
 
 /**
- * Defines the styles.
+ * Sets the className when className is empty.
+ * @param  props The props object
+ * @return        The className
  */
-const rhythmContainer = {
-  label: "rhythmContainer",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  zIndex: -1,
+const nonEmptyClassname = (props: TSemanticElement): string => {
+  const { className, as, title } = props;
+
+  if (className) return className;
+
+  /**
+   * Returns `ClassName` when the other props are not defined.
+   */
+  if (!className &amp;&amp; !as &amp;&amp; !title) return "ClassName";
+
+  /**
+   * Generates a className.
+   */
+  const as2 = as ? startCase(as) : "";
+  const title2 = title ? startCase(title) : "";
+
+  return `${as2}${title2}`;
 };
 
-const verticalRhythmContainer = (props: { displayVerticalRhytm: boolean }) => {
-  return {
-    display: props.displayVerticalRhytm ? "flex" : "none",
-    flexWrap: "wrap",
-    height: "100%",
-  };
-};
-
-const horizontalRhythmContainer = (props: {
-  displayHorizontalRhytm: boolean;
-}) => {
-  return {
-    display: props.displayHorizontalRhytm ? "flex" : "none",
-    flexDirection: "column",
-    width: "100%",
-  };
-};
-
-const rhythmLine = (props: { lineColor: string }) => {
-  return {
-    display: "block",
-    boxSizing: "border-box",
-    borderColor: props.lineColor ? props.lineColor : "transparent",
-    borderWidth: 1,
-  };
-};
-
-const verticalRhythmLine = {
-  label: "verticalRhythmLine",
-  width: "var(--lem)",
-  height: "100%",
-  borderRightStyle: "solid",
-};
-
-const horizontalRhythmLine = {
-  label: "horizontalRhythmLine",
-  width: "100%",
-  height: "var(--lem)",
-  borderBottomStyle: "solid",
-};
-
-/**
- * Displays the typographic grid lines.
- * @category Components
- * @component
- * @example
- * return (&lt;GridLines displayVerticalRhytm={true} displayHorizontalRhytm={true} numberOfHorizontalLines={10} numberOfVerticalLines={10}/>)
- */
-const GridLines = (props: TGridLines) => {
-  const {
-    displayVerticalRhytm,
-    displayHorizontalRhytm,
-    numberOfHorizontalLines,
-    numberOfVerticalLines,
-  } = props;
-
-  const [
-    verticalRhythmContainerKlass,
-    horizontalRhythmContainerKlass,
-    verticalRhythmLineKlass,
-    horizontalRhythmLineKlass,
-    rhythmContainerKlass,
-    rhythmLineKlass,
-  ] = useStyles(
-    [
-      verticalRhythmContainer,
-      horizontalRhythmContainer,
-      verticalRhythmLine,
-      horizontalRhythmLine,
-      rhythmContainer,
-      rhythmLine,
-    ],
-    props
-  );
-
-  const horizontalLines = drawLines({
-    type: "horizontal",
-    display: displayHorizontalRhytm,
-    numberOfLines: numberOfHorizontalLines,
-    container: horizontalRhythmContainerKlass,
-    line: horizontalRhythmLineKlass,
-    rhythmContainer: rhythmContainerKlass,
-    rhythmLine: rhythmLineKlass,
-  });
-
-  const verticalLines = drawLines({
-    type: "vertical",
-    display: displayVerticalRhytm,
-    numberOfLines: numberOfVerticalLines,
-    container: verticalRhythmContainerKlass,
-    line: verticalRhythmLineKlass,
-    rhythmContainer: rhythmContainerKlass,
-    rhythmLine: rhythmLineKlass,
-  });
-
-  return (
-    &lt;>
-      {displayHorizontalRhytm &amp;&amp; horizontalLines}
-      {displayVerticalRhytm &amp;&amp; verticalLines}
-    &lt;/>
-  );
-};
-
-GridLines.defaultProps = gridLines;
-
-export default GridLines;
+export { requiredPropsAreSet, nonEmptyClassname };
 </code></pre>
         </article>
     </section>
