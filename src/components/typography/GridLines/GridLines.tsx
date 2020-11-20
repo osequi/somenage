@@ -52,6 +52,11 @@ const gridLines = {
 /**
  * Defines the styles.
  */
+const container: object = {
+  label: "container",
+  background: "red",
+};
+
 const rhythmContainer: object = {
   label: "rhythmContainer",
   width: "100%",
@@ -123,6 +128,7 @@ const GridLines = (props: TGridLines) => {
     horizontalRhythmLineKlass,
     rhythmContainerKlass,
     rhythmLineKlass,
+    containerKlass,
   } = useStyles(
     [
       verticalRhythmContainer,
@@ -131,6 +137,7 @@ const GridLines = (props: TGridLines) => {
       horizontalRhythmLine,
       rhythmContainer,
       rhythmLine,
+      container,
     ],
     props
   );
@@ -154,11 +161,11 @@ const GridLines = (props: TGridLines) => {
   });
 
   return (
-    <>
+    <div className={cx("GridLines", containerKlass)}>
       {displayHorizontalRhytm && horizontalLines}
       {displayVerticalRhytm && verticalLines}
       {children}
-    </>
+    </div>
   );
 };
 

@@ -10,9 +10,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeContext.Provider value={theme}>
       <Setup />
-      <GridLines>
-        <Component {...pageProps} />
-      </GridLines>
+      <GridLines />
+      <Component {...pageProps} />
     </ThemeContext.Provider>
   );
 };
