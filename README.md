@@ -4,7 +4,8 @@ A design system for ozeki<sup>[1](#1)</sup> in Typescript and React.
 
 ## Features
 
-- Supports static sites, ie. semantic HTML5.
+- Semantic HTML5
+-
 
 ## Built on
 

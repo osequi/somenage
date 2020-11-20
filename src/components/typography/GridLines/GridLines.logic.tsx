@@ -1,6 +1,6 @@
 import React from "react";
 import { cx, ClassNamesArg } from "@emotion/css";
-import shortid from "shortid";
+import { useId } from "react-aria";
 
 export type TDrawLines = {
   type: string;
@@ -31,9 +31,7 @@ const drawLines = (props: TDrawLines) => {
   if (!display) return null;
 
   const lines = Array.from(Array(numberOfLines).keys()).map(() => {
-    return (
-      <span key={shortid.generate()} className={cx("Line", line, rhythmLine)} />
-    );
+    return <span key={useId()} className={cx("Line", line, rhythmLine)} />;
   });
 
   return (
