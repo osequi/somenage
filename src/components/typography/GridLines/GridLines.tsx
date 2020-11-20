@@ -38,7 +38,7 @@ export type TGridLines = {
 const gridLines = {
   displayVerticalRhytm: true,
   displayHorizontalRhytm: true,
-  numberOfVerticalLines: 100,
+  numberOfVerticalLines: 200,
   numberOfHorizontalLines: 100,
   lineColor: "lightgray",
 };
@@ -99,6 +99,8 @@ const horizontalRhythmLine = {
  * Displays the typographic grid lines.
  * @category Components
  * @component
+ * @example
+ * return (<GridLines displayVerticalRhytm={true} displayHorizontalRhytm={true} numberOfHorizontalLines={10} numberOfVerticalLines={10}/>)
  */
 const GridLines = (props: TGridLines) => {
   const {
@@ -128,6 +130,7 @@ const GridLines = (props: TGridLines) => {
   );
 
   const horizontalLines = drawLines({
+    type: "horizontal",
     display: displayHorizontalRhytm,
     numberOfLines: numberOfHorizontalLines,
     container: horizontalRhythmContainerKlass,
@@ -137,6 +140,7 @@ const GridLines = (props: TGridLines) => {
   });
 
   const verticalLines = drawLines({
+    type: "vertical",
     display: displayVerticalRhytm,
     numberOfLines: numberOfVerticalLines,
     container: verticalRhythmContainerKlass,

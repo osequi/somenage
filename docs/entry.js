@@ -22,5 +22,8 @@
 
     import './styles/iframe.css';
 
-  import Component0 from '../src/components/typography/Setup/Setup.tsx';
-reactComponents['Setup'] = Component0;
+  import Component0 from '../src/components/typography/GridLines/GridLines.tsx';
+reactComponents['GridLines'] = Component0;
+
+import Component1 from '../src/components/typography/Setup/Setup.tsx';
+reactComponents['Setup'] = Component1;

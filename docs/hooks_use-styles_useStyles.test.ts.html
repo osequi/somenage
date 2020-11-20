@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  hooks/use-styles/useStyles.test.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,58 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>hooks/use-styles/useStyles.test.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useStyles } from ".";
+
+/**
+ * // NOTE: This can't be really tested.
+ * hooks use the 'node' test environment. We should have a 'jsdom' environment to be able to render the styles.
+ */
+
+const style2 = {
+  backgroundColor: "blue",
+};
+
+const style3 = {
+  label: "style3",
+  backgroundColor: "red",
+};
+
+it("Works with a simple argument", () => {
+  expect(useStyles(style2)).not.toBeNull();
+});
+
+it("Works with an array argument", () => {
+  expect(useStyles([style2])).not.toBeNull();
+});
+
+it("Returns multiple results", () => {
+  expect(useStyles([style2, style3], {})).toHaveLength(2);
+});
+
+it("It works fine when a style object with a `label` is passed.", () => {
+  expect(useStyles([style3])).not.toBeNull();
+});
+
+it("Falls back silently on a style object without `label`.", () => {
+  expect(useStyles([style2])).not.toBeNull();
+});
+
+it("Falls back silently when there are not enough arguments", () => {
+  expect(useStyles()).not.toBeNull();
+});
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

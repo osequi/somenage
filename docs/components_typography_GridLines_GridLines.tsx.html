@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  Home</title>
+  <title>Os Equi Somenage |  components/typography/GridLines/GridLines.tsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,49 +99,179 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>components/typography/GridLines/GridLines.tsx</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Somenage</h1>
-<p>A design system for Os Equi in Typescript and React.</p>
-<h2>Features</h2>
-<ul>
-<li>Supports static sites, ie. semantic HTML5.</li>
-</ul>
-<h2>Built on</h2>
-<ul>
-<li>Next.js, to have a static site for testing.</li>
-<li>Typescript, for scalability and more error-prone code</li>
-<li>Jest, for testing theme and hooks</li>
-<li>JsDoc, to generate API documentation</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { useStyles } from "../../../hooks";
+
+/**
+ * Imports business logic.
+ */
+import drawLines from "./GridLines.logic";
+
+/**
+ * Defines the grid lines type.
+ */
+export type TGridLines = {
+  /**
+   * Display horizontal lines?
+   */
+  displayHorizontalRhytm?: boolean;
+  /**
+   * Display vertica lines?
+   */
+  displayVerticalRhytm?: boolean;
+  /**
+   * The number of horizontal lines on the grid.
+   */
+  numberOfHorizontalLines?: number;
+  /**
+   * The number of vertical lines on the grid.
+   */
+  numberOfVerticalLines?: number;
+  /**
+   * The color of the grid line. It can be transparent because the web inspector is able to colorize the lines since they are flexbox items.
+   */
+  lineColor?: string;
+} &amp; typeof gridLines;
+
+/**
+ * Defines the default props.
+ */
+const gridLines = {
+  displayVerticalRhytm: true,
+  displayHorizontalRhytm: true,
+  numberOfVerticalLines: 200,
+  numberOfHorizontalLines: 100,
+  lineColor: "lightgray",
+};
+
+/**
+ * Defines the styles.
+ */
+const rhythmContainer = {
+  label: "rhythmContainer",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  zIndex: -1,
+};
+
+const verticalRhythmContainer = (props: { displayVerticalRhytm: boolean }) => {
+  return {
+    display: props.displayVerticalRhytm ? "flex" : "none",
+    flexWrap: "wrap",
+    height: "100%",
+  };
+};
+
+const horizontalRhythmContainer = (props: {
+  displayHorizontalRhytm: boolean;
+}) => {
+  return {
+    display: props.displayHorizontalRhytm ? "flex" : "none",
+    flexDirection: "column",
+    width: "100%",
+  };
+};
+
+const rhythmLine = (props: { lineColor: string }) => {
+  return {
+    display: "block",
+    boxSizing: "border-box",
+    borderColor: props.lineColor ? props.lineColor : "transparent",
+    borderWidth: 1,
+  };
+};
+
+const verticalRhythmLine = {
+  label: "verticalRhythmLine",
+  width: "var(--lem)",
+  height: "100%",
+  borderRightStyle: "solid",
+};
+
+const horizontalRhythmLine = {
+  label: "horizontalRhythmLine",
+  width: "100%",
+  height: "var(--lem)",
+  borderBottomStyle: "solid",
+};
+
+/**
+ * Displays the typographic grid lines.
+ * @category Components
+ * @component
+ * @example
+ * return (&lt;GridLines displayVerticalRhytm={true} displayHorizontalRhytm={true} numberOfHorizontalLines={10} numberOfVerticalLines={10}/>)
+ */
+const GridLines = (props: TGridLines) => {
+  const {
+    displayVerticalRhytm,
+    displayHorizontalRhytm,
+    numberOfHorizontalLines,
+    numberOfVerticalLines,
+  } = props;
+
+  const [
+    verticalRhythmContainerKlass,
+    horizontalRhythmContainerKlass,
+    verticalRhythmLineKlass,
+    horizontalRhythmLineKlass,
+    rhythmContainerKlass,
+    rhythmLineKlass,
+  ] = useStyles(
+    [
+      verticalRhythmContainer,
+      horizontalRhythmContainer,
+      verticalRhythmLine,
+      horizontalRhythmLine,
+      rhythmContainer,
+      rhythmLine,
+    ],
+    props
+  );
+
+  const horizontalLines = drawLines({
+    display: displayHorizontalRhytm,
+    numberOfLines: numberOfHorizontalLines,
+    container: horizontalRhythmContainerKlass,
+    line: horizontalRhythmLineKlass,
+    rhythmContainer: rhythmContainerKlass,
+    rhythmLine: rhythmLineKlass,
+  });
+
+  const verticalLines = drawLines({
+    display: displayVerticalRhytm,
+    numberOfLines: numberOfVerticalLines,
+    container: verticalRhythmContainerKlass,
+    line: verticalRhythmLineKlass,
+    rhythmContainer: rhythmContainerKlass,
+    rhythmLine: rhythmLineKlass,
+  });
+
+  return (
+    &lt;>
+      {displayHorizontalRhytm &amp;&amp; horizontalLines}
+      {displayVerticalRhytm &amp;&amp; verticalLines}
+    &lt;/>
+  );
+};
+
+GridLines.defaultProps = gridLines;
+
+export default GridLines;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

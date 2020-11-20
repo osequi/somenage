@@ -3,6 +3,7 @@ import { cx, ClassNamesArg } from "@emotion/css";
 import shortid from "shortid";
 
 export type TDrawLines = {
+  type: string;
   display: boolean;
   numberOfLines: number;
   container: ClassNamesArg;
@@ -18,6 +19,7 @@ const defaultProps = {};
  */
 const drawLines = (props: TDrawLines) => {
   const {
+    type,
     display,
     numberOfLines,
     container,
@@ -35,7 +37,12 @@ const drawLines = (props: TDrawLines) => {
   });
 
   return (
-    <div className={cx("Container", container, rhythmContainer)}>{lines}</div>
+    <div
+      className={cx("GridLinesContainer", container, rhythmContainer)}
+      data-testid={`GridLinesContainer-${type}`}
+    >
+      {lines}
+    </div>
   );
 };
 
