@@ -99,7 +99,11 @@ const bodyText = (props: {
 });
 
 /**
- * Displays text inside a container.
+ * Displays a styled text.
+ *
+ * Instead of styling text freely, reusable text styles are defined here, and later re-used in other components.
+ * Like `default`, `body`, `longform` etc.
+ *
  * @category Components
  * @component
  * @example
@@ -114,7 +118,8 @@ const Text = (props: TText) => {
   if (isNil(children)) return null;
 
   /**
-   * Prepares data.
+   * Prepares the data.
+   * @ignore
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
   const defaultScale = useScale(1);
@@ -133,6 +138,7 @@ const Text = (props: TText) => {
 
   /**
    * Loads styles.
+   * @ignore
    */
   const [defaultTextKlass, bodyTextKlass] = useStyles([defaultText, bodyText], {
     nimbusRegular: nimbusRegular,
@@ -145,6 +151,7 @@ const Text = (props: TText) => {
 
   /**
    * Matches styles with the variants.
+   * @ignore
    */
   let klass = null;
   switch (variant) {
@@ -157,12 +164,12 @@ const Text = (props: TText) => {
   /**
    * Prepares the props for the new element.
    */
-  const props2: HTMLProps<any> = {
+  const propsForCreateElement: HTMLProps<any> = {
     className: cx(klass, `Text${startCase(variant)}`),
     ...asProps,
   };
 
-  return createElement(as, props2, children);
+  return createElement(as, propsForCreateElement, children);
 };
 
 Text.defaultProps = textDefaultProps;
