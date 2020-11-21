@@ -91,7 +91,6 @@ it("Works when children is defined", () => {
   expect(container.firstChild).toMatchInlineSnapshot(`
     <div
       class="ClassName"
-      data-testid="ClassName"
     >
       <h3
         style="display: none;"

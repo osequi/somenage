@@ -1,9 +1,7 @@
 export type { TSemanticElement, TSemanticElementList } from "./SemanticElement";
 export {
-  default as SemanticElement,
+  SemanticElement,
   semanticElementDefaultProps,
 } from "./SemanticElement";
-export {
-  requiredPropsAreSet,
-  nonEmptyClassname,
-} from "./SemanticElement.logic";
+
+export { Section, sectionDefaultProps } from "./Section";

@@ -3,14 +3,10 @@ import { render } from "@testing-library/react";
 import { GridLines } from ".";
 
 it("Renders exactly the number of lines specified", () => {
-  const { getByTestId } = render(
-    <GridLines
-      displayVerticalRhytm={true}
-      displayHorizontalRhytm={false}
-      numberOfVerticalLines={3}
-    />
+  const { getAllByTestId } = render(
+    <GridLines displayHorizontalRhytm={true} numberOfHorizontalLines={3} />
   );
-  expect(getByTestId("GridLinesContainer-vertical").children.length).toBe(3);
+  expect(getAllByTestId("GridLine-horizontal").length).toBe(3);
 });
 
 it("Renders horizontal lines", () => {

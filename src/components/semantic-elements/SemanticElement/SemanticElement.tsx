@@ -50,6 +50,11 @@ export type TSemanticElement = {
    * Serves the technical purpose of style chaining.
    */
   className: string;
+  /**
+   * The test id of the element.
+   * It come from the parent, usually.
+   */
+  testId?: string;
 } & typeof semanticElementDefaultProps;
 
 /**
@@ -62,6 +67,7 @@ const semanticElementDefaultProps = {
   heading: false,
   children: null,
   className: null,
+  testId: null,
 };
 
 /**
@@ -76,7 +82,7 @@ const semanticElementDefaultProps = {
  * return (<SemanticElement as="nav" title="Menu">menu items</SemanticElement>)
  */
 const SemanticElement = (props: TSemanticElement) => {
-  const { as, title, heading, children } = props;
+  const { as, title, heading, children, testId } = props;
 
   /**
    * Displays nothing if the mandatory props are not defined.
@@ -103,7 +109,7 @@ const SemanticElement = (props: TSemanticElement) => {
    */
   const propsForCreateElement = {
     className: className,
-    "data-testid": className,
+    "data-testid": testId,
   };
 
   const childrenForCreateElement = (

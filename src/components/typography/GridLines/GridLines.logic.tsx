@@ -3,6 +3,11 @@ import { cx, ClassNamesArg } from "@emotion/css";
 import { useId } from "react-aria";
 
 /**
+ * Imports other types, components and hooks
+ */
+import { Section } from "../../semantic-elements";
+
+/**
  * Defines the draw lines type.
  * @ignore
  */
@@ -50,12 +55,13 @@ const drawLines = (props: TDrawLines) => {
   });
 
   return (
-    <div
+    <Section
+      title={`GridLinesContainer-${type}`}
+      testId={`GridLinesContainer-${type}`}
       className={cx("GridLinesContainer", container, rhythmContainer)}
-      data-testid={`GridLinesContainer-${type}`}
     >
       {lines}
-    </div>
+    </Section>
   );
 };
 
