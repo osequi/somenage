@@ -1,13 +1,17 @@
 import React from "react";
 
 /**
- * Imports other types, components and hooks
+ * Imports other types, components and hooks.
  */
 import type { TSemanticElement } from "../";
 import { SemanticElement, semanticElementDefaultProps } from "../";
 
 /**
- * Defines the default props
+ * Defines the section default props.
+ * @category Components
+ * @example
+ * ...semanticElementDefaultProps,
+ * as: "section",
  */
 const sectionDefaultProps: TSemanticElement = {
   ...semanticElementDefaultProps,
@@ -16,6 +20,10 @@ const sectionDefaultProps: TSemanticElement = {
 
 /**
  * Displays a `<section>` element.
+ * @category Components
+ * @component
+ * @example
+ * return (<Section title="Section title"/>)
  */
 const Section = (props: TSemanticElement) => {
   return <SemanticElement {...props} />;

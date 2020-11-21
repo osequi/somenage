@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Os Equi Somenage |  hooks/use-headings/useHeadings.ts</title>
+  <title>Os Equi Somenage |  Footer</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -99,58 +97,180 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>hooks/use-headings/useHeadings.ts</h1>
+                    <p>Components</p>
+                    <h1>Footer</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import { THeadings } from "../../theme";
-import { useSameSizeHeadings } from "../";
-import { useDifferentSizedHeadings } from "../";
+        <h2>
+            &ltFooter  /&gt
+        </h2>
+        
+    
+</header>
 
-/**
- * Returns a heading style.
- * @ignore
- */
-const getHeading = (headings: THeadings): object => {
-  const { preset } = headings;
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
-  switch (preset) {
-    case "sameSize":
-      return useSameSizeHeadings(headings);
-    case "differentSizes":
-      return useDifferentSizedHeadings(headings);
-  }
-};
 
-/**
- * Resizes and styles headings according to a preset.
- * @param headings	An array of headings style settings, or a single headings style settings.
- * @return			An array of style objects, or a single style object.
- * @category Hooks
- * @example &lt;caption>Same sized headings&lt;/caption>
- * useHeadings({preset: "sameSize", settings: { font: "Default", lineHeight: 1, scale: { points: 3 }}}) => ["&amp; h1, h2, h3, h4, h5, h6"]: {fontSize: 4em, ...}
- * @example &lt;caption>Different sized headings&lt;/caption>
- * useHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] }}}) => {["&amp; h6"]: {fontSize: 2em}, ["&amp; h5"]: {fontSize: 3em}, ["&amp; h4"]: {fontSize: 3em}, ...}
- */
-const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
-  return Array.isArray(headings)
-    ? headings &amp;&amp;
-        headings.reduce((result, heading) => {
-          return [...result, getHeading(heading)];
-        }, [])
-    : getHeading(headings);
-};
+    
+    <h4 class="name" id="Footer">
+        <a class="href-link" href="#Footer">#</a>
+        
+        <span class="code-name">
+            
+                &ltFooter  /&gt
+            
+        </span>
+    </h4>
+    
 
-export default useHeadings;
-</code></pre>
-        </article>
-    </section>
+    
+    
+    <div class="description">
+        <p>Displays a <code>&lt;footer&gt;</code> element.</p>
+    </div>
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_semantic-elements_Footer_Footer.tsx.html" class="button">View Source</a>
+            <span>
+                <a href="components_semantic-elements_Footer_Footer.tsx.html">components/semantic-elements/Footer/Footer.tsx</a>, <a href="components_semantic-elements_Footer_Footer.tsx.html#line22">line 22</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        
+
+<div id='component0'></div>
+
+<script>
+  ReactDOM.render(ReactWrapper({
+    example: "return (<Footer title=\"Footer title\"/>)",
+    uniqId: "component0",
+  }), document.getElementById('component0'));
+</script>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+        
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

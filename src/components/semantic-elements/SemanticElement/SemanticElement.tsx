@@ -58,8 +58,15 @@ export type TSemanticElement = {
 } & typeof semanticElementDefaultProps;
 
 /**
- * Defines the default props.
+ * Defines the semantci element default props.
  * @category Components
+ * @example
+ * as: "div",
+ * title: null,
+ * heading: false,
+ * children: null,
+ * className: null,
+ * testId: null,
  */
 const semanticElementDefaultProps = {
   as: "div",

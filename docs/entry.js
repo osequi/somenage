@@ -22,11 +22,23 @@
 
     import './styles/iframe.css';
 
-  import Component0 from '../src/components/typography/GridLines/GridLines.tsx';
-reactComponents['GridLines'] = Component0;
+  import Component0 from '../src/components/semantic-elements/Article/Article.tsx';
+reactComponents['Article'] = Component0;
 
-import Component1 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
-reactComponents['SemanticElement'] = Component1;
+import Component1 from '../src/components/semantic-elements/Aside/Aside.tsx';
+reactComponents['Aside'] = Component1;
 
-import Component2 from '../src/components/typography/Setup/Setup.tsx';
-reactComponents['Setup'] = Component2;
+import Component2 from '../src/components/semantic-elements/Footer/Footer.tsx';
+reactComponents['Footer'] = Component2;
+
+import Component3 from '../src/components/typography/GridLines/GridLines.tsx';
+reactComponents['GridLines'] = Component3;
+
+import Component4 from '../src/components/semantic-elements/Section/Section.tsx';
+reactComponents['Section'] = Component4;
+
+import Component5 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
+reactComponents['SemanticElement'] = Component5;
+
+import Component6 from '../src/components/typography/Setup/Setup.tsx';
+reactComponents['Setup'] = Component6;

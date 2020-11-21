@@ -1,13 +1,17 @@
 import React from "react";
 
 /**
- * Imports other types, components and hooks
+ * Imports other types, components and hooks.
  */
 import type { TSemanticElement } from "../";
 import { SemanticElement, semanticElementDefaultProps } from "../";
 
 /**
- * Defines the default props
+ * Defines the aside default props.
+ * @category Components
+ * @example
+ * ...semanticElementDefaultProps,
+ * as: "aside",
  */
 const asideDefaultProps: TSemanticElement = {
   ...semanticElementDefaultProps,
@@ -15,7 +19,11 @@ const asideDefaultProps: TSemanticElement = {
 };
 
 /**
- * Displays a `<aside>` element.
+ * Displays an `<aside>` element.
+ * @category Components
+ * @component
+ * @example
+ * return (<Aside title="Aside title"/>)
  */
 const Aside = (props: TSemanticElement) => {
   return <SemanticElement {...props} />;

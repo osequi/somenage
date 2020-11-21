@@ -1,13 +1,18 @@
 import React from "react";
 
 /**
- * Imports other types, components and hooks
+ * Imports other types, components and hooks.
  */
 import type { TSemanticElement } from "../";
 import { SemanticElement, semanticElementDefaultProps } from "../";
 
 /**
- * Defines the default props
+ * Defines the article default props.
+ * @category Components
+ * @example
+ * ...semanticElementDefaultProps,
+ * as: "article",
+ * heading: true,
  */
 const articleDefaultProps: TSemanticElement = {
   ...semanticElementDefaultProps,
@@ -16,7 +21,11 @@ const articleDefaultProps: TSemanticElement = {
 };
 
 /**
- * Displays a `<article>` element.
+ * Displays an `<article>` element.
+ * @category Components
+ * @component
+ * @example
+ * return (<Article title="Article title"/>)
  */
 const Article = (props: TSemanticElement) => {
   return <SemanticElement {...props} />;
