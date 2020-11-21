@@ -46,5 +46,8 @@ reactComponents['Section'] = Component6;
 import Component7 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
 reactComponents['SemanticElement'] = Component7;
 
-import Component8 from '../src/components/typography/Setup/Setup.tsx';
-reactComponents['Setup'] = Component8;
+import Component8 from '../src/components/semantic-elements/SemanticHeading/SemanticHeading.tsx';
+reactComponents['SemanticHeading'] = Component8;
+
+import Component9 from '../src/components/typography/Setup/Setup.tsx';
+reactComponents['Setup'] = Component9;

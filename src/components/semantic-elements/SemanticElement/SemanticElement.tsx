@@ -106,6 +106,7 @@ const SemanticElement = (props: TSemanticElement) => {
 
   /**
    * Prepares the heading.
+   * NOTE: Perhaps this should be refactored to use `SemanticHeading`
    */
   const headingStyle = heading ? null : { display: "none" };
   const headingTitle = title ? title : className;
