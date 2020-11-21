@@ -3,21 +3,67 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { SemanticElement } from ".";
 
-it("The H3 heading can be displayed", () => {
+it("`className` fails back silently", () => {
+  const { container } = render(
+    <SemanticElement children="Semantic elements" />
+  );
+  expect(container.firstChild).toHaveClass("ClassName");
+});
+
+it("`className` is generated when it's not directly specified", () => {
+  const { container } = render(
+    <SemanticElement
+      title="Class name generated"
+      children="Semantic elements"
+    />
+  );
+  expect(container.firstChild).toHaveClass("DivClassNameGenerated");
+});
+
+it("`className` is working well", () => {
+  const { container } = render(
+    <SemanticElement className="className" children="Semantic elements" />
+  );
+  expect(container.firstChild).toHaveClass("className");
+});
+
+it("`title` fails back to `className` silently", () => {
+  const { container } = render(
+    <SemanticElement
+      heading={true}
+      className="className"
+      children="Semantic elements"
+    />
+  );
+  expect(container.firstChild.firstChild).toHaveTextContent("className");
+});
+
+it("`title` is working well", () => {
+  const { container } = render(
+    <SemanticElement
+      heading={true}
+      title="Heading title"
+      children="Semantic elements"
+    />
+  );
+  expect(container.firstChild.firstChild).toHaveTextContent("Heading title");
+});
+
+it("Displays the heading on request", () => {
   const { container } = render(
     <SemanticElement heading={true} children="Semantic elements" />
   );
   expect(container.firstChild.firstChild).toHaveStyle("display:block");
 });
 
-it("The H3 heading is hidden by default", () => {
+it("Hides the heading by default", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );
   expect(container.firstChild.firstChild).toHaveStyle("display:none");
 });
 
-it("A H3 heading is always inserted", () => {
+it("Displays a H3 heading", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );
@@ -31,7 +77,7 @@ it("`as` is working well", () => {
   expect(container.firstChild.nodeName).toBe("SECTION");
 });
 
-it("Fails back to `div` when `as` is not defined", () => {
+it("`as` fails back to `div` when it is not defined", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );
@@ -44,13 +90,13 @@ it("Works when children is defined", () => {
   );
   expect(container.firstChild).toMatchInlineSnapshot(`
     <div
-      class="Div"
-      data-testid="Div"
+      class="ClassName"
+      data-testid="ClassName"
     >
       <h3
         style="display: none;"
       >
-        Div
+        ClassName
       </h3>
       Semantic elements
     </div>

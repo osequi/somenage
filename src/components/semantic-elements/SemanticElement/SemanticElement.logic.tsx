@@ -1,4 +1,4 @@
-import { isNil, startCase } from "lodash";
+import { isNil, upperFirst, camelCase } from "lodash";
 
 /**
  * Imports other types, components and hooks
@@ -31,14 +31,14 @@ const nonEmptyClassname = (props: TSemanticElement): string => {
   /**
    * Returns `ClassName` when the other props are not defined.
    */
-  if (!className && !as && !title) return "ClassName";
+  if (!className && !title) return "ClassName";
 
   /**
    * Generates a className.
    * @example: NavMenu
    */
-  const as2 = as ? startCase(as) : "";
-  const title2 = title ? startCase(title) : "";
+  const as2 = as ? upperFirst(as) : "";
+  const title2 = title ? upperFirst(camelCase(title)) : "";
 
   return `${as2}${title2}`;
 };
