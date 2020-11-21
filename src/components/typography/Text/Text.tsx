@@ -1,9 +1,9 @@
-import { FC, ComponentClass, HTMLProps, createElement } from "react";
+import { ReactNode, HTMLProps, createElement } from "react";
 import { cx } from "@emotion/css";
-import { startCase } from "lodash";
+import { startCase, isNil } from "lodash";
 
 /**
- * Imports other components ans hooks.
+ * Imports other types, components ans hooks.
  */
 import {
   useStyles,
@@ -15,30 +15,59 @@ import {
 } from "../../../hooks";
 
 /**
- * Defines the text types.
+ * Defines the text variant type.
+ * @category Components
  */
 export type TTextVariants = "default" | "body" | "longform" | "title";
 
 /**
- * Defines the prop types.
+ * Defines the text type.
+ * @category Components
+ * @example
+ * variant: "default",
+ * as: "div",
+ * children: null,
  */
 export type TText = {
+  /**
+   * The style of the text.
+   * It's a preset. One of `TTextVariants`.
+   */
   variant: TTextVariants;
-  as?: FC | ComponentClass | string;
-  children?: any | any[];
-};
+  /**
+   * The container where the text is rendered.
+   * Preferably a `SemanticElement`.
+   */
+  as?: ReactNode;
+  /**
+   * The content to be rendered.
+   */
+  children: ReactNode;
+  /**
+   * The className of the element.
+   * Serves the technical purpose of style chaining.
+   */
+  className: string;
+} & typeof textDefaultProps;
 
 /**
- * Defines the default props.
+ * Defines the text default props.
+ * @category Components
+ * @example
+ * variant: "default",
+ * as: "div",
+ * children: null,
  */
-const defaultProps: TText = {
+const textDefaultProps = {
   variant: "default",
   as: "div",
   children: null,
+  className: null,
 };
 
 /**
  * Defines the styles.
+ * @ignore
  */
 const defaultText = (props: {
   nimbusRegular: object;
@@ -65,34 +94,35 @@ const bodyText = (props: {
 });
 
 /**
- * Displays content inside a Text container.
+ * Displays text inside a container.
+ * @category Components
+ * @component
+ * @example
+ * return <Text variant='default'>This is a default text</Text>
  */
 const Text = (props: TText) => {
   const { variant, as, children } = props;
 
   /**
+   * Displays nothing if children is not defined.
+   */
+  if (isNil(children)) return null;
+
+  /**
    * Prepares data.
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
-  const defaultScale = useScale({ value: 1, preset: "linear" });
+  const defaultScale = useScale(1);
   const maxWidth = useMaxWidth();
   const adjacentSpacing = useSpacing("Adjacent siblings margin top");
   const [sameSizeHeadings, differentSizeHeadings] = useHeadings([
     {
       preset: "sameSize",
-      settings: {
-        font: "Nimbus Sans Medium",
-        lineHeight: 1,
-        scale: 3,
-      },
+      settings: { font: "Default", lineHeight: 1, scale: { points: 3 } },
     },
     {
       preset: "differentSizes",
-      settings: {
-        font: "Nimbus Sans Medium",
-        lineHeight: 1,
-        scales: [3],
-      },
+      settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } },
     },
   ]);
 
@@ -129,6 +159,7 @@ const Text = (props: TText) => {
   return createElement(as, props2, children);
 };
 
-Text.defaultProps = defaultProps;
+Text.defaultProps = textDefaultProps;
 
 export default Text;
+export { textDefaultProps };
