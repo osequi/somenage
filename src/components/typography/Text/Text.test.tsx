@@ -2,6 +2,21 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { Text } from ".";
+import { Section } from "../../semantic-elements";
+
+it("`as` when is a component supports `asProps`", () => {
+  const { container } = render(
+    <Text as={Section} asProps={{ title: "Section title" }}>
+      This is a text
+    </Text>
+  );
+  expect(container.firstChild.firstChild).toContainHTML("Section title");
+});
+
+it("`as` can be a component", () => {
+  const { container } = render(<Text as={Section}>This is a text</Text>);
+  expect(container.firstChild.nodeName).toBe("SECTION");
+});
 
 it("Sets well the `as`", () => {
   const { container } = render(<Text as="article">This is a text</Text>);

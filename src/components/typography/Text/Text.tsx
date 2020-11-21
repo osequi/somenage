@@ -38,7 +38,11 @@ export type TText = {
    * The container where the text is rendered.
    * Preferably a `SemanticElement`.
    */
-  as?: ReactNode;
+  as?: any | string;
+  /**
+   * The props of the container where the text is rendered.
+   */
+  asProps: object;
   /**
    * The content to be rendered.
    */
@@ -61,6 +65,7 @@ export type TText = {
 const textDefaultProps = {
   variant: "default",
   as: "div",
+  asProps: null,
   children: null,
   className: null,
 };
@@ -101,7 +106,7 @@ const bodyText = (props: {
  * return <Text variant='default'>This is a default text</Text>
  */
 const Text = (props: TText) => {
-  const { variant, as, children } = props;
+  const { variant, as, asProps, children } = props;
 
   /**
    * Displays nothing if children is not defined.
@@ -154,6 +159,7 @@ const Text = (props: TText) => {
    */
   const props2: HTMLProps<any> = {
     className: cx(klass, `Text${startCase(variant)}`),
+    ...asProps,
   };
 
   return createElement(as, props2, children);
