@@ -34,23 +34,26 @@ reactComponents['Footer'] = Component2;
 import Component3 from '../src/components/semantic-elements/Header/Header.tsx';
 reactComponents['Header'] = Component3;
 
-import Component4 from '../src/components/semantic-elements/Nav/Nav.tsx';
-reactComponents['Nav'] = Component4;
+import Component4 from '../src/components/Home/Home.tsx';
+reactComponents['Home'] = Component4;
 
-import Component5 from '../src/components/semantic-elements/Section/Section.tsx';
-reactComponents['Section'] = Component5;
+import Component5 from '../src/components/semantic-elements/Nav/Nav.tsx';
+reactComponents['Nav'] = Component5;
 
-import Component6 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
-reactComponents['SemanticElement'] = Component6;
+import Component6 from '../src/components/semantic-elements/Section/Section.tsx';
+reactComponents['Section'] = Component6;
 
-import Component7 from '../src/components/semantic-elements/SemanticHeading/SemanticHeading.tsx';
-reactComponents['SemanticHeading'] = Component7;
+import Component7 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
+reactComponents['SemanticElement'] = Component7;
 
-import Component8 from '../src/components/typography/Text/Text.tsx';
-reactComponents['Text'] = Component8;
+import Component8 from '../src/components/semantic-elements/SemanticHeading/SemanticHeading.tsx';
+reactComponents['SemanticHeading'] = Component8;
 
-import Component9 from '../src/components/typography/TypographyGridLines/TypographyGridLines.tsx';
-reactComponents['TypographyGridLines'] = Component9;
+import Component9 from '../src/components/typography/Text/Text.tsx';
+reactComponents['Text'] = Component9;
 
-import Component10 from '../src/components/typography/TypographySetup/TypographySetup.tsx';
-reactComponents['TypographySetup'] = Component10;
+import Component10 from '../src/components/typography/TypographyGridLines/TypographyGridLines.tsx';
+reactComponents['TypographyGridLines'] = Component10;
+
+import Component11 from '../src/components/typography/TypographySetup/TypographySetup.tsx';
+reactComponents['TypographySetup'] = Component11;

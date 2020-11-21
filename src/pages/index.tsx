@@ -1,9 +1,7 @@
-const Home = () => {
-  return (
-    <>
-      <h1 aria-label="Home">Home</h1>
-    </>
-  );
+import { Home } from "../components/Home";
+
+const HomePage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default HomePage;
