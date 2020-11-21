@@ -34,11 +34,17 @@ reactComponents['Footer'] = Component2;
 import Component3 from '../src/components/typography/GridLines/GridLines.tsx';
 reactComponents['GridLines'] = Component3;
 
-import Component4 from '../src/components/semantic-elements/Section/Section.tsx';
-reactComponents['Section'] = Component4;
+import Component4 from '../src/components/semantic-elements/Header/Header.tsx';
+reactComponents['Header'] = Component4;
 
-import Component5 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
-reactComponents['SemanticElement'] = Component5;
+import Component5 from '../src/components/semantic-elements/Nav/Nav.tsx';
+reactComponents['Nav'] = Component5;
 
-import Component6 from '../src/components/typography/Setup/Setup.tsx';
-reactComponents['Setup'] = Component6;
+import Component6 from '../src/components/semantic-elements/Section/Section.tsx';
+reactComponents['Section'] = Component6;
+
+import Component7 from '../src/components/semantic-elements/SemanticElement/SemanticElement.tsx';
+reactComponents['SemanticElement'] = Component7;
+
+import Component8 from '../src/components/typography/Setup/Setup.tsx';
+reactComponents['Setup'] = Component8;
