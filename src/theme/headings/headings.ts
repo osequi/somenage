@@ -14,15 +14,15 @@ export type THeadingsSettings = {
   /**
    * The font name to use for headings.
    */
-  font: TFontNames;
+  font?: TFontNames;
   /**
    * The line height. Headings have a reduced line height.
    */
-  lineHeight: number;
+  lineHeight?: number;
   /**
    * How to scale the font size.
    */
-  scale: TScale;
+  scale?: TScale;
 };
 
 /**
@@ -50,7 +50,7 @@ export type THeadingsSettings = {
  */
 export type THeadings = {
   preset: THeadingsPresetNames;
-  settings: THeadingsSettings;
+  settings?: THeadingsSettings;
 };
 
 /**

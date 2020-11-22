@@ -1,5 +1,6 @@
 import type { THeadings } from "../../theme";
 import { useFont, useScales } from "../";
+import { theme } from "../../theme";
 
 /**
  * Returns headings with the same size.
@@ -18,11 +19,17 @@ import { useFont, useScales } from "../";
  */
 const useSameSizeHeadings = (headings: THeadings): object => {
   const {
-    settings: { font, lineHeight, scale },
-  } = headings;
+    typography: { headings: headingsFromTheme },
+  } = theme;
 
-  const font2 = useFont(font);
-  const scale2 = useScales(scale);
+  const headings2 = { ...headingsFromTheme, ...headings };
+
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings2;
+
+  const font2 = font ? useFont(font) : null;
+  const scale2 = scale ? useScales(scale) : null;
   /**
    * Always return a single scale, even if multiple scales were given by error.
    */
@@ -32,7 +39,7 @@ const useSameSizeHeadings = (headings: THeadings): object => {
     ["& h1, h2, h3, h4, h5, h6"]: {
       ...font2,
       ...scale3,
-      lineHeight: lineHeight,
+      lineHeight: lineHeight ? lineHeight : null,
     },
   };
 };

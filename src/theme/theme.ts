@@ -95,7 +95,7 @@ const theme: TTheme = {
     { name: "desktop", value: 1600 },
   ],
   typography: {
-    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
+    grid: { fontSizes: [100, 100, 110, 120, 180], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
     text: {
       maxWidth: 35,
@@ -130,7 +130,7 @@ const theme: TTheme = {
       settings: {
         font: "Nimbus Sans Medium",
         lineHeight: 1.1,
-        scale: { points: 2 },
+        scale: { points: 0 },
       },
     },
   },

@@ -84,20 +84,6 @@ const defaultText = (props: {
   ...props.sameSizeHeadings,
 });
 
-const bodyText = (props: {
-  nimbusRegular: object;
-  defaultScale: object;
-  maxWidth: object;
-  adjacentSpacing: object;
-  differentSizeHeadings: object;
-}): object => ({
-  ...props.nimbusRegular,
-  ...props.defaultScale,
-  ...props.maxWidth,
-  ...props.adjacentSpacing,
-  ...props.differentSizeHeadings,
-});
-
 /**
  * Displays a styled text.
  *
@@ -122,31 +108,19 @@ const Text = (props: TText) => {
    * @ignore
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
-  const defaultScale = useScale(1);
-  const maxWidth = useMaxWidth();
-  const adjacentSpacing = useSpacing("Adjacent siblings margin top");
-  const [sameSizeHeadings, differentSizeHeadings] = useHeadings([
-    {
-      preset: "sameSize",
-      settings: { font: "Default", lineHeight: 1, scale: { points: 3 } },
-    },
-    {
-      preset: "differentSizes",
-      settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } },
-    },
-  ]);
+  const defaultScale = useScale(0);
+  const sameSizeHeadings = useHeadings({
+    preset: "sameSize",
+  });
 
   /**
    * Loads styles.
    * @ignore
    */
-  const [defaultTextKlass, bodyTextKlass] = useStyles([defaultText, bodyText], {
+  const defaultTextKlass = useStyles(defaultText, {
     nimbusRegular: nimbusRegular,
     defaultScale: defaultScale,
-    maxWidth: maxWidth,
-    adjacentSpacing: adjacentSpacing,
     sameSizeHeadings: sameSizeHeadings,
-    differentSizeHeadings: differentSizeHeadings,
   });
 
   /**
@@ -157,8 +131,6 @@ const Text = (props: TText) => {
   switch (variant) {
     case "default":
       klass = defaultTextKlass;
-    case "body":
-      klass = bodyTextKlass;
   }
 
   /**
