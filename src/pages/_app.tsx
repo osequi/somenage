@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { theme } from "../theme/";
 import { TypographySetup, TypographyGridLines } from "../components/typography";
 
+//import "../../public/favicon.ico";
 import "normalize.css";
 import "../theme/typography/reset.css";
 import "../theme/fonts/fonts.css";
