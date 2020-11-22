@@ -7,6 +7,7 @@ import { useStyles } from "../../hooks";
  */
 import { Text } from "../typography";
 import { Section } from "../semantic-elements";
+import MDXDocument from "./Home.mdx";
 
 /**
  * Defines the Home type.
@@ -44,7 +45,9 @@ const Home = (props: THome) => {
 
   return (
     <Section title="Home" className={cx("Home", containerKlass)}>
-      <Text variant="default">Somenage</Text>
+      <Text variant="default">
+        <MDXDocument />
+      </Text>
     </Section>
   );
 };
