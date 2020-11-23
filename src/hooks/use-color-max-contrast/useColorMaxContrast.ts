@@ -17,13 +17,11 @@ import { useColorContrast } from "../";
  */
 const useColorMaxContrast = (
   color: TColor
-): [
-  chroma: TColor,
-  contrast: number,
-  a: boolean,
-  aa: boolean,
-  aaa: boolean
-] => {
+):
+  | [chroma: TColor, contrast: number, a: boolean, aa: boolean, aaa: boolean]
+  | null => {
+  if (!color) return null;
+
   const white: TColor = { chroma: chroma("white"), name: "White" };
   const [contrastToWhite, aWhite, aaWhite, aaaWhite] = useColorContrast(
     color,
