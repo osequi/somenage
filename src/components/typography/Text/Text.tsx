@@ -13,6 +13,7 @@ import {
   useSpacing,
   useHeadings,
 } from "../../../hooks";
+import { Elements } from "../";
 
 /**
  * Defines the text variant type.
@@ -79,11 +80,13 @@ const defaultText = (props: {
   defaultScale: object;
   sameSizeHeadings: object;
   adjacentSiblingsMarginTop: object;
+  elements: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
   ...props.sameSizeHeadings,
   ...props.adjacentSiblingsMarginTop,
+  ...props.elements,
 });
 
 /**
@@ -125,6 +128,7 @@ const Text = (props: TText) => {
     defaultScale: defaultScale,
     sameSizeHeadings: sameSizeHeadings,
     adjacentSiblingsMarginTop: adjacentSiblingsMarginTop,
+    elements: Elements,
   });
 
   /**
