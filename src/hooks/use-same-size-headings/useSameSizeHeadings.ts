@@ -22,7 +22,11 @@ const useSameSizeHeadings = (headings: THeadings): object => {
     typography: { headings: headingsFromTheme },
   } = theme;
 
-  const headings2 = { ...headingsFromTheme, ...headings };
+  const sameSizeHeadingsFromTheme = headingsFromTheme.find(
+    (item) => item.preset === "sameSize"
+  );
+
+  const headings2 = { ...sameSizeHeadingsFromTheme, ...headings };
 
   const {
     settings: { font, lineHeight, scale, otherSettings },

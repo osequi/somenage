@@ -45,7 +45,7 @@ export type TTypography = {
   /**
    * The settings for the headings.
    */
-  headings: THeadings;
+  headings: THeadings[];
 };
 
 /**
@@ -55,7 +55,7 @@ export type TTypography = {
  * @category Theme
  * @example
  * grid: {fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25,},
- * scale: {name: "linear", settings: {},
+ * scale: {name: "linear", settings: {}},
  * text: {maxWidth: 35}
  * fonts: [defaultFont, nimbusSansRegular, nimbusSansMedium]
  */

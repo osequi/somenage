@@ -1,5 +1,6 @@
 import type { THeadings } from "../../theme";
 import { useFont, useScales } from "../";
+import { theme } from "../../theme";
 
 /**
  * Rounds up an array to 6 elements.
@@ -50,11 +51,21 @@ const interpolateScales = (scales: object[] | object): object[] => {
  */
 const useDifferentSizedHeadings = (headings: THeadings): object => {
   const {
-    settings: { font, lineHeight, scale },
-  } = headings;
+    typography: { headings: headingsFromTheme },
+  } = theme;
 
-  const font2 = useFont(font);
-  const scale2 = useScales(scale);
+  const differentSizedHeadingsFromTheme = headingsFromTheme.find(
+    (item) => item.preset === "differentSizes"
+  );
+
+  const headings2 = { ...differentSizedHeadingsFromTheme, ...headings };
+
+  const {
+    settings: { font, lineHeight, scale },
+  } = headings2;
+
+  const font2 = font ? useFont(font) : null;
+  const scale2 = scale ? useScales(scale) : null;
   const scales = interpolateScales(scale2);
 
   return {
