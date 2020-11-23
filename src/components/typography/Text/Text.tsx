@@ -78,10 +78,12 @@ const defaultText = (props: {
   nimbusRegular: object;
   defaultScale: object;
   sameSizeHeadings: object;
+  adjacentSiblingsMarginTop: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
   ...props.sameSizeHeadings,
+  ...props.adjacentSiblingsMarginTop,
 });
 
 /**
@@ -112,6 +114,7 @@ const Text = (props: TText) => {
   const sameSizeHeadings = useHeadings({
     preset: "sameSize",
   });
+  const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
 
   /**
    * Loads styles.
@@ -121,6 +124,7 @@ const Text = (props: TText) => {
     nimbusRegular: nimbusRegular,
     defaultScale: defaultScale,
     sameSizeHeadings: sameSizeHeadings,
+    adjacentSiblingsMarginTop: adjacentSiblingsMarginTop,
   });
 
   /**

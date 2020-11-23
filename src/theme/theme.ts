@@ -129,8 +129,8 @@ const theme: TTheme = {
       preset: "sameSize",
       settings: {
         font: "Nimbus Sans Medium",
-        lineHeight: 1.1,
-        scale: { points: 0 },
+        lineHeight: 1.25,
+        scale: { points: 1 },
       },
     },
   },
