@@ -81,12 +81,14 @@ const defaultText = (props: {
   sameSizeHeadings: object;
   adjacentSiblingsMarginTop: object;
   elements: object;
+  maxWidth: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
   ...props.sameSizeHeadings,
   ...props.adjacentSiblingsMarginTop,
   ...props.elements,
+  ...props.maxWidth,
 });
 
 /**
@@ -118,6 +120,7 @@ const Text = (props: TText) => {
     preset: "sameSize",
   });
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
+  const maxWidth = useMaxWidth({ maxWidth: 25 });
 
   /**
    * Loads styles.
@@ -129,6 +132,7 @@ const Text = (props: TText) => {
     sameSizeHeadings: sameSizeHeadings,
     adjacentSiblingsMarginTop: adjacentSiblingsMarginTop,
     elements: Elements,
+    maxWidth: maxWidth,
   });
 
   /**

@@ -15,7 +15,12 @@ export type TFontNames =
  *
  * @ignore
  */
-const fontNames = ["Default", "Nimbus Sans Regular", "Nimbus Sans Medium"];
+const fontNames = [
+  "Default",
+  "Nimbus Sans Regular",
+  "Nimbus Sans Medium",
+  "Nimbus Sans Bold",
+];
 
 /**
  * Defines the font type.

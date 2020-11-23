@@ -23,6 +23,10 @@ export type THeadingsSettings = {
    * How to scale the font size.
    */
   scale?: TScale;
+  /**
+   * Any other settings
+   */
+  otherSettings?: object;
 };
 
 /**

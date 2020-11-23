@@ -25,7 +25,7 @@ const useSameSizeHeadings = (headings: THeadings): object => {
   const headings2 = { ...headingsFromTheme, ...headings };
 
   const {
-    settings: { font, lineHeight, scale },
+    settings: { font, lineHeight, scale, otherSettings },
   } = headings2;
 
   const font2 = font ? useFont(font) : null;
@@ -40,6 +40,7 @@ const useSameSizeHeadings = (headings: THeadings): object => {
       ...font2,
       ...scale3,
       lineHeight: lineHeight ? lineHeight : null,
+      ...otherSettings,
     },
   };
 };

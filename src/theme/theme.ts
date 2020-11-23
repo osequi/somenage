@@ -95,7 +95,7 @@ const theme: TTheme = {
     { name: "desktop", value: 1600 },
   ],
   typography: {
-    grid: { fontSizes: [100, 100, 110, 120, 180], lineHeight: 1.25 },
+    grid: { fontSizes: [100, 120, 140, 160, 180], lineHeight: 1.25 },
     scale: { name: "linear", settings: {} },
     text: {
       maxWidth: 35,
@@ -124,13 +124,24 @@ const theme: TTheme = {
         fontStyle: "normal",
         letterSpacing: "1.25px",
       },
+      {
+        name: "Nimbus Sans Bold",
+        fontFamily: "nimbus-sans",
+        fontWeight: 700,
+        fontStyle: "normal",
+        letterSpacing: "1.25px",
+      },
     ],
     headings: {
       preset: "sameSize",
       settings: {
-        font: "Nimbus Sans Medium",
+        font: "Nimbus Sans Bold",
         lineHeight: 1.25,
-        scale: { points: 1 },
+        scale: { points: 0 },
+        otherSettings: {
+          letterSpacing: `var(--lem)`,
+          textTransform: "uppercase",
+        },
       },
     },
   },

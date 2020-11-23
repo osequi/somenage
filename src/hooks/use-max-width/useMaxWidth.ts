@@ -7,7 +7,7 @@ import { theme } from "../../theme";
  * @return      A style object.
  * @category Hooks
  * @example
- * useMaxWidth() =>
+ * useMaxWidth({ maxWidth: 10})
  */
 const useMaxWidth = (text?: TText): object => {
   const {
