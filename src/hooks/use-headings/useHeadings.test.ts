@@ -1,5 +1,9 @@
 import { useHeadings } from ".";
 
+it("Works without settings", () => {
+  expect(useHeadings({ preset: "sameSize" })).not.toBeNull();
+});
+
 it("Works with multiple arguments", () => {
   expect(
     useHeadings([

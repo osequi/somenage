@@ -1,5 +1,5 @@
 import type { THeadings } from "../../theme";
-import { useFont, useScales } from "../";
+import { useFont, useScales, useDefaultProps } from "../";
 import { theme } from "../../theme";
 
 /**
@@ -49,7 +49,7 @@ const interpolateScales = (scales: object[] | object): object[] => {
           "fontSize": "2em",
        },
  */
-const useDifferentSizedHeadings = (headings: THeadings): object => {
+const useDifferentSizedHeadings = (headings?: THeadings): object => {
   const {
     typography: { headings: headingsFromTheme },
   } = theme;
@@ -58,7 +58,12 @@ const useDifferentSizedHeadings = (headings: THeadings): object => {
     (item) => item.preset === "differentSizes"
   );
 
-  const headings2 = { ...differentSizedHeadingsFromTheme, ...headings };
+  const headings2: THeadings = useDefaultProps(
+    headings,
+    differentSizedHeadingsFromTheme
+  );
+
+  if (!headings2 || !headings2?.settings) return null;
 
   const {
     settings: { font, lineHeight, scale },

@@ -1,4 +1,8 @@
-export type { THeadings, THeadingsPresetNames } from "./headings";
+export type {
+  THeadings,
+  THeadingsPresetNames,
+  THeadingsSettings,
+} from "./headings";
 export {
   default as headings,
   headingsSameSize,

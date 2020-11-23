@@ -12,6 +12,7 @@ import type {
   TFontNames,
   TFontWithName,
   THeadings,
+  THeadingsSettings,
 } from "./typography";
 
 import type {
@@ -145,6 +146,14 @@ const theme: TTheme = {
           },
         },
       },
+      {
+        preset: "differentSizes",
+        settings: {
+          font: "Nimbus Sans Bold",
+          lineHeight: 1.1,
+          scale: { points: [1] },
+        },
+      },
     ],
   },
   colors: [
@@ -201,4 +210,5 @@ export type {
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
   THeadings,
+  THeadingsSettings,
 };

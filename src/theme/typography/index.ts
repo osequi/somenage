@@ -8,5 +8,6 @@ export type {
   TFontNames,
   TFontWithName,
   THeadings,
+  THeadingsSettings,
 } from "./typography";
 export { default as typography } from "./typography";

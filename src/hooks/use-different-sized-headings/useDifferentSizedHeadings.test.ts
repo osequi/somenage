@@ -1,5 +1,20 @@
 import { useDifferentSizedHeadings } from "./";
 
+it("Given arguments overwrite arguments from theme", () => {
+  expect(
+    useDifferentSizedHeadings({
+      preset: "differentSizes",
+      settings: {
+        lineHeight: 100,
+      },
+    })["& h1, h2, h3, h4, h5, h6"]["lineHeight"]
+  ).toBe(100);
+});
+
+it("Works without arguments", () => {
+  expect(useDifferentSizedHeadings()).not.toBeNull();
+});
+
 it("Works with more than 6 heading sizes defined", () => {
   expect(
     useDifferentSizedHeadings({
