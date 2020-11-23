@@ -12,7 +12,7 @@
  * useChromaValue(1.123456789, 2) => 1.12
  */
 const useChromaValue = (number: number, decimals: number): number => {
-  return Number(number.toFixed(decimals));
+  return number ? Number(number.toFixed(decimals)) : null;
 };
 
 export default useChromaValue;
