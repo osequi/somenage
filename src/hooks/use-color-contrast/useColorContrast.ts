@@ -24,7 +24,9 @@ import { TColor } from "../../theme";
 const useColorContrast = (
   color1: TColor,
   color2: TColor
-): [contrast: number, a: boolean, aa: boolean, aaa: boolean] => {
+): [contrast: number, a: boolean, aa: boolean, aaa: boolean] | null => {
+  if (!color1?.chroma || !color2?.chroma) return null;
+
   const { chroma: chroma1 } = color1;
   const { chroma: chroma2 } = color2;
 
