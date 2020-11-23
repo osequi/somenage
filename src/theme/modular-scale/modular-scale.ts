@@ -13,11 +13,11 @@ export type TModularScaleSettings = {
    * A base defines the value of the 0th element on the scale. For example `base=1` makes the 0th element size `1em`.
    * `modularscale-js` supports multiple bases.
    */
-  base: number[];
+  base?: number[];
   /**
    * The logic of scaling. See [Ratios](https://github.com/modularscale/modularscale-js#ratios).
    */
-  ratio: number;
+  ratio?: number;
 };
 
 /**

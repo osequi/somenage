@@ -18,11 +18,11 @@ export type TTypographicGrid = {
    * The rest of the numbers are for the defined breakpoints, like mobile, tablet and co.
    * It's not necesary to define font sizes for all the breakpoints. Larger screens inherit settings from lower screens &mdash; following the progressive enhancment pattern.
    */
-  fontSizes: number[];
+  fontSizes?: number[];
   /**
    * Unitless line height.
    */
-  lineHeight: number;
+  lineHeight?: number;
 };
 
 /**

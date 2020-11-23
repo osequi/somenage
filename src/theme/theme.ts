@@ -58,15 +58,15 @@ export type TTheme = {
   /**
    * The breakpoints for the theme.
    */
-  breakpoints: TBreakpoint[];
+  breakpoints?: TBreakpoint[];
   /**
    * The typography for the theme.
    */
-  typography: TTypography;
+  typography?: TTypography;
   /**
    * The color palette for the theme.
    */
-  colors: TColor[];
+  colors?: TColor[];
 };
 
 /**

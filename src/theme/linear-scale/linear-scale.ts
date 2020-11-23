@@ -8,7 +8,7 @@ export type TLinearScaleSettings = {
   /**
    * The settings for the scale.
    */
-  settings: object;
+  settings?: object;
 };
 
 /**

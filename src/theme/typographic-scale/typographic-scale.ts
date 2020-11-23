@@ -35,7 +35,7 @@ export type TTypographicScale = {
   /**
    * The name of the scale. Identifies a scale preset.
    */
-  name: TTypographicScaleNames;
+  name?: TTypographicScaleNames;
   /**
    * The settings for the scale. Each preset has its own shape for settings.
    */

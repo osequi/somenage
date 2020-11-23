@@ -29,23 +29,23 @@ export type TTypography = {
   /**
    * The settings for the typographic grid.
    */
-  grid: TTypographicGrid;
+  grid?: TTypographicGrid;
   /**
    * The settings for the typographic scale.
    */
-  scale: TTypographicScale;
+  scale?: TTypographicScale;
   /**
    * The settings fo the text.
    */
-  text: TText;
+  text?: TText;
   /**
    * The available fonts.
    */
-  fonts: TFontWithName[];
+  fonts?: TFontWithName[];
   /**
    * The settings for the headings.
    */
-  headings: THeadings[];
+  headings?: THeadings[];
 };
 
 /**

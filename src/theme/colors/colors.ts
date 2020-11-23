@@ -46,7 +46,7 @@ export type TColor = {
   /**
    * The `chroma-js` object for the color.
    */
-  chroma: chroma.Color | null;
+  chroma?: chroma.Color | null;
 };
 
 /**

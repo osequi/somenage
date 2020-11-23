@@ -65,7 +65,7 @@ export type THeadingsSettings = {
  * },
  */
 export type THeadings = {
-  preset: THeadingsPresetNames;
+  preset?: THeadingsPresetNames;
   settings?: THeadingsSettings;
 };
 

@@ -28,11 +28,11 @@ export type TBreakpoint = {
   /**
    * The breakpoint name.
    */
-  name: TBreakpointNames;
+  name?: TBreakpointNames;
   /**
    * The breakpoint value in pixels.
    */
-  value: number;
+  value?: number;
 };
 
 /**

@@ -1,5 +1,33 @@
 import { useDefaultProps } from ".";
 
+it("Works with null arguments", () => {
+  expect(useDefaultProps(null, null)).toBeNull();
+});
+
+it("Works with null default props", () => {
+  expect(useDefaultProps({ preset: "differentSizes" }, null)).toStrictEqual({
+    preset: "differentSizes",
+  });
+});
+
+it("Works with empty default props", () => {
+  expect(useDefaultProps({ preset: "differentSizes" }, {})).toStrictEqual({
+    preset: "differentSizes",
+  });
+});
+
+it("Works with null props", () => {
+  expect(useDefaultProps(null, { preset: "differentSizes" })).toStrictEqual({
+    preset: "differentSizes",
+  });
+});
+
+it("Works with empty props", () => {
+  expect(useDefaultProps({}, { preset: "differentSizes" })).toStrictEqual({
+    preset: "differentSizes",
+  });
+});
+
 it("Works", () => {
   expect(
     useDefaultProps(

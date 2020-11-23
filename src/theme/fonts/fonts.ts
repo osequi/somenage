@@ -36,10 +36,10 @@ const fontNames = [
  * letterSpacing: "normal",
  */
 export type TFont = {
-  fontFamily: string;
-  fontWeight: string | number;
-  fontStyle: string;
-  letterSpacing: string;
+  fontFamily?: string;
+  fontWeight?: string | number;
+  fontStyle?: string;
+  letterSpacing?: string;
 };
 
 /**
