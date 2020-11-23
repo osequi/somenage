@@ -19,10 +19,3 @@ it("Returns an Emotion friendly query", () => {
 it("Returns a `min-width` query", () => {
   expect(useBreakpoint("mobile")).toContain("min-width");
 });
-
-/**
- * Invalid arguments cannot be passed, like useBreakpoint() or useBreakpoint('mobilex').
- * These tests will fail instantly without useBreakpoint being called.
- *
- * However there are situations when the arguments are calculated runtime and TypeScript cannot catch the wrong values to be passed.
- */

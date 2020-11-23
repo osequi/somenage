@@ -10,6 +10,7 @@ import { theme } from "../../theme/";
  */
 const getBreakpoint = (name: TBreakpointNames): string | null => {
   const { breakpoints } = theme;
+  if (!breakpoints) return null;
 
   const breakpoint = breakpoints.find(
     (item: TBreakpoint) => item.name === name
