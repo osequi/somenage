@@ -52,7 +52,7 @@ export type TSemanticElement = {
   className: string;
   /**
    * The test id of the element.
-   * It come from the parent, usually.
+   * It comes from the parent, usually.
    */
   testId?: string;
 } & typeof semanticElementDefaultProps;

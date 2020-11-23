@@ -17,3 +17,4 @@ export { useDifferentSizedHeadings } from "./use-different-sized-headings";
 export { useSpacing } from "./use-spacing";
 export { useTheme } from "./use-theme";
 export { useStyles } from "./use-styles";
+export { useResponsiveGridColumns } from "./use-responsive-grid-columns";
