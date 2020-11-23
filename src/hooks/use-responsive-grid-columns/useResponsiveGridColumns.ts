@@ -1,8 +1,8 @@
 import { theme } from "../../theme";
 import { useBreakpoint } from "../";
 
-const useResponsiveGridColumns(columns: number | number[]): object => {
-	const {breakpoints} = theme
+const useResponsiveGridColumns = (columns: number | number[]): object => {
+  const { breakpoints } = theme;
   const responsiveColumns = Array.isArray(columns) ? columns : [columns];
 
   let queries = [];
@@ -17,6 +17,6 @@ const useResponsiveGridColumns(columns: number | number[]): object => {
     });
 
   return queries;
-}
+};
 
-export default useResponsiveGridColumns
+export default useResponsiveGridColumns;

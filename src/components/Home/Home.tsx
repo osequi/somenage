@@ -7,6 +7,7 @@ import { useStyles } from "../../hooks";
  */
 import { Text } from "../typography";
 import { Section } from "../semantic-elements";
+import { Grid } from "../layout";
 import HomeMdx from "./Home.mdx";
 
 /**
@@ -43,12 +44,19 @@ const container = {
 const Home = (props: THome) => {
   const { containerKlass } = useStyles(container, props);
 
+  const asProps = { title: "Home" };
+
   return (
-    <Section title="Home" className={cx("Home", containerKlass)}>
+    <Grid
+      padding={1}
+      as={Section}
+      asProps={asProps}
+      className={cx("Home", containerKlass)}
+    >
       <Text variant="default">
         <HomeMdx />
       </Text>
-    </Section>
+    </Grid>
   );
 };
 

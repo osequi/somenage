@@ -105,6 +105,7 @@ const container = (props: TGrid & any) => ({
   alignItems: "start",
 
   ["& > *"]: {
+    background: "red",
     padding: props.borderLeftSelector
       ? `0 calc(${props.gap} * var(--lem)) calc(${props.gap} * var(--lem)) 0`
       : `calc(${props.padding} * var(--lem))`,
