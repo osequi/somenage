@@ -9,9 +9,10 @@ import { TColor } from "../../theme";
  * @example
  * '10.05, 4, 5' => [10.05, 4, 5]
  */
-const stringToNumbers = (value: string): number[] => {
+const stringToNumbers = (value: string): number[] | null => {
+  if (!value) return null;
   const parts = value.split(",");
-  return parts && parts.map((item) => Number(item));
+  return parts?.length > 1 ? parts.map((item) => Number(item)) : null;
 };
 
 /**
@@ -28,30 +29,33 @@ const useChroma = (color: TColor): chroma.Color | null => {
 
   const { value, spaceName } = color;
 
+  const i = parseInt(value);
+  const n = stringToNumbers(value);
+
   switch (spaceName) {
     case "Name":
     case "Hexadecimal":
       return chroma.valid(value) ? chroma(value) : null;
     case "Number":
-      return chroma(parseInt(value));
+      return chroma.valid(i) ? chroma(i) : null;
     case "Temperature":
-      return chroma.temperature(parseInt(value));
+      return chroma.valid(i) ? chroma.temperature(i) : null;
     case "RGB":
-      return chroma(stringToNumbers(value));
+      return chroma.valid(n) ? chroma(n) : null;
     case "HSL":
-      return chroma(stringToNumbers(value), "hsl");
+      return chroma.valid(n, "hsl") ? chroma(n, "hsl") : null;
     case "HSV":
-      return chroma(stringToNumbers(value), "hsv");
+      return chroma.valid(n, "hsv") ? chroma(n, "hsv") : null;
     case "Lab":
-      return chroma(stringToNumbers(value), "lab");
+      return chroma.valid(n, "lab") ? chroma(n, "lab") : null;
     case "LCH":
-      return chroma(stringToNumbers(value), "lch");
+      return chroma.valid(n, "lch") ? chroma(n, "lch") : null;
     case "HCL":
-      return chroma(stringToNumbers(value), "hcl");
+      return chroma.valid(n, "hcl") ? chroma(n, "hcl") : null;
     case "CMYK":
-      return chroma(stringToNumbers(value), "cmyk");
+      return chroma.valid(n, "cmyk") ? chroma(n, "cmyk") : null;
     case "GL":
-      return chroma(stringToNumbers(value), "gl");
+      return chroma.valid(n, "gl") ? chroma(n, "gl") : null;
   }
 };
 
