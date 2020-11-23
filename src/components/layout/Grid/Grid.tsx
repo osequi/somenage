@@ -23,36 +23,36 @@ export type TGrid = {
    * The width of the grid.
    * It can be any CSS width unit.
    */
-  width: string;
+  width?: string;
   /**
    * The height of the grid.
    * It can be any CSS width unit.
    */
-  height: string;
+  height?: string;
   /**
    * The number of columns, unitless.
    * The columns will be calculated using `grid-template-columns: repeat(columns, 1fr)`
    * When the columns is an array a responsive grid will be set up.
    * @example <Grid columns={[1,2]}> => 1 column grid on the first breakpoint, 2 column grid on the second breakpoint. Breakpoints are coming from the theme.
    */
-  columns: number[] | number;
+  columns?: number[] | number;
   /**
    * The gap between the cells, unitless.
    * The gap will be a multiply of `var(--lem)`
    * Sets the gaps both horizontally with `column-gap` and vertically with `row-gap`.
    */
-  gap: number;
+  gap?: number;
   /**
    * The padding of the children, unitless.
    * The padding will be a multiply of `var(--lem)`.
    */
-  padding: number;
+  padding?: number;
   /**
    * The gap faux lines, aka the grid borders.
    * The grid borders look good only when there is no gap in the grid.
    * Therefore when fauxLines is set instead of grid gap we'll set a padding on the grid elements.
    */
-  fauxLines: "none" | "horizontal" | "vertical" | "both";
+  fauxLines?: "none" | "horizontal" | "vertical" | "both";
   /**
    * The container element in which the component is displayed.
    * Preferably a Semantic Element.
@@ -65,12 +65,12 @@ export type TGrid = {
   /**
    * The content to be rendered.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * The className of the element.
    * Serves the technical purpose of style chaining.
    */
-  className: string;
+  className?: string;
 } & typeof GridDefaultProps;
 
 /**
@@ -121,23 +121,34 @@ const container = (props: TGrid & any) => ({
  */
 const Grid = (props: TGrid) => {
   const { columns, as, asProps, children, className } = props;
+
+  /**
+   * Loads the responsive grid columns.
+   */
   const responsiveGridColumns = useResponsiveGridColumns(columns);
 
   /**
-   * Displays the faux lines.
+   * Loads the faux lines.
    */
   const fauxLinesProps = calculateFauxLines(props);
+
+  /**
+   * Prepares the props for the styles.
+   */
+  const styleProps = fauxLinesProps
+    ? {
+        ...props,
+        ...fauxLinesProps,
+        responsiveGridColumns: responsiveGridColumns,
+      }
+    : { ...props, responsiveGridColumns: responsiveGridColumns };
 
   /**
    * Loads the styles.
    */
   const [containerKlass, fauxLinesStyleKlass, gridWithTitleKlass] = useStyles(
     [container, fauxLinesStyle, gridWithTitleStyles],
-    {
-      ...props,
-      ...fauxLinesProps,
-      responsiveGridColumns: responsiveGridColumns,
-    }
+    { styleProps }
   );
 
   /**

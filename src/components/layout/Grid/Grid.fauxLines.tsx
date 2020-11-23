@@ -1,7 +1,11 @@
+import type { TGrid } from ".";
+import { isNil } from "lodash";
+
 /**
  * Defines the grid faux lines styles.
+ * @ignore
  */
-const fauxLinesStyle = (props) => ({
+const fauxLinesStyle = (props: TGrid & any) => ({
   ["&  > *"]: {
     boxSizing: "border-box",
 
@@ -16,12 +20,13 @@ const fauxLinesStyle = (props) => ({
 });
 
 /**
- * Calculates the position of the faux lines.
+ * Calculates the position of the grid faux lines.
+ * @ignore
  */
-const calculateFauxLines = (props) => {
+const calculateFauxLines = (props: TGrid): object | null => {
   const { fauxLines, columns, children } = props;
 
-  if (fauxLines === "none") return null;
+  if (fauxLines === "none" || isNil(children)) return null;
 
   const rows = Math.floor(children.length / columns) + 1;
 

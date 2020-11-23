@@ -15,6 +15,7 @@ const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray;
  * @category Hooks
  * @example
  * useDefaultProps({points: [1, 2, 3, 4, 5, 6, 7]}, {points: [1]}) => {points: [1, 2, 3, 4, 5, 6, 7]}
+ * @see https://www.npmjs.com/package/deepmerge
  */
 const useDefaultProps = (props, defaultProps) => {
   if (!props && !defaultProps) return null;

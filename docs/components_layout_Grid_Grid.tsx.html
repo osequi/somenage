@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Os Equi Somenage |  components/layout/Grid/Grid.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Os Equi Somenage</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/osequi/somenage"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://osequi.com/somenage"
+                        >
+                            Example Application
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#calculateFauxLines">calculateFauxLines</a></li><li><a href="global.html#Elements">Elements</a></li><li><a href="global.html#fauxLinesStyle">fauxLinesStyle</a></li><li><a href="global.html#gridWithTitleStyles">gridWithTitleStyles</a></li><li><a href="global.html#hasTitle">hasTitle</a></li></ul></div><div class="category"><h2>Components</h2><h3>Components</h3><ul><li><a href="Article.html">Article</a></li><li><a href="Aside.html">Aside</a></li><li><a href="Cell.html">Cell</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Grid.html">Grid</a></li><li><a href="Header.html">Header</a></li><li><a href="Home.html">Home</a></li><li><a href="Nav.html">Nav</a></li><li><a href="Section.html">Section</a></li><li><a href="SemanticElement.html">SemanticElement</a></li><li><a href="SemanticHeading.html">SemanticHeading</a></li><li><a href="Text.html">Text</a></li><li><a href="TypographyGridLines.html">TypographyGridLines</a></li><li><a href="TypographySetup.html">TypographySetup</a></li></ul><h3>Global</h3><ul><li><a href="global.html#articleDefaultProps">articleDefaultProps</a></li><li><a href="global.html#asideDefaultProps">asideDefaultProps</a></li><li><a href="global.html#CellDefaultProps">CellDefaultProps</a></li><li><a href="global.html#footerDefaultProps">footerDefaultProps</a></li><li><a href="global.html#GridDefaultProps">GridDefaultProps</a></li><li><a href="global.html#headerDefaultProps">headerDefaultProps</a></li><li><a href="global.html#HomeDefaultProps">HomeDefaultProps</a></li><li><a href="global.html#navDefaultProps">navDefaultProps</a></li><li><a href="global.html#sectionDefaultProps">sectionDefaultProps</a></li><li><a href="global.html#semanticElementDefaultProps">semanticElementDefaultProps</a></li><li><a href="global.html#semanticHeadingDefaultProps">semanticHeadingDefaultProps</a></li><li><a href="global.html#textDefaultProps">textDefaultProps</a></li><li><a href="global.html#typographyGridLinesDefaultProps">typographyGridLinesDefaultProps</a></li></ul></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useBreakpoint">useBreakpoint</a></li><li><a href="global.html#useChroma">useChroma</a></li><li><a href="global.html#useChromaValue">useChromaValue</a></li><li><a href="global.html#useColorContrast">useColorContrast</a></li><li><a href="global.html#useColorMaxContrast">useColorMaxContrast</a></li><li><a href="global.html#useColorTune">useColorTune</a></li><li><a href="global.html#useDefaultProps">useDefaultProps</a></li><li><a href="global.html#useDifferentSizedHeadings">useDifferentSizedHeadings</a></li><li><a href="global.html#useFont">useFont</a></li><li><a href="global.html#useHeadings">useHeadings</a></li><li><a href="global.html#useLem">useLem</a></li><li><a href="global.html#useLinearScale">useLinearScale</a></li><li><a href="global.html#useMaxWidth">useMaxWidth</a></li><li><a href="global.html#useModularScale">useModularScale</a></li><li><a href="global.html#useResponsiveFontSizes">useResponsiveFontSizes</a></li><li><a href="global.html#useSameSizeHeadings">useSameSizeHeadings</a></li><li><a href="global.html#useScale">useScale</a></li><li><a href="global.html#useScales">useScales</a></li><li><a href="global.html#useSpacing">useSpacing</a></li><li><a href="global.html#useStyles">useStyles</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#useTypographicGrid">useTypographicGrid</a></li></ul></div><div class="category"><h2>Theme</h2><h3>Global</h3><ul><li><a href="global.html#breakpoints">breakpoints</a></li><li><a href="global.html#colors">colors</a></li><li><a href="global.html#colorSpaces">colorSpaces</a></li><li><a href="global.html#defaultFont">defaultFont</a></li><li><a href="global.html#fonts">fonts</a></li><li><a href="global.html#headingsDifferentSizes">headingsDifferentSizes</a></li><li><a href="global.html#headingsSameSize">headingsSameSize</a></li><li><a href="global.html#linearScaleSettings">linearScaleSettings</a></li><li><a href="global.html#modularScaleSettings">modularScaleSettings</a></li><li><a href="global.html#nimbusSansBold">nimbusSansBold</a></li><li><a href="global.html#nimbusSansMedium">nimbusSansMedium</a></li><li><a href="global.html#nimbusSansRegular">nimbusSansRegular</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#theme">theme</a></li><li><a href="global.html#typographicGrid">typographicGrid</a></li><li><a href="global.html#typographicScale">typographicScale</a></li><li><a href="global.html#typography">typography</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/layout/Grid/Grid.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { createElement, ReactNode } from "react";
+import { cx } from "@emotion/css";
+
+/**
+ * Imports other types, components and hooks.
+ */
+import { useStyles, useResponsiveGridColumns } from "../../../hooks";
+
+/**
+ * Imports logic.
+ */
+import { fauxLinesStyle, calculateFauxLines } from "./Grid.fauxLines";
+import { hasTitle, gridWithTitleStyles } from "./Grid.withTitle";
+
+/**
+ * Defines the Grid type.
+ * @category Components
+ * @example
+ * Example here...
+ */
+export type TGrid = {
+  /**
+   * The width of the grid.
+   * It can be any CSS width unit.
+   */
+  width: string;
+  /**
+   * The height of the grid.
+   * It can be any CSS width unit.
+   */
+  height: string;
+  /**
+   * The number of columns, unitless.
+   * The columns will be calculated using `grid-template-columns: repeat(columns, 1fr)`
+   * When the columns is an array a responsive grid will be set up.
+   * @example &lt;Grid columns={[1,2]}> => 1 column grid on the first breakpoint, 2 column grid on the second breakpoint. Breakpoints are coming from the theme.
+   */
+  columns: number[] | number;
+  /**
+   * The gap between the cells, unitless.
+   * The gap will be a multiply of `var(--lem)`
+   * Sets the gaps both horizontally with `column-gap` and vertically with `row-gap`.
+   */
+  gap: number;
+  /**
+   * The padding of the children, unitless.
+   * The padding will be a multiply of `var(--lem)`.
+   */
+  padding: number;
+  /**
+   * The gap faux lines, aka the grid borders.
+   * The grid borders look good only when there is no gap in the grid.
+   * Therefore when fauxLines is set instead of grid gap we'll set a padding on the grid elements.
+   */
+  fauxLines: "none" | "horizontal" | "vertical" | "both";
+  /**
+   * The container element in which the component is displayed.
+   * Preferably a Semantic Element.
+   */
+  as?: any | string;
+  /**
+   * The props of the container.
+   */
+  asProps?: object;
+  /**
+   * The content to be rendered.
+   */
+  children: ReactNode;
+  /**
+   * The className of the element.
+   * Serves the technical purpose of style chaining.
+   */
+  className: string;
+} &amp; typeof GridDefaultProps;
+
+/**
+ * Defines the Grid default props.
+ * @category Components
+ * @example
+ * Example here...
+ */
+const GridDefaultProps = {
+  width: "100%",
+  height: "100%",
+  columns: 1,
+  gap: 0,
+  padding: 0,
+  fauxLines: "none",
+  as: "div",
+  asProps: null,
+  children: null,
+};
+
+/**
+ * Defines the grid container styles.
+ * @ignore
+ */
+const container = (props: TGrid &amp; any) => ({
+  display: "grid",
+  width: `${props.width}`,
+  height: `${props.height}`,
+  ...props.responsiveGridColumns,
+  columnGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
+  rowGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
+  alignItems: "start",
+
+  ["&amp; > *"]: {
+    background: "red",
+    padding: props.borderLeftSelector
+      ? `0 calc(${props.gap} * var(--lem)) calc(${props.gap} * var(--lem)) 0`
+      : `calc(${props.padding} * var(--lem))`,
+  },
+});
+
+/**
+ * Displays the Grid.
+ * @category Components
+ * @component
+ * @example
+ * return &lt;Grid />
+ */
+const Grid = (props: TGrid) => {
+  const { columns, as, asProps, children, className } = props;
+  const responsiveGridColumns = useResponsiveGridColumns(columns);
+
+  /**
+   * Displays the faux lines.
+   */
+  const fauxLinesProps = calculateFauxLines(props);
+
+  /**
+   * Loads the styles.
+   */
+  const [containerKlass, fauxLinesStyleKlass, gridWithTitleKlass] = useStyles(
+    [container, fauxLinesStyle, gridWithTitleStyles],
+    {
+      ...props,
+      ...fauxLinesProps,
+      responsiveGridColumns: responsiveGridColumns,
+    }
+  );
+
+  /**
+   * Checks if grid has a title.
+   */
+  const gridHasTitle = hasTitle(asProps);
+
+  /**
+   * Checks if grid has multiple children.
+   */
+  const gridHasMultipleChildren = children &amp;&amp; children.length !== undefined;
+
+  /**
+   * Prepares the props to render the component.
+   */
+  const propsGridWithoutTitle = {
+    className: cx("Grid", containerKlass, fauxLinesStyleKlass, className),
+    ...asProps,
+  };
+
+  const propsGridWithTitle = {
+    className: cx("Grid", gridWithTitleKlass),
+    ...asProps,
+  };
+
+  const props2 = gridHasTitle ? propsGridWithTitle : propsGridWithoutTitle;
+
+  /**
+   * Prepares the children.
+   */
+  const childrenWrapped =
+    gridHasTitle &amp;&amp; gridHasMultipleChildren ? (
+      &lt;div className={cx("GridItems", containerKlass, fauxLinesStyleKlass)}>
+        {children}
+      &lt;/div>
+    ) : (
+      children
+    );
+
+  return createElement(as, props2, childrenWrapped);
+};
+
+Grid.defaultProps = GridDefaultProps;
+
+export default Grid;
+export { GridDefaultProps };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

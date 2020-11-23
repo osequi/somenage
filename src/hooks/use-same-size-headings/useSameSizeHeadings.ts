@@ -1,5 +1,5 @@
 import type { THeadings } from "../../theme";
-import { useFont, useScales } from "../";
+import { useFont, useScales, useDefaultProps } from "../";
 import { theme } from "../../theme";
 
 /**
@@ -17,7 +17,7 @@ import { theme } from "../../theme";
  * 	"letterSpacing": "normal",
  * 	"lineHeight": 1}
  */
-const useSameSizeHeadings = (headings: THeadings): object => {
+const useSameSizeHeadings = (headings?: THeadings): object => {
   const {
     typography: { headings: headingsFromTheme },
   } = theme;
@@ -26,7 +26,12 @@ const useSameSizeHeadings = (headings: THeadings): object => {
     (item) => item.preset === "sameSize"
   );
 
-  const headings2 = { ...sameSizeHeadingsFromTheme, ...headings };
+  const headings2: THeadings = useDefaultProps(
+    headings,
+    sameSizeHeadingsFromTheme
+  );
+
+  if (!headings2 || !headings2?.settings) return null;
 
   const {
     settings: { font, lineHeight, scale, otherSettings },

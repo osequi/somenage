@@ -1,7 +1,7 @@
 import { useSameSizeHeadings } from "./";
 
 it("Works without settings", () => {
-  expect(useSameSizeHeadings({ preset: "sameSize" })).not.toBeNull();
+  expect(useSameSizeHeadings()).not.toBeNull();
 });
 
 it("Works with a wrongly set scale with multiple points", () => {
