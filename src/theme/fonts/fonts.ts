@@ -5,7 +5,8 @@
 export type TFontNames =
   | "Default"
   | "Nimbus Sans Regular"
-  | "Nimbus Sans Medium";
+  | "Nimbus Sans Medium"
+  | "Nimbus Sans Bold";
 
 /**
  * Collects the font names into an array.
@@ -115,6 +116,25 @@ const nimbusSansMedium: TFontWithName = {
 };
 
 /**
+ * Defines the Nimbus Sans Bold font.
+ *
+ * @category Theme
+ * @example
+ * name: "Nimbus Sans Bold",
+ * fontFamily: "nimbus-sans",
+ * fontWeight: 500,
+ * fontStyle: "normal",
+ * letterSpacing: "1.25px",
+ */
+const nimbusSansBold: TFontWithName = {
+  name: "Nimbus Sans Medium",
+  fontFamily: "nimbus-sans",
+  fontWeight: 700,
+  fontStyle: "normal",
+  letterSpacing: "1.25px",
+};
+
+/**
  * Defines the available fonts.
  * @category Theme
  * @example
@@ -124,6 +144,7 @@ const fonts: TFontWithName[] = [
   defaultFont,
   nimbusSansRegular,
   nimbusSansMedium,
+  nimbusSansBold,
 ];
 
 export default fonts;

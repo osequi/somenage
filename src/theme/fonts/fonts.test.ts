@@ -1,6 +1,6 @@
 import { fonts, fontNames } from "./";
 
-it("All fonts are defined.", () => {
+it("All avilable fonts are set up.", () => {
   expect(fonts.length).toBe(fontNames.length);
 });
 
