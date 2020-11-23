@@ -46,6 +46,8 @@ const tuneColor = (
  * useColorTune({ chroma: chroma("red") }, { chroma: chroma("white") }) => null
  */
 const useColorTune = (color1: TColor, color2: TColor): chroma.Color | null => {
+  if (!color1 || !color2) return null;
+
   const { chroma: chroma1 } = color1;
 
   const luminance = useChromaValue(chroma1.luminance(), 2);
