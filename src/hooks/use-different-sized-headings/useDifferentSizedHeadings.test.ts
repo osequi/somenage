@@ -1,73 +1,49 @@
 import { useDifferentSizedHeadings } from "./";
 
-it("Given arguments overwrite arguments from theme", () => {
-  expect(
-    useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: {
-        lineHeight: 100,
-      },
-    })["& h1, h2, h3, h4, h5, h6"]["lineHeight"]
-  ).toBe(100);
+it("Fails back on theme when no args", () => {
+  expect(useDifferentSizedHeadings(null)["& h1"]["fontSize"]).toBeUndefined;
 });
 
-it("Works without arguments", () => {
-  expect(useDifferentSizedHeadings()).not.toBeNull();
-});
-
-it("Works with more than 6 heading sizes defined", () => {
+it("Works with a custom scale", () => {
   expect(
     useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: [1, 2, 3, 4, 5, 6, 7] },
-      },
-    })["& h1"]
-  ).toStrictEqual({ fontSize: "7em" });
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "modular", settings: { base: [1], ratio: 1.333 } },
+      points: 3,
+    })["& h1"]["fontSize"]
+  ).toStrictEqual("2.3685930369999997em");
 });
 
-it("Works with all heading sizes defined", () => {
+it("Works with an array of points", () => {
   expect(
     useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: [1, 2, 3, 4, 5, 6] },
-      },
-    })["& h1"]
-  ).toStrictEqual({ fontSize: "7em" });
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "linear" },
+      points: [3, 4, 5],
+    })["& h1"]["fontSize"]
+  ).toStrictEqual("6em");
 });
 
-it("Works with multiple heading sizes", () => {
+it("Works with an array of a single point", () => {
   expect(
     useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] } },
-    })["& h1"]
-  ).toStrictEqual({ fontSize: "3em" });
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "linear" },
+      points: [3],
+    })["& h1"]["fontSize"]
+  ).toStrictEqual("4em");
 });
 
-it("Works with a single heading size", () => {
+it("Works with a single point", () => {
   expect(
     useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: { font: "Default", lineHeight: 1, scale: { points: 1 } },
-    })["& h1"]
-  ).toStrictEqual({ fontSize: "2em" });
-});
-
-it("Works", () => {
-  expect(
-    useDifferentSizedHeadings({
-      preset: "differentSizes",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: [1, 2, 3, 4, 5, 6] },
-      },
-    })
-  ).toBeNull();
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "linear" },
+      points: 3,
+    })["& h1"]["fontSize"]
+  ).toStrictEqual("4em");
 });

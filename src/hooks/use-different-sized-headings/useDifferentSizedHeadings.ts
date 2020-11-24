@@ -1,5 +1,5 @@
-import type { THeadings } from "../../theme";
-import { useFont, useScales, useDefaultProps } from "../";
+import type { THeadingsSettings } from "../../theme";
+import { useFont, useScale, useDefaultProps } from "../";
 import { theme } from "../../theme";
 
 /**
@@ -59,34 +59,36 @@ const interpolateScales = (scales: object[] | object): object[] => {
           "fontSize": "2em",
        },
  */
-const useDifferentSizedHeadings = (headings?: THeadings): object | null => {
+const useDifferentSizedHeadings = (
+  settings?: THeadingsSettings
+): object | null => {
   const headingsFromTheme = theme?.typography?.headings;
-
-  if (!headings && !headingsFromTheme) return null;
 
   const differentSizedHeadingsFromTheme =
     headingsFromTheme &&
     headingsFromTheme.find((item) => item.preset === "differentSizes");
 
-  const headings2: THeadings = useDefaultProps(
-    headings,
-    differentSizedHeadingsFromTheme
+  const differentSizedHeadingsSettingsFromTheme =
+    differentSizedHeadingsFromTheme?.settings;
+
+  const settings2: THeadingsSettings = useDefaultProps(
+    settings,
+    differentSizedHeadingsSettingsFromTheme
   );
+  if (!settings2) return null;
 
-  if (!headings2?.settings) return null;
-
-  const {
-    settings: { font, lineHeight, scale },
-  } = headings2;
+  const { font, lineHeight, scale, points, otherSettings } = settings2;
 
   const font2 = font ? useFont(font) : null;
-  const scale2 = scale ? useScales(scale) : null;
+  const lineHeight2 = lineHeight ? lineHeight : null;
+  const scale2 = points ? useScale(points, null, scale) : null;
   const scales = interpolateScales(scale2);
 
   return {
     ["& h1, h2, h3, h4, h5, h6"]: {
       ...font2,
-      lineHeight: lineHeight,
+      lineHeight: lineHeight2,
+      ...otherSettings,
     },
     ["& h6"]: {
       ...scales[0],
