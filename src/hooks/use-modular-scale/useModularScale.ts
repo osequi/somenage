@@ -1,6 +1,6 @@
 import type { TTypographicScale } from "../../theme";
-import { modularScaleSettings } from "../../theme/modular-scale";
 import { theme } from "../../theme";
+import { useDefaultProps } from "../";
 import ms from "modularscale-js";
 
 /**
@@ -22,20 +22,22 @@ import ms from "modularscale-js";
 const useModularScale = (
   points: number[] | number,
   scaleFromProps?: TTypographicScale
-): number[] | number => {
-  const {
-    typography: { scale: scaleFromTheme },
-  } = theme;
+): number[] | number | null => {
+  if (!points) return null;
 
-  const scale2 = scaleFromProps || scaleFromTheme;
+  const scalesFromTheme = theme?.typography?.scales;
 
-  /**
-   * If theme has no modular scale settings the default settings is used from `theme/modular-scale`
-   */
-  const settings =
-    scale2 && scale2.settings && scale2.settings.hasOwnProperty("base")
-      ? scale2.settings
-      : modularScaleSettings;
+  const modularScaleFromTheme =
+    scalesFromTheme && scalesFromTheme.find((item) => item.name === "modular");
+
+  const scale2: TTypographicScale = useDefaultProps(
+    scaleFromProps,
+    modularScaleFromTheme
+  );
+  if (!scale2?.settings) return null;
+
+  const { settings } = scale2;
+  if (!settings?.base || !settings?.ratio) return null;
 
   return Array.isArray(points)
     ? points &&

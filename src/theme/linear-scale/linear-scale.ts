@@ -1,7 +1,7 @@
 /**
  * Defines the linear scale settings type.
  *
- * Linears scale is a typographic scale preset. See `TTypographicScale`.
+ * Linear scale is a typographic scale preset. See `TTypographicScale`.
  * @category Theme
  */
 export type TLinearScaleSettings = {

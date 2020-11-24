@@ -8,6 +8,8 @@ export type {
   TCssNotations,
   TTypographicScale,
   TScale,
+  TLinearScaleSettings,
+  TModularScaleSettings,
   TText,
   TFont,
   TFontNames,

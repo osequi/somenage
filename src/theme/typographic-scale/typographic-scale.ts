@@ -1,6 +1,7 @@
 import type { TLinearScaleSettings } from "../linear-scale";
 import type { TModularScaleSettings } from "../modular-scale";
 import { linearScaleSettings } from "../linear-scale";
+import { modularScaleSettings } from "../modular-scale";
 
 /**
  * Defines the scale names.
@@ -12,10 +13,8 @@ export type TTypographicScaleNames = "linear" | "modular";
  * Defines the scale settings.
  * @category Theme
  */
-export type TTypographicScaleSettings =
-  | TLinearScaleSettings
-  | TModularScaleSettings
-  | {};
+export type TTypographicScaleSettings = TLinearScaleSettings &
+  TModularScaleSettings;
 
 /**
  * Defines the typographic scale type.
@@ -59,7 +58,7 @@ export type TScale = {
   /**
    * The point on the scale where to scale, or an array of points.
    */
-  points: number[] | number;
+  points?: number[] | number;
   /**
    * The scale to use for scaling.
    */
@@ -67,7 +66,7 @@ export type TScale = {
 };
 
 /**
- * Defines the typographic scale.
+ * Defines the typographic scales.
  *
  * The scale defines how typographic elements vary in size compared to the body text.
  * The scale comes from one of the presets: linear scale, modular scale.
@@ -80,9 +79,16 @@ export type TScale = {
  * name: 'modular',
  * settings: {base:[1], ratio: 1.33}
  */
-const typographicScale: TTypographicScale = {
-  name: "linear",
-  settings: linearScaleSettings,
-};
+const typographicScales: TTypographicScale[] = [
+  {
+    name: "linear",
+    settings: linearScaleSettings,
+  },
+  {
+    name: "modular",
+    settings: modularScaleSettings,
+  },
+];
 
-export default typographicScale;
+export default typographicScales;
+export type { TModularScaleSettings, TLinearScaleSettings };

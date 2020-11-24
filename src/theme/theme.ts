@@ -7,6 +7,8 @@ import type {
   TTypographicGrid,
   TTypographicScale,
   TScale,
+  TLinearScaleSettings,
+  TModularScaleSettings,
   TText,
   TFont,
   TFontNames,
@@ -50,7 +52,7 @@ export type TSpacingPresetNames = "Adjacent siblings margin top";
  ],
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
-   scale: { name: "linear", settings: {} },
+   scales: [{ name: "linear", settings: {} }],
    text: { maxWidth: 35 }
  },
  */
@@ -84,7 +86,7 @@ export type TTheme = {
  ],
  typography: {
    grid: { fontSizes: [100, 100, 110, 120, 140], lineHeight: 1.25 },
-   scale: { name: "linear", settings: {} },
+   scales: [{ name: "linear", settings: {} }],
    text: { maxWidth: 35 }
  },
  */
@@ -97,7 +99,7 @@ const theme: TTheme = {
   ],
   typography: {
     grid: { fontSizes: [100, 120, 140, 160, 180], lineHeight: 1.25 },
-    scale: { name: "linear", settings: {} },
+    scales: [{ name: "linear", settings: {} }],
     text: {
       maxWidth: 35,
       maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
@@ -200,6 +202,8 @@ export type {
   TTypographicGrid,
   TTypographicScale,
   TScale,
+  TLinearScaleSettings,
+  TModularScaleSettings,
   TText,
   TFont,
   TFontNames,

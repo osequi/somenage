@@ -3,6 +3,8 @@ export type {
   TTypographicGrid,
   TTypographicScale,
   TScale,
+  TModularScaleSettings,
+  TLinearScaleSettings,
   TText,
   TFont,
   TFontNames,
