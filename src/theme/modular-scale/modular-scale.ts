@@ -5,7 +5,7 @@
  * @category Theme
  * @example
  * name: 'modular',
- * settings: {base:[1], ratio: 1.33}
+ * settings: { base:[1], ratio: 1.33 }
  */
 export type TModularScaleSettings = {
   /**

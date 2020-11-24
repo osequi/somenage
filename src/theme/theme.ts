@@ -99,7 +99,10 @@ const theme: TTheme = {
   ],
   typography: {
     grid: { fontSizes: [100, 120, 140, 160, 180], lineHeight: 1.25 },
-    scales: [{ name: "linear", settings: {} }],
+    scales: [
+      { name: "linear", settings: {} },
+      { name: "modular", settings: { base: [1], ratio: 1.25 } },
+    ],
     text: {
       maxWidth: 35,
       maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
