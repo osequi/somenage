@@ -1,5 +1,9 @@
 import { useFont } from ".";
 
+it("Works without arguments", () => {
+  expect(useFont(null)).toBeNull();
+});
+
 it("Works with a simple string argument", () => {
   expect(useFont("Default")).not.toBeNull();
 });
