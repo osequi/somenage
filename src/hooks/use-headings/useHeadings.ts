@@ -27,7 +27,11 @@ const getHeading = (headings: THeadings): object => {
  * @example <caption>Different sized headings</caption>
  * useHeadings({preset: "differentSizes", settings: { font: "Default", lineHeight: 1, scale: { points: [1, 2] }}}) => {["& h6"]: {fontSize: 2em}, ["& h5"]: {fontSize: 3em}, ["& h4"]: {fontSize: 3em}, ...}
  */
-const useHeadings = (headings: THeadings[] | THeadings): object[] | object => {
+const useHeadings = (
+  headings: THeadings[] | THeadings
+): object[] | object | null => {
+  if (!headings) return null;
+
   return Array.isArray(headings)
     ? headings &&
         headings.reduce((result, heading) => {

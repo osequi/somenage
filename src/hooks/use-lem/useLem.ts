@@ -1,5 +1,6 @@
 import type { TTypographicGrid } from "../../theme";
 import { theme } from "../../theme";
+import { useDefaultProps } from "../";
 
 /**
  * Calculates the typographic grid cell size (`lem`, aka. line height in `em`).
@@ -20,12 +21,13 @@ import { theme } from "../../theme";
  * @example
  * useLem({fontSizes: [110], lineHeight: 1.25}) => (110 * 1.25) / 100 = 1.375
  */
-const useLem = (typographicGrid?: TTypographicGrid): number => {
-  const {
-    typography: { grid },
-  } = theme;
+const useLem = (typographicGrid?: TTypographicGrid): number | null => {
+  const grid = theme?.typography?.grid;
 
-  const { fontSizes, lineHeight } = { ...grid, ...typographicGrid };
+  const grid2: TTypographicGrid = useDefaultProps(typographicGrid, grid);
+  if (!grid2) return null;
+
+  const { fontSizes, lineHeight } = grid2;
   const fontSize = fontSizes[0] ? fontSizes[0] : null;
 
   return (fontSize * lineHeight) / 100;

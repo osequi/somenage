@@ -2,7 +2,8 @@
  * Returns a value from the linear scale.
  * @ignore
  */
-const getLinearScale = (value: number): number => {
+const getLinearScale = (value: number): number | null => {
+  if (!value) return null;
   return value + 1;
 };
 
@@ -18,7 +19,11 @@ const getLinearScale = (value: number): number => {
  * useLinearScale(0) => 1
  * useLinearScale([1, 2]) => [2, 3]
  */
-const useLinearScale = (points: number[] | number): number[] | number => {
+const useLinearScale = (
+  points: number[] | number
+): number[] | number | null => {
+  if (!points) return null;
+
   return Array.isArray(points)
     ? points &&
         points.reduce((result, point) => {
