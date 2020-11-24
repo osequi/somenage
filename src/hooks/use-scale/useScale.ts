@@ -1,6 +1,6 @@
 import type { TTypographicScale, TScale } from "../../theme";
 import { theme } from "../../theme";
-import { useLinearScale, useModularScale } from "../";
+import { useLinearScale, useModularScale, useDefaultProps } from "../";
 
 /**
  * Returns value(s) from a scale.
@@ -21,13 +21,11 @@ import { useLinearScale, useModularScale } from "../";
 const useScale = (
   points: number[] | number,
   scale?: TTypographicScale
-): object[] | object => {
-  const {
-    typography: { scale: scaleFromTheme },
-  } = theme;
+): object[] | object | null => {
+  if (!points) return null;
+  if (!scale?.name) return null;
 
-  const scale2 = scale || scaleFromTheme;
-  const { name } = scale2;
+  const { name } = scale;
 
   let values = null;
   switch (name) {
@@ -38,6 +36,7 @@ const useScale = (
       values = useModularScale(points, scale);
       break;
   }
+  if (!values) return null;
 
   return Array.isArray(values)
     ? values &&

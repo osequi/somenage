@@ -17,20 +17,17 @@ import { theme } from "../../theme";
  * 	"letterSpacing": "normal",
  * 	"lineHeight": 1}
  */
-const useSameSizeHeadings = (headings?: THeadings): object => {
-  const {
-    typography: { headings: headingsFromTheme },
-  } = theme;
+const useSameSizeHeadings = (headings?: THeadings): object | null => {
+  const headingsFromTheme = theme?.typography?.headings;
 
-  const sameSizeHeadingsFromTheme = headingsFromTheme.find(
-    (item) => item.preset === "sameSize"
-  );
+  const sameSizeHeadingsFromTheme =
+    headingsFromTheme &&
+    headingsFromTheme.find((item) => item.preset === "sameSize");
 
   const headings2: THeadings = useDefaultProps(
     headings,
     sameSizeHeadingsFromTheme
   );
-
   if (!headings2 || !headings2?.settings) return null;
 
   const {
@@ -38,17 +35,20 @@ const useSameSizeHeadings = (headings?: THeadings): object => {
   } = headings2;
 
   const font2 = font ? useFont(font) : null;
+  const lineHeight2 = lineHeight ? lineHeight : null;
   const scale2 = scale ? useScales(scale) : null;
   /**
    * Always return a single scale, even if multiple scales were given by error.
    */
   const scale3 = Array.isArray(scale2) ? scale2.shift() : scale2;
 
+  console.log("font2");
+
   return {
     ["& h1, h2, h3, h4, h5, h6"]: {
       ...font2,
       ...scale3,
-      lineHeight: lineHeight ? lineHeight : null,
+      lineHeight: lineHeight2,
       ...otherSettings,
     },
   };

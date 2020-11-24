@@ -69,5 +69,5 @@ it("Works", () => {
         scale: { points: [1, 2, 3, 4, 5, 6] },
       },
     })
-  ).not.toBeNull();
+  ).toBeNull();
 });

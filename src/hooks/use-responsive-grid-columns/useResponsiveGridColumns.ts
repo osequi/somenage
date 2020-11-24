@@ -16,7 +16,7 @@ import { useBreakpoint } from "../";
  * 	"@media(min-width: 320px)": { gridTemplateColumns: "repeat(1, 1fr)" },
  * },
  * {
- * "@media(min-width: 768px)": { gridTemplateColumns: "repeat(2, 1fr)" }
+ * 	"@media(min-width: 768px)": { gridTemplateColumns: "repeat(2, 1fr)" }
  * }
  * }
  */

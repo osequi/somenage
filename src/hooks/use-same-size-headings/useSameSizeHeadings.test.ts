@@ -29,3 +29,16 @@ it("Works with a well set, single point scale", () => {
     })["& h1, h2, h3, h4, h5, h6"]["fontSize"]
   ).toStrictEqual("4em");
 });
+
+it("Works", () => {
+  expect(
+    useSameSizeHeadings({
+      preset: "sameSize",
+      settings: {
+        font: "Default",
+        lineHeight: 1,
+        scale: { points: 3 },
+      },
+    })
+  ).toBeNull();
+});
