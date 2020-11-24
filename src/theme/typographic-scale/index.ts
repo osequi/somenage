@@ -1,7 +1,6 @@
 export type {
   TTypographicScale,
   TTypographicScaleNames,
-  TScale,
   TModularScaleSettings,
   TLinearScaleSettings,
 } from "./typographic-scale";

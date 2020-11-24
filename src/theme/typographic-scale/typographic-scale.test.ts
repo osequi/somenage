@@ -1,13 +1,5 @@
-import { typographicScale } from ".";
-
-it("Name is defined.", () => {
-  expect(typographicScale.name).not.toBeNull();
-});
-
-it("Settings are defined.", () => {
-  expect(typographicScale.settings).not.toBeNull();
-});
+import { typographicScales } from ".";
 
 it("It's defined.", () => {
-  expect(typographicScale).not.toBeNull();
+  expect(typographicScales).not.toBeNull();
 });

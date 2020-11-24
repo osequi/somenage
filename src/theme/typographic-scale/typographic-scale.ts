@@ -42,30 +42,6 @@ export type TTypographicScale = {
 };
 
 /**
- * Defines the scale type.
- *
- * This type is used to scale up an element on a given scale.
- *
- * @category Theme
- * @example <caption>With a single point</caption>
- * points: 1
- * scale: {name: 'modular', settings: {base:[1], ratio: 1.33}}
- * @example <caption>With multiple points</caption>
- * points: [1, 2, 3]
- * scale: {name: 'modular', settings: {base:[1], ratio: 1.33}}
- */
-export type TScale = {
-  /**
-   * The point on the scale where to scale, or an array of points.
-   */
-  points?: number[] | number;
-  /**
-   * The scale to use for scaling.
-   */
-  scale?: TTypographicScale;
-};
-
-/**
  * Defines the typographic scales.
  *
  * The scale defines how typographic elements vary in size compared to the body text.

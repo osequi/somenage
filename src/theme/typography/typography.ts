@@ -3,7 +3,7 @@ import { typographicGrid } from "../typographic-grid";
 
 import type {
   TTypographicScale,
-  TScale,
+  TTypographicScaleNames,
   TModularScaleSettings,
   TLinearScaleSettings,
 } from "../typographic-scale";
@@ -76,7 +76,7 @@ export default typography;
 export type {
   TTypographicGrid,
   TTypographicScale,
-  TScale,
+  TTypographicScaleNames,
   TModularScaleSettings,
   TLinearScaleSettings,
   TText,

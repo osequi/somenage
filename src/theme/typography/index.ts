@@ -2,7 +2,7 @@ export type {
   TTypography,
   TTypographicGrid,
   TTypographicScale,
-  TScale,
+  TTypographicScaleNames,
   TModularScaleSettings,
   TLinearScaleSettings,
   TText,
