@@ -36,7 +36,6 @@ const useModularScale = (
     settings,
     modularScaleSettingsFromTheme
   );
-
   if (!settings2?.base || !settings2?.ratio) return null;
 
   return Array.isArray(points)

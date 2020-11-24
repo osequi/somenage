@@ -1,59 +1,39 @@
 import { useSameSizeHeadings } from "./";
-/**
-it("Works without settings", () => {
-  expect(useSameSizeHeadings()).not.toBeNull();
+
+it("Fails back on theme when no args", () => {
+  expect(useSameSizeHeadings(null)["& h1, h2, h3, h4, h5, h6"]["fontSize"])
+    .toBeUndefined;
 });
 
-it("Works with a wrongly set scale with multiple points", () => {
+it("Fails back on wrongly set points", () => {
   expect(
     useSameSizeHeadings({
-      preset: "sameSize",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: [1, 2, 3, 4, 5, 6] },
-      },
-    })["& h1, h2, h3, h4, h5, h6"]["fontSize"]
-  ).toStrictEqual("2em");
-});
-
-it("Works with a well set, single point scale", () => {
-  expect(
-    useSameSizeHeadings({
-      preset: "sameSize",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: 3 },
-      },
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "linear" },
+      points: [3, 4, 5],
     })["& h1, h2, h3, h4, h5, h6"]["fontSize"]
   ).toStrictEqual("4em");
 });
 
-it("Works", () => {
+it("Works with a custom scale", () => {
   expect(
     useSameSizeHeadings({
-      preset: "sameSize",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { points: 3 },
-      },
-    })
-  ).toBeNull();
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "modular", settings: { base: [1], ratio: 1.333 } },
+      points: 1,
+    })["& h1, h2, h3, h4, h5, h6"]["fontSize"]
+  ).toStrictEqual("1.333em");
 });
-*/
 
 it("Works", () => {
   expect(
     useSameSizeHeadings({
-      preset: "sameSize",
-      settings: {
-        font: "Default",
-        lineHeight: 1,
-        scale: { name: "linear" },
-        points: 3,
-      },
+      font: "Default",
+      lineHeight: 1,
+      scale: { name: "linear" },
+      points: 3,
     })["& h1, h2, h3, h4, h5, h6"]["fontSize"]
   ).toStrictEqual("4em");
 });
