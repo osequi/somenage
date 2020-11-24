@@ -1,6 +1,6 @@
 import type { TTypographicGrid, TCssNotations, TBreakpoint } from "../../theme";
 import { theme } from "../../theme";
-import { useBreakpoint } from "../";
+import { useBreakpoint, useDefaultProps } from "../";
 
 /**
  * Returns media queries following the string notation.
@@ -9,7 +9,9 @@ import { useBreakpoint } from "../";
 const stringNotation = (
   fontSizes: number[],
   breakpoints: TBreakpoint[]
-): string => {
+): string | null => {
+  if (!fontSizes || !breakpoints) return null;
+
   return (
     fontSizes &&
     fontSizes.reduce((result, item, index) => {
@@ -29,7 +31,9 @@ const stringNotation = (
 const objectNotation = (
   fontSizes: number[],
   breakpoints: TBreakpoint[]
-): {} => {
+): {} | null => {
+  if (!fontSizes || !breakpoints) return null;
+
   let responsiveSizes = {};
 
   fontSizes &&
@@ -65,21 +69,34 @@ const objectNotation = (
 const useResponsiveFontSizes = (
   notation: TCssNotations,
   typographicGrid?: TTypographicGrid
-): {} | string => {
-  const {
-    breakpoints,
-    typography: { grid },
-  } = theme;
+): {} | string | null => {
+  if (!notation) return null;
 
-  const grid2 = typographicGrid || grid;
+  const gridFromTheme = theme?.typography?.grid;
+  const breakpointsFromTheme = theme?.breakpoints;
+  if (!breakpointsFromTheme) return null;
+
+  const grid2: TTypographicGrid = useDefaultProps(
+    typographicGrid,
+    gridFromTheme
+  );
+  if (!grid2?.fontSizes) return null;
+
   const { fontSizes } = grid2;
-  const fontSizesWithoutTheDefaultFontSize = fontSizes.slice(1);
+  const fontSizesWithoutTheDefaultFontSize = fontSizes && fontSizes.slice(1);
+  if (!fontSizesWithoutTheDefaultFontSize) return null;
 
   switch (notation) {
     case "string":
-      return stringNotation(fontSizesWithoutTheDefaultFontSize, breakpoints);
+      return stringNotation(
+        fontSizesWithoutTheDefaultFontSize,
+        breakpointsFromTheme
+      );
     case "object":
-      return objectNotation(fontSizesWithoutTheDefaultFontSize, breakpoints);
+      return objectNotation(
+        fontSizesWithoutTheDefaultFontSize,
+        breakpointsFromTheme
+      );
   }
 };
 
