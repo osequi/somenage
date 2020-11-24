@@ -5,14 +5,16 @@ import { theme } from "../../theme";
  * Returns a font style object identified by name.
  * @ignore
  */
-const getFont = (name: TFontNames, fonts: TFontWithName[]): TFont => {
-  const { name: fontName, ...rest } = fonts.find((item) => item.name === name);
+const getFont = (name: TFontNames, fonts: TFontWithName[]): TFont | null => {
+  if (!fonts || !name) return null;
 
-  const {
-    typography: {
-      text: { elementsWhichNeedFontReset },
-    },
-  } = theme;
+  const font = fonts.find((item) => item.name === name);
+  if (!font) return null;
+
+  const { name: fontName, ...rest } = font;
+
+  const elementsWhichNeedFontReset =
+    theme?.typography?.text?.elementsWhichNeedFontReset;
 
   /**
    * The font for these elements has to be set explicitely.
@@ -38,10 +40,10 @@ const getFont = (name: TFontNames, fonts: TFontWithName[]): TFont => {
  * @example useFont(['Default']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}]
  * @example useFont(["Default", 'Nimbus Sans Medium']) => [{ fontFamily: "inherit", fontWeight: 'inherit', fontStyle: "inherit"}, { fontFamily: "nimbus-sans", fontWeight: 500, fontStyle: "normal"}]
  */
-const useFont = (names: TFontNames[] | TFontNames): TFont[] | TFont => {
-  const {
-    typography: { fonts },
-  } = theme;
+const useFont = (names: TFontNames[] | TFontNames): TFont[] | TFont | null => {
+  const fonts = theme?.typography?.fonts;
+
+  if (!fonts) return null;
 
   return Array.isArray(names)
     ? names &&
