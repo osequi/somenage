@@ -4,15 +4,25 @@ import { theme } from "../../theme";
 
 /**
  * Rounds up an array to 6 elements.
- * @param  scales 	An array of scales.
+ * @param  scales 	An array of font sizes, or a single font size object.
  * @return      	An array of scales having 6 elements.
  * @ignore
+ * @example interpolateScales([{fontSize: '2em'}]) => [{fontSize: '2em'}, {fontSize: '2em'}, {fontSize: '2em'}, {fontSize: '2em'}, {fontSize: '2em'}, {fontSize: '2em'}]
  */
 const interpolateScales = (scales: object[] | object): object[] => {
-  const lastElement = Array.isArray(scales) ? scales.pop() : scales;
+  /**
+   * Transform `scales` into an array, even if it's null
+   */
+  const scales2 = scales ? (Array.isArray(scales) ? scales : [scales]) : [{}];
+  const scales2Length = scales2.length;
+
+  /**
+   * This item fills the rest of the array when `scales` size < 6 .
+   */
+  const lastElement = scales2[scales2Length - 1];
 
   return Array.from(Array(6).keys()).map((item) => {
-    return scales[item] ? scales[item] : lastElement;
+    return item < scales2Length ? scales2[item] : lastElement;
   });
 };
 
@@ -49,21 +59,21 @@ const interpolateScales = (scales: object[] | object): object[] => {
           "fontSize": "2em",
        },
  */
-const useDifferentSizedHeadings = (headings?: THeadings): object => {
-  const {
-    typography: { headings: headingsFromTheme },
-  } = theme;
+const useDifferentSizedHeadings = (headings?: THeadings): object | null => {
+  const headingsFromTheme = theme?.typography?.headings;
 
-  const differentSizedHeadingsFromTheme = headingsFromTheme.find(
-    (item) => item.preset === "differentSizes"
-  );
+  if (!headings && !headingsFromTheme) return null;
+
+  const differentSizedHeadingsFromTheme =
+    headingsFromTheme &&
+    headingsFromTheme.find((item) => item.preset === "differentSizes");
 
   const headings2: THeadings = useDefaultProps(
     headings,
     differentSizedHeadingsFromTheme
   );
 
-  if (!headings2 || !headings2?.settings) return null;
+  if (!headings2?.settings) return null;
 
   const {
     settings: { font, lineHeight, scale },

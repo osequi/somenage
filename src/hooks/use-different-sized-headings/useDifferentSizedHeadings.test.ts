@@ -58,3 +58,16 @@ it("Works with a single heading size", () => {
     })["& h1"]
   ).toStrictEqual({ fontSize: "2em" });
 });
+
+it("Works", () => {
+  expect(
+    useDifferentSizedHeadings({
+      preset: "differentSizes",
+      settings: {
+        font: "Default",
+        lineHeight: 1,
+        scale: { points: [1, 2, 3, 4, 5, 6] },
+      },
+    })
+  ).not.toBeNull();
+});
