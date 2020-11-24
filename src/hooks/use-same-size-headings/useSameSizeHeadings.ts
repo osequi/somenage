@@ -31,19 +31,16 @@ const useSameSizeHeadings = (headings?: THeadings): object | null => {
   if (!headings2 || !headings2?.settings) return null;
 
   const {
-    settings: { font, lineHeight, scale, otherSettings },
+    settings: { font, lineHeight, scale, points, otherSettings },
   } = headings2;
 
   const font2 = font ? useFont(font) : null;
   const lineHeight2 = lineHeight ? lineHeight : null;
-  //const scale2 = scale ? useScale(scale) : null;
-  const scale2 = null;
+  const scale2 = points ? useScale(points, null, scale) : null;
   /**
    * Always return a single scale, even if multiple scales were given by error.
    */
   const scale3 = Array.isArray(scale2) ? scale2.shift() : scale2;
-
-  console.log("font2");
 
   return {
     ["& h1, h2, h3, h4, h5, h6"]: {
