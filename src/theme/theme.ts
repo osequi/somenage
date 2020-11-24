@@ -144,7 +144,8 @@ const theme: TTheme = {
         settings: {
           font: "Nimbus Sans Bold",
           lineHeight: 1.25,
-          scale: { points: 0 },
+          scale: { name: "linear" },
+          points: 0,
           otherSettings: {
             letterSpacing: `var(--lem)`,
             textTransform: "uppercase",
@@ -156,7 +157,8 @@ const theme: TTheme = {
         settings: {
           font: "Nimbus Sans Bold",
           lineHeight: 1.1,
-          scale: { points: [1] },
+          scale: { name: "modular" },
+          points: [1],
         },
       },
     ],

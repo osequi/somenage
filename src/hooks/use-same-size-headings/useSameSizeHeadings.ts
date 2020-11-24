@@ -1,5 +1,5 @@
 import type { THeadings } from "../../theme";
-import { useFont, useScales, useDefaultProps } from "../";
+import { useFont, useScale, useDefaultProps } from "../";
 import { theme } from "../../theme";
 
 /**
@@ -36,7 +36,8 @@ const useSameSizeHeadings = (headings?: THeadings): object | null => {
 
   const font2 = font ? useFont(font) : null;
   const lineHeight2 = lineHeight ? lineHeight : null;
-  const scale2 = scale ? useScales(scale) : null;
+  //const scale2 = scale ? useScale(scale) : null;
+  const scale2 = null;
   /**
    * Always return a single scale, even if multiple scales were given by error.
    */

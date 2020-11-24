@@ -1,4 +1,4 @@
-import type { TFontNames, TScale } from "../../theme";
+import type { TFontNames, TTypographicScale } from "../../theme";
 
 /**
  * Defines the available presets for headings.
@@ -18,7 +18,8 @@ const headingsPresetNames = ["sameSize", "differentSizes"];
  * @example
  * font: "Nimbus Sans Medium",
  * lineHeight: 1.1,
- * scale: { points: 2 },
+ * scale: { name: 'linear' },
+ * points: 2
  */
 export type THeadingsSettings = {
   /**
@@ -30,9 +31,13 @@ export type THeadingsSettings = {
    */
   lineHeight?: number;
   /**
-   * How to scale the font size.
+   * On which scale scale the font size.
    */
-  scale?: TScale;
+  scale?: TTypographicScale;
+  /**
+   * With how many point(s) to scale the font size.
+   */
+  points?: number[] | number;
   /**
    * Any other, non-mandatory settings.
    * The settings above, or at least one of them are usually required to set headings.
@@ -54,14 +59,16 @@ export type THeadingsSettings = {
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { points: 2 },
+ *  scale: { name: 'linear' },
+ * 	points: 2
  * },
  * @example
  * preset: "differentSizes",
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { points: [2, 3, 4, 5, 6, 7] },
+ *  scale: { name: 'modular' },
+ * 	points: [2, 3, 4, 5, 6, 7]
  * },
  */
 export type THeadings = {
@@ -78,7 +85,8 @@ export type THeadings = {
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { points: 2 },
+ *  scale: { name: "linear" },
+ *  points: 1,
  * }
  */
 const headingsSameSize: THeadings = {
@@ -86,7 +94,8 @@ const headingsSameSize: THeadings = {
   settings: {
     font: "Nimbus Sans Medium",
     lineHeight: 1.1,
-    scale: { points: 2 },
+    scale: { name: "linear" },
+    points: 1,
   },
 };
 
@@ -99,7 +108,8 @@ const headingsSameSize: THeadings = {
  * settings: {
  *  font: "Nimbus Sans Medium",
  *  lineHeight: 1.1,
- *  scale: { points: [2, 3, 4, 5, 6, 7] },
+ *  scale: { name: "modular" },
+ *  points: [1, 2, 3, 4, 5, 6],
  * },
  */
 const headingsDifferentSizes: THeadings = {
@@ -107,7 +117,8 @@ const headingsDifferentSizes: THeadings = {
   settings: {
     font: "Nimbus Sans Bold",
     lineHeight: 1.1,
-    scale: { points: [1, 2, 3, 4, 5, 6] },
+    scale: { name: "modular" },
+    points: [1, 2, 3, 4, 5, 6],
   },
 };
 
