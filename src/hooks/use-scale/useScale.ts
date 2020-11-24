@@ -10,27 +10,33 @@ import { useLinearScale, useModularScale } from "../";
  * @param  preset	The typographic scale preset to use.
  * @return          The font size(s) set to the value(s) from the scale.
  * @category Hooks
- * @example <caption>An single point:</caption>
+ * @example <caption>A single point on the linear scale:</caption>
  * useScale(1, 'linear') => {fontSize: 2em}
  * @example <caption>An array of points:</caption>
  * useScale([1, 2, 3], 'linear') => [{fontSize: 2em}, {fontSize: 3em}, {fontSize: 4em}]
- * @example <caption>An single point with a scale:</caption>
+ * @example <caption>A single point on the modular scale:</caption>
  * useScale(1, "modular") => {fontSize: 1.25em}
+ * @example <caption>An array of point on a custom modular scale:</caption>
+ * useScale([1, 2], null, {name: "modular", settings: {base:[1], ratio: 1.333}}) => {fontSize: 1.25em}
  */
 const useScale = (
   points: number[] | number,
-  preset: TTypographicScaleNames
+  preset?: TTypographicScaleNames,
+  scale?: TTypographicScale
 ): object[] | object | null => {
   if (!points) return null;
-  if (!preset) return null;
+  if (!preset && !scale?.name) return null;
+
+  const preset2: TTypographicScaleNames = preset ? preset : scale.name;
+  const settings = scale?.settings;
 
   let values: number[] | number = [];
-  switch (preset) {
+  switch (preset2) {
     case "linear":
       values = useLinearScale(points);
       break;
     case "modular":
-      values = useModularScale(points);
+      values = useModularScale(points, settings);
       break;
   }
   if (!values) return null;
