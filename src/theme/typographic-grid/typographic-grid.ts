@@ -57,7 +57,7 @@ export type TTypographicGrid = {
  * @see [Long description](https://bit.ly/3pew04j)
  */
 const typographicGrid: TTypographicGrid = {
-  fontSizes: [100, 100, 110, 120, 140],
+  fontSizes: [100, 120, 140, 160, 180],
   lineHeight: 1.25,
 };
 

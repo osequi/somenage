@@ -4,9 +4,9 @@ import type { AppProps } from "next/app";
 import { theme } from "../theme/";
 import { TypographySetup, TypographyGridLines } from "../components/typography";
 
-//import "normalize.css";
-//import "../theme/typography/reset.css";
-//import "../theme/fonts/fonts.css";
+import "normalize.css";
+import "../theme/typography/reset.css";
+import "../theme/fonts/fonts.css";
 
 const ThemeContext = createContext(null);
 

@@ -1,5 +1,6 @@
 import type { TTypographicScale, TTypographicScaleNames } from "../../theme";
 import { useLinearScale, useModularScale } from "../";
+import { isNil } from "lodash";
 
 /**
  * Returns value(s) from a scale.
@@ -25,7 +26,7 @@ const useScale = (
   preset?: TTypographicScaleNames,
   scale?: TTypographicScale
 ): object[] | object | null => {
-  if (!points) return null;
+  if (isNil(points)) return null;
   if (!preset && !scale?.name) return null;
 
   const preset2: TTypographicScaleNames = preset ? preset : scale.name;

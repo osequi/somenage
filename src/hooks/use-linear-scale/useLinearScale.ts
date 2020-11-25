@@ -1,9 +1,11 @@
+import { isNil } from "lodash";
+
 /**
  * Returns a value from the linear scale.
  * @ignore
  */
 const getLinearScale = (value: number): number | null => {
-  if (!value) return null;
+  if (isNil(value)) return null;
   return value + 1;
 };
 
@@ -22,7 +24,7 @@ const getLinearScale = (value: number): number | null => {
 const useLinearScale = (
   points: number[] | number
 ): number[] | number | null => {
-  if (!points) return null;
+  if (isNil(points)) return null;
 
   return Array.isArray(points)
     ? points &&

@@ -1,6 +1,7 @@
 import type { THeadingsSettings } from "../../theme";
 import { useFont, useScale, useDefaultProps } from "../";
 import { theme } from "../../theme";
+import { isNil } from "lodash";
 
 /**
  * Returns headings with the same size.
@@ -36,7 +37,7 @@ const useSameSizeHeadings = (settings?: THeadingsSettings): object | null => {
 
   const font2 = font ? useFont(font) : null;
   const lineHeight2 = lineHeight ? lineHeight : null;
-  const scale2 = points ? useScale(points, null, scale) : null;
+  const scale2 = isNil(points) ? null : useScale(points, null, scale);
   /**
    * Always return a single scale, even if multiple scales were given by error.
    */

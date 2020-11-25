@@ -28,5 +28,5 @@ it("Works with an array of points, linear scale", () => {
 });
 
 it("Works with a single point, linear scale", () => {
-  expect(useScale(1, "linear")).toStrictEqual({ fontSize: "2em" });
+  expect(useScale(0, "linear")).toStrictEqual({ fontSize: "1em" });
 });

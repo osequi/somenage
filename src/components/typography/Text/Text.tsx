@@ -115,7 +115,7 @@ const Text = (props: TText) => {
    * @ignore
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
-  const defaultScale = useScale(0);
+  const defaultScale = useScale(0, "linear");
   const sameSizeHeadings = useHeadings("sameSize");
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
   const maxWidth = useMaxWidth(25);

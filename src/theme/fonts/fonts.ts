@@ -127,7 +127,7 @@ const nimbusSansMedium: TFontWithName = {
  * letterSpacing: "1.25px",
  */
 const nimbusSansBold: TFontWithName = {
-  name: "Nimbus Sans Medium",
+  name: "Nimbus Sans Bold",
   fontFamily: "nimbus-sans",
   fontWeight: 700,
   fontStyle: "normal",
