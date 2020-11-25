@@ -1,6 +1,5 @@
-import chroma from "chroma-js";
-
 import type { TBreakpoint, TBreakpointNames } from "./breakpoints";
+import { breakpoints } from "./breakpoints";
 
 import type {
   TTypography,
@@ -17,6 +16,7 @@ import type {
   THeadingsSettings,
   THeadingsPresetNames,
 } from "./typography";
+import { typography } from "./typography";
 
 import type {
   TColor,
@@ -25,6 +25,7 @@ import type {
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
 } from "./colors";
+import { colors } from "./colors";
 
 /**
  * Defines the CSS notations type.
@@ -92,113 +93,9 @@ export type TTheme = {
  },
  */
 const theme: TTheme = {
-  breakpoints: [
-    { name: "mobile", value: 320 },
-    { name: "tablet", value: 768 },
-    { name: "laptop", value: 1024 },
-    { name: "desktop", value: 1600 },
-  ],
-  typography: {
-    grid: { fontSizes: [100, 120, 140, 160, 180], lineHeight: 1.25 },
-    scales: [
-      { name: "linear", settings: {} },
-      { name: "modular", settings: { base: [1], ratio: 1.25 } },
-    ],
-    text: {
-      maxWidth: 35,
-      maxWidthExceptions: ":not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)",
-      elementsWhichNeedFontReset: "input, pre, code, kbd, samp",
-    },
-    fonts: [
-      {
-        name: "Default",
-        fontFamily: "inherit",
-        fontWeight: "normal",
-        fontStyle: "normal",
-        letterSpacing: "normal",
-      },
-      {
-        name: "Nimbus Sans Regular",
-        fontFamily: "nimbus-sans",
-        fontWeight: 400,
-        fontStyle: "normal",
-        letterSpacing: "1.25px",
-      },
-      {
-        name: "Nimbus Sans Medium",
-        fontFamily: "nimbus-sans",
-        fontWeight: 500,
-        fontStyle: "normal",
-        letterSpacing: "1.25px",
-      },
-      {
-        name: "Nimbus Sans Bold",
-        fontFamily: "nimbus-sans",
-        fontWeight: 700,
-        fontStyle: "normal",
-        letterSpacing: "1.25px",
-      },
-    ],
-    headings: [
-      {
-        preset: "sameSize",
-        settings: {
-          font: "Nimbus Sans Bold",
-          lineHeight: 1.25,
-          scale: { name: "linear" },
-          points: 0,
-          otherSettings: {
-            letterSpacing: `var(--lem)`,
-            textTransform: "uppercase",
-          },
-        },
-      },
-      {
-        preset: "differentSizes",
-        settings: {
-          font: "Nimbus Sans Bold",
-          lineHeight: 1.1,
-          scale: { name: "modular" },
-          points: [1],
-        },
-      },
-    ],
-  },
-  colors: [
-    {
-      name: "White",
-      for: "Background",
-      description: "The background color.",
-      value: "white",
-      spaceName: "Name",
-      chroma: chroma("white"),
-    },
-    {
-      name: "Black",
-      for: "Text",
-      description: "The text color.",
-      value: "black",
-      spaceName: "Name",
-      chroma: chroma("black"),
-    },
-    {
-      name: "Undefined",
-      for: "Highlight",
-      description:
-        "The highlight color. Used for links, buttons, call to action elements.",
-      value: null,
-      spaceName: "Name",
-      chroma: null,
-    },
-    {
-      name: "Undefined",
-      for: "Shade",
-      description: "The shade color. Used for secondary backgrounds.",
-      value: null,
-      spaceName: "Name",
-      chroma: null,
-    },
-  ],
+  breakpoints: breakpoints,
+  typography: typography,
+  colors: colors,
 };
 
 export default theme;

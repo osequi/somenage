@@ -92,10 +92,14 @@ export type THeadings = {
 const headingsSameSize: THeadings = {
   preset: "sameSize",
   settings: {
-    font: "Nimbus Sans Medium",
-    lineHeight: 1.1,
+    font: "Nimbus Sans Bold",
+    lineHeight: 1.25,
     scale: { name: "linear" },
-    points: 1,
+    points: 0,
+    otherSettings: {
+      letterSpacing: `var(--lem)`,
+      textTransform: "uppercase",
+    },
   },
 };
 
@@ -118,7 +122,7 @@ const headingsDifferentSizes: THeadings = {
     font: "Nimbus Sans Bold",
     lineHeight: 1.1,
     scale: { name: "modular" },
-    points: [1, 2, 3, 4, 5, 6],
+    points: [1],
   },
 };
 
