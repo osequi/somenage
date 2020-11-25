@@ -116,11 +116,9 @@ const Text = (props: TText) => {
    */
   const nimbusRegular = useFont("Nimbus Sans Regular");
   const defaultScale = useScale(0);
-  const sameSizeHeadings = useHeadings({
-    preset: "sameSize",
-  });
+  const sameSizeHeadings = useHeadings("sameSize");
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
-  const maxWidth = useMaxWidth({ maxWidth: 25 });
+  const maxWidth = useMaxWidth(25);
 
   /**
    * Loads styles.
