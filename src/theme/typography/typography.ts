@@ -15,7 +15,11 @@ import { text } from "../text";
 import type { TFont, TFontNames, TFontWithName } from "../fonts";
 import { fonts } from "../fonts";
 
-import type { THeadings, THeadingsSettings } from "../headings";
+import type {
+  THeadings,
+  THeadingsSettings,
+  THeadingsPresetNames,
+} from "../headings";
 import { headings } from "../headings";
 
 /**
@@ -85,4 +89,5 @@ export type {
   TFontWithName,
   THeadings,
   THeadingsSettings,
+  THeadingsPresetNames,
 };

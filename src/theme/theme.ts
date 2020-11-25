@@ -15,6 +15,7 @@ import type {
   TFontWithName,
   THeadings,
   THeadingsSettings,
+  THeadingsPresetNames,
 } from "./typography";
 
 import type {
@@ -220,4 +221,5 @@ export type {
   TStandardColorSpaceNames,
   THeadings,
   THeadingsSettings,
+  THeadingsPresetNames,
 };

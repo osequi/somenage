@@ -7,7 +7,8 @@ import { useLinearScale, useModularScale } from "../";
  * Used to set different font sizes than the body text.
  *
  * @param  points	The point(s) on the scale.
- * @param  preset	The typographic scale preset to use.
+ * @param  preset	The typographic scale preset to use. Or
+ * @param  scale	The complete cale settings.
  * @return          The font size(s) set to the value(s) from the scale.
  * @category Hooks
  * @example <caption>A single point on the linear scale:</caption>

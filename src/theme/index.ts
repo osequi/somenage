@@ -22,4 +22,5 @@ export type {
   THeadings,
   THeadingsSettings,
   TSpacingPresetNames,
+  THeadingsPresetNames,
 } from "./theme";
