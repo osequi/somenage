@@ -19,10 +19,9 @@ const breakpointNames = ["mobile", "tablet", "laptop", "desktop"];
  *
  * Please check the source for the available TBreakpointNames.
  *
+ * @category Theme
  * @example
  * [{name: 'mobile', value: 320}, {name: 'tablet', value: 768}, ...]
- *
- * @category Theme
  */
 export type TBreakpoint = {
   /**

@@ -12,6 +12,7 @@ import {
   useScale,
   useSpacing,
   useHeadings,
+  useLink,
 } from "../../../hooks";
 import { Elements } from "../";
 
@@ -82,6 +83,7 @@ const defaultText = (props: {
   adjacentSiblingsMarginTop: object;
   elements: object;
   maxWidth: object;
+  defaultLink: object;
 }): object => ({
   ...props.nimbusRegular,
   ...props.defaultScale,
@@ -89,6 +91,7 @@ const defaultText = (props: {
   ...props.adjacentSiblingsMarginTop,
   ...props.elements,
   ...props.maxWidth,
+  ...props.defaultLink,
 });
 
 /**
@@ -119,6 +122,7 @@ const Text = (props: TText) => {
   const sameSizeHeadings = useHeadings("sameSize");
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
   const maxWidth = useMaxWidth(25);
+  const defaultLink = useLink("default");
 
   /**
    * Loads styles.
@@ -131,6 +135,7 @@ const Text = (props: TText) => {
     adjacentSiblingsMarginTop: adjacentSiblingsMarginTop,
     elements: Elements,
     maxWidth: maxWidth,
+    defaultLink: defaultLink,
   });
 
   /**

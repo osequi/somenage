@@ -19,3 +19,4 @@ export { useTheme } from "./use-theme";
 export { useStyles } from "./use-styles";
 export { useResponsiveGridColumns } from "./use-responsive-grid-columns";
 export { useDefaultProps } from "./use-default-props";
+export { useLink } from "./use-link";

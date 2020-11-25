@@ -15,6 +15,9 @@ import type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
+  TLink,
+  TLinkPresetNames,
+  TLinkSettings,
 } from "./typography";
 import { typography } from "./typography";
 
@@ -119,4 +122,7 @@ export type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
+  TLink,
+  TLinkPresetNames,
+  TLinkSettings,
 };
