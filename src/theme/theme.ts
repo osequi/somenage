@@ -27,8 +27,10 @@ import type {
   TColorSpaceNames,
   TColorNamesForThePalette,
   TStandardColorSpaceNames,
+  TColorPairNames,
+  TColorPair,
 } from "./colors";
-import { colors } from "./colors";
+import { colors, colorPairs } from "./colors";
 
 /**
  * Defines the CSS notations type.
@@ -74,6 +76,10 @@ export type TTheme = {
    * The color palette for the theme.
    */
   colors?: TColor[];
+  /**
+   * The color combinations for the theme.
+   */
+  colorPairs?: TColorPair[];
 };
 
 /**
@@ -99,6 +105,7 @@ const theme: TTheme = {
   breakpoints: breakpoints,
   typography: typography,
   colors: colors,
+  colorPairs: colorPairs,
 };
 
 export default theme;
@@ -125,4 +132,6 @@ export type {
   TLink,
   TLinkPresetNames,
   TLinkSettings,
+  TColorPair,
+  TColorPairNames,
 };

@@ -7,3 +7,6 @@ export type {
   TColorSpace,
 } from "./colorSpaces";
 export { default as colorSpaces } from "./colorSpaces";
+
+export type { TColorPair, TColorPairNames } from "./colorPairs";
+export { default as colorPairs } from "./colorPairs";

@@ -1,3 +1,5 @@
+import type { TColorPairNames } from "../";
+
 /**
  * Defines the link preset names.
  * @category Theme
@@ -11,21 +13,39 @@ export type TLinkPresetNames = "default";
 const linkPresetNames = ["default"];
 
 /**
+ * Defines the link colors type.
+ */
+export type TLinkColors = {
+  /**
+   * The color of the link in default state.
+   */
+  default?: TColorPairNames;
+  /**
+   * The color of the link for hover, active, focus states.
+   */
+  active?: TColorPairNames;
+  /**
+   * The color of the link for the visited state.
+   */
+  visited?: TColorPairNames;
+};
+
+/**
  * Defines the link settings type.
  */
 export type TLinkSettings = {
   /**
    * The style of the link in default state.
    */
-  defaultStyle?: object;
+  default?: object;
   /**
    * The style of the link for hover, active, focus states.
    */
-  activeStyle?: object;
+  active?: object;
   /**
    * The style of the link for the visited state.
    */
-  visitedStyle?: object;
+  visited?: object;
 };
 
 /**
@@ -38,6 +58,10 @@ export type TLink = {
    */
   preset?: TLinkPresetNames;
   /**
+   * The colors for the preset.
+   */
+  colors?: TLinkColors;
+  /**
    * The settings for the preset.
    */
   settings?: TLinkSettings;
@@ -48,16 +72,19 @@ export type TLink = {
  */
 const defaultLink: TLink = {
   preset: "default",
+  colors: {
+    default: "default",
+    active: "inverted",
+    visited: "default",
+  },
   settings: {
-    defaultStyle: {
+    default: {
       textDecoration: "underline",
     },
-    activeStyle: {
+    active: {
       textDecoration: "line-through",
     },
-    visitedStyle: {
-      color: "lightgray",
-    },
+    visited: {},
   },
 };
 

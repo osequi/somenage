@@ -26,4 +26,6 @@ export type {
   TLink,
   TLinkPresetNames,
   TLinkSettings,
+  TColorPair,
+  TColorPairNames,
 } from "./theme";
