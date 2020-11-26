@@ -15,4 +15,21 @@ module.exports = {
       tsconfig: "tsconfig.jest.json",
     },
   },
+  moduleNameMapper: {
+    /**
+     * Settings for Next.js module path aliases
+     * @see https://stackoverflow.com/questions/50171412/jest-typescript-absolute-paths-baseurl-gives-error-cannot-find-module
+     */
+    "@pages/(.*)": "../pages/$1",
+    "@components/(.*)": "../components/$1",
+    "@hooks": "../hooks/",
+    "@theme": "../theme/",
+    /**
+     * Settings for excluding assets
+     * @see https://jestjs.io/docs/en/webpack.html
+     */
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "../../jest.mock.file.js",
+    "\\.(css|less)$": "../../jest.mock.css.js",
+  },
 };
