@@ -40,6 +40,11 @@ const Elements = {
     /**
      * This is both for code blocks with `pres` and inline with ticks like `HTML`
      */
+    border: "1px solid",
+    borderRadius: "var(--lem)",
+    padding: "0 calc(var(--lem)/4)",
+    background: "black",
+    color: "white",
     fontWeight: 300,
   },
   ["& pre"]: {

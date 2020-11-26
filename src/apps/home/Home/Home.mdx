@@ -1,6 +1,6 @@
 # Somenage
 
-An interactive design system and tools for creating visually compelling stories.
+An interactive design system and tools for visual stories.
 
 ## Features
 
@@ -15,8 +15,8 @@ An interactive design system and tools for creating visually compelling stories.
 - [Typescript](https://www.typescriptlang.org/), for scalable code.
 - [Emotion](https://emotion.sh/), for style objects and functions.
 - [MDX](https://github.com/vercel/next.js/tree/canary/packages/next-mdx), for content experience.
-- [Jest](https://jestjs.io/en/), for testing theme, hooks and components.
-- [JsDoc](https://jsdoc.app/) with [BetterDocs](https://github.com/SoftwareBrothers/better-docs), to generate API documentation.
+- [Jest](https://jestjs.io/en/) and and [ts-jest](https://kulshekhar.github.io/ts-jest/), for testing.
+- [JsDoc](https://jsdoc.app/) with [BetterDocs](https://github.com/SoftwareBrothers/better-docs) to generate API documentation.
 
 This current stack is the result of trials and errors.
 
@@ -28,6 +28,7 @@ This current stack is the result of trials and errors.
 - `hooks` - Business logic to connect the theme with components.
 - `components` - Visual building blocks of the design system.
 - `apps` - Apps and tools built on the design system.
+- `docs` - Auto geneated API docs from JsDoc comments.
 
 Every layer separates concerns.
 
@@ -38,7 +39,7 @@ Every layer separates concerns.
 
 ## Packaging
 
-Publishing to packages is not implemented yet.
+Publishing to packages and monorepo is not implemented yet.
 
 [Bit](https://bit.dev/), [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)&mdash;all tested&mdash;offer, for now, low developer experience inflated with extended developing time.
 

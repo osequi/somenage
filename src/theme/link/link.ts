@@ -77,7 +77,7 @@ const defaultLink: TLink = {
   colors: {
     default: "default",
     active: "inverted",
-    visited: "default",
+    visited: "default", // shaded-inverted
   },
   settings: {
     default: {
