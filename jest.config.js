@@ -23,7 +23,7 @@ module.exports = {
     "<rootDir>/src/theme",
   ],
   /*
-  // NOTE: mappers and everything have to be configured inside projects !!!!
+  // NOTE: mappers and everything else have to be configured inside projects !!!!
   @see https://github.com/kulshekhar/ts-jest/issues/1648
   moduleNameMapper: {
     "@hooks": "<rootDir>/src/hooks/",
