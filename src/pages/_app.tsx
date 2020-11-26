@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 
 import { theme } from "@theme";
 import { TypographySetup, TypographyGridLines } from "@components/typography";
+import { Template } from "@home/Template";
 
 import "normalize.css";
 import "../theme/typography/reset.css";
@@ -15,7 +16,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ThemeContext.Provider value={theme}>
       <TypographySetup />
       {/*<TypographyGridLines />*/}
-      <Component {...pageProps} />
+      <Template>
+        <Component {...pageProps} />
+      </Template>
     </ThemeContext.Provider>
   );
 };
