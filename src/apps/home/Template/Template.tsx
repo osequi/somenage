@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { cx } from "@emotion/css";
+import { useRouter } from "next/router";
 
 /**
  * Imports other types, components and hooks.
@@ -40,6 +41,9 @@ const TemplateDefaultProps = {
 const Template = (props: TTemplate) => {
   const { children } = props;
   if (!children) return null;
+
+  const router = useRouter();
+  console.log("router:", router);
 
   return (
     <>

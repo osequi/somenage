@@ -17,7 +17,7 @@ import { useStyles, useLink } from "@hooks";
 export type TLink = {
   type?: "internal";
   preset?: TLinkPresetNames;
-  href: string;
+  href?: string;
   title?: string;
   /**
    * The content to be rendered.
@@ -40,6 +40,7 @@ const LinkDefaultProps = {
   type: "internal",
   preset: "default",
   href: null,
+  title: null,
   children: null,
   className: null,
 };
@@ -61,7 +62,9 @@ const container = {
  */
 const Link = (props: TLink) => {
   const { type, preset, href, title, children, className } = props;
-  if (!href) return null;
+  if (!href && !title) return null;
+
+  if (!href) return title;
 
   const linkStyle = useLink(preset);
   const linkKlass = useStyles(linkStyle);
