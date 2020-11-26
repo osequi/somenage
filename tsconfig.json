@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "downlevelIteration": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src", // see https://nextjs.org/docs/advanced-features/module-path-aliases
     "paths": {
       "@color-scheme-designer/*": ["apps/color-scheme-designer/*"],
       "@home/*": ["apps/home/*"],

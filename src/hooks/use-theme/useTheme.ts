@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "pages/_app";
+import { ThemeContext } from "../../pages/_app";
 
 /**
  * Returns a theme via context.
