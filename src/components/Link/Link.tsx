@@ -15,7 +15,7 @@ import { useStyles, useLink } from "@hooks";
  * Example here...
  */
 export type TLink = {
-  type?: "internal";
+  type?: "internal" | "external";
   preset?: TLinkPresetNames;
   href?: string;
   title?: string;
@@ -46,14 +46,6 @@ const LinkDefaultProps = {
 };
 
 /**
- * Defines the styles.
- * @ignore
- */
-const container = {
-  label: "Container",
-};
-
-/**
  * Displays the Link.
  * @category Components
  * @component
@@ -64,6 +56,7 @@ const Link = (props: TLink) => {
   const { type, preset, href, title, children, className } = props;
   if (!href && !title) return null;
 
+  // It fails back safely when no url given
   if (!href) return title;
 
   const linkStyle = useLink(preset);
@@ -77,6 +70,16 @@ const Link = (props: TLink) => {
             {children}
           </a>
         </NextLink>
+      );
+    case "external":
+      return (
+        <a
+          href={href}
+          title={title}
+          className={cx("Link", className, linkKlass)}
+        >
+          {children}
+        </a>
       );
   }
 };

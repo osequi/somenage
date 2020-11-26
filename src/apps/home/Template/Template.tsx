@@ -6,6 +6,10 @@ import { useRouter } from "next/router";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
+import { Grid } from "@components/layout";
+import { Section } from "@components/semantic-elements";
+import { Text } from "@components/typography";
+
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 /**
@@ -15,6 +19,7 @@ import { Footer } from "../Footer";
  * Example here...
  */
 export type TTemplate = {
+  siteTitle?: string;
   /**
    * The content to be rendered.
    */
@@ -28,6 +33,7 @@ export type TTemplate = {
  * Example here...
  */
 const TemplateDefaultProps = {
+  siteTitle: "Somenage",
   children: null,
 };
 
@@ -39,18 +45,22 @@ const TemplateDefaultProps = {
  * return <Template />
  */
 const Template = (props: TTemplate) => {
-  const { children } = props;
+  const { children, siteTitle } = props;
   if (!children) return null;
+
+  const asProps = { title: siteTitle };
 
   const router = useRouter();
   console.log("router:", router);
 
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <Grid as={Section} asProps={asProps}>
+      <Text>
+        <Header siteTitle={siteTitle} />
+        {children}
+        <Footer />
+      </Text>
+    </Grid>
   );
 };
 

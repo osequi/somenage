@@ -15,7 +15,7 @@ import { Link } from "@components/Link";
  * Example here...
  */
 export type THeader = {
-  title?: string;
+  siteTitle?: string;
   url?: string;
 } & typeof HeaderDefaultProps;
 
@@ -26,7 +26,7 @@ export type THeader = {
  * Example here...
  */
 const HeaderDefaultProps = {
-  title: "Somenage",
+  siteTitle: "Somenage",
   url: "/",
 };
 
@@ -46,15 +46,15 @@ const container = {
  * return <Header />
  */
 const Header = (props: THeader) => {
-  const { title, url } = props;
-  if (!title) return null;
+  const { siteTitle, url } = props;
+  if (!siteTitle) return null;
 
   const { containerKlass } = useStyles(container, props);
 
   return (
     <SemanticHeader className={cx("Header", containerKlass)}>
-      <Link href={url} title={title}>
-        {title}
+      <Link href={url} title={siteTitle}>
+        {siteTitle}
       </Link>
     </SemanticHeader>
   );
