@@ -1,6 +1,6 @@
 # Somenage
 
-An interactive design system for telling stories.
+An interactive design system and tools for creating visually compelling stories.
 
 ## Features
 
@@ -22,9 +22,23 @@ This current stack is the result of trials and errors.
 
 [Create React App](https://create-react-app.dev/), Javascript with [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html), [Styled components](https://styled-components.com/), [Material UI](https://styled-components.com/)&mdash;all tested&mdash;are not suitable now for this particular project.
 
+## Structure
+
+- `theme` - Type declarations and settings.
+- `hooks` - Business logic to connect the theme with components.
+- `components` - Visual building blocks of the design system.
+- `apps` - Apps and tools built on the design system.
+
+Every layer separates concerns.
+
+- `theme` is standalone, contains settings and no business logic.
+- `hooks` builds on theme, contains logic, no settings.
+- `components` build on hooks. When reusable business logic surfaces it goes refactored into hooks.
+- `apps` build on components.
+
 ## Packaging
 
-Not implemented yet.
+Publishing to packages is not implemented yet.
 
 [Bit](https://bit.dev/), [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)&mdash;all tested&mdash;offer, for now, low developer experience inflated with extended developing time.
 
