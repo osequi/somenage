@@ -1,13 +1,13 @@
 import React from "react";
 import { cx } from "@emotion/css";
-import { useStyles } from "../../hooks";
+import { useStyles } from "@hooks";
 
 /**
  * Imports other types, components and hooks.
  */
-import { Text } from "../typography";
-import { Section } from "../semantic-elements";
-import { Grid } from "../layout";
+import { Text } from "@components/typography";
+import { Section } from "@components/semantic-elements";
+import { Grid } from "@components/layout";
 import HomeMdx from "./Home.mdx";
 
 /**

@@ -13,7 +13,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@color-scheme-designer/*": ["apps/color-scheme-designer/*"],
+      "@home/*": ["apps/home/*"],
+      "@components/*": ["components/*"],
+      "@hooks": ["hooks/"],
+      "@theme": ["theme/"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
