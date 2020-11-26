@@ -12,9 +12,9 @@ import type { TSemanticElement } from ".";
  * @ignore
  */
 const requiredPropsAreSet = (props: TSemanticElement): boolean => {
-  const { children } = props;
+  const { children, title } = props;
 
-  return !isNil(children);
+  return !(isNil(children) && isNil(title));
 };
 
 /**

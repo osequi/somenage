@@ -5,7 +5,10 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
-import { Header as SemanticHeader } from "@components/semantic-elements";
+import {
+  Header as SemanticHeader,
+  SemanticHeading,
+} from "@components/semantic-elements";
 import { Link } from "@components/Link";
 
 /**
@@ -51,12 +54,18 @@ const Header = (props: THeader) => {
 
   const { containerKlass } = useStyles(container, props);
 
+  const title = (
+    <Link href={url} title={siteTitle}>
+      {siteTitle}
+    </Link>
+  );
+
   return (
-    <SemanticHeader className={cx("Header", containerKlass)}>
-      <Link href={url} title={siteTitle}>
-        {siteTitle}
-      </Link>
-    </SemanticHeader>
+    <SemanticHeader
+      title={title}
+      heading={true}
+      className={cx("Header", containerKlass)}
+    ></SemanticHeader>
   );
 };
 

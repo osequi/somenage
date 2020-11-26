@@ -44,12 +44,12 @@ export type TSemanticElement = {
   /**
    * The content to be displayed inside a semantic element.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * The className of the element.
    * Serves the technical purpose of style chaining.
    */
-  className: string;
+  className?: string;
   /**
    * The test id of the element.
    * It comes from the parent, usually.
