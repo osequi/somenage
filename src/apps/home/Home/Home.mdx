@@ -14,15 +14,20 @@ An interactive design system for telling stories.
 - [React](https://reactjs.org/), for interactivity.
 - [Typescript](https://www.typescriptlang.org/), for scalable code.
 - [Emotion](https://emotion.sh/), for style objects and functions.
+- [MDX](https://github.com/vercel/next.js/tree/canary/packages/next-mdx), for content experience.
 - [Jest](https://jestjs.io/en/), for testing theme, hooks and components.
 - [JsDoc](https://jsdoc.app/) with [BetterDocs](https://github.com/SoftwareBrothers/better-docs), to generate API documentation.
 
 This current stack is the result of trials and errors.
 
-[Create React App](https://create-react-app.dev/), Javascript with [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html), [Styled components](https://styled-components.com/), [Material UI](https://styled-components.com/) were tried and dismissed after proving incompetent for this particular project.
+[Create React App](https://create-react-app.dev/), Javascript with [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html), [Styled components](https://styled-components.com/), [Material UI](https://styled-components.com/)&mdash;all tested&mdash;are not suitable now for this particular project.
 
 ## Packaging
 
-Currently there is no packaging.
+Not implemented yet.
 
-[Bit](https://bit.dev/), [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) were tried and dismissed due to very low developer experience inflated with extended developing time.
+[Bit](https://bit.dev/), [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)&mdash;all tested&mdash;offer, for now, low developer experience inflated with extended developing time.
+
+As an aid, Next's [absolute imports and module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases) makes easy to link the project parts together.
+
+Importing with path aliases like `"@components/typography";` is possible anywhere in the project no matter the project structure.
