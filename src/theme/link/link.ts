@@ -44,6 +44,8 @@ export type TLinkSettings = {
   active?: object;
   /**
    * The style of the link for the visited state.
+   * It can have a restricted set of CSS rules.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:visited
    */
   visited?: object;
 };
@@ -84,7 +86,9 @@ const defaultLink: TLink = {
     active: {
       textDecoration: "line-through",
     },
-    visited: {},
+    visited: {
+      textDecorationColor: "red",
+    },
   },
 };
 
