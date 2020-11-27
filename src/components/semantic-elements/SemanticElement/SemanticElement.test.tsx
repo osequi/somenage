@@ -73,11 +73,11 @@ it("Hides the title by default", () => {
   expect(container.firstChild.firstChild).toHaveStyle("display:none");
 });
 
-it("Displays a H3 heading for title", () => {
+it("Displays a H2 heading for title", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );
-  expect(container.firstChild.firstChild.nodeName).toBe("H3");
+  expect(container.firstChild.firstChild.nodeName).toBe("H2");
 });
 
 it("`as` is working well", () => {
@@ -102,11 +102,12 @@ it("Works when children is defined", () => {
     <div
       class="ClassName"
     >
-      <h3
+      <h2
+        class="SemanticHeading-2"
         style="display: none;"
       >
         ClassName
-      </h3>
+      </h2>
       Semantic elements
     </div>
   `);

@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
  */
 import { useStyles } from "@hooks";
 import { Grid } from "@components/layout";
-import { Section } from "@components/semantic-elements";
 import { Text } from "@components/typography";
 
 import { Header } from "../Header";
@@ -39,6 +38,8 @@ const TemplateDefaultProps = {
 
 /**
  * Displays the Template.
+ *
+ * // NOTE: The Grid shouldn;t be semantic. It breaks the outliner. <Header> Should be the first semantic element
  * @category Components
  * @component
  * @example
@@ -48,13 +49,10 @@ const Template = (props: TTemplate) => {
   const { children, siteTitle } = props;
   if (!children) return null;
 
-  const asProps = { title: siteTitle };
-
   const router = useRouter();
-  console.log("router:", router);
 
   return (
-    <Grid as={Section} asProps={asProps}>
+    <Grid>
       <Text>
         <Header siteTitle={siteTitle} />
         {children}

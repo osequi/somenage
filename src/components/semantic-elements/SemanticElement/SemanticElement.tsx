@@ -119,9 +119,12 @@ const SemanticElement = (props: TSemanticElement) => {
   /**
    * Prepares the title.
    */
-  const titleStyle = displayTitle ? null : { display: "none" };
   const title2 = title ? title : className;
-  const title3 = <h3 style={titleStyle}>{title2}</h3>;
+  const title3 = (
+    <SemanticHeading level={2} display={displayTitle}>
+      {title2}
+    </SemanticHeading>
+  );
 
   /**
    * Displays either the heading or the title.
