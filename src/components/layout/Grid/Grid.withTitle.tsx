@@ -1,8 +1,9 @@
 /**
  * Checks if a grid has a title.
  */
-const hasTitle = (asProps) => {
-  return asProps && asProps?.title;
+const hasTitle = (props) => {
+  const { asProps } = props;
+  return asProps?.title || asProps?.heading;
 };
 
 /**

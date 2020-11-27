@@ -8,8 +8,9 @@ import { useId } from "react-aria";
  */
 import type { TMenuItem } from "../MenuItem";
 import { MenuItem } from "../MenuItem";
-import { useStyles } from "@hooks";
 import { FeaturesDefaultProps } from "../Features";
+import { Grid } from "@components/layout";
+import { Nav, Aside, H3 } from "@components/semantic-elements";
 
 /**
  * Defines the Menu type.
@@ -37,14 +38,6 @@ const MenuDefaultProps = {
 };
 
 /**
- * Defines the styles.
- * @ignore
- */
-const container = {
-  label: "Container",
-};
-
-/**
  * Displays the Menu.
  * @category Components
  * @component
@@ -67,20 +60,31 @@ const Menu = (props: TMenu) => {
       const menuItemsList =
         menuItems &&
         menuItems.map((menuItem) => {
-          return <MenuItem key={useId()} {...menuItem} />;
+          return (
+            <li key={useId()}>
+              <MenuItem {...menuItem} />
+            </li>
+          );
         });
 
+      const asideProps = {
+        heading: { level: 3, children: <MenuItem {...menuTitle} /> },
+      };
+
       return (
-        <aside>
-          <MenuItem key={useId()} {...menuTitle} />
-          {menuItemsList}
-        </aside>
+        <Grid key={useId()} as={Aside} asProps={asideProps}>
+          <ul>{menuItemsList}</ul>
+        </Grid>
       );
     });
 
-  const { containerKlass } = useStyles(container, props);
+  const navProps = { title: "Menu" };
 
-  return <div className={cx("Menu", containerKlass)}>{itemsList}</div>;
+  return (
+    <Grid as={Nav} asProps={navProps} className={cx("Menu")}>
+      {itemsList}
+    </Grid>
+  );
 };
 
 Menu.defaultProps = MenuDefaultProps;

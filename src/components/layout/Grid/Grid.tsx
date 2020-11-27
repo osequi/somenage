@@ -153,7 +153,7 @@ const Grid = (props: TGrid) => {
   /**
    * Checks if grid has a title.
    */
-  const gridHasTitle = hasTitle(asProps);
+  const gridHasTitle = hasTitle(props);
 
   /**
    * Checks if grid has multiple children.
