@@ -20,7 +20,7 @@ import { FeaturesDefaultProps } from "../Features";
 export type TMenu = {
   siteUrl?: string;
   items?: {
-    title?: string;
+    menuTitle: TMenuItem;
     menuItems: TMenuItem[];
   }[];
 } & typeof MenuDefaultProps;
@@ -33,12 +33,7 @@ export type TMenu = {
  */
 const MenuDefaultProps = {
   siteUrl: "/",
-  items: [
-    {
-      title: "Features",
-      menuItems: FeaturesDefaultProps?.menuItems,
-    },
-  ],
+  items: [FeaturesDefaultProps],
 };
 
 /**
@@ -67,7 +62,7 @@ const Menu = (props: TMenu) => {
   const itemsList =
     items &&
     items.map((item) => {
-      const { title, menuItems } = item;
+      const { menuTitle, menuItems } = item;
 
       const menuItemsList =
         menuItems &&
@@ -77,7 +72,7 @@ const Menu = (props: TMenu) => {
 
       return (
         <aside>
-          <h3>{title}</h3>
+          <MenuItem key={useId()} {...menuTitle} />
           {menuItemsList}
         </aside>
       );

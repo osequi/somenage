@@ -14,6 +14,7 @@ import type { TMenuItem } from "../MenuItem";
  * Example here...
  */
 export type TFeatures = {
+  menuTitle: TMenuItem;
   menuItems: TMenuItem[];
 } & typeof FeaturesDefaultProps;
 
@@ -24,7 +25,8 @@ export type TFeatures = {
  * Example here...
  */
 const FeaturesDefaultProps = {
-  menuItems: [{ title: "Semantic HTML5", url: "features/semantic-html5" }],
+  menuTitle: { title: "Features", url: "/features" },
+  menuItems: [{ title: "Semantic HTML5", url: "/features/semantic-html5" }],
 };
 
 /**
