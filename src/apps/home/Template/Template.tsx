@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { cx } from "@emotion/css";
+import Head from "next/head";
 
 /**
  * Imports other types, components and hooks.
@@ -51,16 +52,26 @@ const TemplateDefaultProps = {
  */
 const Template = (props: TTemplate) => {
   const { children, siteTitle, siteUrl } = props;
+  if (!children) return null;
+
+  const pageTitle = children.props?.title;
+  const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
   return (
-    <Grid>
-      <Text>
-        <Header siteTitle={siteTitle} siteUrl={siteUrl} />
-        <Menu />
-        <Content>{children}</Content>
-        <Footer />
-      </Text>
-    </Grid>
+    <>
+      <Head>
+        <title key="title">{title}</title>
+        <meta key="ogtitle" property="og:title" content={title} />
+      </Head>
+      <Grid>
+        <Text>
+          <Header siteTitle={siteTitle} siteUrl={siteUrl} />
+          <Menu />
+          <Content>{children}</Content>
+          <Footer />
+        </Text>
+      </Grid>
+    </>
   );
 };
 
