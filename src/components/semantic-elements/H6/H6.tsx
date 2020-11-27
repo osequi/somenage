@@ -17,7 +17,7 @@ import {
  */
 const H6DefaultProps = {
   ...semanticHeadingDefaultProps,
-  level: 1,
+  level: 6,
 };
 
 /**

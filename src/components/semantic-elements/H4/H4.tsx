@@ -17,7 +17,7 @@ import {
  */
 const H4DefaultProps = {
   ...semanticHeadingDefaultProps,
-  level: 1,
+  level: 4,
 };
 
 /**

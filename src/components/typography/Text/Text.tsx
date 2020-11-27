@@ -89,8 +89,8 @@ const defaultText = (props: {
   ...props.defaultScale,
   ...props.sameSizeHeadings,
   ...props.adjacentSiblingsMarginTop,
-  ...props.elements,
-  ...props.maxWidth,
+  //...props.elements,
+  //...props.maxWidth,
   ...props.defaultLink,
 });
 

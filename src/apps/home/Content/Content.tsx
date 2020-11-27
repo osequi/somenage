@@ -5,6 +5,7 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
+import { Main } from "@components/semantic-elements";
 
 /**
  * Defines the Content type.
@@ -48,7 +49,7 @@ const Content = (props: TContent) => {
 
   const { containerKlass } = useStyles(container, props);
 
-  return <div className={cx("Content", containerKlass)}>{children}</div>;
+  return <Main className={cx("Content", containerKlass)}>{children}</Main>;
 };
 
 Content.defaultProps = ContentDefaultProps;

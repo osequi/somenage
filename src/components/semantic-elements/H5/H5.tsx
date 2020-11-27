@@ -17,7 +17,7 @@ import {
  */
 const H5DefaultProps = {
   ...semanticHeadingDefaultProps,
-  level: 1,
+  level: 5,
 };
 
 /**

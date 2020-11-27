@@ -17,7 +17,7 @@ import {
  */
 const H3DefaultProps = {
   ...semanticHeadingDefaultProps,
-  level: 1,
+  level: 3,
 };
 
 /**

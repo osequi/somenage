@@ -17,7 +17,7 @@ import {
  */
 const H2DefaultProps = {
   ...semanticHeadingDefaultProps,
-  level: 1,
+  level: 2,
 };
 
 /**

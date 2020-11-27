@@ -25,7 +25,8 @@ export type TSemanticElementList =
   | "header"
   | "heading"
   | "nav"
-  | "section";
+  | "section"
+  | "main";
 
 /**
  * Defines the semantic element type.
