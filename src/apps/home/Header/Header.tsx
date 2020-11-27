@@ -16,7 +16,7 @@ import { Link } from "@components/Link";
  */
 export type THeader = {
   siteTitle?: string;
-  url?: string;
+  siteUrl?: string;
 } & typeof HeaderDefaultProps;
 
 /**
@@ -27,7 +27,7 @@ export type THeader = {
  */
 const HeaderDefaultProps = {
   siteTitle: "Somenage",
-  url: "/",
+  siteUrl: "/",
 };
 
 /**
@@ -46,13 +46,13 @@ const container = {
  * return <Header />
  */
 const Header = (props: THeader) => {
-  const { siteTitle, url } = props;
+  const { siteTitle, siteUrl } = props;
   if (!siteTitle) return null;
 
   const { containerKlass } = useStyles(container, props);
 
   const title = (
-    <Link href={url} title={siteTitle}>
+    <Link href={siteUrl} title={siteTitle}>
       {siteTitle}
     </Link>
   );

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { cx } from "@emotion/css";
-import { useRouter } from "next/router";
 
 /**
  * Imports other types, components and hooks.
@@ -11,6 +10,9 @@ import { Text } from "@components/typography";
 
 import { Header } from "../Header";
 import { Footer } from "../Footer";
+import { Menu } from "../Menu";
+import { Content } from "../Content";
+
 /**
  * Defines the Template type.
  * @category Components
@@ -19,6 +21,7 @@ import { Footer } from "../Footer";
  */
 export type TTemplate = {
   siteTitle?: string;
+  siteUrl?: string;
   /**
    * The content to be rendered.
    */
@@ -33,6 +36,7 @@ export type TTemplate = {
  */
 const TemplateDefaultProps = {
   siteTitle: "Somenage",
+  siteUrl: "/",
   children: null,
 };
 
@@ -46,16 +50,14 @@ const TemplateDefaultProps = {
  * return <Template />
  */
 const Template = (props: TTemplate) => {
-  const { children, siteTitle } = props;
-  if (!children) return null;
-
-  const router = useRouter();
+  const { children, siteTitle, siteUrl } = props;
 
   return (
     <Grid>
       <Text>
-        <Header siteTitle={siteTitle} />
-        {children}
+        <Header siteTitle={siteTitle} siteUrl={siteUrl} />
+        <Menu />
+        <Content>{children}</Content>
         <Footer />
       </Text>
     </Grid>

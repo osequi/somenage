@@ -5,7 +5,7 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
-import { Link } from "@components/Link";
+import type { TMenuItem } from "../MenuItem";
 
 /**
  * Defines the Features type.
@@ -13,7 +13,9 @@ import { Link } from "@components/Link";
  * @example
  * Example here...
  */
-export type TFeatures = {} & typeof FeaturesDefaultProps;
+export type TFeatures = {
+  menuItems: TMenuItem[];
+} & typeof FeaturesDefaultProps;
 
 /**
  * Defines the Features default props.
@@ -21,7 +23,9 @@ export type TFeatures = {} & typeof FeaturesDefaultProps;
  * @example
  * Example here...
  */
-const FeaturesDefaultProps = {};
+const FeaturesDefaultProps = {
+  menuItems: [{ title: "Semantic HTML5", url: "features/semantic-html5" }],
+};
 
 /**
  * Defines the styles.
@@ -41,14 +45,7 @@ const container = {
 const Features = (props: TFeatures) => {
   const { containerKlass } = useStyles(container, props);
 
-  return (
-    <div className={cx("Features", containerKlass)}>
-      Features
-      <Link href="features/semantic-html5" title="Semantic HTML5">
-        Semantic HTML5
-      </Link>
-    </div>
-  );
+  return <div className={cx("Features", containerKlass)}>Features</div>;
 };
 
 Features.defaultProps = FeaturesDefaultProps;
