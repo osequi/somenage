@@ -3,6 +3,16 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { SemanticElement } from ".";
 
+it("Displays a custom heading", () => {
+  const { container } = render(
+    <SemanticElement
+      heading={{ level: 1, children: "XXX" }}
+      children="Semantic elements"
+    />
+  );
+  expect(container.firstChild.firstChild.nodeName).toBe("H1");
+});
+
 it("`className` fails back silently", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
@@ -30,7 +40,7 @@ it("`className` is working well", () => {
 it("`title` fails back to `className` silently", () => {
   const { container } = render(
     <SemanticElement
-      heading={true}
+      displayTitle={true}
       className="className"
       children="Semantic elements"
     />
@@ -41,7 +51,7 @@ it("`title` fails back to `className` silently", () => {
 it("`title` is working well", () => {
   const { container } = render(
     <SemanticElement
-      heading={true}
+      displayTitle={true}
       title="Heading title"
       children="Semantic elements"
     />
@@ -49,21 +59,21 @@ it("`title` is working well", () => {
   expect(container.firstChild.firstChild).toHaveTextContent("Heading title");
 });
 
-it("Displays the heading on request", () => {
+it("Displays the title on request", () => {
   const { container } = render(
-    <SemanticElement heading={true} children="Semantic elements" />
+    <SemanticElement displayTitle={true} children="Semantic elements" />
   );
   expect(container.firstChild.firstChild).toHaveStyle("display:block");
 });
 
-it("Hides the heading by default", () => {
+it("Hides the title by default", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );
   expect(container.firstChild.firstChild).toHaveStyle("display:none");
 });
 
-it("Displays a H3 heading", () => {
+it("Displays a H3 heading for title", () => {
   const { container } = render(
     <SemanticElement children="Semantic elements" />
   );

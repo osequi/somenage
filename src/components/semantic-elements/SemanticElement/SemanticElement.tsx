@@ -1,6 +1,12 @@
 import React, { createElement, ReactNode } from "react";
 
 /**
+ * Imports other types, components and hooks.
+ */
+import type { TSemanticHeading } from "../SemanticHeading";
+import { SemanticHeading } from "../SemanticHeading";
+
+/**
  * Imports the business logic.
  */
 import {
@@ -33,14 +39,19 @@ export type TSemanticElement = {
   as: TSemanticElementList;
   /**
    * The title of the element.
-   * If set a heading will be inserted.
+   * If set a <h3> heading will be inserted.
    * @example <SemanticElement as='nav' title='Menu' /> => <nav><h3>Menu</h3>...</nav>
    */
   title: string;
   /**
    * Display the heading?
    */
-  heading?: boolean;
+  displayTitle?: boolean;
+  /**
+   * A Semantic Heading element.
+   * When `title`, `displayTitle` is not enough a complete heading can be specified.
+   */
+  heading?: TSemanticHeading;
   /**
    * The content to be displayed inside a semantic element.
    */
@@ -71,7 +82,8 @@ export type TSemanticElement = {
 const semanticElementDefaultProps = {
   as: "div",
   title: null,
-  heading: false,
+  displayTitle: false,
+  heading: null,
   children: null,
   className: null,
   testId: null,
@@ -89,7 +101,7 @@ const semanticElementDefaultProps = {
  * return (<SemanticElement as="nav" title="Menu">menu items</SemanticElement>)
  */
 const SemanticElement = (props: TSemanticElement) => {
-  const { as, title, heading, children, testId } = props;
+  const { as, title, displayTitle, heading, children, testId } = props;
 
   /**
    * Displays nothing if the mandatory props are not defined.
@@ -105,12 +117,16 @@ const SemanticElement = (props: TSemanticElement) => {
   const className = nonEmptyClassname(props);
 
   /**
-   * Prepares the heading.
-   * NOTE: Perhaps this should be refactored to use `SemanticHeading`
+   * Prepares the title.
    */
-  const headingStyle = heading ? null : { display: "none" };
-  const headingTitle = title ? title : className;
-  const headingElement = <h3 style={headingStyle}>{headingTitle}</h3>;
+  const titleStyle = displayTitle ? null : { display: "none" };
+  const title2 = title ? title : className;
+  const title3 = <h3 style={titleStyle}>{title2}</h3>;
+
+  /**
+   * Displays either the heading or the title.
+   */
+  const titleOrHeading = heading ? <SemanticHeading {...heading} /> : title3;
 
   /**
    * Prepares props for createElement.
@@ -122,7 +138,7 @@ const SemanticElement = (props: TSemanticElement) => {
 
   const childrenForCreateElement = (
     <>
-      {headingElement}
+      {titleOrHeading}
       {children}
     </>
   );

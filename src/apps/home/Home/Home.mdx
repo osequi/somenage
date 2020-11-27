@@ -21,7 +21,7 @@ An interactive design system and tools for visual stories.
 - [Typescript](https://www.typescriptlang.org/), for scalable code.
 - [Emotion](https://emotion.sh/), for style objects and functions.
 - [MDX](https://github.com/vercel/next.js/tree/canary/packages/next-mdx), for content experience.
-- [Jest](https://jestjs.io/en/) and and [ts-jest](https://kulshekhar.github.io/ts-jest/), for testing.
+- [Jest](https://jestjs.io/en/) and [ts-jest](https://kulshekhar.github.io/ts-jest/), for testing.
 - [JsDoc](https://jsdoc.app/) with [BetterDocs](https://github.com/SoftwareBrothers/better-docs) to generate API documentation.
 
 This current stack is the result of trials and errors.
@@ -30,9 +30,9 @@ This current stack is the result of trials and errors.
 
 ## Structure
 
-- `theme` - Type declarations and settings.
-- `hooks` - Business logic to connect the theme with components.
-- `components` - Visual building blocks of the design system.
+- `theme` - Design tokens. Type declarations and settings.
+- `hooks` - Business logic. To bridge theme with components.
+- `components` - The components of the design system.
 - `apps` - Apps and tools built on the design system.
 - `docs` - Auto geneated API docs from JsDoc comments.
 
@@ -40,7 +40,7 @@ Every layer separates concerns.
 
 - `theme` is standalone, contains settings and no business logic.
 - `hooks` builds on theme, contains logic, no settings.
-- `components` build on hooks. When reusable business logic surfaces it goes refactored into hooks.
+- `components` build on hooks, they don't access theme directly.
 - `apps` build on components.
 
 ## Packaging
