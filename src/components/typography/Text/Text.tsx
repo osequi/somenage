@@ -122,7 +122,7 @@ const Text = (props: TText) => {
   const sameSizeHeadings = useHeadings("sameSize");
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
   const maxWidth = useMaxWidth(25);
-  const defaultLink = useLinkStyle("default");
+  const defaultLink = useLinkStyle("default", "visible");
 
   /**
    * Loads styles.

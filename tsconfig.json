@@ -18,6 +18,7 @@
     "paths": {
       "@color-scheme-designer/*": ["apps/color-scheme-designer/*"],
       "@home/*": ["apps/home/*"],
+      "@pages/*": ["pages/*"],
       "@components/*": ["components/*"],
       "@hooks": ["hooks/"],
       "@theme": ["theme/"]
