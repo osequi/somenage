@@ -23,9 +23,9 @@ export type {
   THeadingsSettings,
   TSpacingPresetNames,
   THeadingsPresetNames,
-  TLink,
-  TLinkPresetNames,
-  TLinkSettings,
+  TLinkStylePresetNames,
+  TLinkStyle,
+  TLinkStyleProps,
   TColorPair,
   TColorPairNames,
 } from "./theme";

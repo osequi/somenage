@@ -16,6 +16,7 @@ module.exports = {
      * Settings for Next.js module path aliases
      * @see https://stackoverflow.com/questions/50171412/jest-typescript-absolute-paths-baseurl-gives-error-cannot-find-module
      */
+    "@home/(.*)": "../apps/home/$1",
     "@pages/(.*)": "../pages/$1",
     "@components/(.*)": "../components/$1",
     "@hooks": "../hooks/",

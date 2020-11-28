@@ -8,6 +8,12 @@ import { useStyles } from "@hooks";
 import { Link } from "@components/Link";
 
 /**
+ * Defines the Menu item status type.
+ * @category Components
+ */
+export type TMenuItemStatus = "active" | "inactive" | "highlighted" | "hidden";
+
+/**
  * Defines the MenuItem type.
  * @category Components
  * @example
@@ -16,7 +22,7 @@ import { Link } from "@components/Link";
 export type TMenuItem = {
   title?: string;
   url?: string;
-  active?: boolean;
+  status?: TMenuItemStatus;
 } & typeof MenuItemDefaultProps;
 
 /**
@@ -28,7 +34,7 @@ export type TMenuItem = {
 const MenuItemDefaultProps = {
   title: null,
   url: null,
-  active: null,
+  status: "active",
 };
 
 /**
@@ -39,7 +45,7 @@ const MenuItemDefaultProps = {
  * return <MenuItem />
  */
 const MenuItem = (props: TMenuItem) => {
-  const { title, url, active } = props;
+  const { title, url, status } = props;
   if (!title && !url) return null;
 
   return (

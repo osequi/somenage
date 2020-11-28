@@ -12,8 +12,8 @@ export type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
-  TLink,
-  TLinkPresetNames,
-  TLinkSettings,
+  TLinkStylePresetNames,
+  TLinkStyle,
+  TLinkStyleProps,
 } from "./typography";
 export { default as typography } from "./typography";

@@ -1,19 +1,23 @@
 import type { TColorPairNames } from "../";
 
 /**
- * Defines the link preset names.
+ * Defines the link style preset names.
+ * Presets define full styling for links.
+ * Preset can be something like `default`, `underlined`, `naked` etc.
  * @category Theme
  */
-export type TLinkPresetNames = "default";
+export type TLinkStylePresetNames = "default";
 
 /**
- * Collects the link preset names into an array.
+ * Collects the link style preset names into an array.
  * @ignore
  */
-const linkPresetNames = ["default"];
+const linkStylePresetNames = ["default"];
 
 /**
  * Defines the link colors type.
+ * Link colors are set via `useColors`. These are the definitions for `useColors`.
+ * @category Theme
  */
 export type TLinkColors = {
   /**
@@ -31,9 +35,11 @@ export type TLinkColors = {
 };
 
 /**
- * Defines the link settings type.
+ * Defines the link style props type.
+ * Other link styling than color are specified here.
+ * @category Theme
  */
-export type TLinkSettings = {
+export type TLinkStyleProps = {
   /**
    * The style of the link in default state.
    */
@@ -51,35 +57,35 @@ export type TLinkSettings = {
 };
 
 /**
- * Defines the link type.
+ * Defines the link style type.
  * @category Theme
  */
-export type TLink = {
+export type TLinkStyle = {
   /**
    * Which preset to use.
    */
-  preset?: TLinkPresetNames;
+  preset?: TLinkStylePresetNames;
   /**
    * The colors for the preset.
    */
   colors?: TLinkColors;
   /**
-   * The settings for the preset.
+   * The other than colors style settings for the preset.
    */
-  settings?: TLinkSettings;
+  styleProps?: TLinkStyleProps;
 };
 
 /**
  * Defines the default link style.
  */
-const defaultLink: TLink = {
+const defaultLinkStyle: TLinkStyle = {
   preset: "default",
   colors: {
     default: "default",
     active: "inverted",
     visited: "default", // shaded-inverted
   },
-  settings: {
+  styleProps: {
     default: {
       textDecoration: "underline",
     },
@@ -95,7 +101,7 @@ const defaultLink: TLink = {
 /**
  * Defines the available link styles.
  */
-const links: TLink[] = [defaultLink];
+const linkStyles: TLinkStyle[] = [defaultLinkStyle];
 
-export default links;
-export { linkPresetNames };
+export default linkStyles;
+export { linkStylePresetNames };

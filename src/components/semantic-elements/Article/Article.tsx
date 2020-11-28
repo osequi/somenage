@@ -14,7 +14,7 @@ import { SemanticElement, semanticElementDefaultProps } from "../";
  * as: "article",
  * heading: true,
  */
-const articleDefaultProps: TSemanticElement = {
+const articleDefaultProps = {
   ...semanticElementDefaultProps,
   as: "article",
   heading: true,

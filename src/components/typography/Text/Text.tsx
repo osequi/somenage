@@ -3,7 +3,7 @@ import { cx } from "@emotion/css";
 import { startCase, isNil } from "lodash";
 
 /**
- * Imports other types, components ans hooks.
+ * Imports other types, components and hooks.
  */
 import {
   useStyles,
@@ -12,8 +12,8 @@ import {
   useScale,
   useSpacing,
   useHeadings,
-  useLink,
-} from "../../../hooks";
+  useLinkStyle,
+} from "@hooks";
 import { Elements } from "../";
 
 /**
@@ -122,7 +122,7 @@ const Text = (props: TText) => {
   const sameSizeHeadings = useHeadings("sameSize");
   const adjacentSiblingsMarginTop = useSpacing("Adjacent siblings margin top");
   const maxWidth = useMaxWidth(25);
-  const defaultLink = useLink("default");
+  const defaultLink = useLinkStyle("default");
 
   /**
    * Loads styles.

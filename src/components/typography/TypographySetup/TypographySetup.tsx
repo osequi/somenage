@@ -1,6 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import { useTypographicGrid } from "../../../hooks";
+
+/**
+ * Imports other types, components and hooks.
+ */
+import { useTypographicGrid } from "@hooks";
 
 /**
  * Sets up the typographic grid in the `<body>`.

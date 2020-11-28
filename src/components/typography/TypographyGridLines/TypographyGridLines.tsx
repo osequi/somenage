@@ -1,5 +1,9 @@
 import React from "react";
-import { useStyles } from "../../../hooks";
+
+/**
+ * Imports other types, components and hooks.
+ */
+import { useStyles } from "@hooks";
 
 /**
  * Imports business logic.

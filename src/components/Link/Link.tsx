@@ -1,12 +1,13 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useRef } from "react";
 import { cx } from "@emotion/css";
 import NextLink from "next/link";
+import { useLink as useAriaLink } from "react-aria";
 
 /**
  * Imports other types, components and hooks.
  */
-import type { TLinkPresetNames } from "@theme";
-import { useStyles, useLink } from "@hooks";
+import type { TLinkStylePresetNames } from "@theme";
+import { useStyles, useLinkStyle } from "@hooks";
 
 /**
  * Defines the Link type.
@@ -16,9 +17,10 @@ import { useStyles, useLink } from "@hooks";
  */
 export type TLink = {
   type?: "internal" | "external";
-  preset?: TLinkPresetNames;
+  preset?: TLinkStylePresetNames;
   href?: string;
   title?: string;
+  target?: string;
   /**
    * The content to be rendered.
    */
@@ -41,6 +43,7 @@ const LinkDefaultProps = {
   preset: "default",
   href: null,
   title: null,
+  target: null,
   children: null,
   className: null,
 };
@@ -59,14 +62,21 @@ const Link = (props: TLink) => {
   // It fails back safely when no url given
   if (!href) return title;
 
-  const linkStyle = useLink(preset);
+  const ref = useRef();
+  const { linkProps } = useAriaLink(props, ref);
+
+  const linkStyle = useLinkStyle(preset);
   const linkKlass = useStyles(linkStyle);
 
   switch (type) {
     case "internal":
       return (
         <NextLink href={href}>
-          <a title={title} className={cx("Link", className, linkKlass)}>
+          <a
+            title={title}
+            className={cx("Link", className, linkKlass)}
+            {...linkProps}
+          >
             {children}
           </a>
         </NextLink>
@@ -77,6 +87,7 @@ const Link = (props: TLink) => {
           href={href}
           title={title}
           className={cx("Link", className, linkKlass)}
+          {...linkProps}
         >
           {children}
         </a>

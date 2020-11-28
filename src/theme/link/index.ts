@@ -1,2 +1,6 @@
-export type { TLinkPresetNames, TLink, TLinkSettings } from "./link";
-export { default as links, linkPresetNames } from "./link";
+export type {
+  TLinkStylePresetNames,
+  TLinkStyle,
+  TLinkStyleProps,
+} from "./linkStyle";
+export { default as linkStyles, linkStylePresetNames } from "./linkStyle";
