@@ -2,7 +2,7 @@ import type { TColorPairNames } from "../";
 
 /**
  * Defines the link style preset names.
- * Presets define full styling for links.
+ * Style presets define the styling for links.
  * Preset can be something like `default`, `underlined`, `naked` etc.
  * @category Theme
  */
@@ -13,6 +13,19 @@ export type TLinkStylePresetNames = "default";
  * @ignore
  */
 const linkStylePresetNames = ["default"];
+
+/**
+ * Defines the link type preset names.
+ * @category Theme
+ */
+export type TLinkTypePresetNames = "external" | "internal";
+
+/**
+ * Defines the link status preset names.
+ * Status presets alter the styling of the link.
+ * @category Theme
+ */
+export type TLinkStatusPresetNames = "visible" | "disabled" | "hidden";
 
 /**
  * Defines the link colors type.
@@ -32,6 +45,10 @@ export type TLinkColors = {
    * The color of the link for the visited state.
    */
   visited?: TColorPairNames;
+  /**
+   * The color of the link for the disabled state.
+   */
+  disabled?: TColorPairNames;
 };
 
 /**
@@ -54,6 +71,14 @@ export type TLinkStyleProps = {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:visited
    */
   visited?: object;
+  /**
+   * The style of the link for the disabled state.
+   */
+  disabled?: object;
+  /**
+   * The style of the link for the hidden state.
+   */
+  hidden?: object;
 };
 
 /**
@@ -83,7 +108,8 @@ const defaultLinkStyle: TLinkStyle = {
   colors: {
     default: "default",
     active: "inverted",
-    visited: "default", // shaded-inverted
+    visited: "default", // ????
+    disabled: "default", // shaded-inverted
   },
   styleProps: {
     default: {
@@ -94,6 +120,10 @@ const defaultLinkStyle: TLinkStyle = {
     },
     visited: {
       textDecorationColor: "red",
+    },
+    disabled: {},
+    hidden: {
+      display: "none",
     },
   },
 };

@@ -18,6 +18,7 @@ import { useStyles, useLinkStyle } from "@hooks";
 export type TLink = {
   type?: "internal" | "external";
   preset?: TLinkStylePresetNames;
+  status?: "visible" | "disabled" | "hidden";
   href?: string;
   title?: string;
   target?: string;
@@ -41,6 +42,7 @@ export type TLink = {
 const LinkDefaultProps = {
   type: "internal",
   preset: "default",
+  status: "visible",
   href: null,
   title: null,
   target: null,
@@ -56,42 +58,61 @@ const LinkDefaultProps = {
  * return <Link />
  */
 const Link = (props: TLink) => {
-  const { type, preset, href, title, children, className } = props;
+  const { type, preset, status, href, title, children, className } = props;
   if (!href && !title) return null;
 
-  // It fails back safely when no url given
+  /**
+   * It fails back safely to `title` when no url given.
+   */
   if (!href) return title;
 
+  /**
+   * Loads link state management and A11y props from `@react-aria`.
+   */
   const ref = useRef();
-  const { linkProps } = useAriaLink(props, ref);
+  const isDisabled = status === "disabled";
+  const { linkProps } = useAriaLink({ ...props, isDisabled: isDisabled }, ref);
 
-  const linkStyle = useLinkStyle(preset);
+  /**
+   * Loads link style from the theme.
+   */
+  const linkStyle = useLinkStyle(preset, status);
   const linkKlass = useStyles(linkStyle);
+
+  /**
+   * Puts together an internal link using `@next/link`.
+   */
+  const internalLink = (
+    <NextLink href={href}>
+      <a
+        title={title}
+        className={cx("Link", className, linkKlass)}
+        {...linkProps}
+      >
+        {children}
+      </a>
+    </NextLink>
+  );
+
+  /**
+   * Puts together an external link using `<a>`.
+   */
+  const externalLink = (
+    <a
+      href={href}
+      title={title}
+      className={cx("Link", className, linkKlass)}
+      {...linkProps}
+    >
+      {children}
+    </a>
+  );
 
   switch (type) {
     case "internal":
-      return (
-        <NextLink href={href}>
-          <a
-            title={title}
-            className={cx("Link", className, linkKlass)}
-            {...linkProps}
-          >
-            {children}
-          </a>
-        </NextLink>
-      );
+      return internalLink;
     case "external":
-      return (
-        <a
-          href={href}
-          title={title}
-          className={cx("Link", className, linkKlass)}
-          {...linkProps}
-        >
-          {children}
-        </a>
-      );
+      return externalLink;
   }
 };
 

@@ -28,4 +28,6 @@ export type {
   TLinkStyleProps,
   TColorPair,
   TColorPairNames,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 } from "./theme";

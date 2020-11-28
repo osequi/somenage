@@ -18,6 +18,8 @@ import type {
   TLinkStylePresetNames,
   TLinkStyle,
   TLinkStyleProps,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 } from "./typography";
 import { typography } from "./typography";
 
@@ -134,4 +136,6 @@ export type {
   TLinkStyleProps,
   TColorPair,
   TColorPairNames,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 };

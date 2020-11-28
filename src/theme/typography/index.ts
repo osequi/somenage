@@ -15,5 +15,7 @@ export type {
   TLinkStylePresetNames,
   TLinkStyle,
   TLinkStyleProps,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 } from "./typography";
 export { default as typography } from "./typography";

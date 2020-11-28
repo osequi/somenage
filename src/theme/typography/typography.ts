@@ -26,6 +26,8 @@ import type {
   TLinkStylePresetNames,
   TLinkStyle,
   TLinkStyleProps,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 } from "../link";
 import { linkStyles } from "../link";
 
@@ -105,4 +107,6 @@ export type {
   TLinkStylePresetNames,
   TLinkStyle,
   TLinkStyleProps,
+  TLinkTypePresetNames,
+  TLinkStatusPresetNames,
 };
