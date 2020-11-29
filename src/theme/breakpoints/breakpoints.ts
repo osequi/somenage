@@ -55,7 +55,7 @@ export type TBreakpoint = {
 const breakpoints: TBreakpoint[] = [
   { name: "mobile", value: 320 },
   { name: "tablet", value: 768 },
-  { name: "laptop", value: 1024 },
+  { name: "laptop", value: 1280 },
   { name: "desktop", value: 1600 },
 ];
 

@@ -4,7 +4,7 @@ import Head from "next/head";
 /**
  * Imports other types, components and hooks.
  */
-import { useMediaQuery } from "@hooks";
+import { useViewport } from "@hooks";
 import { Grid } from "@components/layout";
 import { Text } from "@components/typography";
 
@@ -71,7 +71,7 @@ const Template = (props: TTemplate) => {
     </Head>
   );
 
-  const menuState: TMenuItemStateNames = useMediaQuery("laptop")
+  const menuState: TMenuItemStateNames = useViewport("<laptop")
     ? "title-with-icon"
     : "default";
 
