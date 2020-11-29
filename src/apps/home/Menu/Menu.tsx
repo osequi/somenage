@@ -73,21 +73,16 @@ const Menu = (props: TMenu) => {
   const route = router?.route;
   if (route === siteUrl) return null;
 
-  console.log("route:", route);
-  console.log("items:", items);
-
   /**
    * Finds the active menu item.
    */
   const activeMenuItem = getActiveMenuItem(items, route);
-  console.log("activeMenuItem:", activeMenuItem);
 
   /**
    * Checks if we have the special `title-with-icon` state.
    * In this state the whole menu is hiiden only the active menu item, or menu title is displayed.
    */
   const isTitleWithIconState = state === "title-with-icon";
-  console.log("isTitleWithIconState:", isTitleWithIconState);
 
   /**
    * Prepares the menu items.
@@ -106,10 +101,12 @@ const Menu = (props: TMenu) => {
             isTitleWithIconState,
             state
           );
-          console.log("menuItemState:", menuItemState);
+
+          const liStyle =
+            menuItemState === "hidden" ? { display: "none" } : null;
 
           return (
-            <li key={useId()}>
+            <li style={liStyle} key={useId()}>
               <MenuItem {...menuItem} state={menuItemState} />
             </li>
           );
@@ -121,18 +118,20 @@ const Menu = (props: TMenu) => {
         isTitleWithIconState,
         state
       );
-      console.log("menuTitleState:", menuTitleState);
 
       const asideProps = {
         heading: {
           level: 3,
+          display: menuTitleState !== "hidden",
           children: <MenuItem {...menuTitle} state={menuTitleState} />,
         },
       };
 
+      const ulStyle = menuTitleState !== "hidden" ? { display: "none" } : null;
+
       return (
         <Grid key={useId()} as={Aside} asProps={asideProps}>
-          <ul>{menuItemsList}</ul>
+          <ul style={ulStyle}>{menuItemsList}</ul>
         </Grid>
       );
     });

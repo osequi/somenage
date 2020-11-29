@@ -7,11 +7,8 @@ const getMenuItemState = (
   activeMenuItem: TMenuItem,
   isTitleWithIconState: boolean,
   state: TMenuItemStateNames
-) => {
+): TMenuItemStateNames => {
   const isActiveMenuItem = isEqual(menuItem, activeMenuItem);
-
-  console.log("menuItem:", menuItem);
-  console.log("isActiveMenuItem:", isActiveMenuItem);
 
   return isTitleWithIconState
     ? isActiveMenuItem
