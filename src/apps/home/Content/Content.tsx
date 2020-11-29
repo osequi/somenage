@@ -49,7 +49,9 @@ const Content = (props: TContent) => {
 
   const { containerKlass } = useStyles(container, props);
 
-  return <Main className={cx("Content", containerKlass)}>{children}</Main>;
+  return (
+    <Main className={cx("Content", containerKlass)}>Content: {children}</Main>
+  );
 };
 
 Content.defaultProps = ContentDefaultProps;

@@ -1,10 +1,10 @@
 import React from "react";
 import { cx } from "@emotion/css";
-import { useStyles } from "../../hooks";
 
 /**
  * Imports other types, components and hooks.
  */
+import { useStyles } from "@hooks";
 
 /**
  * Defines the TypographicGrid type.

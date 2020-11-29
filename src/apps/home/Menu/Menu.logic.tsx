@@ -27,17 +27,27 @@ const getMenuItemState = (
  * @return 			The active menu item, or en empty object
  */
 const getActiveMenuItem = (items: TMenuItemGroup[], route: string) => {
-  items &&
+  if (!items || !route) return null;
+
+  return (
+    items &&
     items.reduce((previousValue, currentValue): TMenuItem => {
-      const { menuItems } = currentValue;
-      const active =
+      const { menuItems, menuTitle } = currentValue;
+
+      const activeMenuItem =
         menuItems && menuItems.find((menuItem) => menuItem.url === route);
 
-      console.log("menuItems:", menuItems);
-      console.log("active:", active);
-      console.log("previousValue:", previousValue);
+      const activeMenuTitle = menuTitle?.url === route;
+
+      const active: TMenuItem = activeMenuItem
+        ? activeMenuItem
+        : activeMenuTitle
+        ? menuTitle
+        : null;
+
       return active ? active : previousValue;
-    }, {} as TMenuItem);
+    }, {} as TMenuItem)
+  );
 };
 
 export { getActiveMenuItem, getMenuItemState };
