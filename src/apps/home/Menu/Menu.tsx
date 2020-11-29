@@ -51,8 +51,8 @@ export type TMenu = {
  */
 const MenuDefaultProps = {
   siteUrl: "/",
-  items: [FeaturesDefaultProps],
-  state: "default", //"title-with-icon",
+  items: [FeaturesDefaultProps.menuGroup],
+  state: "title-with-icon", //"title-with-icon",
 };
 
 /**
@@ -87,6 +87,7 @@ const Menu = (props: TMenu) => {
    * In this state the whole menu is hiiden only the active menu item, or menu title is displayed.
    */
   const isTitleWithIconState = state === "title-with-icon";
+  console.log("isTitleWithIconState:", isTitleWithIconState);
 
   /**
    * Prepares the menu items.
