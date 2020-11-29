@@ -21,3 +21,4 @@ export { useResponsiveGridColumns } from "./use-responsive-grid-columns";
 export { useDefaultProps } from "./use-default-props";
 export { useLinkStyle } from "./use-link-style";
 export { useColors } from "./use-colors";
+export { useMediaQuery } from "./use-media-query";

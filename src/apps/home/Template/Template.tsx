@@ -1,11 +1,10 @@
 import React, { ReactNode } from "react";
-import { cx } from "@emotion/css";
 import Head from "next/head";
 
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
+import { useMediaQuery } from "@hooks";
 import { Grid } from "@components/layout";
 import { Text } from "@components/typography";
 
@@ -13,6 +12,8 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Menu } from "../Menu";
 import { Content } from "../Content";
+
+import type { TMenuItemStateNames } from "../MenuItem";
 
 /**
  * Defines the Template type.
@@ -60,16 +61,27 @@ const Template = (props: TTemplate) => {
   const pageTitle = children?.props?.title;
   const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
+  /**
+   * Sets the page title in `<head>`
+   */
+  const head = (
+    <Head>
+      <title key="title">{title}</title>
+      <meta key="ogtitle" property="og:title" content={title} />
+    </Head>
+  );
+
+  const menuState: TMenuItemStateNames = useMediaQuery("laptop")
+    ? "title-with-icon"
+    : "default";
+
   return (
     <>
-      <Head>
-        <title key="title">{title}</title>
-        <meta key="ogtitle" property="og:title" content={title} />
-      </Head>
+      {head}
       <Grid>
         <Text>
           <Header siteTitle={siteTitle} siteUrl={siteUrl} />
-          <Menu />
+          <Menu state={menuState} />
           <Content>{children}</Content>
           <Footer />
         </Text>
