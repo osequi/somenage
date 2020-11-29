@@ -1,11 +1,12 @@
 import React from "react";
-import { cx } from "@emotion/css";
 
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
 import type { TMenuItemGroup } from "../Menu";
+import { Text } from "@components/typography";
+import { Article } from "@components/semantic-elements";
+import FeaturesMdx from "./Features.mdx";
 
 /**
  * Defines the Features type.
@@ -34,14 +35,6 @@ const FeaturesDefaultProps = {
 };
 
 /**
- * Defines the styles.
- * @ignore
- */
-const container = {
-  label: "Container",
-};
-
-/**
  * Displays the Features.
  * @category Components
  * @component
@@ -49,9 +42,13 @@ const container = {
  * return <Features />
  */
 const Features = (props: TFeatures) => {
-  const { containerKlass } = useStyles(container, props);
-
-  return <div className={cx("Features", containerKlass)}>Features</div>;
+  return (
+    <Article className="Features" title="Features" displayTitle={false}>
+      <Text variant="default">
+        <FeaturesMdx />
+      </Text>
+    </Article>
+  );
 };
 
 Features.defaultProps = FeaturesDefaultProps;

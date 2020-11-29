@@ -17,7 +17,7 @@ import { SemanticElement, semanticElementDefaultProps } from "../";
 const articleDefaultProps = {
   ...semanticElementDefaultProps,
   as: "article",
-  heading: true,
+  displayTitle: true,
 };
 
 /**

@@ -52,7 +52,7 @@ export type TMenu = {
 const MenuDefaultProps = {
   siteUrl: "/",
   items: [FeaturesDefaultProps.menuGroup],
-  state: "title-with-icon", //"title-with-icon",
+  state: "default", //"title-with-icon",
 };
 
 /**
@@ -80,7 +80,7 @@ const Menu = (props: TMenu) => {
 
   /**
    * Checks if we have the special `title-with-icon` state.
-   * In this state the whole menu is hiiden only the active menu item, or menu title is displayed.
+   * In this state the whole menu is hidden only the active menu item, or menu title is displayed.
    */
   const isTitleWithIconState = state === "title-with-icon";
 
@@ -103,7 +103,9 @@ const Menu = (props: TMenu) => {
           );
 
           const liStyle =
-            menuItemState === "hidden" ? { display: "none" } : null;
+            menuItemState === "hidden" && isTitleWithIconState
+              ? { display: "none" }
+              : null;
 
           return (
             <li style={liStyle} key={useId()}>
@@ -127,7 +129,10 @@ const Menu = (props: TMenu) => {
         },
       };
 
-      const ulStyle = menuTitleState !== "hidden" ? { display: "none" } : null;
+      const ulStyle =
+        isTitleWithIconState && menuTitleState !== "hidden"
+          ? { display: "none" }
+          : null;
 
       return (
         <Grid key={useId()} as={Aside} asProps={asideProps}>

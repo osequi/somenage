@@ -1,10 +1,12 @@
 import React from "react";
-import { cx } from "@emotion/css";
 import { useStyles } from "@hooks";
 
 /**
  * Imports other types, components and hooks.
  */
+import { Text } from "@components/typography";
+import { Article } from "@components/semantic-elements";
+import SemanticHtml5Mdx from "./SemanticHtml5.mdx";
 
 /**
  * Defines the SemanticHtml5 type.
@@ -23,14 +25,6 @@ export type TSemanticHtml5 = {} & typeof SemanticHtml5DefaultProps;
 const SemanticHtml5DefaultProps = {};
 
 /**
- * Defines the styles.
- * @ignore
- */
-const container = {
-  label: "Container",
-};
-
-/**
  * Displays the SemanticHtml5.
  * @category Components
  * @component
@@ -38,10 +32,16 @@ const container = {
  * return <SemanticHtml5 />
  */
 const SemanticHtml5 = (props: TSemanticHtml5) => {
-  const { containerKlass } = useStyles(container, props);
-
   return (
-    <div className={cx("SemanticHtml5", containerKlass)}>SemanticHtml5</div>
+    <Article
+      className="Semantic HTML5"
+      title="Semantic HTML5"
+      displayTitle={false}
+    >
+      <Text variant="default">
+        <SemanticHtml5Mdx />
+      </Text>
+    </Article>
   );
 };
 

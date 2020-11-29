@@ -1,10 +1,8 @@
 import React, { ReactNode } from "react";
-import { cx } from "@emotion/css";
 
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
 import { Main } from "@components/semantic-elements";
 
 /**
@@ -29,14 +27,6 @@ export type TContent = {
 const ContentDefaultProps = {};
 
 /**
- * Defines the styles.
- * @ignore
- */
-const container = {
-  label: "Container",
-};
-
-/**
  * Displays the Content.
  * @category Components
  * @component
@@ -47,11 +37,7 @@ const Content = (props: TContent) => {
   const { children } = props;
   if (!children) return null;
 
-  const { containerKlass } = useStyles(container, props);
-
-  return (
-    <Main className={cx("Content", containerKlass)}>Content: {children}</Main>
-  );
+  return <Main className="Content">{children}</Main>;
 };
 
 Content.defaultProps = ContentDefaultProps;
