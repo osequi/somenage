@@ -4,7 +4,6 @@ import { cx } from "@emotion/css";
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
 import type { TLinkStatePresetNames } from "@theme";
 import { Link } from "@components/Link";
 
@@ -40,11 +39,11 @@ const MenuItemDefaultProps = {
  * return <MenuItem />
  */
 const MenuItem = (props: TMenuItem) => {
-  const { title, url } = props;
+  const { title, url, state } = props;
   if (!title && !url) return null;
 
   return (
-    <Link href={url} title={title} className={cx("MenuItem")}>
+    <Link href={url} title={title} state={state} className={cx("MenuItem")}>
       {title}
     </Link>
   );

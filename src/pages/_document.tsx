@@ -12,16 +12,16 @@ class MyDocument extends Document {
     return initialProps;
   }
 
+  /**
+   * <Head/> should be kept clear / empty.
+   * @see https://github.com/vercel/next.js/blob/master/errors/no-document-title.md
+   * @see https://github.com/vercel/next.js/blob/master/errors/no-document-viewport-meta.md
+   */
+
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <title>Somenage</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
