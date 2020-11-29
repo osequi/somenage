@@ -54,6 +54,9 @@ const Template = (props: TTemplate) => {
   const { children, siteTitle, siteUrl } = props;
   if (!children) return null;
 
+  /**
+   * Defines the page title.
+   */
   const pageTitle = children?.props?.title;
   const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 

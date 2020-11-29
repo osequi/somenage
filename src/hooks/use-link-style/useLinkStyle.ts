@@ -8,12 +8,14 @@ import { isNil } from "lodash";
  * Styles a link.
  * @param	preset	The links preset name.
  * @param	state	The link state.
+ * @param	wrap	Wrap the result into an `["& a"]` container?
  * @return			The links style object.
  * @category Hooks
  */
 const useLinkStyle = (
   preset?: TLinkStylePresetNames,
-  state?: TLinkStatePresetNames
+  state?: TLinkStatePresetNames,
+  wrap?: boolean
 ): object | null => {
   if (!preset) return null;
 
@@ -41,47 +43,48 @@ const useLinkStyle = (
   const disabledColors = disabledColor ? useColors(disabledColor) : null;
 
   const defaultLink = {
-    ["& a"]: {
-      ...defaultColors,
-      ...defaultStyle,
+    ...defaultColors,
+    ...defaultStyle,
 
-      ["&:hover, &:active, &:focus"]: {
-        ...activeColors,
-        ...activeStyle,
-      },
+    ["&:hover, &:active, &:focus"]: {
+      ...activeColors,
+      ...activeStyle,
+    },
 
-      ["&:visited"]: {
-        ...visitedColors,
-        ...visitedStyle,
-      },
+    ["&:visited"]: {
+      ...visitedColors,
+      ...visitedStyle,
     },
   };
   const disabledLink = {
-    ["& a"]: {
+    ...disabledColors,
+    ...disabledStyle,
+
+    ["&:hover, &:active, &:focus"]: {
       ...disabledColors,
       ...disabledStyle,
+    },
 
-      ["&:hover, &:active, &:focus"]: {
-        ...disabledColors,
-        ...disabledStyle,
-      },
-
-      ["&:visited"]: {
-        ...disabledColors,
-        ...disabledStyle,
-      },
+    ["&:visited"]: {
+      ...disabledColors,
+      ...disabledStyle,
     },
   };
-  const hiddenLink = { ["& a"]: { ...hiddenStyle } };
+  const hiddenLink = { ...hiddenStyle };
 
+  let link = {};
   switch (state) {
     case "default":
-      return defaultLink;
+      link = defaultLink;
+      break;
     case "disabled":
-      return disabledLink;
+      link = disabledLink;
+      break;
     case "hidden":
-      return hiddenLink;
+      link = hiddenLink;
   }
+
+  return wrap ? { ["& a"]: { ...link } } : link;
 };
 
 export default useLinkStyle;

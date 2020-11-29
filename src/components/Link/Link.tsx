@@ -76,7 +76,7 @@ const Link = (props: TLink) => {
   /**
    * Loads link style from the theme.
    */
-  const linkStyle = useLinkStyle(preset, state);
+  const linkStyle = useLinkStyle(preset, state, false);
   const linkKlass = useStyles(linkStyle);
 
   /**
