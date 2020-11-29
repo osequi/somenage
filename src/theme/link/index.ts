@@ -1,8 +1,7 @@
 export type {
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStyleProps,
   TLinkTypePresetNames,
-  TLinkStatusPresetNames,
+  TLinkStatePresetNames,
 } from "./linkStyle";
 export { default as linkStyles, linkStylePresetNames } from "./linkStyle";

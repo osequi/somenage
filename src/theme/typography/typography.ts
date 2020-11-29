@@ -25,9 +25,8 @@ import { headings } from "../headings";
 import type {
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStyleProps,
+  TLinkStatePresetNames,
   TLinkTypePresetNames,
-  TLinkStatusPresetNames,
 } from "../link";
 import { linkStyles } from "../link";
 
@@ -106,7 +105,6 @@ export type {
   THeadingsPresetNames,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStyleProps,
+  TLinkStatePresetNames,
   TLinkTypePresetNames,
-  TLinkStatusPresetNames,
 };

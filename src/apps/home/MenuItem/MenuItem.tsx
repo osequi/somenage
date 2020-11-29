@@ -5,13 +5,8 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
+import type { TLinkStatePresetNames } from "@theme";
 import { Link } from "@components/Link";
-
-/**
- * Defines the Menu item status type.
- * @category Components
- */
-export type TMenuItemStatus = "active" | "inactive" | "highlighted" | "hidden";
 
 /**
  * Defines the MenuItem type.
@@ -22,7 +17,7 @@ export type TMenuItemStatus = "active" | "inactive" | "highlighted" | "hidden";
 export type TMenuItem = {
   title?: string;
   url?: string;
-  status?: TMenuItemStatus;
+  state?: TLinkStatePresetNames;
 } & typeof MenuItemDefaultProps;
 
 /**
@@ -34,7 +29,7 @@ export type TMenuItem = {
 const MenuItemDefaultProps = {
   title: null,
   url: null,
-  status: "active",
+  state: "default",
 };
 
 /**
@@ -45,7 +40,7 @@ const MenuItemDefaultProps = {
  * return <MenuItem />
  */
 const MenuItem = (props: TMenuItem) => {
-  const { title, url, status } = props;
+  const { title, url } = props;
   if (!title && !url) return null;
 
   return (

@@ -6,7 +6,7 @@ import { useLink as useAriaLink } from "react-aria";
 /**
  * Imports other types, components and hooks.
  */
-import type { TLinkStylePresetNames } from "@theme";
+import type { TLinkStylePresetNames, TLinkStatePresetNames } from "@theme";
 import { useStyles, useLinkStyle } from "@hooks";
 
 /**
@@ -18,7 +18,7 @@ import { useStyles, useLinkStyle } from "@hooks";
 export type TLink = {
   type?: "internal" | "external";
   preset?: TLinkStylePresetNames;
-  status?: "visible" | "disabled" | "hidden";
+  state?: TLinkStatePresetNames;
   href?: string;
   title?: string;
   target?: string;
@@ -42,7 +42,7 @@ export type TLink = {
 const LinkDefaultProps = {
   type: "internal",
   preset: "default",
-  status: "visible",
+  state: "default",
   href: null,
   title: null,
   target: null,
@@ -58,7 +58,7 @@ const LinkDefaultProps = {
  * return <Link />
  */
 const Link = (props: TLink) => {
-  const { type, preset, status, href, title, children, className } = props;
+  const { type, preset, state, href, title, children, className } = props;
   if (!href && !title) return null;
 
   /**
@@ -70,13 +70,13 @@ const Link = (props: TLink) => {
    * Loads link state management and A11y props from `@react-aria`.
    */
   const ref = useRef();
-  const isDisabled = status === "disabled";
+  const isDisabled = state === "disabled";
   const { linkProps } = useAriaLink({ ...props, isDisabled: isDisabled }, ref);
 
   /**
    * Loads link style from the theme.
    */
-  const linkStyle = useLinkStyle(preset, status);
+  const linkStyle = useLinkStyle(preset, state);
   const linkKlass = useStyles(linkStyle);
 
   /**

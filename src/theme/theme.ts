@@ -17,9 +17,8 @@ import type {
   THeadingsPresetNames,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStyleProps,
+  TLinkStatePresetNames,
   TLinkTypePresetNames,
-  TLinkStatusPresetNames,
 } from "./typography";
 import { typography } from "./typography";
 
@@ -133,9 +132,8 @@ export type {
   THeadingsPresetNames,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStyleProps,
+  TLinkStatePresetNames,
   TColorPair,
   TColorPairNames,
   TLinkTypePresetNames,
-  TLinkStatusPresetNames,
 };
