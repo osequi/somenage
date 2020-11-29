@@ -5,7 +5,7 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
-import type { TMenuItem } from "../MenuItem";
+import type { TMenuItemGroup } from "../Menu";
 
 /**
  * Defines the Features type.
@@ -14,8 +14,7 @@ import type { TMenuItem } from "../MenuItem";
  * Example here...
  */
 export type TFeatures = {
-  menuTitle: TMenuItem;
-  menuItems: TMenuItem[];
+  menu: TMenuItemGroup;
 } & typeof FeaturesDefaultProps;
 
 /**
@@ -25,11 +24,13 @@ export type TFeatures = {
  * Example here...
  */
 const FeaturesDefaultProps = {
-  menuTitle: { title: "Features", url: "/features" },
-  menuItems: [
-    { title: "Semantic HTML5", url: "/features/semantic-html5" },
-    { title: "Typographic Grid", url: "/features/typographic-grid" },
-  ],
+  menuGroup: {
+    menuTitle: { title: "Features", url: "/features" },
+    menuItems: [
+      { title: "Semantic HTML5", url: "/features/semantic-html5" },
+      { title: "Typographic Grid", url: "/features/typographic-grid" },
+    ],
+  },
 };
 
 /**

@@ -2,7 +2,6 @@ import React from "react";
 import { cx } from "@emotion/css";
 import { useRouter } from "next/router";
 import { useId } from "react-aria";
-import { isEqual } from "lodash";
 
 /**
  * Imports other types, components and hooks.
@@ -14,6 +13,25 @@ import { Grid } from "@components/layout";
 import { Nav, Aside } from "@components/semantic-elements";
 
 /**
+ * Imports business logic.
+ */
+import { getActiveMenuItem, getMenuItemState } from "./Menu.logic";
+
+/**
+ * Defines a menu item group type.
+ */
+export type TMenuItemGroup = {
+  /**
+   * The title of the group.
+   */
+  menuTitle: TMenuItem;
+  /**
+   * The menu items of the group.
+   */
+  menuItems: TMenuItem[];
+};
+
+/**
  * Defines the Menu type.
  * @category Components
  * @example
@@ -21,10 +39,7 @@ import { Nav, Aside } from "@components/semantic-elements";
  */
 export type TMenu = {
   siteUrl?: string;
-  items?: {
-    menuTitle: TMenuItem;
-    menuItems: TMenuItem[];
-  }[];
+  items?: TMenuItemGroup[];
   state: TMenuItemStateNames;
 } & typeof MenuDefaultProps;
 
@@ -37,7 +52,7 @@ export type TMenu = {
 const MenuDefaultProps = {
   siteUrl: "/",
   items: [FeaturesDefaultProps],
-  state: "title-with-icon",
+  state: "default", //"title-with-icon",
 };
 
 /**
@@ -64,24 +79,12 @@ const Menu = (props: TMenu) => {
   /**
    * Finds the active menu item.
    */
-  const activeMenuItem =
-    items &&
-    items.reduce((previousValue, currentValue): TMenuItem => {
-      const { menuItems } = currentValue;
-      const active =
-        menuItems && menuItems.find((menuItem) => menuItem.url === route);
-
-      console.log("menuItems:", menuItems);
-      console.log("active:", active);
-      console.log("previousValue:", previousValue);
-      return active ? active : previousValue;
-    }, {} as TMenuItem);
-
+  const activeMenuItem = getActiveMenuItem(items, route);
   console.log("activeMenuItem:", activeMenuItem);
 
   /**
    * Checks if we have the special `title-with-icon` state.
-   * In this state the whole menu is hiiden only the active menu items is displayed.
+   * In this state the whole menu is hiiden only the active menu item, or menu title is displayed.
    */
   const isTitleWithIconState = state === "title-with-icon";
 
@@ -96,20 +99,12 @@ const Menu = (props: TMenu) => {
       const menuItemsList =
         menuItems &&
         menuItems.map((menuItem) => {
-          const isActiveMenuItem = isEqual(menuItem, activeMenuItem);
-
-          console.log("menuItem:", menuItem);
-          console.log("isActiveMenuItem:", isActiveMenuItem);
-
-          /**
-           * Sets the menu item state only when the active menu item is displayed and the state is `title-with-icon`.
-           */
-          const menuItemState = isTitleWithIconState
-            ? isActiveMenuItem
-              ? state
-              : "hidden"
-            : "default";
-
+          const menuItemState = getMenuItemState(
+            menuItem,
+            activeMenuItem,
+            isTitleWithIconState,
+            state
+          );
           console.log("menuItemState:", menuItemState);
 
           return (
@@ -119,14 +114,18 @@ const Menu = (props: TMenu) => {
           );
         });
 
+      const menuTitleState = getMenuItemState(
+        menuTitle,
+        activeMenuItem,
+        isTitleWithIconState,
+        state
+      );
+      console.log("menuTitleState:", menuTitleState);
+
       const asideProps = {
         heading: {
           level: 3,
-          /**
-           * Hides the menu group title when the state is `title-with-icon`.
-           */
-          display: !isTitleWithIconState,
-          children: <MenuItem {...menuTitle} />,
+          children: <MenuItem {...menuTitle} state={menuTitleState} />,
         },
       };
 

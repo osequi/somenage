@@ -1,0 +1,43 @@
+import type { TMenuItemGroup } from ".";
+import type { TMenuItem, TMenuItemStateNames } from "../MenuItem";
+import { isEqual } from "lodash";
+
+const getMenuItemState = (
+  menuItem: TMenuItem,
+  activeMenuItem: TMenuItem,
+  isTitleWithIconState: boolean,
+  state: TMenuItemStateNames
+) => {
+  const isActiveMenuItem = isEqual(menuItem, activeMenuItem);
+
+  console.log("menuItem:", menuItem);
+  console.log("isActiveMenuItem:", isActiveMenuItem);
+
+  return isTitleWithIconState
+    ? isActiveMenuItem
+      ? state
+      : "hidden"
+    : "default";
+};
+
+/**
+ * Returns the active menu item.
+ * @param  items	The menu item groups.
+ * @param  route	The current route.
+ * @return 			The active menu item, or en empty object
+ */
+const getActiveMenuItem = (items: TMenuItemGroup[], route: string) => {
+  items &&
+    items.reduce((previousValue, currentValue): TMenuItem => {
+      const { menuItems } = currentValue;
+      const active =
+        menuItems && menuItems.find((menuItem) => menuItem.url === route);
+
+      console.log("menuItems:", menuItems);
+      console.log("active:", active);
+      console.log("previousValue:", previousValue);
+      return active ? active : previousValue;
+    }, {} as TMenuItem);
+};
+
+export { getActiveMenuItem, getMenuItemState };
