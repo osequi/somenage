@@ -23,3 +23,4 @@ export { useLinkStyle } from "./use-link-style";
 export { useColors } from "./use-colors";
 export { useMediaQuery } from "./use-media-query";
 export { useViewport } from "./use-viewport";
+export { useDecoration } from "./use-decoration";

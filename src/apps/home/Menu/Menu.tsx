@@ -11,6 +11,7 @@ import { MenuItem } from "../MenuItem";
 import { FeaturesDefaultProps } from "../Features";
 import { Grid } from "@components/layout";
 import { Nav, Aside } from "@components/semantic-elements";
+import { useDecoration } from "@hooks";
 
 /**
  * Imports business logic.
@@ -65,6 +66,8 @@ const MenuDefaultProps = {
 const Menu = (props: TMenu) => {
   const { siteUrl, items, state } = props;
   if (!items) return null;
+
+  const patternify = useDecoration("patternify", "black-on-white");
 
   /**
    * Displays nothing on the homepage.
@@ -127,8 +130,7 @@ const Menu = (props: TMenu) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "start",
-            background:
-              "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAEElEQVQYlWNgGAV0B/+JwQC+3An30vwY1gAAAABJRU5ErkJggg==)",
+            ...patternify,
           }}
         >
           <span className="title" style={{ background: "white" }}>
