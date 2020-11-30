@@ -33,6 +33,9 @@ import type {
 } from "./colors";
 import { colors, colorPairs } from "./colors";
 
+import type { TDecorations } from "./decorations";
+import { decorations } from "./decorations";
+
 /**
  * Defines the CSS notations type.
  *
@@ -81,6 +84,10 @@ export type TTheme = {
    * The color combinations for the theme.
    */
   colorPairs?: TColorPair[];
+  /**
+   * The decorations. Borders, backgrounds etc.
+   */
+  decorations?: TDecorations;
 };
 
 /**
@@ -107,6 +114,7 @@ const theme: TTheme = {
   typography: typography,
   colors: colors,
   colorPairs: colorPairs,
+  decorations: decorations,
 };
 
 export default theme;
@@ -136,4 +144,5 @@ export type {
   TColorPair,
   TColorPairNames,
   TLinkTypePresetNames,
+  TDecorations,
 };

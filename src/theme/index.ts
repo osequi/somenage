@@ -29,4 +29,5 @@ export type {
   TColorPair,
   TColorPairNames,
   TLinkTypePresetNames,
+  TDecorations,
 } from "./theme";
