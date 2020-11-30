@@ -121,12 +121,42 @@ const Menu = (props: TMenu) => {
         state
       );
 
+      const titleWithIcon = (
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "start",
+            background:
+              "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAEElEQVQYlWNgGAV0B/+JwQC+3An30vwY1gAAAABJRU5ErkJggg==)",
+          }}
+        >
+          <span className="title" style={{ background: "white" }}>
+            {menuTitle.title}
+          </span>
+          <span
+            className="icon"
+            style={{
+              fontSize: "0.75em",
+              transform: "rotate(-90deg) translateX(var(--lem))",
+            }}
+          >
+            Menu
+          </span>
+        </span>
+      );
+
       const asideProps = {
         heading: {
           level: 3,
           display: menuTitleState !== "hidden",
           children: (
-            <MenuItem {...menuTitle} state={menuTitleState} type="menu-title" />
+            <MenuItem
+              {...menuTitle}
+              title={titleWithIcon}
+              state={menuTitleState}
+              type="menu-title"
+            />
           ),
         },
       };

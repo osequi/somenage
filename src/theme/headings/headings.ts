@@ -97,7 +97,7 @@ const headingsSameSize: THeadings = {
     scale: { name: "linear" },
     points: 0,
     otherSettings: {
-      letterSpacing: `var(--lem)`,
+      letterSpacing: `calc(var(--lem) / 2)`,
       textTransform: "uppercase",
     },
   },

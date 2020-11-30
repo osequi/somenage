@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { cx } from "@emotion/css";
 
 /**
@@ -26,7 +26,7 @@ export type TMenuItemTypeNames = "menu-item" | "menu-title";
  */
 export type TMenuItem = {
   type?: TMenuItemTypeNames;
-  title?: string;
+  title?: ReactNode;
   url?: string;
   state?: TMenuItemStateNames;
 } & typeof MenuItemDefaultProps;
@@ -68,7 +68,14 @@ const MenuItem = (props: TMenuItem) => {
    * Displays the menu item as a title with icon.
    * When the item is a menu group title it is already wrapped into a heading.
    */
-  const titleWithIcon = type === "menu-item" ? <H3>{title}</H3> : title;
+  const titleWithIcon =
+    type === "menu-item" ? (
+      <H3>
+        <span>{title}</span>
+      </H3>
+    ) : (
+      title
+    );
 
   switch (state) {
     case "title-with-icon":

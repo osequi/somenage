@@ -26,7 +26,10 @@ export type TFeatures = {
  */
 const FeaturesDefaultProps = {
   menuGroup: {
-    menuTitle: { title: "Features", url: "/features" },
+    menuTitle: {
+      title: "Features",
+      url: "/features",
+    },
     menuItems: [
       { title: "Semantic HTML5", url: "/features/semantic-html5" },
       { title: "Typographic Grid", url: "/features/typographic-grid" },
