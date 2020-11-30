@@ -4,8 +4,10 @@ import { default as borders } from "./borders";
 import type { TPatternify, TPatternifyPresetNames } from "./patternify";
 import { default as patternify } from "./patternify";
 
-export type TDecorationPresetNames = TBorderPresetNames &
-  TPatternifyPresetNames;
+export type TDecoration = {
+  type?: "borders" | "patternify";
+  preset?: TBorderPresetNames & TPatternifyPresetNames;
+};
 
 export type TDecorations = {
   borders?: TBorder[];

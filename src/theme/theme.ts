@@ -33,7 +33,7 @@ import type {
 } from "./colors";
 import { colors, colorPairs } from "./colors";
 
-import type { TDecorations, TDecorationPresetNames } from "./decorations";
+import type { TDecorations, TDecoration } from "./decorations";
 import { decorations } from "./decorations";
 
 /**
@@ -145,5 +145,5 @@ export type {
   TColorPairNames,
   TLinkTypePresetNames,
   TDecorations,
-  TDecorationPresetNames,
+  TDecoration,
 };

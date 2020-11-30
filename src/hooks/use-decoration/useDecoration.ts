@@ -1,4 +1,3 @@
-import type { TDecorationPresetNames } from "../../theme/";
 import { theme } from "../../theme/";
 
 const useDecoration = (type?: string, preset?: string) => {

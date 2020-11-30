@@ -30,5 +30,5 @@ export type {
   TColorPairNames,
   TLinkTypePresetNames,
   TDecorations,
-  TDecorationPresetNames,
+  TDecoration,
 } from "./theme";

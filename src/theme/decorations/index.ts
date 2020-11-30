@@ -1,2 +1,2 @@
-export type { TDecorations, TDecorationPresetNames } from "./decorations";
+export type { TDecorations, TDecoration } from "./decorations";
 export { default as decorations } from "./decorations";
