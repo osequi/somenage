@@ -89,6 +89,7 @@ const GridDefaultProps = {
   as: "div",
   asProps: null,
   children: null,
+  className: null,
 };
 
 /**

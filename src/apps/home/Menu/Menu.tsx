@@ -125,7 +125,9 @@ const Menu = (props: TMenu) => {
         heading: {
           level: 3,
           display: menuTitleState !== "hidden",
-          children: <MenuItem {...menuTitle} state={menuTitleState} />,
+          children: (
+            <MenuItem {...menuTitle} state={menuTitleState} type="menu-title" />
+          ),
         },
       };
 

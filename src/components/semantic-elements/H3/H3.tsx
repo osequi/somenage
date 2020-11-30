@@ -15,7 +15,7 @@ import {
  * @example
  * Example here...
  */
-const H3DefaultProps = {
+const H3DefaultProps: TSemanticHeading = {
   ...semanticHeadingDefaultProps,
   level: 3,
 };

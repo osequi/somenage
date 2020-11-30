@@ -14,12 +14,18 @@ import { H3 } from "@components/semantic-elements";
 export type TMenuItemStateNames = TLinkStatePresetNames & "title-with-icon";
 
 /**
+ * Defines the menu item type names type.
+ */
+export type TMenuItemTypeNames = "menu-item" | "menu-title";
+
+/**
  * Defines the MenuItem type.
  * @category Components
  * @example
  * Example here...
  */
 export type TMenuItem = {
+  type?: TMenuItemTypeNames;
   title?: string;
   url?: string;
   state?: TMenuItemStateNames;
@@ -32,6 +38,7 @@ export type TMenuItem = {
  * Example here...
  */
 const MenuItemDefaultProps = {
+  type: "menu-item",
   title: null,
   url: null,
   state: "default",
@@ -45,7 +52,7 @@ const MenuItemDefaultProps = {
  * return <MenuItem />
  */
 const MenuItem = (props: TMenuItem) => {
-  const { title, url, state } = props;
+  const { type, title, url, state } = props;
   if (!title && !url) return null;
 
   /**
@@ -59,8 +66,9 @@ const MenuItem = (props: TMenuItem) => {
 
   /**
    * Displays the menu item as a title with icon.
+   * When the item is a menu group title it is already wrapped into a heading.
    */
-  const titleWithIcon = <H3>{title}</H3>;
+  const titleWithIcon = type === "menu-item" ? <H3>{title}</H3> : title;
 
   switch (state) {
     case "title-with-icon":
