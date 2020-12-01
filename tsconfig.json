@@ -19,7 +19,7 @@
       "@hooks": ["hooks/"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
-      "@home/*": ["home/*"]
+      "@home/*": ["apps/home/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
