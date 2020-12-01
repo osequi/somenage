@@ -13,15 +13,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "downlevelIteration": true,
-    "baseUrl": "./src", // see https://nextjs.org/docs/advanced-features/module-path-aliases
+    "baseUrl": "./src", // https://nextjs.org/docs/advanced-features/module-path-aliases
     "paths": {
-      "@color-scheme-designer/*": ["apps/color-scheme-designer/*"],
-      "@home/*": ["apps/home/*"],
-      "@pages/*": ["pages/*"],
-      "@components/*": ["components/*"],
+      "@theme": ["theme/"],
       "@hooks": ["hooks/"],
-      "@theme": ["theme/"]
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@home/*": ["home/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

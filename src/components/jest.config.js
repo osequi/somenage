@@ -1,30 +1,29 @@
 module.exports = {
   preset: "ts-jest",
   /**
-   * A fix ...
+   * Load different test environment for JSX
    * @see https://github.com/nrwl/nx/issues/3776
    */
   testEnvironment: "jest-environment-jsdom-fifteen",
   globals: {
-    // A Next.js workaround
-    // See https://github.com/vercel/next.js/issues/8663
-    // we must specify a custom tsconfig for tests because we need the typescript transform
-    // to transform jsx into js rather than leaving it jsx such as the next build requires.  you
-    // can see this setting in tsconfig.jest.json -> "jsx": "react"
+    /**
+     * A workaround for 'Next.js' to enable `"jsx": "react"`
+     * @see https://github.com/vercel/next.js/issues/8663
+     */
     "ts-jest": {
       tsconfig: "tsconfig.jest.json",
     },
   },
   moduleNameMapper: {
     /**
-     * Settings for Next.js module path aliases
-     * @see https://stackoverflow.com/questions/50171412/jest-typescript-absolute-paths-baseurl-gives-error-cannot-find-module
+     * Enable @path imports for tests.
+     * @see https://kulshekhar.github.io/ts-jest/user/config/#paths-mapping
      */
-    "@home/(.*)": "../apps/home/$1",
-    "@pages/(.*)": "../pages/$1",
-    "@components/(.*)": "../components/$1",
-    "@hooks": "../hooks/",
-    "@theme": "../theme/",
+    "^@theme": "<rootDir>/../theme/",
+    "^@hooks": "<rootDir>/../hooks/",
+    "^@components/(.*)$": "<rootDir>/../components/$1",
+    "^@pages/(.*)$": "<rootDir>/../pages/$1",
+    "^@home/(.*)$": "<rootDir>/../apps/home/$1",
     /**
      * Settings for excluding assets
      * @see https://jestjs.io/docs/en/webpack.html
