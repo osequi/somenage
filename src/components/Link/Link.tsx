@@ -59,12 +59,7 @@ const LinkDefaultProps = {
  */
 const Link = (props: TLink) => {
   const { type, preset, state, href, title, children, className } = props;
-  if (!href && !title) return null;
-
-  /**
-   * It fails back safely to `title` when no url given.
-   */
-  if (!href) return title;
+  if (!href) return null;
 
   /**
    * Loads link state management and A11y props from `@react-aria`.
