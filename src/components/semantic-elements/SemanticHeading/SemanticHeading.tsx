@@ -9,7 +9,7 @@ export type TSemanticHeading = {
   /**
    * The level of the heading.
    */
-  level: 1 | 2 | 3 | 4 | 5 | 6;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Display the heading?
    */
@@ -17,12 +17,12 @@ export type TSemanticHeading = {
   /**
    * The content to be displayed inside the heading.
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    * The className of the element.
    * Serves the technical purpose of style chaining.
    */
-  className: string;
+  className?: string;
   /**
    * The test id of the element.
    * It come from the parent, usually.
