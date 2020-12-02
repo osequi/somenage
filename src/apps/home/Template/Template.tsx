@@ -27,7 +27,7 @@ export type TTemplate = {
   /**
    * The content to be rendered.
    */
-  children: ReactNode;
+  children?: ReactNode;
 } & typeof TemplateDefaultProps;
 
 /**

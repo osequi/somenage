@@ -15,7 +15,7 @@ import FeaturesMdx from "./Features.mdx";
  * Example here...
  */
 export type TFeatures = {
-  menu: TMenuItemGroup;
+  menu?: TMenuItemGroup;
 } & typeof FeaturesDefaultProps;
 
 /**

@@ -15,7 +15,7 @@ export type TContent = {
   /**
    * The content to be rendered.
    */
-  children: ReactNode;
+  children?: ReactNode;
 } & typeof ContentDefaultProps;
 
 /**
@@ -34,7 +34,7 @@ const ContentDefaultProps = {};
  * return <Content />
  */
 const Content = (props: TContent) => {
-  const { children } = props;
+  const children = props?.children;
   if (!children) return null;
 
   return <Main className="Content">{children}</Main>;

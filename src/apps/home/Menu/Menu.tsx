@@ -25,11 +25,11 @@ export type TMenuItemGroup = {
   /**
    * The title of the group.
    */
-  menuTitle: TMenuItem;
+  menuTitle?: TMenuItem;
   /**
    * The menu items of the group.
    */
-  menuItems: TMenuItem[];
+  menuItems?: TMenuItem[];
 };
 
 /**
@@ -41,7 +41,7 @@ export type TMenuItemGroup = {
 export type TMenu = {
   siteUrl?: string;
   items?: TMenuItemGroup[];
-  state: TMenuItemStateNames;
+  state?: TMenuItemStateNames;
 } & typeof MenuDefaultProps;
 
 /**

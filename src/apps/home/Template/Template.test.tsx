@@ -4,6 +4,6 @@ import "@testing-library/jest-dom/extend-expect";
 import { Template } from ".";
 
 it("Renders the component", () => {
-  const { container } = render(<Template />);
+  const { container } = render(<Template>Children is not null</Template>);
   expect(container.firstChild).not.toBeNull();
 });

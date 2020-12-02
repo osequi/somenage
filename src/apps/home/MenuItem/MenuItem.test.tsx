@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { MenuItem } from ".";
 
-it("Renders the component", () => {
+it("Fails back safely when no params", () => {
   const { container } = render(<MenuItem />);
-  expect(container.firstChild).not.toBeNull();
+  expect(container.firstChild).toBeNull();
 });
