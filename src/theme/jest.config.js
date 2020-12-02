@@ -24,8 +24,8 @@ module.exports = {
      * Settings for excluding assets
      * @see https://jestjs.io/docs/en/webpack.html
      */
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "../../jest.mock.file.js",
-    "\\.(css|less)$": "../../jest.mock.css.js",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|mdx)$":
+      "<rootDir>/../../jest.mock.file.js",
+    "\\.(css|less)$": "<rootDir>/../../jest.mock.css.js",
   },
 };
