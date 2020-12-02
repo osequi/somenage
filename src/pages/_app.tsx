@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, Context } from "react";
 import type { AppProps } from "next/app";
 
 import { theme } from "@theme";
@@ -9,7 +9,7 @@ import "normalize.css";
 import "../theme/typography/reset.css";
 import "../theme/fonts/fonts.css";
 
-const ThemeContext = createContext(null);
+const ThemeContext: Context<any> = createContext(null);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
