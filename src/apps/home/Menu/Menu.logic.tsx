@@ -13,8 +13,8 @@ const getMenuItemState = (
   return isTitleWithIconState
     ? isActiveMenuItem
       ? state
-      : "hidden"
-    : "default";
+      : ("hidden" as TMenuItemStateNames)
+    : ("default" as TMenuItemStateNames);
 };
 
 /**

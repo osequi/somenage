@@ -72,8 +72,8 @@ const Template = (props: TTemplate) => {
   );
 
   const menuState: TMenuItemStateNames = useViewport("<laptop")
-    ? "title-with-icon"
-    : "default";
+    ? ("title-with-icon" as TMenuItemStateNames)
+    : ("default" as TMenuItemStateNames);
 
   return (
     <>

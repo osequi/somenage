@@ -1,6 +1,6 @@
 import type { TBreakpointNames } from "@theme";
 import { theme } from "@theme";
-import { useMediaQuery } from "../";
+import { useMediaQuery } from "@hooks";
 
 /**
  * Tells if the current viewport satisfies a breakpoint query.
@@ -14,7 +14,7 @@ import { useMediaQuery } from "../";
  * useViewport(>=tablet) => min-width: 768px
  * useViewport(tablet) => min-width: 321px, max-width: 1279px
  */
-const useViewport = (viewport: string): boolean | null => {
+const useViewport = (viewport?: string): boolean | null => {
   if (!viewport) return null;
   if (viewport.length < 2) return null;
   if (!theme.breakpoints) return null;
@@ -34,9 +34,9 @@ const useViewport = (viewport: string): boolean | null => {
   const breakpointName: TBreakpointNames =
     firstChar === "<" || firstChar === ">"
       ? secondChar === "="
-        ? viewport.slice(2)
-        : viewport.slice(1)
-      : viewport;
+        ? (viewport.slice(2) as TBreakpointNames)
+        : (viewport.slice(1) as TBreakpointNames)
+      : (viewport as TBreakpointNames);
 
   const breakpoint =
     breakpoints && breakpoints.find((item) => item.name === breakpointName);
