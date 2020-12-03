@@ -11,7 +11,7 @@ import { MenuItem } from "../MenuItem";
 import { FeaturesDefaultProps } from "../Features";
 import { Grid } from "@components/layout";
 import { Nav, Aside } from "@components/semantic-elements";
-import { useDecoration } from "@hooks";
+import { useDecoration } from "@lib";
 
 /**
  * Imports business logic.

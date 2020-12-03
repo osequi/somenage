@@ -4,7 +4,7 @@ import { cx } from "@emotion/css";
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
+import { useStyles } from "@lib";
 
 /**
  * Defines the Cell type.

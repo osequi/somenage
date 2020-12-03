@@ -14,13 +14,14 @@ module.exports = {
     /**
      * Configuring different test environments.
      * For React components: 'jsdom'
-     * For hooks, theme: node
+     * For hooks, theme, lib: node
      * @see https://stackoverflow.com/questions/41318115/testing-two-environments-with-jest
      */
     "<rootDir>/src/apps/home",
     "<rootDir>/src/pages",
     "<rootDir>/src/components",
     "<rootDir>/src/hooks",
+    "<rootDir>/src/lib",
     "<rootDir>/src/theme",
   ],
   /**

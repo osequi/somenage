@@ -16,6 +16,7 @@
     "baseUrl": "./src", // https://nextjs.org/docs/advanced-features/module-path-aliases
     "paths": {
       "@theme": ["theme/"],
+      "@lib": ["lib/"],
       "@hooks": ["hooks/"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],

@@ -1,6 +1,10 @@
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  /**
+   * Load different test environment for JSX
+   * @see https://github.com/nrwl/nx/issues/3776
+   */
+  testEnvironment: "jest-environment-jsdom-fifteen",
   globals: {
     /**
      * A workaround for 'Next.js' to enable `"jsx": "react"`
@@ -16,6 +20,7 @@ module.exports = {
      * @see https://kulshekhar.github.io/ts-jest/user/config/#paths-mapping
      */
     "^@theme": "<rootDir>/../theme/",
+    "^@lib": "<rootDir>/../lib/",
     "^@hooks": "<rootDir>/../hooks/",
     "^@components/(.*)$": "<rootDir>/../components/$1",
     "^@pages/(.*)$": "<rootDir>/../pages/$1",

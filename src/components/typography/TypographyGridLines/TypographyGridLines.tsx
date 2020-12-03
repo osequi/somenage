@@ -3,7 +3,7 @@ import React from "react";
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@hooks";
+import { useStyles } from "@lib";
 
 /**
  * Imports business logic.

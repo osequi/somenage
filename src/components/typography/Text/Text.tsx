@@ -13,7 +13,7 @@ import {
   useSpacing,
   useHeadings,
   useLinkStyle,
-} from "@hooks";
+} from "@lib";
 import { Elements } from "../";
 
 /**
