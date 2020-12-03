@@ -52,7 +52,7 @@ export type TMenu = {
  */
 const MenuDefaultProps = {
   siteUrl: "/",
-  items: [FeaturesDefaultProps.menuGroup],
+  items: [FeaturesDefaultProps?.menuGroup],
   state: "default", //"title-with-icon",
 };
 
