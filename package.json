@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --clearCache && jest --coverage",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "co": "cypress open",
+    "c": "cypress run"
   },
   "dependencies": {
     "@emotion/css": "^11.0.0",
