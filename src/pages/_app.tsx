@@ -1,5 +1,6 @@
-import React, { createContext, Context } from "react";
 import type { AppProps } from "next/app";
+import React, { createContext, Context } from "react";
+import { Context as ResponsiveContext } from "react-responsive";
 
 import { theme } from "@theme";
 import { TypographySetup, TypographyGridLines } from "@components/typography";
@@ -9,6 +10,9 @@ import "normalize.css";
 import "../theme/typography/reset.css";
 import "../theme/fonts/fonts.css";
 
+/**
+ * Defines a context to hold the theme.
+ */
 const ThemeContext: Context<any> = createContext(null);
 
 /**
@@ -16,8 +20,19 @@ const ThemeContext: Context<any> = createContext(null);
  * @ignore
  * @see https://react-hooks-testing-library.com/usage/advanced-hooks#context
  */
-const ThemeContextProvider = (value, children) => (
+const ThemeContextProvider = (value: object, children: any) => (
   <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+);
+
+/**
+ * Used for testing `useMediaQuery`
+ * @ignore
+ * @see https://github.com/contra/react-responsive
+ */
+const ResponsiveContextProvider = (value: number, children: any) => (
+  <ResponsiveContext.Provider value={{ width: value }}>
+    {children}
+  </ResponsiveContext.Provider>
 );
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -33,4 +48,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 export default MyApp;
-export { ThemeContext, ThemeContextProvider };
+export { ThemeContext, ThemeContextProvider, ResponsiveContextProvider };
