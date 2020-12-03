@@ -11,6 +11,15 @@ import "../theme/fonts/fonts.css";
 
 const ThemeContext: Context<any> = createContext(null);
 
+/**
+ * Used for testing `useTheme`
+ * @ignore
+ * @see https://react-hooks-testing-library.com/usage/advanced-hooks#context
+ */
+const ThemeContextProvider = (value, children) => (
+  <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+);
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeContext.Provider value={theme}>
@@ -24,4 +33,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 export default MyApp;
-export { ThemeContext };
+export { ThemeContext, ThemeContextProvider };

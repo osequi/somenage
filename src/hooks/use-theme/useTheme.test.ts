@@ -1,16 +1,16 @@
-import { useContext } from "react";
 import { renderHook } from "@testing-library/react-hooks";
 import "@testing-library/jest-dom/extend-expect";
 import { useTheme } from ".";
-import { ThemeContext } from "@pages/_app";
+import { ThemeContextProvider } from "@pages/_app";
+import { theme } from "@theme";
 
 it("Works with a theme provider / context", () => {
-  const { result: result1 } = renderHook(() => useTheme());
-  const { result: result2 } = renderHook(() => useContext(ThemeContext));
-  expect(result1).toEqual(result2);
+  const wrapper = ({ children }) => ThemeContextProvider(theme, children);
+  const { result } = renderHook(() => useTheme(), { wrapper });
+  expect(result.current).toEqual(theme);
 });
 
 it("Fails back when there is no theme provider / context", () => {
   const { result } = renderHook(() => useTheme());
-  expect(result).not.toBeNull();
+  expect(result.current).toBeNull();
 });
