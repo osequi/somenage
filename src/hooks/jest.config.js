@@ -4,7 +4,7 @@ module.exports = {
    * Load different test environment for JSX
    * @see https://github.com/nrwl/nx/issues/3776
    */
-  testEnvironment: "jest-environment-jsdom-fifteen",
+  testEnvironment: "node",
   globals: {
     /**
      * A workaround for 'Next.js' to enable `"jsx": "react"`
