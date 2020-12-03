@@ -28,15 +28,25 @@ const transformStyle = (style, props) => {
   if (!isFunction) return css(style);
 
   /**
-   * Returns value for style functions
+   * Checks if the props are all right for the style function.
    */
   if (isNil(props)) return css(style);
   if (isNil(style(props))) return css(style);
+
+  /**
+   * Checks for falsy values. They make Emotion's `css` function to break.
+   * @example
+   * width: 'undefined',
+   */
   if (JSON.stringify(style(props)).includes("undefined")) {
-    console.log("Falsy props:", props);
+    // NOTE: Remove in production.
+    console.log("Falsy style props:", style(props));
     return null;
   }
 
+  /**
+   * Returns value for style functions.
+   */
   return css(style(props));
 };
 
