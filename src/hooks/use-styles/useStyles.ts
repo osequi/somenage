@@ -1,36 +1,49 @@
 import { css } from "@emotion/css";
+import { isNil } from "lodash";
 
 /**
  * Tranforms a style object / function with Emotion's `css()` function.
  * @ignore
  * @see useStyles.md for TS warnings
  */
-const transformStyle = (style, props: {}) => {
+const transformStyle = (style, props) => {
   /**
    * Checks if this is a style object or function.
    */
-  const isFunction = style && style.name;
+  const isFunction = style?.hasOwnProperty("name");
   /**
    * Checks if this is a style object with a label.
    */
-  const isObjectWithLabel = style && style.label;
+  const isObjectWithLabel = style?.hasOwnProperty("label");
   /**
    * Logs a warning message if a style object without a label is passed.
    */
   if (!isFunction && !isObjectWithLabel) {
     // NOTE: Remove in production.
-    // console.log("A style object without label was received:", style);
+    //console.log("A style object without label was received:", style);
   }
   /**
-   * Returns value both for style functions and objects.
+   * Returns value for style objects.
    */
-  return isFunction ? css(style(props)) : css(style);
+  if (!isFunction) return css(style);
+
+  /**
+   * Returns value for style functions
+   */
+  if (isNil(props)) return css(style);
+  if (isNil(style(props))) return css(style);
+  if (JSON.stringify(style(props)).includes("undefined")) {
+    console.log("Falsy props:", props);
+    return null;
+  }
+
+  return css(style(props));
 };
 
 /**
  * Transforms CSS style functions, and, style objects with labels, into classNames for Emotion.
  *
- * Note: Neither the style function nor the style object should have a return type. When type set (to object, TemplateStringsArray) no styling will be returned.
+ * // NOTE:  Neither the style function nor the style object should have a return type. When type set (to object, TemplateStringsArray) no styling will be returned.
  *
  * @category Hooks
  * @example

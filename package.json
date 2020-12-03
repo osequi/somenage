@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --clearCache && jest --watchAll",
+    "test": "jest --clearCache && jest --coverage",
     "docs": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
