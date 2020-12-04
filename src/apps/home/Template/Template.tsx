@@ -79,12 +79,16 @@ const Template = (props: TTemplate) => {
   const route = router?.route;
   const isHomePage = route === siteUrl;
 
+  const handleViewportChange = () => {
+    console.log("Viewport changed.");
+  };
+
   /**
    * Calculates the menu state.
    */
   const menuState: TMenuState = isHomePage
     ? "hidden"
-    : useViewport("<laptop")
+    : useViewport("<laptop", handleViewportChange)
     ? ("title-with-icon" as TMenuState)
     : ("default" as TMenuState);
 
