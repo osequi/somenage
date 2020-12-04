@@ -14,7 +14,7 @@ import { Footer } from "../Footer";
 import { Menu } from "../Menu";
 import { Content } from "../Content";
 
-import type { TMenuItemStateNames } from "../MenuItem";
+import type { TMenuState } from "../Menu";
 
 /**
  * Defines the Template type.
@@ -82,11 +82,11 @@ const Template = (props: TTemplate) => {
   /**
    * Calculates the menu state.
    */
-  const menuState: TMenuItemStateNames = isHomePage
+  const menuState: TMenuState = isHomePage
     ? "hidden"
     : useViewport("<laptop")
-    ? ("title-with-icon" as TMenuItemStateNames)
-    : ("default" as TMenuItemStateNames);
+    ? ("title-with-icon" as TMenuState)
+    : ("default" as TMenuState);
 
   return (
     <>

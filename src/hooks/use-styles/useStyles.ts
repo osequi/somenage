@@ -40,7 +40,7 @@ const transformStyle = (style, props) => {
    */
   if (JSON.stringify(style(props)).includes("undefined")) {
     // NOTE: Remove in production.
-    console.log("Falsy style props:", style(props));
+    //console.log("Falsy style props:", style(props));
     return null;
   }
 
