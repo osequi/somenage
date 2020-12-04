@@ -11,7 +11,6 @@ import { MenuItem } from "../MenuItem";
 import { FeaturesDefaultProps } from "../Features";
 import { Grid } from "@components/layout";
 import { Nav, Aside } from "@components/semantic-elements";
-import { useDecoration } from "@hooks";
 
 /**
  * Imports business logic.
@@ -66,8 +65,6 @@ const MenuDefaultProps = {
 const Menu = (props: TMenu) => {
   const { siteUrl, items, state } = props;
   if (!items) return null;
-
-  const patternify = useDecoration("patternify", "black-on-white");
 
   /**
    * Displays nothing on the homepage.
@@ -124,41 +121,12 @@ const Menu = (props: TMenu) => {
         state
       );
 
-      const titleWithIcon = (
-        <span
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "start",
-            ...patternify,
-          }}
-        >
-          <span className="title" style={{ background: "white" }}>
-            {menuTitle.title}
-          </span>
-          <span
-            className="icon"
-            style={{
-              fontSize: "0.75em",
-              transform: "rotate(-90deg) translateX(var(--lem))",
-            }}
-          >
-            Menu
-          </span>
-        </span>
-      );
-
       const asideProps = {
         heading: {
           level: 3,
           display: menuTitleState !== "hidden",
           children: (
-            <MenuItem
-              {...menuTitle}
-              title={titleWithIcon}
-              state={menuTitleState}
-              type="menu-title"
-            />
+            <MenuItem {...menuTitle} state={menuTitleState} type="menu-title" />
           ),
         },
       };
