@@ -1,53 +1,54 @@
 import { renderHook } from "@testing-library/react-hooks";
 import "@testing-library/jest-dom/extend-expect";
+import { ResponsiveContextProvider } from "@pages/_app";
 import { useViewport } from ".";
 
-/**
- * We don't have a browser, so we don't have a viewport.
- * If the hook returns false it means the `useMediaQuery` hook was reached. Which is good.
- */
-
 it("Works with <", () => {
-  const { result } = renderHook(() => useViewport("<laptop"));
+  const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
+  const { result } = renderHook(() => useViewport("<tablet"), { wrapper });
   expect(result.current).toBe(false);
 });
 
 it("Works with <=", () => {
-  const { result } = renderHook(() => useViewport("<=laptop"));
-  expect(result.current).toBe(false);
+  const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
+  const { result } = renderHook(() => useViewport("<=tablet"), { wrapper });
+  expect(result.current).toBe(true);
 });
 
 it("Works with >", () => {
-  const { result } = renderHook(() => useViewport(">laptop"));
+  const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
+  const { result } = renderHook(() => useViewport(">tablet"), { wrapper });
   expect(result.current).toBe(false);
 });
 
 it("Works with >=", () => {
-  const { result } = renderHook(() => useViewport(">=laptop"));
-  expect(result.current).toBe(false);
+  const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
+  const { result } = renderHook(() => useViewport(">=tablet"), { wrapper });
+  expect(result.current).toBe(true);
 });
 
 it("Works without operators", () => {
-  const { result } = renderHook(() => useViewport("laptop"));
-  expect(result.current).toBe(false);
+  const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
+  const { result } = renderHook(() => useViewport("tablet"), { wrapper });
+  expect(result.current).toBe(true);
 });
 
-it("Fails back silently with '<'", () => {
+it("Fails back silently with incomplete argument '<'", () => {
   const { result } = renderHook(() => useViewport("<"));
   expect(result.current).toBeNull();
 });
 
-it("Fails back silently with '<='", () => {
+it("Fails back silently with incomplete argument '<='", () => {
   const { result } = renderHook(() => useViewport("<="));
   expect(result.current).toBeNull();
 });
 
-it("Fails back silently with '<=nobreakpointname'", () => {
+it("Fails back silently with wrong argument '<=nobreakpointname'", () => {
   const { result } = renderHook(() => useViewport("<=nobreakpointname"));
   expect(result.current).toBeNull();
 });
 
-it("Fails back silently with 'xx'", () => {
+it("Fails back silently with wrong argument 'xx'", () => {
   const { result } = renderHook(() => useViewport("xx"));
   expect(result.current).toBeNull();
 });
