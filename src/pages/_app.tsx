@@ -39,7 +39,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeContext.Provider value={theme}>
       <TypographySetup />
-      {/*<TypographyGridLines />*/}
+      <TypographyGridLines />
       <Template>
         <Component {...pageProps} />
       </Template>

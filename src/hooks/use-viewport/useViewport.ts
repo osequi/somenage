@@ -17,9 +17,9 @@ import { useMediaQuery } from "@hooks";
 const useViewport = (viewport?: string): boolean | null => {
   if (!viewport) return null;
   if (viewport.length < 2) return null;
-  if (!theme.breakpoints) return null;
 
-  const breakpoints = theme.breakpoints;
+  const breakpoints = theme?.breakpoints;
+  if (!breakpoints) return null;
 
   const firstChar = viewport[0];
   const secondChar = viewport[1];

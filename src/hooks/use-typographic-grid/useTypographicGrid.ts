@@ -1,6 +1,6 @@
 import type { TTypographicGrid, TCssNotations } from "@theme";
 import { theme } from "@theme";
-import { useLem, useResponsiveFontSizes } from "../";
+import { useLem, useResponsiveFontSizes, useDefaultProps } from "../";
 
 /**
  * Returns the settings following the string notation.
@@ -72,21 +72,22 @@ const useTypographicGrid = (
   notation: TCssNotations,
   typographicGrid?: TTypographicGrid
 ): {} | string => {
-  const {
-    typography: { grid },
-  } = theme;
+  const gridFromTheme = theme?.typography?.grid;
 
-  const grid2 = typographicGrid || grid;
-  const { fontSizes, lineHeight } = grid2;
+  const grid: TTypographicGrid = useDefaultProps(
+    typographicGrid,
+    gridFromTheme
+  );
+  const fontSizes = grid?.fontSizes;
+  const lineHeight = grid?.lineHeight;
   const fontSize = fontSizes[0] ? fontSizes[0] : 100;
-
   const lem = useLem();
 
   switch (notation) {
     case "string":
-      return stringNotation(fontSize, lineHeight, lem, grid2);
+      return stringNotation(fontSize, lineHeight, lem, grid);
     case "object":
-      return objectNotation(fontSize, lineHeight, lem, grid2);
+      return objectNotation(fontSize, lineHeight, lem, grid);
   }
 };
 

@@ -20,7 +20,7 @@ it("Works with a simple argument", () => {
   expect(useStyles(style2)).not.toBeNull();
 });
 
-it("Works with an array argument", () => {
+it("Works with a single element array argument", () => {
   expect(useStyles([style2])).not.toBeNull();
 });
 
