@@ -3,6 +3,12 @@ import "@testing-library/jest-dom/extend-expect";
 import { ResponsiveContextProvider } from "@pages/_app";
 import { useMediaQuery } from ".";
 
+it("Works with desktop", () => {
+  const wrapper = ({ children }) => ResponsiveContextProvider(1600, children);
+  const { result } = renderHook(() => useMediaQuery("desktop"), { wrapper });
+  expect(result.current).toBe(true);
+});
+
 it("Works with pixel (>)", () => {
   const wrapper = ({ children }) => ResponsiveContextProvider(768, children);
   const { result } = renderHook(() => useMediaQuery("tablet", "min-width", 1), {
