@@ -7,7 +7,7 @@ import { useLink as useAriaLink } from "react-aria";
  * Imports other types, components and hooks.
  */
 import type { TLinkStylePresetNames, TLinkStatePresetNames } from "@theme";
-import { useStyles, useLinkStyle } from "@lib";
+import { useStyles, useLinkStyle } from "@hooks";
 
 /**
  * Defines the Link type.

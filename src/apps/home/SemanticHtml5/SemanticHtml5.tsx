@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "@lib";
+import { useStyles } from "@hooks";
 
 /**
  * Imports other types, components and hooks.

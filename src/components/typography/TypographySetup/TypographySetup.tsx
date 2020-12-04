@@ -4,7 +4,7 @@ import Head from "next/head";
 /**
  * Imports other types, components and hooks.
  */
-import { useTypographicGrid } from "@lib";
+import { useTypographicGrid } from "@hooks";
 
 /**
  * Sets up the typographic grid in the `<body>`.

@@ -21,7 +21,6 @@ module.exports = {
     "<rootDir>/src/pages",
     "<rootDir>/src/components",
     "<rootDir>/src/hooks",
-    "<rootDir>/src/lib",
     "<rootDir>/src/theme",
   ],
   /**

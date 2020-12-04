@@ -4,7 +4,7 @@ import { cx } from "@emotion/css";
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles } from "@lib";
+import { useStyles } from "@hooks";
 import { Header as SemanticHeader } from "@components/semantic-elements";
 import { Link } from "@components/Link";
 

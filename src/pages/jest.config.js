@@ -20,7 +20,6 @@ module.exports = {
      * @see https://kulshekhar.github.io/ts-jest/user/config/#paths-mapping
      */
     "^@theme": "<rootDir>/../theme/",
-    "^@lib": "<rootDir>/../lib/",
     "^@hooks": "<rootDir>/../hooks/",
     "^@components/(.*)$": "<rootDir>/../components/$1",
     "^@pages/(.*)$": "<rootDir>/../pages/$1",

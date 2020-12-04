@@ -4,7 +4,7 @@ import { cx } from "@emotion/css";
 /**
  * Imports other types, components and hooks.
  */
-import { useStyles, useResponsiveGridColumns } from "@lib";
+import { useStyles, useResponsiveGridColumns } from "@hooks";
 
 /**
  * Imports logic.
