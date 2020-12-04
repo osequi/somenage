@@ -4,10 +4,11 @@ import { theme } from "../../theme";
 
 /**
  * Tells if the current viewport satisfies a breakpoint.
- * @param	breakpoint	The breakpoint name.
- * @param	width		The query type. When it's `max-width` the viewport should be less than the breakpoint value. On `min-width` the viewport should be larger than the breakpont value.
- * @param	pixel		Tells if the breakpoint value should be included into calculations. The formula where it is used is: `breakpoint.value + ${pixel}px`
- * @return				True if the viewport equals the breakpoint.
+ * @param	breakpoint		The breakpoint name.
+ * @param	width			The query type. When it's `max-width` the viewport should be less than the breakpoint value. On `min-width` the viewport should be larger than the breakpont value.
+ * @param	pixel			Tells if the breakpoint value should be included into calculations. The formula where it is used is: `breakpoint.value + ${pixel}px`
+ * @param	changeHandler	A function which handles the viewport changes.
+ * @return					True if the viewport equals the breakpoint.
  * @category Hooks
  * @example
  * useMediaQuery('mobile') => true, if breakpoints['mobile'].value <= viewport size < breakpoints['tablet'].value
@@ -18,8 +19,9 @@ import { theme } from "../../theme";
  */
 const useMediaQuery = (
   breakpoint?: TBreakpointNames,
-  width?: "max-width" | "min-width",
-  pixel?: number
+  width?: "max-width" | "min-width" | "none",
+  pixel?: number | null,
+  changeHandler?: () => void
 ): boolean | null => {
   if (!breakpoint) return null;
 
@@ -41,9 +43,13 @@ const useMediaQuery = (
    * When  `<` or `>` a single query on a single breakpoint is returned.
    */
   if (width2 !== "none" && pixel2 !== 0) {
-    return useMediaQueryRR({
-      query: `(${width}: ${breakpoint1.value + pixel2}px)`,
-    });
+    return useMediaQueryRR(
+      {
+        query: `(${width}: ${breakpoint1.value + pixel2}px)`,
+      },
+      null,
+      changeHandler
+    );
   }
 
   /**
@@ -56,20 +62,28 @@ const useMediaQuery = (
 
   switch (width2) {
     case "max-width":
-      return useMediaQueryRR({
-        query: `(${width2}: ${breakpoint2.value + pixel2}px)`,
-      });
+      return useMediaQueryRR(
+        {
+          query: `(${width2}: ${breakpoint2.value + pixel2}px)`,
+        },
+        null,
+        changeHandler
+      );
     case "min-width":
-      return useMediaQueryRR({
-        query: `(${width2}: ${breakpoint1.value + pixel2}px)`,
-      });
+      return useMediaQueryRR(
+        {
+          query: `(${width2}: ${breakpoint1.value + pixel2}px)`,
+        },
+        null,
+        changeHandler
+      );
     case "none":
       const minWidth = `(min-width: ${breakpoint1.value + pixel2}px)`;
       const maxWidth = breakpoint2?.value
         ? `(max-width: ${breakpoint2.value - 1}px)`
         : null;
       const query = maxWidth ? `${minWidth} and ${maxWidth}` : minWidth;
-      return useMediaQueryRR({ query: query });
+      return useMediaQueryRR({ query: query }, null, changeHandler);
   }
 };
 

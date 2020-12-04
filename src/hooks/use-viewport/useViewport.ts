@@ -4,8 +4,9 @@ import { useMediaQuery } from "@hooks";
 
 /**
  * Tells if the current viewport satisfies a breakpoint query.
- * @param	viewport	A query with a breakpoint.
- * @return				True if the viewport satisfies the query.
+ * @param	viewport		A query with a breakpoint.
+ * @param	changeHandler	A function which handles the viewport changes.
+ * @return					True if the viewport satisfies the query.
  * @category Hooks
  * @example
  * useViewport('<laptop') => max-width: 1280px
@@ -14,7 +15,10 @@ import { useMediaQuery } from "@hooks";
  * useViewport(>=tablet) => min-width: 768px
  * useViewport(tablet) => min-width: 321px, max-width: 1279px
  */
-const useViewport = (viewport?: string): boolean | null => {
+const useViewport = (
+  viewport?: string,
+  changeHandler?: () => void
+): boolean | null => {
   if (!viewport) return null;
   if (viewport.length < 2) return null;
 
@@ -44,15 +48,15 @@ const useViewport = (viewport?: string): boolean | null => {
 
   switch (operator) {
     case "<":
-      return useMediaQuery(breakpointName, "max-width", -1);
+      return useMediaQuery(breakpointName, "max-width", -1, changeHandler);
     case "<=":
-      return useMediaQuery(breakpointName, "max-width", 0);
+      return useMediaQuery(breakpointName, "max-width", 0, changeHandler);
     case ">":
-      return useMediaQuery(breakpointName, "min-width", 1);
+      return useMediaQuery(breakpointName, "min-width", 1, changeHandler);
     case ">=":
-      return useMediaQuery(breakpointName, "min-width", 0);
+      return useMediaQuery(breakpointName, "min-width", 0, changeHandler);
     case "none":
-      return useMediaQuery(breakpointName);
+      return useMediaQuery(breakpointName, "none", null, changeHandler);
   }
 };
 

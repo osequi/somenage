@@ -11,7 +11,7 @@ import { H3 } from "@components/semantic-elements";
 /**
  * Defines the menu item state names type.
  */
-export type TMenuItemStateNames = TLinkStatePresetNames | "title-with-icon";
+export type TMenuItemStateNames = TLinkStatePresetNames & "title-with-icon";
 
 /**
  * Defines the menu item type names type.
