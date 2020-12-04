@@ -5,12 +5,16 @@ import { theme } from "../../theme";
 /**
  * Tells if the current viewport satisfies a breakpoint.
  * @param	breakpoint	The breakpoint name.
- * @param	width		The query type. When it's `max-width` the viewport is less than the breakpoint. On `min-width` the viewport should be larger than the breakpont.
- * @param	pixel		Tells if the breakpoint value should be included into calculations. The formula where it is used is: `${breakpoint.value + pixel}px)`
+ * @param	width		The query type. When it's `max-width` the viewport should be less than the breakpoint value. On `min-width` the viewport should be larger than the breakpont value.
+ * @param	pixel		Tells if the breakpoint value should be included into calculations. The formula where it is used is: `breakpoint.value + ${pixel}px`
  * @return				True if the viewport equals the breakpoint.
  * @category Hooks
  * @example
  * useMediaQuery('mobile') => true, if breakpoints['mobile'].value <= viewport size < breakpoints['tablet'].value
+ * @example
+ * useMediaQuery('mobile', 'max-width') => true, viewport size < breakpoints['tablet'].value
+ * @example
+ * useMediaQuery('mobile', 'max-width', -1) => true, viewport size < breakpoints['tablet'].value - 1
  */
 const useMediaQuery = (
   breakpoint?: TBreakpointNames,
