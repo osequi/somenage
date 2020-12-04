@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 /**
  * Imports other types, components and hooks.
@@ -62,7 +63,7 @@ const Template = (props: TTemplate) => {
   const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
   /**
-   * Sets the page title in `<head>`
+   * Sets the page title in `<head>`.
    */
   const head = (
     <Head>
@@ -71,7 +72,19 @@ const Template = (props: TTemplate) => {
     </Head>
   );
 
-  const menuState: TMenuItemStateNames = useViewport("<laptop")
+  /**
+   * Checks if homepage is the current route.
+   */
+  const router = useRouter();
+  const route = router?.route;
+  const isHomePage = route === siteUrl;
+
+  /**
+   * Calculates the menu state.
+   */
+  const menuState: TMenuItemStateNames = isHomePage
+    ? "hidden"
+    : useViewport("<laptop")
     ? ("title-with-icon" as TMenuItemStateNames)
     : ("default" as TMenuItemStateNames);
 

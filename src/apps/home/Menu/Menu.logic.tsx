@@ -2,13 +2,20 @@ import type { TMenuItemGroup } from ".";
 import type { TMenuItem, TMenuItemStateNames } from "../MenuItem";
 import { isEqual } from "lodash";
 
+/**
+ * Returns the current menu items state.
+ * @param  menuItem             The current menu item.
+ * @param  activeMenuItem       The active menu item.
+ * @param  state                The menu state.
+ * @return                      One of the `TMenuItemStateNames`.
+ */
 const getMenuItemState = (
   menuItem: TMenuItem,
   activeMenuItem: TMenuItem,
-  isTitleWithIconState: boolean,
   state: TMenuItemStateNames
 ): TMenuItemStateNames => {
   const isActiveMenuItem = isEqual(menuItem, activeMenuItem);
+  const isTitleWithIconState = state === "title-with-icon";
 
   return isTitleWithIconState
     ? isActiveMenuItem
