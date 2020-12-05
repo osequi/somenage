@@ -3,7 +3,7 @@ import React from "react";
 /**
  * Imports other types, components and hooks.
  */
-import type { TMenuItem, TMenuItemStateNames } from "../MenuItem";
+import type { TMenuItem } from "../MenuItem";
 import { FeaturesDefaultProps } from "../Features";
 
 /**
@@ -64,8 +64,6 @@ const MenuDefaultProps = {
  */
 const Menu = (props: TMenu) => {
   const { state } = props;
-
-  console.log("state:", state);
 
   switch (state) {
     case "hidden":

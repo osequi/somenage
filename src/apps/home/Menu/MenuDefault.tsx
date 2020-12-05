@@ -7,14 +7,17 @@ import { useRouter } from "next/router";
  * Imports other types, components and hooks.
  */
 import type { TMenu } from "./Menu";
-import { MenuItem } from "../MenuItem";
 import { Grid } from "@components/layout";
 import { Nav, Aside } from "@components/semantic-elements";
 
 /**
  * Imports business logic.
  */
-import { getMenuItemState, getActiveMenuItem } from "./Menu.logic";
+import {
+  getActiveMenuItem,
+  displayMenuItems,
+  getMenuTitleAsProps,
+} from "./Menu.logic";
 
 /**
  * Displays the default menu.
@@ -42,38 +45,8 @@ const MenuDefault = (props: TMenu) => {
     items.map((item) => {
       const { menuTitle, menuItems } = item;
 
-      const menuItemsList =
-        menuItems &&
-        menuItems.map((menuItem) => {
-          const menuItemState = getMenuItemState(
-            menuItem,
-            activeMenuItem,
-            state
-          );
-
-          const liStyle =
-            menuItemState === "hidden" ? { display: "none" } : null;
-
-          return (
-            <li style={liStyle} key={useId()}>
-              <MenuItem {...menuItem} state={menuItemState} />
-            </li>
-          );
-        });
-
-      const menuTitleState = getMenuItemState(menuTitle, activeMenuItem, state);
-
-      console.log("menuTitleState:", menuTitleState);
-
-      const asideProps = {
-        heading: {
-          level: 3,
-          display: menuTitleState !== "hidden",
-          children: (
-            <MenuItem {...menuTitle} state={menuTitleState} type="menu-title" />
-          ),
-        },
-      };
+      const menuItemsList = displayMenuItems(menuItems, activeMenuItem, state);
+      const asideProps = getMenuTitleAsProps(menuTitle, activeMenuItem, state);
 
       return (
         <Grid key={useId()} as={Aside} asProps={asideProps}>
