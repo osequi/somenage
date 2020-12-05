@@ -17,9 +17,13 @@ import { Nav, Aside } from "@components/semantic-elements";
 import { getMenuItemState, getActiveMenuItem } from "./Menu.logic";
 
 /**
- * Displays the default menu.
+ * Displays the `title with icon` menu.
+ *
+ * Usually it would be a single text with a menu icon.
+ * However, when the icon is clicked the animation will reveal the whole menu.
+ * For that animation a single text with icon is not enough. The whole menu should be displayed with the inactive items hidden.
  */
-const MenuStateDefault = (props: TMenu) => {
+const MenuTitleWithIcon = (props: TMenu) => {
   const { items, state } = props;
   if (!items) return null;
 
@@ -51,8 +55,13 @@ const MenuStateDefault = (props: TMenu) => {
             state
           );
 
+          console.log("menuItem:", menuItem);
+          console.log("menuItemState:", menuItemState);
+
           const liStyle =
             menuItemState === "hidden" ? { display: "none" } : null;
+
+          console.log("liStyle:", liStyle);
 
           return (
             <li style={liStyle} key={useId()}>
@@ -62,8 +71,6 @@ const MenuStateDefault = (props: TMenu) => {
         });
 
       const menuTitleState = getMenuItemState(menuTitle, activeMenuItem, state);
-
-      console.log("menuTitleState:", menuTitleState);
 
       const asideProps = {
         heading: {
@@ -75,9 +82,11 @@ const MenuStateDefault = (props: TMenu) => {
         },
       };
 
+      const ulStyle = menuTitleState !== "hidden" ? { display: "none" } : null;
+
       return (
         <Grid key={useId()} as={Aside} asProps={asideProps}>
-          <ul>{menuItemsList}</ul>
+          <ul style={ulStyle}>{menuItemsList}</ul>
         </Grid>
       );
     });
@@ -91,4 +100,4 @@ const MenuStateDefault = (props: TMenu) => {
   );
 };
 
-export default MenuStateDefault;
+export default MenuTitleWithIcon;

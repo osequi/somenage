@@ -9,8 +9,8 @@ import { FeaturesDefaultProps } from "../Features";
 /**
  * Imports state logic.
  */
-import MenuStateDefault from "./Menu.state.default";
-import MenuStateTitleWithIcon from "./Menu.state.title-with-icon";
+import MenuDefault from "./MenuDefault";
+import MenuTitleWithIcon from "./MenuTitleWithIcon";
 
 /**
  * Defines the menu state type.
@@ -71,9 +71,9 @@ const Menu = (props: TMenu) => {
     case "hidden":
       return null;
     case "default":
-      return <MenuStateDefault {...props} />;
+      return <MenuDefault {...props} />;
     case "title-with-icon":
-      return <MenuStateTitleWithIcon {...props} />;
+      return <MenuTitleWithIcon {...props} />;
   }
 };
 
