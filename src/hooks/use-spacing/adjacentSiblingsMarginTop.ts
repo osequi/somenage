@@ -9,7 +9,7 @@ const adjacentSiblingsMarginTop = {
   /**
    * The exceptions
    */
-  ["& * + li, tr + tr, *[style*='display:none'] + *"]: {
+  ["& * + li, tr + tr, *[style*='none'] + *"]: {
     marginTop: 0,
   },
 };
