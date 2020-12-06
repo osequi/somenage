@@ -7,7 +7,8 @@ const adjacentSiblingsMarginTop = {
     marginTop: `var(--lem)`,
   },
   /**
-   * The exceptions
+   * The exceptions.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
    */
   ["& * + li, tr + tr, *[style*='none'] + *"]: {
     marginTop: 0,
