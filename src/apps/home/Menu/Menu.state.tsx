@@ -49,7 +49,7 @@ type MenuStateChangingEvents =
 /**
  * Defines how the menu states transition from a state to another.
  */
-const menuStateTransitions = {
+const menuState = {
   key: "menu",
   initial: "unknown",
   states: {
@@ -81,19 +81,6 @@ const menuStateTransitions = {
  * This should work, first of all, in the visualizer.
  * @see https://xstate.js.org/viz/?gist=48b26a64f6ce9677bec1037cfec4b487
  */
-const menuMachine = Machine(menuStateTransitions);
+const menuMachine = Machine(menuState);
 
-const getMenuState = (state) => {
-  if (!state) return null;
-  if (!state?.value) return null;
-
-  const { value } = state;
-
-  return typeof value === "string"
-    ? value
-    : value.displayed
-    ? value.displayed
-    : null;
-};
-
-export { menuMachine, menuStateTransitions, getMenuState };
+export { menuMachine, menuState };

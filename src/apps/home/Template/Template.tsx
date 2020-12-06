@@ -6,7 +6,7 @@ import { useMachine } from "@xstate/react";
 /**
  * Imports other types, components and hooks.
  */
-import { useViewport } from "@hooks";
+import { useViewport, useXStateValue } from "@hooks";
 import { Grid } from "@components/layout";
 import { Text } from "@components/typography";
 
@@ -15,7 +15,7 @@ import { Footer } from "../Footer";
 import { Content } from "../Content";
 
 import type { TMenuState } from "../Menu";
-import { Menu, menuMachine, getMenuState } from "../Menu";
+import { Menu, menuMachine } from "../Menu";
 
 /**
  * Defines the Template type.
@@ -104,7 +104,10 @@ const Template = (props: TTemplate) => {
     isLaptop ? setMenuState("PORTRAIT") : setMenuState("LANDSCAPE");
   }, [isLaptop]);
 
-  const menuStateValue: TMenuState = getMenuState(menuState) || "default";
+  /**
+   * Loads the menu state value.
+   */
+  const menuStateValue: TMenuState = useXStateValue(menuState) || "default";
 
   return (
     <>
