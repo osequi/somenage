@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useMachine } from "@xstate/react";
 
 /**
  * Imports other types, components and hooks.
@@ -11,10 +12,10 @@ import { Text } from "@components/typography";
 
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-import { Menu } from "../Menu";
 import { Content } from "../Content";
 
 import type { TMenuState } from "../Menu";
+import { Menu, menuMachine, getMenuState } from "../Menu";
 
 /**
  * Defines the Template type.
@@ -57,6 +58,11 @@ const Template = (props: TTemplate) => {
   if (!children) return null;
 
   /**
+   * Manages the menu state.
+   */
+  const [menuState, setMenuState] = useMachine(menuMachine);
+
+  /**
    * Defines the page title.
    */
   const pageTitle = children?.props?.title;
@@ -77,20 +83,28 @@ const Template = (props: TTemplate) => {
    */
   const router = useRouter();
   const route = router?.route;
-  const isHomePage = route === siteUrl;
-
-  const handleViewportChange = () => {
-    console.log("Viewport changed.");
-  };
+  const isHomePage = route === "/";
 
   /**
-   * Calculates the menu state.
+   * Checks if the device is in portrait mode.
    */
-  const menuState: TMenuState = isHomePage
-    ? "hidden"
-    : useViewport("<laptop", handleViewportChange)
-    ? ("title-with-icon" as TMenuState)
-    : ("default" as TMenuState);
+  const isLaptop = useViewport("<laptop");
+
+  /**
+   * Updates the menu state on route change.
+   */
+  useEffect(() => {
+    isHomePage ? setMenuState("HOMEPAGE") : setMenuState("NONHOMEPAGE");
+  }, [isHomePage]);
+
+  /**
+   * Updates the `deviceOrientation` typestate on device rotation.
+   */
+  useEffect(() => {
+    isLaptop ? setMenuState("PORTRAIT") : setMenuState("LANDSCAPE");
+  }, [isLaptop]);
+
+  const menuStateValue: TMenuState = getMenuState(menuState) || "default";
 
   return (
     <>
@@ -98,7 +112,7 @@ const Template = (props: TTemplate) => {
       <Grid>
         <Text>
           <Header siteTitle={siteTitle} siteUrl={siteUrl} />
-          <Menu state={menuState} />
+          <Menu state={menuStateValue} />
           <Content>{children}</Content>
           <Footer />
         </Text>
