@@ -98,10 +98,10 @@ const Template = (props: TTemplate) => {
   }, [isHomePage]);
 
   /**
-   * Updates the `deviceOrientation` typestate on device rotation.
+   * Updates the menu state on device size.
    */
   useEffect(() => {
-    isLaptop ? setMenuState("PORTRAIT") : setMenuState("LANDSCAPE");
+    isLaptop ? setMenuState("LESSTHANLAPTOP") : setMenuState("LAPTOP");
   }, [isLaptop]);
 
   /**

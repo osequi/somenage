@@ -13,10 +13,10 @@ interface MenuStateContext {
    */
   page?: "Home" | "NonHome";
   /**
-   * On portrait the active menu title is displayed together with a hamburger icon.
-   * On landscape the full menu is displayed.
+   * On less than laptop sized screens the active menu title is displayed together with a hamburger icon.
+   * On bigger than laptop screens the full menu is displayed.
    */
-  deviceOrientation: "Portrait" | "Landscape";
+  deviceSize: "LessThanLaptop" | "LaptopAndUp";
 }
 
 /**
@@ -43,8 +43,8 @@ interface MenuStateSchema {
 type MenuStateChangingEvents =
   | { type: "HOMEPAGE" }
   | { type: "NONHOMEPAGE" }
-  | { type: "PORTRAIT" }
-  | { type: "LANDSCAPE" };
+  | { type: "LESSTHANLAPTOP" }
+  | { type: "LAPTOP" };
 
 /**
  * Defines how the menu states transition from a state to another.
@@ -66,10 +66,10 @@ const menuState = {
       initial: "default",
       states: {
         default: {
-          on: { PORTRAIT: "titleWithIcon" },
+          on: { LESSTHANLAPTOP: "titleWithIcon" },
         },
         titleWithIcon: {
-          on: { LANDSCAPE: "default" },
+          on: { LAPTOP: "default" },
         },
       },
     },
