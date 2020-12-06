@@ -39,6 +39,7 @@
     "@types/react-responsive": "^8.0.2",
     "@types/shortid": "^0.0.29",
     "@xstate/react": "^1.0.3",
+    "@xstate/test": "^0.4.1",
     "babel-jest": "^26.6.3",
     "better-docs": "^2.3.2",
     "chroma-js": "^2.1.0",
