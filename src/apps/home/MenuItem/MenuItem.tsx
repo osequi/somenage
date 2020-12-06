@@ -7,11 +7,12 @@ import { cx } from "@emotion/css";
 import type { TLinkStatePresetNames } from "@theme";
 import { Link } from "@components/Link";
 import { H3 } from "@components/semantic-elements";
+import type { TMenuState } from "../Menu";
 
 /**
  * Defines the menu item state names type.
  */
-export type TMenuItemStateNames = TLinkStatePresetNames | "title-with-icon";
+export type TMenuItemStateNames = TLinkStatePresetNames | TMenuState;
 
 /**
  * Defines the menu item type names type.
@@ -60,7 +61,12 @@ const MenuItem = (props: TMenuItem) => {
       return type === "menu-item" ? <H3>{title}</H3> : title;
     default:
       return (
-        <Link href={url} title={title} state={state} className={cx("MenuItem")}>
+        <Link
+          href={url}
+          title={title}
+          state={state as TLinkStatePresetNames}
+          className={cx("MenuItem")}
+        >
           {title}
         </Link>
       );

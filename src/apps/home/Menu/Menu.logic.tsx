@@ -1,3 +1,4 @@
+import React from "react";
 import type { TMenuItemGroup, TMenuState } from ".";
 import type { TMenuItem, TMenuItemStateNames } from "../MenuItem";
 import { isEqual } from "lodash";
