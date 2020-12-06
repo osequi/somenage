@@ -1,4 +1,4 @@
-import { Machine } from "xstate";
+import { Machine, MachineConfig } from "xstate";
 
 /**
  * Defines the context for the menu state.
@@ -40,7 +40,7 @@ interface MenuStateSchema {
  * Defines the events changing the menu state.
  * In fact, the menu state is changing when the context is changed.
  */
-type MenuStateChangingEvents =
+type MenuStateEvents =
   | { type: "HOMEPAGE" }
   | { type: "NONHOMEPAGE" }
   | { type: "LESSTHANLAPTOP" }
@@ -48,8 +48,13 @@ type MenuStateChangingEvents =
 
 /**
  * Defines how the menu states transition from a state to another.
+ * @see https://xstate.js.org/viz/?gist=1b54ec40c0c44708a11e5d9fc545fc21
  */
-const menuState = {
+const menuState: MachineConfig<
+  MenuStateContext,
+  MenuStateSchema,
+  MenuStateEvents
+> = {
   key: "menu",
   initial: "unknown",
   states: {
@@ -81,6 +86,8 @@ const menuState = {
  * This should work, first of all, in the visualizer.
  * @see https://xstate.js.org/viz/?gist=48b26a64f6ce9677bec1037cfec4b487
  */
-const menuMachine = Machine(menuState);
+const menuMachine = Machine<MenuStateContext, MenuStateSchema, MenuStateEvents>(
+  menuState
+);
 
 export { menuMachine, menuState };
