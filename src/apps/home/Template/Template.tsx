@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 /**
  * Imports other types, components and hooks.
  */
-import { useViewport, useXStateValue } from "@hooks";
+import { useViewport } from "@hooks";
 import { Grid } from "@components/layout";
 import { Text } from "@components/typography";
 
