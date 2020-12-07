@@ -1,6 +1,6 @@
 import { Machine } from "xstate";
 import { createModel } from "@xstate/test";
-import { menuStateTransitions } from "./Menu";
+import { menuState } from ".";
 
 describe("My First Test", () => {
   it("Visits the Kitchen Sink", () => {
