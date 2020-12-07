@@ -23,8 +23,7 @@
     "react": "16.13.1",
     "react-aria": "^3.1.1",
     "react-dom": "16.13.1",
-    "react-responsive": "^8.1.1",
-    "xstate": "^4.14.1"
+    "react-responsive": "^8.1.1"
   },
   "devDependencies": {
     "@osequi/new-component": "^2.0.1",
@@ -38,13 +37,10 @@
     "@types/react": "^16.9.56",
     "@types/react-responsive": "^8.0.2",
     "@types/shortid": "^0.0.29",
-    "@xstate/react": "^1.0.3",
-    "@xstate/test": "^0.4.1",
     "babel-jest": "^26.6.3",
     "better-docs": "^2.3.2",
     "chroma-js": "^2.1.0",
     "cssnano": "^4.1.10",
-    "cypress": "^6.0.1",
     "jest": "^26.6.3",
     "jest-environment-jsdom-fifteen": "^1.0.2",
     "jest-transformer-mdx": "^2.2.0",

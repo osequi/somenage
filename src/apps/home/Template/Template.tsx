@@ -1,7 +1,6 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useMachine } from "@xstate/react";
 
 /**
  * Imports other types, components and hooks.
@@ -15,7 +14,7 @@ import { Footer } from "../Footer";
 import { Content } from "../Content";
 
 import type { TMenuState } from "../Menu";
-import { Menu, menuMachine } from "../Menu";
+import { Menu } from "../Menu";
 
 /**
  * Defines the Template type.
@@ -60,7 +59,7 @@ const Template = (props: TTemplate) => {
   /**
    * Manages the menu state.
    */
-  const [menuState, setMenuState] = useMachine(menuMachine);
+  const [menuState, setMenuState] = useState("unknown");
 
   /**
    * Defines the page title.
@@ -86,28 +85,31 @@ const Template = (props: TTemplate) => {
   const isHomePage = route === "/";
 
   /**
-   * Checks if the device is in portrait mode.
+   * Checks if the device is laptop or larger.
    */
-  const isLaptop = useViewport("<laptop");
+  const isLaptop = useViewport(">=laptop");
 
   /**
    * Updates the menu state on route change.
    */
   useEffect(() => {
-    isHomePage ? setMenuState("HOMEPAGE") : setMenuState("NONHOMEPAGE");
+    isHomePage
+      ? setMenuState("hidden")
+      : isLaptop
+      ? setMenuState("default")
+      : setMenuState("titleWithIcon");
   }, [isHomePage]);
 
   /**
    * Updates the menu state on device size.
    */
   useEffect(() => {
-    isLaptop ? setMenuState("LESSTHANLAPTOP") : setMenuState("LAPTOP");
+    isHomePage
+      ? setMenuState("hidden")
+      : isLaptop
+      ? setMenuState("default")
+      : setMenuState("titleWithIcon");
   }, [isLaptop]);
-
-  /**
-   * Loads the menu state value.
-   */
-  const menuStateValue: TMenuState = useXStateValue(menuState) || "default";
 
   return (
     <>
@@ -115,7 +117,7 @@ const Template = (props: TTemplate) => {
       <Grid>
         <Text>
           <Header siteTitle={siteTitle} siteUrl={siteUrl} />
-          <Menu state={menuStateValue} />
+          <Menu state={menuState as TMenuState} />
           <Content>{children}</Content>
           <Footer />
         </Text>

@@ -24,4 +24,3 @@ export { useDecoration } from "./use-decoration";
 export { useTheme } from "./use-theme";
 export { useMediaQuery } from "./use-media-query";
 export { useViewport } from "./use-viewport";
-export { useXStateValue } from "./use-xstate-value";
