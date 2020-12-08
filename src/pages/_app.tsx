@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import React, { createContext, Context } from "react";
 import { Context as ResponsiveContext } from "react-responsive";
+import { SSRProvider } from "@react-aria/ssr";
 
 import { theme } from "@theme";
 import { TypographySetup, TypographyGridLines } from "@components/typography";
@@ -38,11 +39,13 @@ const ResponsiveContextProvider = (value: number, children: any) => (
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeContext.Provider value={theme}>
-      <TypographySetup />
-      <TypographyGridLines />
-      <Template>
-        <Component {...pageProps} />
-      </Template>
+      <SSRProvider>
+        <TypographySetup />
+        <TypographyGridLines />
+        <Template>
+          <Component {...pageProps} />
+        </Template>
+      </SSRProvider>
     </ThemeContext.Provider>
   );
 };

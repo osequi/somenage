@@ -33,6 +33,7 @@ const FeaturesDefaultProps = {
     menuItems: [
       { title: "Semantic HTML5", url: "/features/semantic-html5" },
       { title: "Typographic Grid", url: "/features/typographic-grid" },
+      { title: "A11y", url: "/features/a11y" },
     ],
   },
 };
