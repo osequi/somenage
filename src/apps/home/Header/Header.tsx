@@ -6,7 +6,7 @@ import { cx } from "@emotion/css";
  */
 import { useStyles } from "@hooks";
 import { Header as SemanticHeader } from "@components/semantic-elements";
-import { Link } from "@components/Link";
+import { Link } from "@components/decorations";
 
 /**
  * Defines the Header type.

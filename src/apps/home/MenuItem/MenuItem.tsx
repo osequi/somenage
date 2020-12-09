@@ -5,7 +5,7 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import type { TLinkStatePresetNames } from "@theme";
-import { Link } from "@components/Link";
+import { Link } from "@components/decorations";
 import { H3 } from "@components/semantic-elements";
 import type { TMenuState } from "../Menu";
 

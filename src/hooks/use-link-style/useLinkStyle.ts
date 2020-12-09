@@ -19,7 +19,7 @@ const useLinkStyle = (
 ): object | null => {
   if (!preset) return null;
 
-  const links = theme?.typography?.linkStyles;
+  const links = theme?.decorations?.links;
 
   const linkPreset = links && links.find((item) => item.preset === preset);
 

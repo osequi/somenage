@@ -1,5 +1,11 @@
 import { theme } from "@theme";
 
+/**
+ * // NOTE: Experimental
+ * Tries to achieve something like `useDecoration('link', 'default')` and `useDecoration('borders', 'heavy')`
+ * However link styling is so complex it needs a special hook `useLinkStyle` to put together the styles.
+ * For simple styling it works for now.
+ */
 const useDecoration = (type?: string, preset?: string) => {
   if (!type || !preset) return null;
 

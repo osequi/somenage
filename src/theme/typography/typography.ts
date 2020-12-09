@@ -22,14 +22,6 @@ import type {
 } from "../headings";
 import { headings } from "../headings";
 
-import type {
-  TLinkStylePresetNames,
-  TLinkStyle,
-  TLinkStatePresetNames,
-  TLinkTypePresetNames,
-} from "../link";
-import { linkStyles } from "../link";
-
 /**
  * Defines the typography type.
  *
@@ -63,10 +55,6 @@ export type TTypography = {
    * The settings for the headings.
    */
   headings?: THeadings[];
-  /**
-   * The settings for the link styles.
-   */
-  linkStyles?: TLinkStyle[];
 };
 
 /**
@@ -86,7 +74,6 @@ const typography: TTypography = {
   text: text,
   fonts: fonts,
   headings: headings,
-  linkStyles: linkStyles,
 };
 
 export default typography;
@@ -103,8 +90,4 @@ export type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
-  TLinkStylePresetNames,
-  TLinkStyle,
-  TLinkStatePresetNames,
-  TLinkTypePresetNames,
 };

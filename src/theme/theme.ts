@@ -15,10 +15,6 @@ import type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
-  TLinkStylePresetNames,
-  TLinkStyle,
-  TLinkStatePresetNames,
-  TLinkTypePresetNames,
 } from "./typography";
 import { typography } from "./typography";
 
@@ -33,7 +29,14 @@ import type {
 } from "./colors";
 import { colors, colorPairs } from "./colors";
 
-import type { TDecorations, TDecoration } from "./decorations";
+import type {
+  TDecorations,
+  TDecoration,
+  TLinkStylePresetNames,
+  TLinkStyle,
+  TLinkStatePresetNames,
+  TLinkTypePresetNames,
+} from "./decorations";
 import { decorations } from "./decorations";
 
 /**
