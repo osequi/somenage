@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --clearCache && jest --watch",
+    "test": "jest --clearCache && jest",
     "docs": "jsdoc -c jsdoc.json",
     "co": "cypress open",
     "c": "cypress run"

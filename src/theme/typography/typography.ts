@@ -1,26 +1,26 @@
-import type { TTypographicGrid } from "../typographic-grid";
-import { typographicGrid } from "../typographic-grid";
+import type { TTypographicGrid } from "./typographic-grid";
+import { typographicGrid } from "./typographic-grid";
 
 import type {
   TTypographicScale,
   TTypographicScaleNames,
   TModularScaleSettings,
   TLinearScaleSettings,
-} from "../typographic-scale";
-import { typographicScales } from "../typographic-scale";
+} from "./typographic-scale";
+import { typographicScales } from "./typographic-scale";
 
-import type { TText } from "../text";
-import { text } from "../text";
+import type { TText } from "./text";
+import { text } from "./text";
 
-import type { TFont, TFontNames, TFontWithName } from "../fonts";
-import { fonts } from "../fonts";
+import type { TFont, TFontNames, TFontWithName } from "./fonts";
+import { fonts } from "./fonts";
 
 import type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
-} from "../headings";
-import { headings } from "../headings";
+} from "./headings";
+import { headings } from "./headings";
 
 /**
  * Defines the typography type.
