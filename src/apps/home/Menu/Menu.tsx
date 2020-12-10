@@ -7,7 +7,7 @@ import type { TMenuItem } from "../MenuItem";
 import { FeaturesDefaultProps } from "../Features";
 
 /**
- * Imports state logic.
+ * Imports variations.
  */
 import MenuDefault from "./MenuDefault";
 import MenuTitleWithIcon from "./MenuTitleWithIcon";

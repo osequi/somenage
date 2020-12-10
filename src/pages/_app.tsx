@@ -9,7 +9,7 @@ import { Template } from "@home/Template";
 
 import "normalize.css";
 import "../theme/typography/reset.css";
-import "../theme/fonts/fonts.css";
+import "../theme/typography/fonts/fonts.css";
 
 /**
  * Defines a context to hold the theme.

@@ -52,6 +52,16 @@ export type TCssNotations = "object" | "string";
 export type TSpacingPresetNames = "Adjacent siblings margin top";
 
 /**
+ * Defines the states an interactive element can have.
+ */
+export type TInteractiveStates =
+  | "default"
+  | "active"
+  | "visited"
+  | "disabled"
+  | "hidden";
+
+/**
  * Defines the theme type.
  *
  * This is an umbrella component. All settings related to the theme are collected here.

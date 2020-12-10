@@ -1,13 +1,15 @@
 import React, { ReactNode } from "react";
-import { cx } from "@emotion/css";
 
 /**
  * Imports other types, components and hooks.
  */
 import type { TLinkStatePresetNames } from "@theme";
-import { Link } from "@components/decorations";
-import { H3 } from "@components/semantic-elements";
 import type { TMenuState } from "../Menu";
+
+/**
+ * Imports variations.
+ */
+import { MenuItemDefault, MenuItemWithIcon } from ".";
 
 /**
  * Defines the menu item state names type.
@@ -53,23 +55,14 @@ const MenuItemDefaultProps = {
  * return <MenuItem />
  */
 const MenuItem = (props: TMenuItem) => {
-  const { type, title, url, state } = props;
-  if (!title && !url) return null;
+  const { state } = props;
 
   switch (state) {
     case "title-with-icon":
-      return type === "menu-item" ? <H3>{title}</H3> : title;
+      return <MenuItemWithIcon {...props} />;
+    case "default":
     default:
-      return (
-        <Link
-          href={url}
-          title={title}
-          state={state as TLinkStatePresetNames}
-          className={cx("MenuItem")}
-        >
-          {title}
-        </Link>
-      );
+      return <MenuItemDefault {...props} />;
   }
 };
 
