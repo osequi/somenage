@@ -6,11 +6,12 @@ import { isNil } from "lodash";
  * Imports other types, components and hooks.
  */
 import { useStyles, useResponsiveGridColumns } from "@hooks";
+import { Section } from "@components/semantic-elements";
 
 /**
  * Imports variations.
  */
-import { GridWithTitle, GridWithFauxLines } from ".";
+import { GridWithTitle } from ".";
 
 /**
  * Defines the Grid type.
@@ -86,7 +87,10 @@ const GridDefaultProps = {
   gap: 0,
   padding: 0,
   fauxLines: "none",
-  as: "div",
+  /**
+   * // NOTE: it was a div ... but divs cannot have title, so moved to a semnatic element.
+   */
+  as: Section,
   asProps: null,
   children: null,
   className: null,
@@ -96,8 +100,7 @@ const GridDefaultProps = {
  * Defines the grid container styles.
  * @ignore
  */
-const grid = (props: TGrid & any) => ({
-  background: "blue",
+const gridStyles = (props: TGrid & any) => ({
   display: "grid",
   width: `${props.width}`,
   height: `${props.height}`,
@@ -120,6 +123,11 @@ const Grid = (props: TGrid) => {
   if (isNil(children)) return null;
 
   /**
+   * Returns the `<GridWithTitle/>` component when the grid title is set.
+   */
+  if (asProps?.title || asProps?.heading) return <GridWithTitle {...props} />;
+
+  /**
    * Loads the responsive grid columns.
    */
   const responsiveGridColumns = useResponsiveGridColumns(columns);
@@ -132,8 +140,11 @@ const Grid = (props: TGrid) => {
   /**
    * Loads the styles.
    */
-  const gridKlass = useStyles(grid, styleProps);
+  const gridKlass = useStyles(gridStyles, styleProps);
 
+  /**
+   * Prepares the props to render the component.
+   */
   const props2 = {
     className: cx("Grid", gridKlass, className),
     ...asProps,
@@ -145,4 +156,4 @@ const Grid = (props: TGrid) => {
 Grid.defaultProps = GridDefaultProps;
 
 export default Grid;
-export { GridDefaultProps };
+export { GridDefaultProps, gridStyles };

@@ -21,7 +21,7 @@ const menuItemWithIcon = (wrapper, title) => {
   }
 
   return (
-    <Grid className="MenuItemWithIcon">
+    <Grid columns={[2]} className="MenuItemWithIcon">
       {title2}
       <Button className={cx("Button")}>Menu</Button>
     </Grid>
