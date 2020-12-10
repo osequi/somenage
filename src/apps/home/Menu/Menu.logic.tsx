@@ -28,7 +28,7 @@ const getMenuTitleAsProps = (
       level: 3,
       display: menuTitleState !== "hidden",
       children: (
-        <MenuItem {...menuTitle} state={menuTitleState} type="menu-title" />
+        <MenuItem {...menuTitle} state={menuTitleState} type="menuTitle" />
       ),
     },
   };
@@ -75,7 +75,7 @@ const getMenuItemState = (
   state: TMenuItemStateNames
 ): TMenuItemStateNames => {
   const isActiveMenuItem = isEqual(menuItem, activeMenuItem);
-  const isTitleWithIconState = state === "title-with-icon";
+  const isTitleWithIconState = state === "titleWithIcon";
 
   return isTitleWithIconState
     ? isActiveMenuItem

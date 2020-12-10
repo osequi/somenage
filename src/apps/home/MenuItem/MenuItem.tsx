@@ -19,7 +19,7 @@ export type TMenuItemStateNames = TLinkStatePresetNames | TMenuState;
 /**
  * Defines the menu item type names type.
  */
-export type TMenuItemTypeNames = "menu-item" | "menu-title";
+export type TMenuItemTypeNames = "menuItem" | "menuTitle";
 
 /**
  * Defines the MenuItem type.
@@ -41,7 +41,7 @@ export type TMenuItem = {
  * Example here...
  */
 const MenuItemDefaultProps = {
-  type: "menu-item",
+  type: "menuItem",
   title: null,
   url: null,
   state: "default",
@@ -58,7 +58,7 @@ const MenuItem = (props: TMenuItem) => {
   const { state } = props;
 
   switch (state) {
-    case "title-with-icon":
+    case "titleWithIcon":
       return <MenuItemWithIcon {...props} />;
     case "default":
     default:

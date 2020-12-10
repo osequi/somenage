@@ -15,7 +15,7 @@ import MenuTitleWithIcon from "./MenuTitleWithIcon";
 /**
  * Defines the menu state type.
  */
-export type TMenuState = "unknown" | "hidden" | "default" | "title-with-icon";
+export type TMenuState = "unknown" | "hidden" | "default" | "titleWithIcon";
 
 /**
  * Defines a menu item group type.
@@ -65,10 +65,12 @@ const MenuDefaultProps = {
 const Menu = (props: TMenu) => {
   const { state } = props;
 
+  console.log("state:", state);
+
   switch (state) {
     case "default":
       return <MenuDefault {...props} />;
-    case "title-with-icon":
+    case "titleWithIcon":
       return <MenuTitleWithIcon {...props} />;
     case "hidden":
     default:

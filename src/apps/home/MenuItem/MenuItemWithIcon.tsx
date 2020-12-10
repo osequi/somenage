@@ -22,9 +22,9 @@ const MenuItemWithIcon = (props: TMenuItem) => {
   );
 
   switch (type) {
-    case "menu-item":
+    case "menuItem":
       return <H3 className={cx("TextWithIcon")}>{withButton}</H3>;
-    case "menu-title":
+    case "menuTitle":
     default:
       return <span className={cx("TextWithIcon")}>{withButton}</span>;
   }
