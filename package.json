@@ -26,6 +26,7 @@
     "react-responsive": "^8.1.1"
   },
   "devDependencies": {
+    "@emotion/jest": "^11.1.0",
     "@osequi/new-component": "^2.0.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.1",

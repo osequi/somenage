@@ -1,5 +1,6 @@
 import React, { createElement, ReactNode } from "react";
 import { cx } from "@emotion/css";
+import { isNil } from "lodash";
 
 /**
  * Imports other types, components and hooks.
@@ -7,10 +8,9 @@ import { cx } from "@emotion/css";
 import { useStyles, useResponsiveGridColumns } from "@hooks";
 
 /**
- * Imports logic.
+ * Imports variations.
  */
-import { fauxLinesStyle, calculateFauxLines } from "./Grid.fauxLines";
-import { hasTitle, gridWithTitleStyles } from "./Grid.withTitle";
+import { GridWithTitle, GridWithFauxLines } from ".";
 
 /**
  * Defines the Grid type.
@@ -82,7 +82,7 @@ export type TGrid = {
 const GridDefaultProps = {
   width: "100%",
   height: "100%",
-  columns: 1,
+  columns: [1],
   gap: 0,
   padding: 0,
   fauxLines: "none",
@@ -96,7 +96,7 @@ const GridDefaultProps = {
  * Defines the grid container styles.
  * @ignore
  */
-const container = (props: TGrid & any) => ({
+const grid = (props: TGrid & any) => ({
   background: "blue",
   display: "grid",
   width: `${props.width}`,
@@ -115,80 +115,31 @@ const Grid = (props: TGrid) => {
   const { columns, as, asProps, children, className } = props;
 
   /**
+   * Returns null when there are no children.
+   */
+  if (isNil(children)) return null;
+
+  /**
    * Loads the responsive grid columns.
    */
   const responsiveGridColumns = useResponsiveGridColumns(columns);
 
   /**
-   * Loads the faux lines.
-   */
-  const fauxLinesProps = calculateFauxLines(props);
-
-  /**
    * Prepares the props for the styles.
    */
-  const styleProps = fauxLinesProps
-    ? {
-        ...props,
-        ...fauxLinesProps,
-        responsiveGridColumns: responsiveGridColumns,
-      }
-    : { ...props, responsiveGridColumns: responsiveGridColumns };
+  const styleProps = { ...props, responsiveGridColumns: responsiveGridColumns };
 
   /**
    * Loads the styles.
    */
-  const [containerKlass, gridWithTitleKlass] = useStyles(
-    [container, gridWithTitleStyles],
-    { props }
-  );
+  const gridKlass = useStyles(grid, styleProps);
 
-  /**
-   * Checks if grid has a title.
-   */
-  const gridHasTitle = hasTitle(props);
-
-  /**
-   * Checks if grid has multiple children.
-   */
-  const gridHasMultipleChildren = children && children.length !== undefined;
-
-  /**
-   * Prepares the props to render the component.
-   */
-  const propsGridWithoutTitle = {
-    className: cx(
-      "Grid GridWithoutTitle",
-      containerKlass,
-      //fauxLinesStyleKlass,
-      className
-    ),
+  const props2 = {
+    className: cx("Grid", gridKlass, className),
     ...asProps,
   };
 
-  const propsGridWithTitle = {
-    className: cx("Grid GridWithTitle", gridWithTitleKlass),
-    ...asProps,
-  };
-
-  const props2 = gridHasTitle ? propsGridWithTitle : propsGridWithoutTitle;
-
-  console.log("props2:", props2);
-  console.log("children:", children);
-  console.log("gridHasMultipleChildren:", gridHasMultipleChildren);
-  console.log("gridHasTitle:", gridHasTitle);
-
-  /**
-   * Prepares the children.
-   */
-  const childrenWrapped =
-    gridHasTitle && gridHasMultipleChildren ? (
-      <div className={cx("GridItems", containerKlass)}>{children}</div>
-    ) : (
-      children
-    );
-
-  return createElement(as, props2, childrenWrapped);
+  return createElement(as, props2, children);
 };
 
 Grid.defaultProps = GridDefaultProps;
