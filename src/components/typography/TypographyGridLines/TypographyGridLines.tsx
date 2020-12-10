@@ -4,6 +4,8 @@ import React from "react";
  * Imports other types, components and hooks.
  */
 import { useStyles } from "@hooks";
+import { Grid } from "@components/layout";
+import { Section } from "@components/semantic-elements";
 
 /**
  * Imports business logic.
@@ -156,11 +158,15 @@ const TypographyGridLines = (props: TTypographyGridLines) => {
     rhythmLine: rhythmLineKlass,
   });
 
+  const asProps = {
+    heading: { level: 1, children: "Typographic Grid Lines", display: false },
+  };
+
   return (
-    <>
+    <Grid as={Section} asProps={asProps}>
       {displayHorizontalRhytm && horizontalLines}
       {displayVerticalRhytm && verticalLines}
-    </>
+    </Grid>
   );
 };
 

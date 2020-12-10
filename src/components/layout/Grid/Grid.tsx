@@ -97,19 +97,11 @@ const GridDefaultProps = {
  * @ignore
  */
 const container = (props: TGrid & any) => ({
+  background: "blue",
   display: "grid",
   width: `${props.width}`,
   height: `${props.height}`,
   ...props.responsiveGridColumns,
-  columnGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
-  rowGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
-  alignItems: "start",
-
-  ["& > *"]: {
-    padding: props.borderLeftSelector
-      ? `0 calc(${props.gap} * var(--lem)) calc(${props.gap} * var(--lem)) 0`
-      : `calc(${props.padding} * var(--lem))`,
-  },
 });
 
 /**
@@ -146,9 +138,9 @@ const Grid = (props: TGrid) => {
   /**
    * Loads the styles.
    */
-  const [containerKlass, fauxLinesStyleKlass, gridWithTitleKlass] = useStyles(
-    [container, fauxLinesStyle, gridWithTitleStyles],
-    { styleProps }
+  const [containerKlass, gridWithTitleKlass] = useStyles(
+    [container, gridWithTitleStyles],
+    { props }
   );
 
   /**
@@ -165,25 +157,33 @@ const Grid = (props: TGrid) => {
    * Prepares the props to render the component.
    */
   const propsGridWithoutTitle = {
-    className: cx("Grid", containerKlass, fauxLinesStyleKlass, className),
+    className: cx(
+      "Grid GridWithoutTitle",
+      containerKlass,
+      //fauxLinesStyleKlass,
+      className
+    ),
     ...asProps,
   };
 
   const propsGridWithTitle = {
-    className: cx("Grid", gridWithTitleKlass),
+    className: cx("Grid GridWithTitle", gridWithTitleKlass),
     ...asProps,
   };
 
   const props2 = gridHasTitle ? propsGridWithTitle : propsGridWithoutTitle;
+
+  console.log("props2:", props2);
+  console.log("children:", children);
+  console.log("gridHasMultipleChildren:", gridHasMultipleChildren);
+  console.log("gridHasTitle:", gridHasTitle);
 
   /**
    * Prepares the children.
    */
   const childrenWrapped =
     gridHasTitle && gridHasMultipleChildren ? (
-      <div className={cx("GridItems", containerKlass, fauxLinesStyleKlass)}>
-        {children}
-      </div>
+      <div className={cx("GridItems", containerKlass)}>{children}</div>
     ) : (
       children
     );

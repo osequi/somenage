@@ -31,8 +31,6 @@ const MenuTitleWithIcon = (props: TMenu) => {
   const { items, state } = props;
   if (!items) return null;
 
-  console.log("titleWithIcon:");
-
   /**
    * Loads the current route.
    */

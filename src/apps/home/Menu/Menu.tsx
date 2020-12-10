@@ -65,8 +65,6 @@ const MenuDefaultProps = {
 const Menu = (props: TMenu) => {
   const { state } = props;
 
-  console.log("state:", state);
-
   switch (state) {
     case "default":
       return <MenuDefault {...props} />;

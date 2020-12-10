@@ -10,6 +10,7 @@ const hasTitle = (props) => {
  * Defines the styles when the grid has a title set.
  */
 const gridWithTitleStyles = (props) => ({
+  background: "red",
   display: "grid",
   gridTemplateColumns: "1fr",
 });
