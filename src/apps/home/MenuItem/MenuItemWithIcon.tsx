@@ -8,8 +8,21 @@ import type { TMenuItem } from ".";
 import { Button } from "@components/decorations";
 import { H3 } from "@components/semantic-elements";
 import { Grid } from "@components/layout";
+import { useStyles } from "@hooks";
+
+const withIconStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+
+  ["& .Button"]: {
+    marginTop: 0,
+  },
+};
 
 const menuItemWithIcon = (wrapper, title) => {
+  const withIconKlass = useStyles(withIconStyle);
+
   let title2 = null;
 
   switch (wrapper) {
@@ -21,10 +34,10 @@ const menuItemWithIcon = (wrapper, title) => {
   }
 
   return (
-    <Grid columns={[2]} className="MenuItemWithIcon">
+    <div className={cx("MenuItemWithIcon", withIconKlass)}>
       {title2}
       <Button className={cx("Button")}>Menu</Button>
-    </Grid>
+    </div>
   );
 };
 
