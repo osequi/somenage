@@ -10,10 +10,8 @@ export type TFontNames =
 
 /**
  * Collects the font names into an array.
- *
  * - `TFontNames` is an union type. It offers no methods like `length`.
  * - `fontNames` is an array. It can be used to make calculations with.
- *
  * @ignore
  */
 const fontNames = [
@@ -25,9 +23,7 @@ const fontNames = [
 
 /**
  * Defines the font type.
- *
  * The props are all valid CSS props.
- *
  * @category Theme
  * @example
  * fontFamily: "inherit",

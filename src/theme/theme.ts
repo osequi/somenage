@@ -52,6 +52,7 @@ export type TSpacingPresetNames = "Adjacent siblings margin top";
 
 /**
  * Defines the states an element can be.
+ * Shared by all interactive elements like link, button, etc.
  */
 export type TElementState =
   | "default"
@@ -59,6 +60,15 @@ export type TElementState =
   | "visited"
   | "disabled"
   | "hidden";
+
+/**
+ * Defines a preset type.
+ */
+export type TPreset = {
+  name?: string;
+  states?: string[];
+  styles?: object[];
+};
 
 /**
  * Defines the theme type.
