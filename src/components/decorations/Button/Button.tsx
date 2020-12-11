@@ -1,6 +1,8 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useRef } from "react";
 import { cx } from "@emotion/css";
 import { startCase, isNil } from "lodash";
+import { useToggleButton } from "@react-aria/button";
+import { useToggleState } from "@react-stately/toggle";
 
 /**
  * Imports other types, components and hooks.
@@ -68,8 +70,14 @@ const Button = (props: TButton) => {
   if (isNil(children)) return null;
 
   /**
+   * Loads `react-aria` props.
+   */
+  const ref = useRef();
+  const state = useToggleState(props);
+  const { buttonProps, isPressed } = useToggleButton(props, state, ref);
+
+  /**
    * Loads styles.
-   * @type {[type]}
    */
   const defaultButtonKlass = useStyles(defaultButton, props);
 
@@ -86,6 +94,8 @@ const Button = (props: TButton) => {
   return (
     <button
       className={cx("Button", klass, `Buttont${startCase(preset)}`, className)}
+      {...buttonProps}
+      ref={ref}
     >
       {children}
     </button>

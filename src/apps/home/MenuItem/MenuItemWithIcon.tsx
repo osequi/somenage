@@ -7,7 +7,6 @@ import { cx } from "@emotion/css";
 import type { TMenuItem } from ".";
 import { Button } from "@components/decorations";
 import { H3 } from "@components/semantic-elements";
-import { Grid } from "@components/layout";
 import { useStyles } from "@hooks";
 
 const withIconStyle = {

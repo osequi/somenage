@@ -46,6 +46,7 @@ export type TGrid = {
   /**
    * The padding of the children, unitless.
    * The padding will be a multiply of `var(--lem)`.
+   * Use only when fauxLines are set.
    */
   padding?: number;
   /**
