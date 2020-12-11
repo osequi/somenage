@@ -7,7 +7,7 @@ import { useToggleState } from "@react-stately/toggle";
 /**
  * Imports other types, components and hooks.
  */
-import type { TInteractiveStates } from "@theme";
+import type { TElementState } from "@theme";
 import { useStyles } from "@hooks";
 
 /**
@@ -23,7 +23,7 @@ export type TButtonPresets = "default";
  */
 export type TButton = {
   preset?: TButtonPresets;
-  state?: TInteractiveStates;
+  state?: TElementState;
   updateState?: () => {};
   /**
    * The content to be rendered.

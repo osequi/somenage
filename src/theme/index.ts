@@ -31,5 +31,5 @@ export type {
   TLinkTypePresetNames,
   TDecorations,
   TDecoration,
-  TInteractiveStates,
+  TElementState,
 } from "./theme";

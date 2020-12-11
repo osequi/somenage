@@ -35,7 +35,6 @@ it("Sets the `grid-template-columns` CSS attribute in a responsive way.", () => 
   const { container } = render(<Grid columns={[1, 2]} children="Grid item" />);
   expect(container.firstChild).toMatchInlineSnapshot(`
     .emotion-0 {
-      background: blue;
       display: grid;
       width: 100%;
       height: 100%;
@@ -71,7 +70,6 @@ it("Sets the `grid-template-columns` CSS attribute.", () => {
   const { container } = render(<Grid children="Grid item" />);
   expect(container.firstChild).toMatchInlineSnapshot(`
     .emotion-0 {
-      background: blue;
       display: grid;
       width: 100%;
       height: 100%;

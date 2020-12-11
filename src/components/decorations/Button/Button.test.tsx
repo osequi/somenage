@@ -5,5 +5,5 @@ import { Button } from ".";
 
 it("Renders the component", () => {
   const { container } = render(<Button />);
-  expect(container.firstChild).not.toBeNull();
+  expect(container.firstChild).toBeNull();
 });

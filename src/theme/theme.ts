@@ -41,8 +41,8 @@ import { decorations } from "./decorations";
 
 /**
  * Defines the CSS notations type.
- *
- * The object notation is preferred. However sometimes the string notation is required.
+ * The object notation is preferred.
+ * However sometimes the string notation is required.
  */
 export type TCssNotations = "object" | "string";
 
@@ -52,9 +52,9 @@ export type TCssNotations = "object" | "string";
 export type TSpacingPresetNames = "Adjacent siblings margin top";
 
 /**
- * Defines the states an interactive element can have.
+ * Defines the states an element can be.
  */
-export type TInteractiveStates =
+export type TElementState =
   | "default"
   | "active"
   | "visited"
@@ -63,9 +63,8 @@ export type TInteractiveStates =
 
 /**
  * Defines the theme type.
- *
- * This is an umbrella component. All settings related to the theme are collected here.
- *
+ * This is an umbrella component.
+ * All settings related to the theme are collected here.
  * @category Theme
  * @example
  * breakpoints: [
@@ -105,8 +104,8 @@ export type TTheme = {
 
 /**
  * Defines the theme.
- *
- * This is an umbrella component. All settings related to the theme are collected here.
+ * This is an umbrella component.
+ * All settings related to the theme are collected here.
  *
  * @category Theme
  * @example
