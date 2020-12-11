@@ -1,4 +1,4 @@
-import type { TLinkStylePresetNames, TLinkStatePresetNames } from "@theme";
+import type { TLinkStylePresetNames, TElementState } from "@theme";
 
 import { theme } from "@theme";
 import { useColors } from "../";
@@ -14,7 +14,7 @@ import { isNil } from "lodash";
  */
 const useLinkStyle = (
   preset?: TLinkStylePresetNames,
-  state?: TLinkStatePresetNames,
+  state?: TElementState,
   wrap?: boolean
 ): object | null => {
   if (!preset) return null;

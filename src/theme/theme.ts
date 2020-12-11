@@ -34,7 +34,6 @@ import type {
   TDecoration,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStatePresetNames,
   TLinkTypePresetNames,
 } from "./decorations";
 import { decorations } from "./decorations";
@@ -152,7 +151,6 @@ export type {
   THeadingsPresetNames,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStatePresetNames,
   TColorPair,
   TColorPairNames,
   TLinkTypePresetNames,

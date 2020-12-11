@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 /**
  * Imports other types, components and hooks.
  */
-import type { TLinkStatePresetNames } from "@theme";
+import type { TElementState } from "@theme";
 import type { TMenuState } from "../Menu";
 
 /**
@@ -14,7 +14,7 @@ import { MenuItemDefault, MenuItemWithIcon } from ".";
 /**
  * Defines the menu item state names type.
  */
-export type TMenuItemStateNames = TLinkStatePresetNames | TMenuState;
+export type TMenuItemStateNames = TElementState | TMenuState;
 
 /**
  * Defines the menu item type names type.

@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import type { TColorPairNames } from "../";
+import type { TColorPairNames, TElementState } from "../";
 
 /**
  * Defines the link style preset names.
@@ -22,30 +22,6 @@ const linkStylePresetNames = ["default"];
  * @category Theme
  */
 export type TLinkTypePresetNames = "external" | "internal";
-
-/**
- * Defines the link state preset names.
- * Links are in one of these states.
- * @category Theme
- */
-export type TLinkStatePresetNames =
-  | "default"
-  | "active"
-  | "visited"
-  | "disabled"
-  | "hidden";
-
-/**
- * Collects the link state preset names into an array.
- * @ignore
- */
-const linkStatePresetNames = [
-  "default",
-  "active",
-  "visited",
-  "disabled",
-  "hidden",
-];
 
 /**
  * Defines the link style type.
@@ -102,4 +78,4 @@ const defaultLinkStyle: TLinkStyle = {
 const linkStyles: TLinkStyle[] = [defaultLinkStyle];
 
 export default linkStyles;
-export { linkStylePresetNames, linkStatePresetNames };
+export { linkStylePresetNames };

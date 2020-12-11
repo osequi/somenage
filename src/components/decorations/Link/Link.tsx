@@ -6,7 +6,7 @@ import { useLink as useAriaLink } from "react-aria";
 /**
  * Imports other types, components and hooks.
  */
-import type { TLinkStylePresetNames, TLinkStatePresetNames } from "@theme";
+import type { TLinkStylePresetNames, TElementState } from "@theme";
 import { useStyles, useLinkStyle } from "@hooks";
 
 /**
@@ -18,7 +18,7 @@ import { useStyles, useLinkStyle } from "@hooks";
 export type TLink = {
   type?: "internal" | "external";
   preset?: TLinkStylePresetNames;
-  state?: TLinkStatePresetNames;
+  state?: TElementState;
   href?: string;
   title?: string;
   target?: string;

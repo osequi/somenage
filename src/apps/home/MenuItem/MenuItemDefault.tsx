@@ -5,7 +5,7 @@ import { cx } from "@emotion/css";
  * Imports other types, components and hooks.
  */
 import type { TMenuItem } from ".";
-import type { TLinkStatePresetNames } from "@theme";
+import type { TElementState } from "@theme";
 import { Link } from "@components/decorations";
 
 /**
@@ -19,7 +19,7 @@ const MenuItemDefault = (props: TMenuItem) => {
     <Link
       href={url}
       title={title}
-      state={state as TLinkStatePresetNames}
+      state={state as TElementState}
       className={cx("MenuItem")}
     >
       {title}

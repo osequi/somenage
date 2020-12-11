@@ -1,4 +1,3 @@
-export type { TTheme } from "./theme";
 export { default as theme } from "./theme";
 
 export type {
@@ -25,11 +24,11 @@ export type {
   THeadingsPresetNames,
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStatePresetNames,
   TColorPair,
   TColorPairNames,
   TLinkTypePresetNames,
   TDecorations,
   TDecoration,
   TElementState,
+  TTheme,
 } from "./theme";

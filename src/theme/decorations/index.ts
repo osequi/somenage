@@ -4,6 +4,5 @@ export { default as decorations } from "./decorations";
 export type {
   TLinkStylePresetNames,
   TLinkStyle,
-  TLinkStatePresetNames,
   TLinkTypePresetNames,
 } from "./link";
