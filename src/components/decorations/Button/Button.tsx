@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from "react";
+import React, { ReactNode, useRef, useEffect } from "react";
 import { cx } from "@emotion/css";
 import { startCase, isNil } from "lodash";
 import { useToggleButton } from "@react-aria/button";
@@ -23,6 +23,8 @@ export type TButtonPresets = "default";
  */
 export type TButton = {
   preset?: TButtonPresets;
+  state?: TInteractiveStates;
+  updateState?: () => {};
   /**
    * The content to be rendered.
    */
@@ -42,6 +44,8 @@ export type TButton = {
  */
 const ButtonDefaultProps = {
   preset: "default",
+  state: "default",
+  updateState: null,
   children: null,
   className: null,
 };
@@ -62,7 +66,7 @@ const defaultButton = {
  * return <Button />
  */
 const Button = (props: TButton) => {
-  const { preset, children, className } = props;
+  const { preset, state, updateState, children, className } = props;
 
   /**
    * Displays nothing if children is not defined.
@@ -73,8 +77,17 @@ const Button = (props: TButton) => {
    * Loads `react-aria` props.
    */
   const ref = useRef();
-  const state = useToggleState(props);
-  const { buttonProps, isPressed } = useToggleButton(props, state, ref);
+  const ariaState = useToggleState(props);
+  const { buttonProps, isPressed } = useToggleButton(props, ariaState, ref);
+
+  /**
+   * Updates the button state.
+   */
+  useEffect(() => {
+    if (!isPressed) return;
+    const newState = state === "active" ? "default" : "active";
+    updateState(newState);
+  }, [isPressed]);
 
   /**
    * Loads styles.

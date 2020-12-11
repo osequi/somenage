@@ -1,4 +1,10 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {
+  ReactNode,
+  useEffect,
+  useState,
+  createContext,
+  Context,
+} from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -44,9 +50,14 @@ const TemplateDefaultProps = {
 };
 
 /**
+ * Creates a context for the menu icon.
+ */
+const MenuIconContext: Context<any> = createContext(null);
+
+/**
  * Displays the Template.
  *
- * // NOTE: The Grid shouldn;t be semantic. It breaks the outliner. <Header> Should be the first semantic element
+ * // NOTE: The Grid shouldn't be semantic. It breaks the outliner. <Header> should be the first semantic element
  * @category Components
  * @component
  * @example
@@ -60,6 +71,11 @@ const Template = (props: TTemplate) => {
    * Manages the menu state.
    */
   const [menuState, setMenuState] = useState("unknown");
+
+  /**
+   * Manages the menu icon state.
+   */
+  const [menuIconState, setMenuIconState] = useState("default");
 
   /**
    * Defines the page title.
@@ -81,8 +97,7 @@ const Template = (props: TTemplate) => {
    * Checks if homepage is the current route.
    */
   const router = useRouter();
-  const route = router?.route;
-  const isHomePage = route === "/";
+  const isHomePage = router?.route === "/";
 
   /**
    * Checks if the device is laptop or larger.
@@ -90,26 +105,43 @@ const Template = (props: TTemplate) => {
   const isLaptop = useViewport(">=laptop");
 
   /**
+   * Checks if the menu icon is pressed.
+   */
+  const isMenuIconPressed = menuIconState === "active";
+
+  /**
+   * Updates the menu state.
+   */
+  const updateMenuState = () =>
+    isHomePage
+      ? setMenuState("hidden")
+      : isLaptop
+      ? setMenuState("default")
+      : isMenuIconPressed
+      ? setMenuState("withIcon")
+      : setMenuState("titleWithIcon");
+
+  /**
    * Updates the menu state on route change.
    */
   useEffect(() => {
-    isHomePage
-      ? setMenuState("hidden")
-      : isLaptop
-      ? setMenuState("default")
-      : setMenuState("titleWithIcon");
-  }, [isHomePage]);
+    setMenuIconState("default");
+    updateMenuState();
+  }, [router]);
 
   /**
-   * Updates the menu state on device size.
+   * Updates the menu state on device size change.
    */
   useEffect(() => {
-    isHomePage
-      ? setMenuState("hidden")
-      : isLaptop
-      ? setMenuState("default")
-      : setMenuState("titleWithIcon");
+    updateMenuState();
   }, [isLaptop]);
+
+  /**
+   * Updates the menu state on icon click.
+   */
+  useEffect(() => {
+    updateMenuState();
+  }, [isMenuIconPressed]);
 
   return (
     <>
@@ -117,7 +149,14 @@ const Template = (props: TTemplate) => {
       <Grid>
         <Text>
           <Header siteTitle={siteTitle} siteUrl={siteUrl} />
-          <Menu state={menuState as TMenuState} />
+          <MenuIconContext.Provider
+            value={{
+              menuIconState: menuIconState,
+              setMenuIconState: setMenuIconState,
+            }}
+          >
+            <Menu state={menuState as TMenuState} />
+          </MenuIconContext.Provider>
           <Content>{children}</Content>
           <Footer />
         </Text>
@@ -129,4 +168,4 @@ const Template = (props: TTemplate) => {
 Template.defaultProps = TemplateDefaultProps;
 
 export default Template;
-export { TemplateDefaultProps };
+export { TemplateDefaultProps, MenuIconContext };

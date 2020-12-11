@@ -9,13 +9,17 @@ import { FeaturesDefaultProps } from "../Features";
 /**
  * Imports variations.
  */
-import MenuDefault from "./MenuDefault";
-import MenuTitleWithIcon from "./MenuTitleWithIcon";
+import { MenuDefault, MenuWithIcon, MenuTitleWithIcon } from ".";
 
 /**
  * Defines the menu state type.
  */
-export type TMenuState = "unknown" | "hidden" | "default" | "titleWithIcon";
+export type TMenuState =
+  | "unknown"
+  | "hidden"
+  | "default"
+  | "titleWithIcon"
+  | "withIcon";
 
 /**
  * Defines a menu item group type.
@@ -70,6 +74,8 @@ const Menu = (props: TMenu) => {
       return <MenuDefault {...props} />;
     case "titleWithIcon":
       return <MenuTitleWithIcon {...props} />;
+    case "withIcon":
+      return <MenuWithIcon {...props} />;
     case "hidden":
     default:
       return null;

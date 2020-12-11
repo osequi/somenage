@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { cx } from "@emotion/css";
 
 /**
@@ -8,6 +8,7 @@ import type { TMenuItem } from ".";
 import { Button } from "@components/decorations";
 import { H3 } from "@components/semantic-elements";
 import { useStyles } from "@hooks";
+import { MenuIconContext } from "@home/Template";
 
 const withIconStyle = {
   display: "flex",
@@ -21,6 +22,7 @@ const withIconStyle = {
 
 const menuItemWithIcon = (wrapper, title) => {
   const withIconKlass = useStyles(withIconStyle);
+  const { menuIconState, setMenuIconState } = useContext(MenuIconContext);
 
   let title2 = null;
 
@@ -35,7 +37,13 @@ const menuItemWithIcon = (wrapper, title) => {
   return (
     <div className={cx("MenuItemWithIcon", withIconKlass)}>
       {title2}
-      <Button className={cx("Button")}>Menu</Button>
+      <Button
+        className={cx("Button")}
+        state={menuIconState}
+        updateState={setMenuIconState}
+      >
+        Menu
+      </Button>
     </div>
   );
 };
