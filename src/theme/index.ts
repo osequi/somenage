@@ -29,6 +29,8 @@ export type {
   TLinkTypePresetNames,
   TDecorations,
   TDecoration,
-  TElementState,
+  TState,
+  TPreset,
+  TStyle,
   TTheme,
 } from "./theme";

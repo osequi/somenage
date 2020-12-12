@@ -54,20 +54,55 @@ export type TSpacingPresetNames = "Adjacent siblings margin top";
  * Defines the states an element can be.
  * Shared by all interactive elements like link, button, etc.
  */
-export type TElementState =
-  | "default"
-  | "active"
-  | "visited"
-  | "disabled"
-  | "hidden";
+export type TState = "default" | "active" | "visited" | "disabled" | "hidden";
 
 /**
- * Defines a preset type.
+ * Defines the preset type.
+ * Presets are used all across the theme.
+ * Presets are: a color scheme, a set of fonts, a set of border styles, link styles and more.
+ * @example
+ * ('link', 'default') // The default link settings
+ * ('link', 'default', 'active') // The `active` state of the link from the `default` preset.
  */
 export type TPreset = {
+  /**
+   * The type of the preset.
+   * @example link, button, border, ....
+   */
+  type?: string;
+  /**
+   * The name of the preset.
+   * @example simple, default, brutalist, etc.
+   */
   name?: string;
-  states?: string[];
-  styles?: object[];
+  /**
+   * The name of the `TState`.
+   * @example: active, hidden
+   */
+  state?: TState;
+};
+
+/**
+ * The style type.
+ * Used to style an element.
+ * It can contain other presets, or simple CSS declarations.
+ */
+export type TStyle = {
+  /**
+   * The state of the element.
+   * @example active
+   */
+  state?: TState;
+  /**
+   * A set of presets.
+   * @example ('link', 'default', 'active')
+   */
+  presets?: TPreset[];
+  /**
+   * A set of CSS properties.
+   * @example `textDecoration: "underline"`
+   */
+  css?: object;
 };
 
 /**
