@@ -1,15 +1,24 @@
-export type TBorderPresetNames = "default";
+import type { TPreset, TStyle } from "../";
 
 export type TBorder = {
-  preset?: TBorderPresetNames;
-  borderStyle?: string;
-  borderWidth?: string;
+  preset?: TPreset;
+  styles?: TStyle[];
 };
 
 const defaultBorder: TBorder = {
-  preset: "default",
-  borderStyle: "solid",
-  borderWidth: "1px",
+  preset: {
+    type: "border",
+    name: "default",
+  },
+  styles: [
+    {
+      state: "default",
+      css: {
+        borderStyle: "solid",
+        borderWidth: "1px",
+      },
+    },
+  ],
 };
 
 const borders: TBorder[] = [defaultBorder];

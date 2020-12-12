@@ -1,8 +1,11 @@
-export type { TDecorations, TDecoration } from "./decorations";
-export { default as decorations } from "./decorations";
+export type { TBorder } from "./borders";
+export { default as borders } from "./borders";
 
-export type {
-  TLinkStylePresetNames,
-  TLinkStyle,
-  TLinkTypePresetNames,
-} from "./link";
+export type { TButton } from "./buttons";
+export { default as buttons } from "./buttons";
+
+export type { TLink } from "./links";
+export { default as links } from "./links";
+
+export type { TDecorations } from "./decorations";
+export { default as decorations } from "./decorations";

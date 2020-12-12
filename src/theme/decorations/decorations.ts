@@ -1,33 +1,22 @@
-import type { TBorder, TBorderPresetNames } from "./borders";
+import type { TBorder } from "./borders";
 import { default as borders } from "./borders";
 
-import type { TPatternify, TPatternifyPresetNames } from "./patternify";
-import { default as patternify } from "./patternify";
+import type { TButton } from "./buttons";
+import { default as buttons } from "./buttons";
 
-import type { TLinkStyle } from "./link";
-import { default as linkStyles } from "./link";
-
-/**
- * // NOTE: Experimental
- * Tries to achieve something like `useDecoration('link', 'default')` and `useDecoration('borders', 'heavy')`
- * However link styling is so complex it needs a special hook `useLinkStyle` to put together the styles.
- * For simple styling it works for now.
- */
-export type TDecoration = {
-  type?: "borders" | "patternify";
-  preset?: TBorderPresetNames & TPatternifyPresetNames;
-};
+import type { TLink } from "./links";
+import { default as links } from "./links";
 
 export type TDecorations = {
   borders?: TBorder[];
-  patternify?: TPatternify[];
-  links?: TLinkStyle[];
+  links?: TLink[];
+  buttons?: TButton[];
 };
 
 const decorations: TDecorations = {
   borders: borders,
-  patternify: patternify,
-  links: linkStyles,
+  links: links,
+  buttons: buttons,
 };
 
 export default decorations;

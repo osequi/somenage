@@ -29,13 +29,7 @@ import type {
 } from "./colors";
 import { colors, colorPairs } from "./colors";
 
-import type {
-  TDecorations,
-  TDecoration,
-  TLinkStylePresetNames,
-  TLinkStyle,
-  TLinkTypePresetNames,
-} from "./decorations";
+import type { TDecorations } from "./decorations";
 import { decorations } from "./decorations";
 
 /**
@@ -194,11 +188,7 @@ export type {
   THeadings,
   THeadingsSettings,
   THeadingsPresetNames,
-  TLinkStylePresetNames,
-  TLinkStyle,
   TColorPair,
   TColorPairNames,
-  TLinkTypePresetNames,
   TDecorations,
-  TDecoration,
 };
