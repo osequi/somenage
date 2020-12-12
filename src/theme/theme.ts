@@ -29,7 +29,6 @@ import type {
 } from "./colors";
 import { colors, colorPairs } from "./colors";
 
-import type { TDecorations } from "./decorations";
 import { decorations } from "./decorations";
 
 /**
@@ -137,7 +136,7 @@ export type TTheme = {
   /**
    * The decorations. Borders, backgrounds etc.
    */
-  decorations?: TDecorations;
+  decorations?: any;
 };
 
 /**
@@ -190,5 +189,4 @@ export type {
   THeadingsPresetNames,
   TColorPair,
   TColorPairNames,
-  TDecorations,
 };
