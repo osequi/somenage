@@ -6,8 +6,8 @@ import { useLink as useAriaLink } from "react-aria";
 /**
  * Imports other types, components and hooks.
  */
-import type { TLinkStylePresetNames, TElementState } from "@theme";
-import { useStyles, useLinkStyle } from "@hooks";
+import type { TState } from "@theme";
+import { useStyles, usePreset } from "@hooks";
 
 /**
  * Defines the Link type.
@@ -17,8 +17,8 @@ import { useStyles, useLinkStyle } from "@hooks";
  */
 export type TLink = {
   type?: "internal" | "external";
-  preset?: TLinkStylePresetNames;
-  state?: TElementState;
+  preset?: TState;
+  state?: TState;
   href?: string;
   title?: string;
   target?: string;
@@ -71,8 +71,12 @@ const Link = (props: TLink) => {
   /**
    * Loads link style from the theme.
    */
-  const linkStyle = useLinkStyle(preset, state, false);
-  const linkKlass = useStyles(linkStyle);
+  const linkStyle = usePreset("link", "default", state);
+  const linkStyle2 = linkStyle && linkStyle.pop();
+  const { state: linkStyleState, ...rest } = linkStyle2;
+  console.log("rest:", rest);
+
+  const linkKlass = useStyles(rest);
 
   /**
    * Puts together an internal link using `@next/link`.

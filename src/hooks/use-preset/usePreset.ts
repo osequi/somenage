@@ -1,5 +1,6 @@
 import type { TPreset, TState } from "@theme";
 import { theme } from "@theme";
+import { isNil } from "lodash";
 
 const usePreset = (type?: string, name?: string, state?: TState) => {
   const presets = theme?.decorations;
@@ -11,8 +12,10 @@ const usePreset = (type?: string, name?: string, state?: TState) => {
   });
 
   const styles = preset?.styles;
+
   const stylesForState =
     styles && styles.filter((style) => style.state === state);
+
   const styles2 = state ? stylesForState : styles;
 
   return (

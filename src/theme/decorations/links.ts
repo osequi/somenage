@@ -18,7 +18,7 @@ const defaultLink: TLink = {
       state: "default",
       presets: [
         {
-          type: "colorPair",
+          type: "colorPair2",
           name: "default",
           state: "default",
         },
@@ -31,7 +31,7 @@ const defaultLink: TLink = {
       state: "active",
       presets: [
         {
-          type: "colorPair",
+          type: "colorPair2",
           name: "default",
           state: "active",
         },
@@ -44,7 +44,7 @@ const defaultLink: TLink = {
       state: "visited",
       presets: [
         {
-          type: "colorPair",
+          type: "colorPair2",
           name: "default",
           state: "visited",
         },
