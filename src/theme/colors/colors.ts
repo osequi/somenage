@@ -87,12 +87,12 @@ const colors: TColor[] = [
     chroma: null,
   },
   {
-    name: "Undefined",
+    name: "Gray",
     for: "Shade",
     description: "The shade color. Used for secondary backgrounds.",
-    value: null,
+    value: "gray",
     spaceName: "Name",
-    chroma: null,
+    chroma: chroma("gray"),
   },
 ];
 

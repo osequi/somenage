@@ -20,6 +20,7 @@ const defaultLink: TLink = {
         {
           type: "colorPair",
           name: "default",
+          state: "default",
         },
       ],
       css: {
@@ -31,7 +32,8 @@ const defaultLink: TLink = {
       presets: [
         {
           type: "colorPair",
-          name: "inverted",
+          name: "default",
+          state: "active",
         },
       ],
       css: {
@@ -44,6 +46,7 @@ const defaultLink: TLink = {
         {
           type: "colorPair",
           name: "default",
+          state: "visited",
         },
       ],
       css: {
